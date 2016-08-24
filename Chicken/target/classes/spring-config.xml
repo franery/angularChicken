@@ -13,7 +13,7 @@
 	<mvc:annotation-driven />
 
 	<!-- Paquete donde estaran nuestros controllers -->
-	<context:component-scan base-package="com.chicken" />
+	<context:component-scan base-package="com.chicken.presentacion.controlador" />
 
 
 	<!-- Propiedades DB -->
@@ -65,45 +65,32 @@
 
 	<!-- Resuelve los archivos que se van a usar para las vistas, en este caso 
 		todo lo que posea Extension 'jsp' y en carpeta /view/. -->
-	<!-- <bean -->
-	<!-- class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
-	<!-- <property name="prefix"> -->
-	<!-- <value>/view/</value> -->
-	<!-- </property> -->
-	<!-- <property name="suffix"> -->
-	<!-- <value>.jsp</value> -->
-	<!-- </property> -->
-	<!-- </bean> -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/view/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
 
 	<!-- DAOs -->
-	<!-- <bean id="depositoDAO" class="com.chicken.persistencia.dao.impl.DepositoDAOImpl" 
-		/> -->
-	<!-- <bean id="gallineroDAO" class="com.chicken.persistencia.dao.impl.GallineroDAOImpl" 
-		/> -->
-	<!-- <bean id="movimientoDAO" class="com.chicken.persistencia.dao.impl.MovimientoDAOImpl" 
-		/> -->
+	<bean id="usuarioDAO" class="com.chicken.persistencia.dao.impl.UsuarioDAOImpl" />
+	<bean id="gallineroDAO" class="com.chicken.persistencia.dao.impl.GallineroDAOImpl" />
+	<bean id="depositoDAO" class="com.chicken.persistencia.dao.impl.DepositoDAOImpl" />
+	<bean id="movimientoDAO" class="com.chicken.persistencia.dao.impl.MovimientoDAOImpl" />
+	<bean id="proveedorDAO" class="com.chicken.persistencia.dao.impl.ProveedorDAOImpl" />
 	<bean id="parametroDAO" class="com.chicken.persistencia.dao.impl.ParametroDAOImpl" />
-	<!-- <bean id="proveedorDAO" class="com.chicken.persistencia.dao.impl.ProveedorDAOImpl" 
-		/> -->
-	<!-- <bean id="usuarioDAO" class="com.chicken.persistencia.dao.impl.UsuarioDAOImpl" 
-		/> -->
-	<!-- <bean id="ventaDAO" class="com.chicken.persistencia.dao.impl.VentaDAOImpl" 
-		/> -->
-
-	<!-- Servicios -->
-	<!-- <bean id="depositoServicio" class="com.chicken.negocio.servicios.impl.DepositoServicioImpl" 
-		/> -->
-	<!-- <bean id="gallineroServicio" -->
-	<!-- class="com.chicken.negocio.servicios.impl.GallineroServicioImpl" /> -->
-	<!-- <bean id="movimientoServicio" -->
-	<!-- class="com.chicken.negocio.servicios.impl.MovimientoServicioImpl" /> -->
-	<bean id="parametroServicio"
-		class="com.chicken.negocio.servicios.impl.ParametroServicioImpl" />
-	<!-- <bean id="proveedorServicio" -->
-	<!-- class="com.chicken.negocio.servicios.impl.ProveedorServicioImpl" /> -->
-	<!-- <bean id="usuarioServicio" class="com.chicken.negocio.servicios.impl.UsuarioServicioImpl" 
-		/> -->
-	<!-- <bean id="ventaServicio" class="com.chicken.negocio.servicios.impl.VentaServicioImpl" 
-		/> -->
+	<bean id="ventaDAO" class="com.chicken.persistencia.dao.impl.VentaDAOImpl" />
+	
+	<!-- Services -->
+	<bean id="usuarioServicio" class="com.chicken.negocio.servicios.impl.UsuarioServicioImpl" />
+	<bean id="gallineroServicio" class="com.chicken.negocio.servicios.impl.GallineroServicioImpl" />
+	<bean id="depositoServicio" class="com.chicken.negocio.servicios.impl.DepositoServicioImpl" />
+	<bean id="movimientoServicio" class="com.chicken.negocio.servicios.impl.MovimientoServicioImpl" />
+	<bean id="proveedorServicio" class="com.chicken.negocio.servicios.impl.ProveedorServicioImpl" />
+	<bean id="parametroServicio" class="com.chicken.negocio.servicios.impl.ParametroServicioImpl" />
+	<bean id="ventaServicio" class="com.chicken.negocio.servicios.impl.VentaServicioImpl" />
 
 </beans>  
