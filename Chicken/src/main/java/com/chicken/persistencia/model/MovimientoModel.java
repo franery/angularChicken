@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="Movimiento")
 public class MovimientoModel extends Modelo {
 	
 	@Id

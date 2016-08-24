@@ -66,8 +66,8 @@ public class ParametroTest {
 		
 		parametroDAO.modificar(p);
 		
-		p2 = parametroDAO.get(p.getId());
+		ParametroModel p3 = parametroDAO.get(p.getId());
 		
-		Assert.assertTrue(p2.getDescripcion().equals(p.getDescripcion()));
+		Assert.assertTrue(!p2.getDescripcion().equals(p3.getDescripcion()));
 	}
 }
