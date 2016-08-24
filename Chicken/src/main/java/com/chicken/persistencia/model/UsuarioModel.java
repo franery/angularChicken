@@ -11,7 +11,7 @@ import com.chicken.base.enumeradores.EPerfil;
 public class UsuarioModel extends Modelo {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private long id;
 	

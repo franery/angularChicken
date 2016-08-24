@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class GallineroModel extends Modelo {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private long id;
 	

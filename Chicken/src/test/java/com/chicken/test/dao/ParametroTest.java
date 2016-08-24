@@ -1,6 +1,7 @@
 package com.chicken.test.dao;
 
 import org.junit.runner.RunWith;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,11 +21,53 @@ public class ParametroTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_AInsertarParametro() {
+	public void test_InsertarYBuscarParametro() {
 		ParametroModel p = new ParametroModel();
 		p.setDescripcion("LALALApppp");
-		p.setValor("ANDAAA");
+		p.setValor("ANDAAAelservicio");
 		
 		parametroDAO.guardar(p);
+		
+		ParametroModel p2 = parametroDAO.get(p.getId());
+		
+		Assert.assertTrue(p2.getDescripcion().equals(p.getDescripcion()));
+		Assert.assertTrue(p2.getValor().equals(p.getValor()));
+		Assert.assertTrue(p2.getId() == p.getId());
+	}
+	
+	@Test
+	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
+	public void test_BorrarParametro() {
+		ParametroModel p = new ParametroModel();
+		p.setDescripcion("LALALApppp");
+		p.setValor("ANDAAAelservicio");
+		
+		parametroDAO.guardar(p);
+		parametroDAO.borrar(p.getId());
+		
+		ParametroModel p2 = parametroDAO.get(p.getId());
+		
+		Assert.assertTrue(p2 == null);
+	}
+	
+	@Test
+	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
+	public void test_ModificarParametro() {
+		ParametroModel p = new ParametroModel();
+		p.setDescripcion("LALALApppp");
+		p.setValor("ANDAAAelservicio");
+		
+		parametroDAO.guardar(p);
+		ParametroModel p2 = parametroDAO.get(p.getId());
+		Assert.assertTrue(p2.getDescripcion().equals(p.getDescripcion()));
+		
+		
+		p.setDescripcion("DescNueva");
+		
+		parametroDAO.modificar(p);
+		
+		p2 = parametroDAO.get(p.getId());
+		
+		Assert.assertTrue(p2.getDescripcion().equals(p.getDescripcion()));
 	}
 }
