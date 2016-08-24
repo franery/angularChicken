@@ -1,6 +1,9 @@
+drop database db_chicken;
+
 create database db_chicken;
 
 use db_chicken;
+
 
 create table Usuario (
 	id bigint(10) primary key not null auto_increment,
@@ -8,7 +11,7 @@ create table Usuario (
     nombre varchar(50) not null,
     apellido varchar(50) not null,
     perfil varchar(50) not null,
-    contrasenia bigint(50) not null
+    contrasenia varchar(50) not null
 );
 
 create table Proveedor (
@@ -61,12 +64,11 @@ create table Parametro (
     valor varchar(50) not null
 );
 
+
+delete from Parametro;
 select * from Parametro;
+delete from Deposito;
+select * from Deposito;
 
-
-CREATE SEQUENCE hibernate_sequence
-      INCREMENT BY 1
-      START WITH 1
-      NOMAXVALUE
-      NOCYCLE
-      CACHE 10;
+select * from Usuario;
+select * from Gallinero;

@@ -12,6 +12,7 @@ import com.chicken.persistencia.model.ParametroModel;
 import com.chicken.presentacion.bean.dto.ParametroDTO;
 
 public class ParametroServicioImpl extends Servicio implements IParametroServicio {
+	
 	ParametroMapeador parametroMapeador = new ParametroMapeador();
 	
 	@Autowired

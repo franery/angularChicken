@@ -76,33 +76,28 @@
 	<!-- </bean> -->
 
 	<!-- DAOs -->
-	<!-- <bean id="depositoDAO" class="com.chicken.persistencia.dao.impl.DepositoDAOImpl" 
-		/> -->
-	<!-- <bean id="gallineroDAO" class="com.chicken.persistencia.dao.impl.GallineroDAOImpl" 
-		/> -->
+	<bean id="depositoDAO" class="com.chicken.persistencia.dao.impl.DepositoDAOImpl" />
+	<bean id="gallineroDAO" class="com.chicken.persistencia.dao.impl.GallineroDAOImpl" />
 	<!-- <bean id="movimientoDAO" class="com.chicken.persistencia.dao.impl.MovimientoDAOImpl" 
 		/> -->
 	<bean id="parametroDAO" class="com.chicken.persistencia.dao.impl.ParametroDAOImpl" />
 	<!-- <bean id="proveedorDAO" class="com.chicken.persistencia.dao.impl.ProveedorDAOImpl" 
 		/> -->
-	<!-- <bean id="usuarioDAO" class="com.chicken.persistencia.dao.impl.UsuarioDAOImpl" 
-		/> -->
+	<bean id="usuarioDAO" class="com.chicken.persistencia.dao.impl.UsuarioDAOImpl" />
 	<!-- <bean id="ventaDAO" class="com.chicken.persistencia.dao.impl.VentaDAOImpl" 
 		/> -->
 
 	<!-- Servicios -->
-	<!-- <bean id="depositoServicio" class="com.chicken.negocio.servicios.impl.DepositoServicioImpl" 
-		/> -->
-	<!-- <bean id="gallineroServicio" -->
-	<!-- class="com.chicken.negocio.servicios.impl.GallineroServicioImpl" /> -->
+	<bean id="depositoServicio" class="com.chicken.negocio.servicios.impl.DepositoServicioImpl" />
+	<bean id="gallineroServicio"
+		class="com.chicken.negocio.servicios.impl.GallineroServicioImpl" />
 	<!-- <bean id="movimientoServicio" -->
 	<!-- class="com.chicken.negocio.servicios.impl.MovimientoServicioImpl" /> -->
 	<bean id="parametroServicio"
 		class="com.chicken.negocio.servicios.impl.ParametroServicioImpl" />
 	<!-- <bean id="proveedorServicio" -->
 	<!-- class="com.chicken.negocio.servicios.impl.ProveedorServicioImpl" /> -->
-	<!-- <bean id="usuarioServicio" class="com.chicken.negocio.servicios.impl.UsuarioServicioImpl" 
-		/> -->
+	<bean id="usuarioServicio" class="com.chicken.negocio.servicios.impl.UsuarioServicioImpl" />
 	<!-- <bean id="ventaServicio" class="com.chicken.negocio.servicios.impl.VentaServicioImpl" 
 		/> -->
 

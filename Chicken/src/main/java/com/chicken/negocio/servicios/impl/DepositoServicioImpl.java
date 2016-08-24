@@ -46,4 +46,21 @@ public class DepositoServicioImpl extends Servicio implements IDepositoServicio 
 		depositoDAO.borrar(((DepositoDTO)dto).getId());		
 	}
 
+	public DepositoMapeador getDepositoMapeador() {
+		return depositoMapeador;
+	}
+
+	public void setDepositoMapeador(DepositoMapeador depositoMapeador) {
+		this.depositoMapeador = depositoMapeador;
+	}
+
+	public IDepositoDAO getDepositoDAO() {
+		return depositoDAO;
+	}
+
+	public void setDepositoDAO(IDepositoDAO depositoDAO) {
+		this.depositoDAO = depositoDAO;
+	}
+
+	
 }
