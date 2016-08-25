@@ -1,5 +1,7 @@
 package com.chicken.test.dao;
 
+import java.sql.Date;
+
 import org.junit.runner.RunWith;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,69 +11,139 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.chicken.base.enumeradores.EPerfil;
 import com.chicken.persistencia.dao.IDepositoDAO;
+import com.chicken.persistencia.dao.IGallineroDAO;
+import com.chicken.persistencia.dao.IMovimientoDAO;
+import com.chicken.persistencia.dao.IUsuarioDAO;
 import com.chicken.persistencia.model.DepositoModel;
+import com.chicken.persistencia.model.GallineroModel;
+import com.chicken.persistencia.model.MovimientoModel;
+import com.chicken.persistencia.model.UsuarioModel;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:spring-config.xml"})
 public class MovimientoTest {
 	
 	@Autowired
+	IMovimientoDAO movimientoDAO;
+	
+	@Autowired 
+	IUsuarioDAO usuarioDAO;
+	
+	@Autowired 
 	IDepositoDAO depositoDAO;
 	
-	@Test
-	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_InsertarYBuscarDeposito() {
-		DepositoModel p = new DepositoModel();
-		p.setNombre("Deposito2");
-		p.setStockHuevos(1);
-		p.setStockMaximo(1);
+	@Autowired
+	IGallineroDAO gallineroDAO;
+	
+	private DepositoModel crearDeposito() {
+		DepositoModel d = new DepositoModel();
+		d.setNombre("Deposito2");
+		d.setStockHuevos(1);
+		d.setStockMaximo(1);
+		return d;
+	}
+	
+
+	private UsuarioModel crearUsuario() {
+		UsuarioModel u = new UsuarioModel();
+		u.setApellido("dd");
+		u.setContrasenia("cc");
+		u.setNombre("NN");
+		u.setNombreUsuario("NU");
+		u.setPerfil(EPerfil.ADMINISTRADOR);
+		return u;
+	}
+	
+	private GallineroModel crearGallinero() {
+		UsuarioModel u = crearUsuario();
+		usuarioDAO.guardar(u);
 		
-		depositoDAO.guardar(p);
+		GallineroModel g = new GallineroModel();
+		g.setNombre("Gallinero2");
+		g.setStockGallinas(50);
+		g.setUsuario(usuarioDAO.get(u.getId()));
 		
-		DepositoModel p2 = depositoDAO.get(p.getId());
-		
-		Assert.assertTrue(p2.getNombre().equals(p.getNombre()));
-		Assert.assertTrue(p2.getStockHuevos() == p.getStockHuevos());
-		Assert.assertTrue(p2.getStockMaximo() == p.getStockMaximo());
-		Assert.assertTrue(p2.getId() == p.getId());
+		return g;
 	}
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_BorrarDeposito() {
-		DepositoModel p = new DepositoModel();
-		p.setNombre("Deposito3");
-		p.setStockHuevos(1);
-		p.setStockMaximo(999);
+	public void test_InsertarYBuscarMovimiento() {
+		DepositoModel d = crearDeposito();
+		depositoDAO.guardar(d);
 		
-		depositoDAO.guardar(p);
+		GallineroModel g = crearGallinero();
+		gallineroDAO.guardar(g);
 		
-		depositoDAO.borrar(p.getId());
+		MovimientoModel p = new MovimientoModel();
+		p.setCantidad(12);
+		p.setFecha(new Date(99));
+		p.setDeposito(depositoDAO.get(d.getId()));
+		p.setGallinero(gallineroDAO.get(g.getId()));
 		
-		DepositoModel p2 = depositoDAO.get(p.getId());
+		movimientoDAO.guardar(p);
+		
+		MovimientoModel p2 = movimientoDAO.get(p.getId());
+		
+		Assert.assertTrue(p2.getCantidad() == p.getCantidad());
+		Assert.assertTrue(p2.getId() == p.getId());
+		Assert.assertTrue(p2.getDeposito().getId() == p.getDeposito().getId());
+		Assert.assertTrue(p2.getGallinero().getId() == p.getGallinero().getId());
+	}
+	
+	@Test
+	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
+	public void test_BorrarMovimiento() {
+		DepositoModel d = crearDeposito();
+		depositoDAO.guardar(d);
+		
+		GallineroModel g = crearGallinero();
+		gallineroDAO.guardar(g);
+		
+		MovimientoModel p = new MovimientoModel();
+		p.setCantidad(12);
+		p.setFecha(new Date(99));
+		p.setDeposito(depositoDAO.get(d.getId()));
+		p.setGallinero(gallineroDAO.get(g.getId()));
+		
+		movimientoDAO.guardar(p);
+		
+		movimientoDAO.borrar(p.getId());
+		
+		MovimientoModel p2 = movimientoDAO.get(p.getId());
 		
 		Assert.assertTrue(p2 == null);
 	}
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_ModificarDeposito() {
-		DepositoModel p = new DepositoModel();
-		p.setNombre("Deposito1");
-		p.setStockHuevos(1);
-		p.setStockMaximo(1);
+	public void test_ModificarMovimiento() {
+		DepositoModel d = crearDeposito();
+		depositoDAO.guardar(d);
 		
-		depositoDAO.guardar(p);
-		DepositoModel p2 = depositoDAO.get(p.getId());
-		Assert.assertTrue(p2.getNombre().equals(p.getNombre()));
+		GallineroModel g = crearGallinero();
+		gallineroDAO.guardar(g);
 		
-		p.setNombre("NombreNuevo");
+		MovimientoModel p = new MovimientoModel();
+		p.setCantidad(12);
+		p.setFecha(new Date(99));
+		p.setDeposito(depositoDAO.get(d.getId()));
+		p.setGallinero(gallineroDAO.get(g.getId()));
 		
-		depositoDAO.modificar(p);
+		movimientoDAO.guardar(p);
 		
-		DepositoModel p3 = depositoDAO.get(p.getId());
+		MovimientoModel p2 = movimientoDAO.get(p.getId());
 		
-		Assert.assertTrue(!p2.getNombre().equals(p3.getNombre()));
+		Assert.assertTrue(p2.getCantidad() == p.getCantidad());
+		
+		p.setCantidad(50);
+		
+		movimientoDAO.modificar(p);
+		
+		MovimientoModel p3 = movimientoDAO.get(p.getId());
+		
+		Assert.assertTrue(p2.getCantidad() != p3.getCantidad());
 	}
 }

@@ -9,69 +9,78 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.chicken.persistencia.dao.IDepositoDAO;
-import com.chicken.persistencia.model.DepositoModel;
+import com.chicken.base.enumeradores.EPerfil;
+import com.chicken.persistencia.dao.IUsuarioDAO;
+import com.chicken.persistencia.model.UsuarioModel;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:spring-config.xml"})
 public class UsuarioTest {
 	
 	@Autowired
-	IDepositoDAO depositoDAO;
+	IUsuarioDAO usuarioDAO;
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_InsertarYBuscarDeposito() {
-		DepositoModel p = new DepositoModel();
-		p.setNombre("Deposito2");
-		p.setStockHuevos(1);
-		p.setStockMaximo(1);
+	public void test_InsertarYBuscarUsuario() {
+		UsuarioModel u = new UsuarioModel();
+		u.setApellido("dd");
+		u.setContrasenia("cc");
+		u.setNombre("NN");
+		u.setNombreUsuario("NU");
+		u.setPerfil(EPerfil.ADMINISTRADOR);
 		
-		depositoDAO.guardar(p);
+		usuarioDAO.guardar(u);
 		
-		DepositoModel p2 = depositoDAO.get(p.getId());
+		UsuarioModel u2 = usuarioDAO.get(u.getId());
 		
-		Assert.assertTrue(p2.getNombre().equals(p.getNombre()));
-		Assert.assertTrue(p2.getStockHuevos() == p.getStockHuevos());
-		Assert.assertTrue(p2.getStockMaximo() == p.getStockMaximo());
-		Assert.assertTrue(p2.getId() == p.getId());
+		Assert.assertTrue(u2.getNombre().equals(u.getNombre()));
+		Assert.assertTrue(u2.getApellido().equals(u.getApellido()));
+		Assert.assertTrue(u2.getContrasenia().equals(u.getContrasenia()));
+		Assert.assertTrue(u2.getNombreUsuario().equals(u.getNombreUsuario()));
+		Assert.assertTrue(u2.getPerfil() == u.getPerfil());
+		Assert.assertTrue(u2.getId() == u.getId());
 	}
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_BorrarDeposito() {
-		DepositoModel p = new DepositoModel();
-		p.setNombre("Deposito3");
-		p.setStockHuevos(1);
-		p.setStockMaximo(999);
+	public void test_BorrarUsuario() {
+		UsuarioModel u = new UsuarioModel();
+		u.setApellido("dd");
+		u.setContrasenia("cc");
+		u.setNombre("NN");
+		u.setNombreUsuario("NU");
+		u.setPerfil(EPerfil.ADMINISTRADOR);
 		
-		depositoDAO.guardar(p);
+		usuarioDAO.guardar(u);
 		
-		depositoDAO.borrar(p.getId());
+		usuarioDAO.borrar(u.getId());
 		
-		DepositoModel p2 = depositoDAO.get(p.getId());
+		UsuarioModel p2 = usuarioDAO.get(u.getId());
 		
 		Assert.assertTrue(p2 == null);
 	}
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_ModificarDeposito() {
-		DepositoModel p = new DepositoModel();
-		p.setNombre("Deposito1");
-		p.setStockHuevos(1);
-		p.setStockMaximo(1);
+	public void test_ModificarUsuario() {
+		UsuarioModel u = new UsuarioModel();
+		u.setApellido("dd");
+		u.setContrasenia("cc");
+		u.setNombre("NN");
+		u.setNombreUsuario("NU");
+		u.setPerfil(EPerfil.ADMINISTRADOR);
 		
-		depositoDAO.guardar(p);
-		DepositoModel p2 = depositoDAO.get(p.getId());
-		Assert.assertTrue(p2.getNombre().equals(p.getNombre()));
+		usuarioDAO.guardar(u);
+		UsuarioModel u2 = usuarioDAO.get(u.getId());
+		Assert.assertTrue(u2.getNombre().equals(u.getNombre()));
 		
-		p.setNombre("NombreNuevo");
+		u.setNombre("NombreNuevo");
 		
-		depositoDAO.modificar(p);
+		usuarioDAO.modificar(u);
 		
-		DepositoModel p3 = depositoDAO.get(p.getId());
+		UsuarioModel u3 = usuarioDAO.get(u.getId());
 		
-		Assert.assertTrue(!p2.getNombre().equals(p3.getNombre()));
+		Assert.assertTrue(!u2.getNombre().equals(u3.getNombre()));
 	}
 }
