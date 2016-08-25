@@ -1,5 +1,6 @@
-/target/
+/target
 .settings
 .classpath
 .project
 /WebContent/WEB-INF/lib
+/WebContent/META-INF/MANIFEST.MF
