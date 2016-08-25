@@ -48,7 +48,6 @@ public class LoginControlador extends Controlador{
 					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
 					return model;
 				}
-				break;
 			}
 		}
 		return new ModelAndView("login/login");
