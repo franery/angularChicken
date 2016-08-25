@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.chicken.base.dto.DTO;
 import com.chicken.base.enumeradores.EPerfil;
 import com.chicken.negocio.servicios.IUsuarioServicio;
-import com.chicken.persistencia.model.UsuarioModel;
 import com.chicken.presentacion.bean.dto.UsuarioDTO;
 
 @Controller
