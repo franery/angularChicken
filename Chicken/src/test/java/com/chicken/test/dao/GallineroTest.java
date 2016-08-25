@@ -52,7 +52,9 @@ public class GallineroTest {
 		GallineroModel p2 = gallineroDAO.get(p.getId());
 		
 		Assert.assertTrue(p2.getNombre().equals(p.getNombre()));
-
+		Assert.assertTrue(p2.getId() == p.getId());
+		Assert.assertTrue(p2.getStockGallinas() == p.getStockGallinas());
+		Assert.assertTrue(p2.getUsuario().getId() == p.getUsuario().getId());
 	}
 	
 	@Test

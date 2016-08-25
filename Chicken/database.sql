@@ -72,3 +72,6 @@ select * from Deposito;
 
 select * from Usuario;
 select * from Gallinero;
+
+delete from db_chicken;
+select * from Movimiento;

@@ -1,5 +1,7 @@
 package com.chicken.test.dao;
 
+import java.sql.Date;
+
 import org.junit.runner.RunWith;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,69 +11,106 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.chicken.persistencia.dao.IDepositoDAO;
-import com.chicken.persistencia.model.DepositoModel;
+import com.chicken.base.enumeradores.EPerfil;
+import com.chicken.persistencia.dao.IProveedorDAO;
+import com.chicken.persistencia.dao.IUsuarioDAO;
+import com.chicken.persistencia.dao.IVentaDAO;
+import com.chicken.persistencia.model.ProveedorModel;
+import com.chicken.persistencia.model.UsuarioModel;
+import com.chicken.persistencia.model.VentaModel;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:spring-config.xml"})
 public class VentaTest {
 	
 	@Autowired
-	IDepositoDAO depositoDAO;
+	IVentaDAO ventaDAO;
 	
-	@Test
-	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_InsertarYBuscarDeposito() {
-		DepositoModel p = new DepositoModel();
-		p.setNombre("Deposito2");
-		p.setStockHuevos(1);
-		p.setStockMaximo(1);
+	@Autowired 
+	IUsuarioDAO usuarioDAO;
+	
+	@Autowired
+	IProveedorDAO proveedorDAO;
+	
+	private UsuarioModel crearUsuario() {
+		UsuarioModel u = new UsuarioModel();
+		u.setApellido("dd");
+		u.setContrasenia("cc");
+		u.setNombre("NN");
+		u.setNombreUsuario("NU");
+		u.setPerfil(EPerfil.CONTABLE);
+		return u;
+	}
+	
+	private ProveedorModel crearProveedor(){
+		ProveedorModel p = new ProveedorModel();
+		p.setDireccion("CalleFalsa123");
+		p.setMail("pepe@gmail.com");
+		p.setNombre("Pepe");
+		p.setTelefono("342423");
+		return p;
+	}
+	
+	private VentaModel crearVenta() {
+		ProveedorModel p = crearProveedor();
+		proveedorDAO.guardar(p);
+		UsuarioModel u = crearUsuario();
+		usuarioDAO.guardar(u);
 		
-		depositoDAO.guardar(p);
-		
-		DepositoModel p2 = depositoDAO.get(p.getId());
-		
-		Assert.assertTrue(p2.getNombre().equals(p.getNombre()));
-		Assert.assertTrue(p2.getStockHuevos() == p.getStockHuevos());
-		Assert.assertTrue(p2.getStockMaximo() == p.getStockMaximo());
-		Assert.assertTrue(p2.getId() == p.getId());
+		VentaModel v = new VentaModel();
+		v.setCantidad(33);
+		v.setFecha(new Date(1000));
+		v.setPrecio(100);
+		v.setProveedor(proveedorDAO.get(p.getId()));
+		v.setUsuario(usuarioDAO.get(u.getId()));
+		return v;
 	}
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_BorrarDeposito() {
-		DepositoModel p = new DepositoModel();
-		p.setNombre("Deposito3");
-		p.setStockHuevos(1);
-		p.setStockMaximo(999);
+	public void test_InsertarYBuscarVenta() {
+		VentaModel v = crearVenta();
+		ventaDAO.guardar(v);
 		
-		depositoDAO.guardar(p);
+		VentaModel v2 = ventaDAO.get(v.getId());
 		
-		depositoDAO.borrar(p.getId());
+		Assert.assertTrue(v2.getCantidad() == v.getCantidad());
+		Assert.assertTrue(v2.getPrecio() == v.getPrecio());
+		Assert.assertTrue(v2.getProveedor().getId() == v.getProveedor().getId());
+		Assert.assertTrue(v2.getUsuario().getId() == v.getUsuario().getId());
+		Assert.assertTrue(v2.getId() == v.getId());
+	}
+	
+	@Test
+	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
+	public void test_BorrarVenta() {
+		VentaModel v = crearVenta();
+		ventaDAO.guardar(v);
 		
-		DepositoModel p2 = depositoDAO.get(p.getId());
+		ventaDAO.borrar(v.getId());
+		
+		VentaModel p2 = ventaDAO.get(v.getId());
 		
 		Assert.assertTrue(p2 == null);
 	}
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_ModificarDeposito() {
-		DepositoModel p = new DepositoModel();
-		p.setNombre("Deposito1");
-		p.setStockHuevos(1);
-		p.setStockMaximo(1);
+	public void test_ModificarVenta() {
+		VentaModel v = crearVenta();
 		
-		depositoDAO.guardar(p);
-		DepositoModel p2 = depositoDAO.get(p.getId());
-		Assert.assertTrue(p2.getNombre().equals(p.getNombre()));
+		ventaDAO.guardar(v);
 		
-		p.setNombre("NombreNuevo");
+		VentaModel v2 = ventaDAO.get(v.getId());
 		
-		depositoDAO.modificar(p);
+		Assert.assertTrue(v2.getPrecio() == v.getPrecio());
 		
-		DepositoModel p3 = depositoDAO.get(p.getId());
+		v.setPrecio(3242342);
 		
-		Assert.assertTrue(!p2.getNombre().equals(p3.getNombre()));
+		ventaDAO.modificar(v);
+		
+		VentaModel v3 = ventaDAO.get(v.getId());
+		
+		Assert.assertTrue(v2.getPrecio() != v3.getPrecio());
 	}
 }
