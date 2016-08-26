@@ -17,7 +17,6 @@
 	<!-- Menu contable -->
   <li><a href="../contable/proveedores.jsp"> <spring:message code="proveedores" /> </a></li>
   <li><a href="../contable/gallineros.jsp"> <spring:message code="gallineros" /> </a></li>
-  <li><a href="../contable/gallineros.jsp"> <spring:message code="gallineros" /> </a></li>
   <li><a href="../contable/depositos.jsp"> <spring:message code="depositos" /> </a></li>
   <li><a href="../contable/ventas.jsp"> <spring:message code="ventas" /> </a></li>
   <li><a href="../contable/produccion.jsp"> <spring:message code="produccion" /> </a></li>      
