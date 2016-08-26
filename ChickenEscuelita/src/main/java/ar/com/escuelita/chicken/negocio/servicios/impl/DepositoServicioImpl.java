@@ -13,7 +13,8 @@ import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
 
 public class DepositoServicioImpl extends Servicio implements IDepositoServicio {
 
-	DepositoMapeador depositoMapeador = new DepositoMapeador();
+	@Autowired
+	DepositoMapeador depositoMapeador;
 	
 	@Autowired
 	IDepositoDAO depositoDAO;

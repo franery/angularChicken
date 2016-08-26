@@ -46,3 +46,7 @@ li.liRight:HOVER{
 	padding: 14px 16px;
 	text-decoration: none;
 }
+
+div.alineacion {
+	float: left;
+}

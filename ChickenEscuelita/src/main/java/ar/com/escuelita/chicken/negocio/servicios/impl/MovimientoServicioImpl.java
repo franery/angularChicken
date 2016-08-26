@@ -12,7 +12,9 @@ import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 
 public class MovimientoServicioImpl extends Servicio implements IMovimientoServicio {
-MovimientoMapeador movimientoMapeador = new MovimientoMapeador();
+	
+	@Autowired
+	MovimientoMapeador movimientoMapeador;
 	
 	@Autowired
 	IMovimientoDAO movimientoDAO;

@@ -12,7 +12,9 @@ import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
-UsuarioMapeador usuarioMapeador = new UsuarioMapeador();
+	
+	@Autowired
+	UsuarioMapeador usuarioMapeador;
 	
 	@Autowired
 	IUsuarioDAO usuarioDAO;

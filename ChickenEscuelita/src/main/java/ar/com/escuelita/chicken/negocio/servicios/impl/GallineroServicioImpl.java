@@ -13,7 +13,8 @@ import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
 
 public class GallineroServicioImpl extends Servicio implements IGallineroServicio {
 
-GallineroMapeador gallineroMapeador = new GallineroMapeador();
+	@Autowired
+	GallineroMapeador gallineroMapeador;
 	
 	@Autowired
 	IGallineroDAO gallineroDAO;

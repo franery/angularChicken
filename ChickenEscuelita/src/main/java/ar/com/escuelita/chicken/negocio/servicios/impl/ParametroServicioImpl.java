@@ -13,7 +13,8 @@ import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
 
 public class ParametroServicioImpl extends Servicio implements IParametroServicio {
 	
-	ParametroMapeador parametroMapeador = new ParametroMapeador();
+	@Autowired
+	ParametroMapeador parametroMapeador;
 	
 	@Autowired
 	IParametroDAO parametroDAO;

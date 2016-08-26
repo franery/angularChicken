@@ -12,7 +12,9 @@ import ar.com.escuelita.chicken.persistencia.modelo.ProveedorModel;
 import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
 
 public class ProveedorServicioImpl extends Servicio implements IProveedorServicio {
-ProveedorMapeador proveedorMapeador = new ProveedorMapeador();
+	
+	@Autowired
+	ProveedorMapeador proveedorMapeador;
 	
 	@Autowired
 	IProveedorDAO proveedorDAO;

@@ -4,9 +4,9 @@
 <body>
 
 	<ul class="ul">
-		<li class="liLeft" id="text">${Title}</li>
-		<li class="liRight" id="text"><a class="sup" href="#about">Logout</a></li>
-		<li class="liRight" id="text">${Nombre}</li>
+		<li class="liLeft" >${Title}</li>
+		<li class="liRight"><a class="sup" href="#about">Logout</a></li>
+		<li class="liRight">${Nombre}</li>
 	</ul>
 <br>
 <br>

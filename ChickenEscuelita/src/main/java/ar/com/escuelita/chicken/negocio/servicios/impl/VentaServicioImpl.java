@@ -12,7 +12,9 @@ import ar.com.escuelita.chicken.persistencia.modelo.VentaModel;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
 
 public class VentaServicioImpl extends Servicio implements IVentaServicio {
-VentaMapeador ventaMapeador = new VentaMapeador();
+	
+	@Autowired
+	VentaMapeador ventaMapeador;
 	
 	@Autowired
 	IVentaDAO ventaDAO;
