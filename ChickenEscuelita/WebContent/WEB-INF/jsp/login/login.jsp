@@ -17,14 +17,16 @@
 	<c:set var="Nombre" value="" scope="request" />
 	<jsp:include page="../template/navbarLogin.jsp"></jsp:include>
 
+	<jsp:include page="../template/menu.jsp"></jsp:include>
+	
 	<table align="center">
 		<form:form action="ingresar" method="post" commandName="usuario">
 			<tr>
-				<td><form:label path="nombreUsuario"><spring:message code="user" />:</form:label></td>
+				<td><form:label path="nombreUsuario"><spring:message code="usuario" />:</form:label></td>
 				<td><form:input path="nombreUsuario" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="contrasenia"><spring:message code="password" />:</form:label></td>
+				<td><form:label path="contrasenia"><spring:message code="contrasenia" />:</form:label></td>
 				<td><form:input path="contrasenia" type="password" /></td>
 			</tr>
 			<tr>

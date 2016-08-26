@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/navbarStyle.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/navbar.css" />
 <body>
 
 	<ul>
