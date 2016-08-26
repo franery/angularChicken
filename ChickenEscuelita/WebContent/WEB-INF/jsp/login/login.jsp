@@ -2,6 +2,7 @@
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
 	<head>
@@ -10,14 +11,20 @@
 <body>
 
 <form:form action="ingresar" method="post" commandName="usuario">
-	<form:label path="nombreUsuario">Usuario: </form:label>
-	<form:input path="nombreUsuario"/>
+	<form:label path="nombreUsuario">
+		<spring:message code="user"/>
+	</form:label>
+	<form:input path="nombreUsuario"/>:
 	<br>
-	<form:label path="contrasenia">Contrasenia: </form:label>
-	<form:input path="contrasenia"/>
+	<form:label path="contrasenia">
+		<spring:message code="password"/>
+	</form:label>
+	<form:input path="contrasenia"/>:
 	<br>
-	<input type="submit" value="Ingresar" />
+	<input type="submit" value= <spring:message code="submit"/> />
 </form:form>
+
+
 
 </body>
 </html>
