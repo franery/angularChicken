@@ -5,7 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
-@Entity(name="Gallinero")
+@Entity
+@Table(name="Gallinero")
 public class GallineroModel extends Modelo {
 
 	@Id

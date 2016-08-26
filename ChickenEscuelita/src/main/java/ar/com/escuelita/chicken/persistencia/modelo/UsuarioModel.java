@@ -7,7 +7,8 @@ import javax.persistence.*;
 
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 
-@Entity(name="Usuario")
+@Entity
+@Table(name="Usuario")
 public class UsuarioModel extends Modelo {
 	
 	@Id

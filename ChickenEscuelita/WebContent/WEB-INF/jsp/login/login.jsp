@@ -19,7 +19,7 @@
 	<form:label path="contrasenia">
 		<spring:message code="password"/>:
 	</form:label>
-	<form:input path="contrasenia"/>
+	<form:input path="contrasenia" type="password"/>
 	<br>
 	<input type="submit" value= <spring:message code="submit"/> />
 </form:form>
