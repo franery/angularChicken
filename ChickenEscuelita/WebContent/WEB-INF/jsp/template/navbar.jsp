@@ -3,10 +3,10 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/navbar.css" />
 <body>
 
-	<ul>
-		<li class="left" id="text">${Title}</li>
-		<li class="right" ><a href="#about">Logout</a></li>
-		<li class="right" id="text">${Nombre}</li>
+	<ul class="ul">
+		<li class="liLeft" id="text">${Title}</li>
+		<li class="liRight" id="text"><a class="sup" href="#about">Logout</a></li>
+		<li class="liRight" id="text">${Nombre}</li>
 	</ul>
 <br>
 <br>

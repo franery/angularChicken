@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/navbar.css" />
 <body>
 
-	<ul>
-		<li class="left" id="text">${Title}</li>
+	<ul class="ul">
+		<li class="liLeft" id="text">${Title}</li>
 	</ul>
 <br>
 <br>
