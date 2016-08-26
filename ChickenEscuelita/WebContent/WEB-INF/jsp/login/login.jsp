@@ -12,14 +12,14 @@
 
 <form:form action="ingresar" method="post" commandName="usuario">
 	<form:label path="nombreUsuario">
-		<spring:message code="user"/>
+		<spring:message code="user"/>:
 	</form:label>
-	<form:input path="nombreUsuario"/>:
+	<form:input path="nombreUsuario"/>
 	<br>
 	<form:label path="contrasenia">
-		<spring:message code="password"/>
+		<spring:message code="password"/>:
 	</form:label>
-	<form:input path="contrasenia"/>:
+	<form:input path="contrasenia"/>
 	<br>
 	<input type="submit" value= <spring:message code="submit"/> />
 </form:form>

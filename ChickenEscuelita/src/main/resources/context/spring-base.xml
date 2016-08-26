@@ -27,10 +27,9 @@
 	<context:component-scan base-package="ar.com.escuelita.chicken" />
 	<mvc:annotation-driven />
 
-	  <!-- Register mensajes.properties -->
-	 <bean id="messageSource"
-	  class="org.springframework.context.support.ResourceBundleMessageSource">
-	  <property name="basename" value="mensajes" />
-	 </bean>
-	 
+	<!-- Messages -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	  	<property name="basename" value="mensajes" />
+	</bean>
+	
 </beans>
