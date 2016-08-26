@@ -1,13 +1,87 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
  		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
  		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
- 	
- 	<!-- Configuración para la capa de negocio/persistencia -->
-	
-	
-	
+
+	<!-- Configuración para la capa de negocio/persistencia -->
+
+	<!-- Propiedades DB -->
+	<context:property-placeholder location="classpath:database.properties" />
+
+	<!-- Fuente de datos - Los valores se obtendran del archivo declarado arriba. 
+		No es obligatorio el uso de un archivo separado. -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${database.driver}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.user}" />
+		<property name="password" value="${database.password}" />
+	</bean>
+
+	<!-- En vez de establecer una clase aparte, la definimos como un bean -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<!-- Aca pondremos las clases que mapeemos -->
+				<value>ar.com.escuelita.chicken.persistencia.modelo.DepositoModel</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.GallineroModel</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.ParametroModel</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.ProveedorModel</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.VentaModel</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.id.new_generator_mappings">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Engarga de realizar transacciones -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- DAOs -->
+	<bean id="usuarioDAO"
+		class="ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl" />
+	<bean id="gallineroDAO"
+		class="ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl" />
+	<bean id="depositoDAO"
+		class="ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl" />
+	<bean id="movimientoDAO"
+		class="ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl" />
+	<bean id="proveedorDAO"
+		class="ar.com.escuelita.chicken.persistencia.dao.impl.ProveedorDAOImpl" />
+	<bean id="parametroDAO"
+		class="ar.com.escuelita.chicken.persistencia.dao.impl.ParametroDAOImpl" />
+	<bean id="ventaDAO"
+		class="ar.com.escuelita.chicken.persistencia.dao.impl.VentaDAOImpl" />
+
+	<!-- Services -->
+	<bean id="usuarioServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.impl.UsuarioServicioImpl" />
+	<bean id="gallineroServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.impl.GallineroServicioImpl" />
+	<bean id="depositoServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.impl.DepositoServicioImpl" />
+	<bean id="movimientoServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.impl.MovimientoServicioImpl" />
+	<bean id="proveedorServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.impl.ProveedorServicioImpl" />
+	<bean id="parametroServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.impl.ParametroServicioImpl" />
+	<bean id="ventaServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.impl.VentaServicioImpl" />
+
+
 </beans>
