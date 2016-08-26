@@ -17,7 +17,8 @@
 	<c:set var="Nombre" value="" scope="request" />
 	<jsp:include page="../template/navbarLogin.jsp"></jsp:include>
 
-	<jsp:include page="../template/menu.jsp"></jsp:include>
+	<c:set var="Link1" value="Link 1"/>
+	<jsp:include page="../template/navbarLogin.jsp"></jsp:include>
 	
 	<table align="center">
 		<form:form action="ingresar" method="post" commandName="usuario">
