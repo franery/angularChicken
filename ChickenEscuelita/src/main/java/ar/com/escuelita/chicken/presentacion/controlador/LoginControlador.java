@@ -19,9 +19,14 @@ public class LoginControlador extends Controlador{
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
 	
+	private static final String LOGIN_VIEW = "login/login";
+	private static final String ADMIN_VIEW = "administrador/principal";
+	private static final String CONTABLE_VIEW = "contable/principal";
+	private static final String PRODUCTOR_VIEW = "productor/principal";
+	
 	@RequestMapping("/login")
 	public ModelAndView login() {
-		ModelAndView model = new ModelAndView("login/login");
+		ModelAndView model = new ModelAndView(LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);
 		return model;
@@ -33,24 +38,24 @@ public class LoginControlador extends Controlador{
 		for(DTO usuarioDto : listaUsuarios) {
 			if(((UsuarioDTO)usuarioDto).getNombreUsuario().equals(user.getNombreUsuario()) && ((UsuarioDTO)usuarioDto).getContrasenia().equals(user.getContrasenia())) {
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.PRODUCTOR)) {
-					ModelAndView model = new ModelAndView("productor/principal");
+					ModelAndView model = new ModelAndView(PRODUCTOR_VIEW);
 					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
 					return model;
 				}
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.CONTABLE)) {
-					ModelAndView model = new ModelAndView("contable/principal");
+					ModelAndView model = new ModelAndView(CONTABLE_VIEW);
 					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
 					return model;
 				}
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
-					ModelAndView model = new ModelAndView("administrador/principal");
+					ModelAndView model = new ModelAndView(ADMIN_VIEW);
 					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
 					return model;
 				}
 			}
 		}
 		
-		ModelAndView model = new ModelAndView("login/login");
+		ModelAndView model = new ModelAndView(LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);
 		return model;
