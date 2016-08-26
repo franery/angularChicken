@@ -4,10 +4,9 @@
 <body>
 
 	<ul>
-		<li><a class="active" href="#home">Home ${pgTitle}</a></li>
-		<li><a href="#news">News</a></li>
-		<li><a href="#contact">Contact</a></li>
-		<li><a href="#about">About</a></li>
+		<li class="left" id="text">${Title}</li>
+		<li class="right" ><a href="#about">Logout</a></li>
+		<li class="right" id="text">${Nombre}</li>
 	</ul>
 <br>
 <br>
