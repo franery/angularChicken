@@ -26,8 +26,8 @@ public class UsuarioTest {
 		UsuarioModel u = new UsuarioModel();
 		u.setApellido("dd");
 		u.setContrasenia("cc");
-		u.setNombre("NN");
-		u.setNombreUsuario("NU");
+		u.setNombre("Admin");
+		u.setNombreUsuario("Admin");
 		u.setPerfil(EnumPerfil.ADMINISTRADOR);
 		
 		usuarioDAO.guardar(u);
@@ -48,9 +48,9 @@ public class UsuarioTest {
 		UsuarioModel u = new UsuarioModel();
 		u.setApellido("dd");
 		u.setContrasenia("cc");
-		u.setNombre("NN");
-		u.setNombreUsuario("NU");
-		u.setPerfil(EnumPerfil.ADMINISTRADOR);
+		u.setNombre("Productor");
+		u.setNombreUsuario("Productor");
+		u.setPerfil(EnumPerfil.PRODUCTOR);
 		
 		usuarioDAO.guardar(u);
 		
@@ -67,15 +67,15 @@ public class UsuarioTest {
 		UsuarioModel u = new UsuarioModel();
 		u.setApellido("dd");
 		u.setContrasenia("cc");
-		u.setNombre("NN");
-		u.setNombreUsuario("NU");
-		u.setPerfil(EnumPerfil.ADMINISTRADOR);
+		u.setNombre("Contable");
+		u.setNombreUsuario("Contable");
+		u.setPerfil(EnumPerfil.CONTABLE);
 		
 		usuarioDAO.guardar(u);
 		UsuarioModel u2 = usuarioDAO.get(u.getId());
 		Assert.assertTrue(u2.getNombre().equals(u.getNombre()));
 		
-		u.setNombre("NombreNuevo");
+		u.setNombre("ContableNuevo");
 		
 		usuarioDAO.modificar(u);
 		

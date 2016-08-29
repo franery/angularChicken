@@ -29,9 +29,9 @@ public class GallineroTest {
 		UsuarioModel u = new UsuarioModel();
 		u.setApellido("dd");
 		u.setContrasenia("cc");
-		u.setNombre("NN");
-		u.setNombreUsuario("NU");
-		u.setPerfil(EnumPerfil.ADMINISTRADOR);
+		u.setNombre("Productor");
+		u.setNombreUsuario("Productor");
+		u.setPerfil(EnumPerfil.PRODUCTOR);
 		return u;
 	}
 	
