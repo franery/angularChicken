@@ -34,7 +34,6 @@ public class AdminControlador extends Controlador{
 		return model;
 	}
 		
-	
 	@RequestMapping(path="/parametros")
 	public ModelAndView parametros(@ModelAttribute("usuarioActual") UsuarioDTO user) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
