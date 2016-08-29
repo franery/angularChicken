@@ -28,7 +28,6 @@
 	<div class="pantalla">
 		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
 	</div>
-	<br> PAGINA PRINCIPAL ADMINISTRADOR
 
 </body>
 </html>
