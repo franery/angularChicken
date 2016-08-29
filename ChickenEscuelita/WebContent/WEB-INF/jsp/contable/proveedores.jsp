@@ -17,16 +17,14 @@
 	<c:set var="Nombre" value="${usuarioActual.getNombre() }" scope="request" />
 	<jsp:include page="../template/navbar.jsp"></jsp:include>
 
-PROVEEDORES....
-
-<form:form action="principal" method="post" commandName="usuarioActual">
-	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
-	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
-	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
-	<form:input path="contrasenia" type="hidden" value="${usuarioActual.getContrasenia()}"/>
-	<form:input path="perfil" type="hidden" value="${usuarioActual.getPerfil()}"/>
-	<input type="submit" value="back"/>
-</form:form>
+	<form:form action="principal" method="post" commandName="usuarioActual">
+		<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
+		<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
+		<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
+		<form:input path="contrasenia" type="hidden" value="${usuarioActual.getContrasenia()}"/>
+		<form:input path="perfil" type="hidden" value="${usuarioActual.getPerfil()}"/>
+		<input type="submit" value="back"/>
+	</form:form>
 
 </body>
 </html>

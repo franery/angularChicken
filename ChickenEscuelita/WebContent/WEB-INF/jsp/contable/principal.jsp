@@ -16,7 +16,6 @@
 	<jsp:include page="../template/navbar.jsp"></jsp:include>
 	<!-- Menu -->
 	<jsp:include page="../contable/menuContable.jsp"></jsp:include>
-
-PAGINA PRINCIPAL CONTABLE
+	
 </body>
 </html>
