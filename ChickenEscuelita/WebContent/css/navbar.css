@@ -73,7 +73,7 @@ div.alineacion {
 }
 
 div.pantalla{
-	float: left;
+	float: right;
 	height: 100%;
 	width: 80%;
 }
