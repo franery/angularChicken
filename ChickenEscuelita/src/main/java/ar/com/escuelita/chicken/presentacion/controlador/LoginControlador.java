@@ -23,6 +23,7 @@ public class LoginControlador extends Controlador{
 	private static final String ADMIN_VIEW = "administrador/principal";
 	private static final String CONTABLE_VIEW = "contable/principal";
 	private static final String PRODUCTOR_VIEW = "productor/principal";
+	private static final String VACIA_VIEW = "vacia";
 	
 	@RequestMapping("/login")
 	public ModelAndView login() {
@@ -40,17 +41,19 @@ public class LoginControlador extends Controlador{
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.PRODUCTOR)) {
 					ModelAndView model = new ModelAndView(PRODUCTOR_VIEW);
 					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
-					model.addObject("pageToLoad","vacia");
+					model.addObject("pageToLoad",VACIA_VIEW);
 					return model;
 				}
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.CONTABLE)) {
 					ModelAndView model = new ModelAndView(CONTABLE_VIEW);
 					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
+					model.addObject("pageToLoad",VACIA_VIEW);
 					return model;
 				}
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
 					ModelAndView model = new ModelAndView(ADMIN_VIEW);
 					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
+					model.addObject("pageToLoad",VACIA_VIEW);
 					return model;
 				}
 			}
@@ -59,7 +62,6 @@ public class LoginControlador extends Controlador{
 		ModelAndView model = new ModelAndView(LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);
-		model.addObject("pageToLoad","vacia");
 		return model;
 	}
 }

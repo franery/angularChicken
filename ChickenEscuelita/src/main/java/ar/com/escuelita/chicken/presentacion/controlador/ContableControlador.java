@@ -15,52 +15,59 @@ public class ContableControlador extends Controlador{
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
 	
-	private static final String CONTABLE_VIEW = "contable/principal";
+	private static final String PRINCIPAL_VIEW = "contable/principal";
 	private static final String PROVEEDORES_VIEW = "contable/proveedores";
 	private static final String GALLINEROS_VIEW = "contable/gallineros";
 	private static final String DEPOSITOS_VIEW = "contable/depositos";
 	private static final String VENTAS_VIEW = "contable/ventas";
 	private static final String PRODUCCION_VIEW = "contable/produccion";
+	private static final String VACIA_VIEW = "vacia";
 	
 	@RequestMapping(path="/principal")
 	public ModelAndView inicioContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
-		ModelAndView model = new ModelAndView(CONTABLE_VIEW);
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
+		model.addObject("pageToLoad", VACIA_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/proveedores")
 	public ModelAndView proveedoresContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
-		ModelAndView model = new ModelAndView(PROVEEDORES_VIEW);
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
+		model.addObject("pageToLoad", PROVEEDORES_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/gallineros")
 	public ModelAndView gallinerosContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
-		ModelAndView model = new ModelAndView(GALLINEROS_VIEW);
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
+		model.addObject("pageToLoad", GALLINEROS_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/depositos")
 	public ModelAndView depositosContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
-		ModelAndView model = new ModelAndView(DEPOSITOS_VIEW);
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
+		model.addObject("pageToLoad", DEPOSITOS_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/ventas")
 	public ModelAndView ventasContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
-		ModelAndView model = new ModelAndView(VENTAS_VIEW);
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
+		model.addObject("pageToLoad", VENTAS_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/produccion")
 	public ModelAndView produccionContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
-		ModelAndView model = new ModelAndView(PRODUCCION_VIEW);
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
+		model.addObject("pageToLoad", PRODUCCION_VIEW);
 		return model;
 	}
 }

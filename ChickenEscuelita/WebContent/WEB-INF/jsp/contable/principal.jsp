@@ -14,8 +14,14 @@
 	<c:set var="Title" value="Contable" scope="request" />
 	<c:set var="Nombre" value="${usuarioActual.getNombre() }" scope="request" />
 	<jsp:include page="../template/navbar.jsp"></jsp:include>
-	<!-- Menu -->
-	<jsp:include page="../contable/menuContable.jsp"></jsp:include>
+	
+	<div class="alineacion">
+		<!-- Menu -->
+		<jsp:include page="../contable/menuContable.jsp"></jsp:include>
+	</div>
+	<div>
+		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
+	</div>
 	
 </body>
 </html>

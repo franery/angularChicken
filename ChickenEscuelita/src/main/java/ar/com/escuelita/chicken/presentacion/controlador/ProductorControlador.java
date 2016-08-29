@@ -27,7 +27,6 @@ public class ProductorControlador extends Controlador {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", NUEVO_MOVIMIENTO_VIEW);
-		
 		return model;
 	}
 	
