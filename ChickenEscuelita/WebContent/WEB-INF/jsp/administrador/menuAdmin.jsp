@@ -8,99 +8,142 @@
 <html>
 
 <body>
-		<!-- Menu Admin -->
-		<!-- usuarios link -->
-		<form:form action="usuarios" method="post"
-				commandName="usuarioActual">
-				<form:input path="nombre" type="hidden"
-					value="${usuarioActual.getNombre()}" />
-				<form:input path="apellido" type="hidden"
-					value="${usuarioActual.getApellido()}" />
-				<form:input path="nombreUsuario" type="hidden"
-					value="${usuarioActual.getNombreUsuario()}" />
-				<form:input path="contrasenia" type="hidden"
-					value="${usuarioActual.getContrasenia()}" />
-				<form:input path="perfil" type="hidden"
-					value="${usuarioActual.getPerfil()}" />
-				<input class="menu" type="submit" value=<spring:message code="usuarios"/> />
-			</form:form>
+	<!-- Menu Admin -->
+	<!-- usuarios link -->
+	<form:form action="usuarios" method="post" commandName="usuarioActual">
+		<form:input path="nombre" type="hidden"
+			value="${usuarioActual.getNombre()}" />
+		<form:input path="apellido" type="hidden"
+			value="${usuarioActual.getApellido()}" />
+		<form:input path="nombreUsuario" type="hidden"
+			value="${usuarioActual.getNombreUsuario()}" />
+		<form:input path="contrasenia" type="hidden"
+			value="${usuarioActual.getContrasenia()}" />
+		<form:input path="perfil" type="hidden"
+			value="${usuarioActual.getPerfil()}" />
+		<input class="menu" type="submit"
+			value=<spring:message code="usuarios"/> />
+	</form:form>
 
-		<!-- parametros link -->
-		<form:form action="parametros" method="post"
-				commandName="usuarioActual">
-				<form:input path="nombre" type="hidden"
-					value="${usuarioActual.getNombre()}" />
-				<form:input path="apellido" type="hidden"
-					value="${usuarioActual.getApellido()}" />
-				<form:input path="nombreUsuario" type="hidden"
-					value="${usuarioActual.getNombreUsuario()}" />
-				<form:input path="contrasenia" type="hidden"
-					value="${usuarioActual.getContrasenia()}" />
-				<form:input path="perfil" type="hidden"
-					value="${usuarioActual.getPerfil()}" />
-				<input class="menu" type="submit" value=<spring:message code="parametros"/> />
-		</form:form>
+	<!-- parametros link -->
+	<form:form action="parametros" method="post"
+		commandName="usuarioActual">
+		<form:input path="nombre" type="hidden"
+			value="${usuarioActual.getNombre()}" />
+		<form:input path="apellido" type="hidden"
+			value="${usuarioActual.getApellido()}" />
+		<form:input path="nombreUsuario" type="hidden"
+			value="${usuarioActual.getNombreUsuario()}" />
+		<form:input path="contrasenia" type="hidden"
+			value="${usuarioActual.getContrasenia()}" />
+		<form:input path="perfil" type="hidden"
+			value="${usuarioActual.getPerfil()}" />
+		<input class="menu" type="submit"
+			value=<spring:message code="parametros"/> />
+	</form:form>
 
-		<!-- Menu productor -->
+	<!-- Menu productor -->
 
 
-  	<form:form action="proveedoresAdmin" method="post" commandName="usuarioActual">
-	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
-	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
-	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
-	<form:input path="contrasenia" type="hidden" value="${usuarioActual.getContrasenia()}"/>
-	<form:input path="perfil" type="hidden" value="${usuarioActual.getPerfil()}"/>
-	<input class="menu" type="submit" value=<spring:message code="proveedores"/> />
+	<form:form action="proveedoresContable" method="post"
+		commandName="usuarioActual">
+		<form:input path="nombre" type="hidden"
+			value="${usuarioActual.getNombre()}" />
+		<form:input path="apellido" type="hidden"
+			value="${usuarioActual.getApellido()}" />
+		<form:input path="nombreUsuario" type="hidden"
+			value="${usuarioActual.getNombreUsuario()}" />
+		<form:input path="contrasenia" type="hidden"
+			value="${usuarioActual.getContrasenia()}" />
+		<form:input path="perfil" type="hidden"
+			value="${usuarioActual.getPerfil()}" />
+		<input class="menu" type="submit"
+			value=<spring:message code="proveedores"/> />
 	</form:form>
 
 
- 	<form:form action="gallinerosAdmin" method="post" commandName="usuarioActual">
-	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
-	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
-	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
-	<form:input path="contrasenia" type="hidden" value="${usuarioActual.getContrasenia()}"/>
-	<form:input path="perfil" type="hidden" value="${usuarioActual.getPerfil()}"/>
-	<input class="menu" type="submit" value=<spring:message code="gallineros"/> />
+	<form:form action="gallinerosContable" method="post"
+		commandName="usuarioActual">
+		<form:input path="nombre" type="hidden"
+			value="${usuarioActual.getNombre()}" />
+		<form:input path="apellido" type="hidden"
+			value="${usuarioActual.getApellido()}" />
+		<form:input path="nombreUsuario" type="hidden"
+			value="${usuarioActual.getNombreUsuario()}" />
+		<form:input path="contrasenia" type="hidden"
+			value="${usuarioActual.getContrasenia()}" />
+		<form:input path="perfil" type="hidden"
+			value="${usuarioActual.getPerfil()}" />
+		<input class="menu" type="submit"
+			value=<spring:message code="gallineros"/> />
 	</form:form>
 
-  	<form:form action="depositosAdmin" method="post" commandName="usuarioActual">
-	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
-	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
-	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
-	<form:input path="contrasenia" type="hidden" value="${usuarioActual.getContrasenia()}"/>
-	<form:input path="perfil" type="hidden" value="${usuarioActual.getPerfil()}"/>
-	<input class="menu" type="submit" value=<spring:message code="depositos"/> />
+	<form:form action="depositosContable" method="post"
+		commandName="usuarioActual">
+		<form:input path="nombre" type="hidden"
+			value="${usuarioActual.getNombre()}" />
+		<form:input path="apellido" type="hidden"
+			value="${usuarioActual.getApellido()}" />
+		<form:input path="nombreUsuario" type="hidden"
+			value="${usuarioActual.getNombreUsuario()}" />
+		<form:input path="contrasenia" type="hidden"
+			value="${usuarioActual.getContrasenia()}" />
+		<form:input path="perfil" type="hidden"
+			value="${usuarioActual.getPerfil()}" />
+		<input class="menu" type="submit"
+			value=<spring:message code="depositos"/> />
 	</form:form>
 
-  	<form:form action="ventasAdmin" method="post" commandName="usuarioActual">
-	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
-	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
-	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
-	<form:input path="contrasenia" type="hidden" value="${usuarioActual.getContrasenia()}"/>
-	<form:input path="perfil" type="hidden" value="${usuarioActual.getPerfil()}"/>
-	<input class="menu" type="submit" value=<spring:message code="ventas"/> />
+	<form:form action="ventasContable" method="post"
+		commandName="usuarioActual">
+		<form:input path="nombre" type="hidden"
+			value="${usuarioActual.getNombre()}" />
+		<form:input path="apellido" type="hidden"
+			value="${usuarioActual.getApellido()}" />
+		<form:input path="nombreUsuario" type="hidden"
+			value="${usuarioActual.getNombreUsuario()}" />
+		<form:input path="contrasenia" type="hidden"
+			value="${usuarioActual.getContrasenia()}" />
+		<form:input path="perfil" type="hidden"
+			value="${usuarioActual.getPerfil()}" />
+		<input class="menu" type="submit"
+			value=<spring:message code="ventas"/> />
 	</form:form>
 
-  	<form:form action="produccionAdmin" method="post" commandName="usuarioActual">
-	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
-	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
-	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
-	<form:input path="contrasenia" type="hidden" value="${usuarioActual.getContrasenia()}"/>
-	<form:input path="perfil" type="hidden" value="${usuarioActual.getPerfil()}"/>
-	<input class="menu" type="submit" value=<spring:message code="produccion"/> />
+	<form:form action="produccionContable" method="post"
+		commandName="usuarioActual">
+		<form:input path="nombre" type="hidden"
+			value="${usuarioActual.getNombre()}" />
+		<form:input path="apellido" type="hidden"
+			value="${usuarioActual.getApellido()}" />
+		<form:input path="nombreUsuario" type="hidden"
+			value="${usuarioActual.getNombreUsuario()}" />
+		<form:input path="contrasenia" type="hidden"
+			value="${usuarioActual.getContrasenia()}" />
+		<form:input path="perfil" type="hidden"
+			value="${usuarioActual.getPerfil()}" />
+		<input class="menu" type="submit"
+			value=<spring:message code="produccion"/> />
 	</form:form>
 
 
-	<form:form action="reportesAdmin" method="post" commandName="usuarioActual">
-		<form:input type="hidden" path="nombre" value="${usuarioActual.getNombre()}" />
-		<form:input type="hidden" path="perfil" value="${usuarioActual.getPerfil()}" />
-		<input class="menu" type="submit" value=<spring:message code="productor.reportes"/> />
+	<form:form action="reportes" method="post" commandName="usuarioActual">
+		<form:input type="hidden" path="nombre"
+			value="${usuarioActual.getNombre()}" />
+		<form:input type="hidden" path="perfil"
+			value="${usuarioActual.getPerfil()}" />
+		<input class="menu" type="submit"
+			value=<spring:message code="productor.reportes"/> />
 	</form:form>
 
-	<form:form action="nuevoMovimientoAdmin" method="post" commandName="usuarioActual">
-		<form:input type="hidden" path="nombre" value="${usuarioActual.getNombre()}" />
-		<form:input type="hidden" path="perfil" value="${usuarioActual.getPerfil()}" />
-		<input class="menu" type="submit" value=<spring:message code="productor.nuevoMovimiento"/> />
+	<form:form action="nuevoMovimiento" method="post"
+		commandName="usuarioActual">
+		<form:input type="hidden" path="nombre"
+			value="${usuarioActual.getNombre()}" />
+		<form:input type="hidden" path="perfil"
+			value="${usuarioActual.getPerfil()}" />
+		<input class="menu" type="submit"
+			value=<spring:message code="productor.nuevoMovimiento"/> />
 	</form:form>
 
 </body>
