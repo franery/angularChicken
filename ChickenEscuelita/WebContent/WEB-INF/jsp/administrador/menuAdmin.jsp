@@ -7,6 +7,17 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
+
+
+
+
+
+
+
+
+
+
+
 <body>
 
 	<ul>

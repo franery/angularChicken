@@ -22,31 +22,36 @@ public class AdminControlador extends Controlador{
 	
 	private static final String USUARIOS_VIEW = "administrador/usuarios";
 	private static final String PARAMETROS_VIEW = "administrador/parametros";
-	private static final String ADMIN_VIEW = "administrador/principal";
+	private static final String PRINCIPAL_VIEW = "administrador/principal";
+	private static final String VACIA_VIEW = "vacia";
+
 	
 	@RequestMapping(path="/principalAdmin")
 	public ModelAndView inicioAdmin(@ModelAttribute("usuarioActual") UsuarioDTO user) {
-		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		model.addObject("pageToLoad", VACIA_VIEW);
 		model.addObject("usuarioActual", user);
 		return model;
 	}
 		
 	
 	@RequestMapping(path="/parametros")
-	public ModelAndView parametros(@ModelAttribute("usuario") UsuarioDTO user) {
-		ModelAndView model = new ModelAndView(PARAMETROS_VIEW);
+	public ModelAndView parametros(@ModelAttribute("usuarioActual") UsuarioDTO user) {
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		ParametroDTO parametroDto = new ParametroDTO();
 		model.addObject("parametro", parametroDto);
-		model.addObject("usuario", user);
+		model.addObject("usuarioUsuarioActual", user);
+		model.addObject("pageToLoad", PARAMETROS_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/usuarios")
 	public ModelAndView usuarios(@ModelAttribute("usuarioActual") UsuarioDTO user) {
-		ModelAndView model = new ModelAndView(USUARIOS_VIEW);
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuarioNuevo", usuarioDto);
 		model.addObject("usuarioActual", user);
+		model.addObject("pageToLoad", USUARIOS_VIEW);
 		return model;
 	}
 	
