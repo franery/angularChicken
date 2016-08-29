@@ -19,7 +19,7 @@
 		<!-- Menu -->
 		<jsp:include page="../contable/menuContable.jsp"></jsp:include>
 	</div>
-	<div>
+	<div class="pantalla">
 		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
 	</div>
 	
