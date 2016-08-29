@@ -5,7 +5,7 @@
 
 	<ul class="ul">
 		<li class="liLeft" >${Title}</li>
-		<li class="liRight"><a class="sup" href="#about">Logout</a></li>
+		<li class="liRightHov"><a class="sup" href="#about">Logout</a></li>
 		<li class="liRight">${Nombre}</li>
 	</ul>
 <br>
