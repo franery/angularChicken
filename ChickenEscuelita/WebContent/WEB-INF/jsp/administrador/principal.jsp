@@ -20,6 +20,6 @@
 	<jsp:include page="../administrador/menuAdmin.jsp"></jsp:include>
 	
 	PAGINA PRINCIPAL ADMINISTRADOR
-
+	
 </body>
 </html>
