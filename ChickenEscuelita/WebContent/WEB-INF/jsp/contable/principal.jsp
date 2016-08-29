@@ -13,7 +13,7 @@
 <body>
 
 	<!-- NavBar -->
-	<c:set var="Title" value="Contable" scope="request" />
+	<c:set var="Title" value="${usuarioActual.getPerfil().toString() }" scope="request" />
 	<c:set var="Nombre" value="${usuarioActual.getNombre() }" scope="request" />
 	<jsp:include page="../template/navbar.jsp"></jsp:include>
 	
