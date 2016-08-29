@@ -40,6 +40,7 @@ public class LoginControlador extends Controlador{
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.PRODUCTOR)) {
 					ModelAndView model = new ModelAndView(PRODUCTOR_VIEW);
 					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
+					model.addObject("pageToLoad","vacia");
 					return model;
 				}
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.CONTABLE)) {
@@ -58,6 +59,7 @@ public class LoginControlador extends Controlador{
 		ModelAndView model = new ModelAndView(LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);
+		model.addObject("pageToLoad","vacia");
 		return model;
 	}
 }
