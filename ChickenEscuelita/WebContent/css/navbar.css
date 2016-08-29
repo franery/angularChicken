@@ -28,6 +28,15 @@ li.liRight{
 	float: right;
 }
 
+li.liRightHov{
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	float: right;
+}
+
 a.sup{
 	display: block;
 	color: white;
@@ -35,7 +44,7 @@ a.sup{
 	text-decoration: none;
 }
 
-li.liRight:HOVER{
+li.liRightHov:HOVER{
 	background-color: #4CAF00;
 }
 

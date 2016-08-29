@@ -13,7 +13,7 @@
 </head>
 <body>
 	<!-- NavBar -->
-	<c:set var="Title" value="LogIn" scope="request" />
+	<c:set var="Title" value="Administrador" scope="request" />
 	<c:set var="Nombre" value="${usuarioActual.getNombre() }" scope="request" />
 	<jsp:include page="../template/navbar.jsp"></jsp:include>
 	<!-- Menu -->
