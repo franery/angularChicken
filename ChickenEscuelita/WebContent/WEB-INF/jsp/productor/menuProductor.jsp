@@ -4,7 +4,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <html>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
 <body>
 
 <!-- 	<ul> -->

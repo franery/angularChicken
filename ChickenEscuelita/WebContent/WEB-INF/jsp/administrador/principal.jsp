@@ -10,6 +10,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrador</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
+
 </head>
 <body>
 	<!-- NavBar -->
@@ -22,9 +24,11 @@
 		<jsp:include page="../administrador/menuAdmin.jsp"></jsp:include>
 	</div>
 	<div class="pantalla">
+	<br>
+	<br>
 		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
 	</div>
-	
+	<br>
 	PAGINA PRINCIPAL ADMINISTRADOR
 	
 </body>

@@ -6,24 +6,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
-
-
-
-
-
-
-
-
-
-
 
 <body>
-
-	<ul>
 		<!-- Menu Admin -->
 		<!-- usuarios link -->
-		<li><form:form action="usuarios" method="post"
+		<form:form action="usuarios" method="post"
 				commandName="usuarioActual">
 				<form:input path="nombre" type="hidden"
 					value="${usuarioActual.getNombre()}" />
@@ -35,11 +22,11 @@
 					value="${usuarioActual.getContrasenia()}" />
 				<form:input path="perfil" type="hidden"
 					value="${usuarioActual.getPerfil()}" />
-				<input type="submit" value=<spring:message code="usuarios"/> />
-			</form:form></li>
+				<input class="menu" type="submit" value=<spring:message code="usuarios"/> />
+			</form:form>
 
 		<!-- parametros link -->
-		<li><form:form action="parametros" method="post"
+		<form:form action="parametros" method="post"
 				commandName="usuarioActual">
 				<form:input path="nombre" type="hidden"
 					value="${usuarioActual.getNombre()}" />
@@ -51,9 +38,10 @@
 					value="${usuarioActual.getContrasenia()}" />
 				<form:input path="perfil" type="hidden"
 					value="${usuarioActual.getPerfil()}" />
-				<input type="submit" value=<spring:message code="parametros"/> />
-			</form:form></li>
+				<input class="menu" type="submit" value=<spring:message code="parametros"/> />
+		</form:form>
 
+	<ul>
 		<!-- Menu productor -->
 <%-- <li>	<jsp:include page="../productor/menuProductor.jsp"></jsp:include>
 </li>
