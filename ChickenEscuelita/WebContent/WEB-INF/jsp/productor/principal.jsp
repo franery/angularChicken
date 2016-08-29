@@ -15,14 +15,15 @@
 	<c:set var="Title" value="Productor" scope="request" />
 	<c:set var="Nombre" value="${usuarioActual.getNombre() }" scope="request" />
 	<jsp:include page="../template/navbar.jsp"></jsp:include>
-	<!-- Menu -->
-	<jsp:include page="../productor/menuProductor.jsp"></jsp:include>
-
+	<div class="alineacion">
+		<!-- Menu -->
+		<jsp:include page="../productor/menuProductor.jsp"></jsp:include>
+	</div>
 	
-	<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
+	<div class="pantalla">
+		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
+	</div>
 	
-	
-
 	PAGINA PRINCIPAL PRODUCTOR
 </body>
 </html>
