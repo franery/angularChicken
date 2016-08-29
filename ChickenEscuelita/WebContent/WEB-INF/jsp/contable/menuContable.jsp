@@ -8,7 +8,7 @@
 <html>
 <body>
 
-  	<form:form action="proveedores" method="post" commandName="usuarioActual">
+  	<form:form action="proveedoresContable" method="post" commandName="usuarioActual">
 	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
 	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
 	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
@@ -17,7 +17,7 @@
 	<input class="menu" type="submit" value=<spring:message code="proveedores"/> />
 	</form:form>
 
-  	<form:form action="gallineros" method="post" commandName="usuarioActual">
+  	<form:form action="gallinerosContable" method="post" commandName="usuarioActual">
 	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
 	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
 	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
@@ -26,7 +26,7 @@
 	<input class="menu" type="submit" value=<spring:message code="gallineros"/> />
 	</form:form>
 
-  	<form:form action="depositos" method="post" commandName="usuarioActual">
+  	<form:form action="depositosContable" method="post" commandName="usuarioActual">
 	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
 	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
 	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
@@ -35,7 +35,7 @@
 	<input class="menu" type="submit" value=<spring:message code="depositos"/> />
 	</form:form>
 
-  	<form:form action="ventas" method="post" commandName="usuarioActual">
+  	<form:form action="ventasContable" method="post" commandName="usuarioActual">
 	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
 	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
 	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>
@@ -44,7 +44,7 @@
 	<input class="menu" type="submit" value=<spring:message code="ventas"/> />
 	</form:form>
 
-  	<form:form action="produccion" method="post" commandName="usuarioActual">
+  	<form:form action="produccionContable" method="post" commandName="usuarioActual">
 	<form:input path="nombre" type="hidden" value="${usuarioActual.getNombre()}"/>
 	<form:input path="apellido" type="hidden" value="${usuarioActual.getApellido()}"/>
 	<form:input path="nombreUsuario" type="hidden" value="${usuarioActual.getNombreUsuario()}"/>

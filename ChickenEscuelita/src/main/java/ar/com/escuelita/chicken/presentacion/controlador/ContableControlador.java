@@ -31,7 +31,7 @@ public class ContableControlador extends Controlador{
 		return model;
 	}
 	
-	@RequestMapping(path="/proveedores")
+	@RequestMapping(path="/proveedoresContable")
 	public ModelAndView proveedoresContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
@@ -39,7 +39,7 @@ public class ContableControlador extends Controlador{
 		return model;
 	}
 	
-	@RequestMapping(path="/gallineros")
+	@RequestMapping(path="/gallinerosContable")
 	public ModelAndView gallinerosContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
@@ -47,7 +47,7 @@ public class ContableControlador extends Controlador{
 		return model;
 	}
 	
-	@RequestMapping(path="/depositos")
+	@RequestMapping(path="/depositosContable")
 	public ModelAndView depositosContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
@@ -55,7 +55,7 @@ public class ContableControlador extends Controlador{
 		return model;
 	}
 	
-	@RequestMapping(path="/ventas")
+	@RequestMapping(path="/ventasContable")
 	public ModelAndView ventasContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
@@ -63,7 +63,7 @@ public class ContableControlador extends Controlador{
 		return model;
 	}
 	
-	@RequestMapping(path="/produccion")
+	@RequestMapping(path="/produccionContable")
 	public ModelAndView produccionContable(@ModelAttribute("usuarioActual") UsuarioDTO user) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", user);
