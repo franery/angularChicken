@@ -9,8 +9,5 @@
 		<li class="liRight">${Nombre}</li>
 	</ul>
 <br>
-<br>
-<br>
-<br>
 </body>
 </html>

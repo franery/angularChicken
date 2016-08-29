@@ -41,11 +41,14 @@
 				<input class="menu" type="submit" value=<spring:message code="parametros"/> />
 		</form:form>
 
-	<ul>
 		<!-- Menu productor -->
-<%-- <li>	<jsp:include page="../productor/menuProductor.jsp"></jsp:include>
-</li>
- --%>		<li><a href="../productor/reportes.jsp"> <spring:message
+	<jsp:include page="../contable/menuContable.jsp"></jsp:include>
+
+ <br>
+ <br>
+ <br>
+	<ul>
+ 		<li><a href="../productor/reportes.jsp"> <spring:message
 					code="productor.reportes" />
 		</a></li>
 		<li><a href="../productor/nuevoMovimiento.jsp"> <spring:message
