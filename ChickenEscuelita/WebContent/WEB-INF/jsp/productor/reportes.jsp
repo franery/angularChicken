@@ -11,6 +11,12 @@
 <title>Reportes</title>
 </head>
 <body>
+	<form:form action="" method="POST" commandName="filtro">
+		<input type="text" name="fecha" placeholder="AAAA-MM-DD" />
+		<input type="text" name="cantidad" placeholder="Cantidad"/>
+		<input type="submit" value="Filtrar" />
+	</form:form>
+
 	<table>
 		<thead>
 			<tr>

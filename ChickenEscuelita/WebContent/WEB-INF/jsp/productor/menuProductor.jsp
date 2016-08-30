@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<form:form id="reportesForm" action="reportes" method="post" commandName="usuarioActual">
+	<form:form id="reportesForm" action="reportes" method ="GET" commandName="usuarioActual">
 		<form:input type="hidden" path="nombre" value="${usuarioActual.getNombre()}" />
 		<form:input type="hidden" path="perfil" value="${usuarioActual.getPerfil()}" />
 		<input class="menu" type="submit" value=<spring:message code="productor.reportes"/> />

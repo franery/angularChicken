@@ -76,23 +76,17 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 		
 		/*   ID PRODUCTOR   */
 		if (filtro.getProductorId() != -1) {
-//			str += " where u.id=?";
-//			qp.addParametro(new Long(filtro.getProductorId()));
 			str += " where u.id=" + filtro.getProductorId();
 		}
 		
 		/*   CANTIDAD   */
-		if (filtro.getCantidad() != -1) {
-//			str += obtenerOperadorBusqueda(str) + " mov.cantidad=?";
-//			qp.addParametro(filtro.getCantidad());
+		if (filtro.getCantidad() != null && !filtro.getCantidad().isEmpty()) {
 			str += obtenerOperadorBusqueda(str) + " mov.cantidad=" + filtro.getCantidad();
 		}
 		
 		/*   FECHA   */
-		if (filtro.getFecha() != null) {
-//			str += obtenerOperadorBusqueda(str) + " mov.fecha=?";
-//			qp.addParametro(filtro.getFecha());
-			str += obtenerOperadorBusqueda(str) + " mov.fecha=" + filtro.getFecha();
+		if (filtro.getFecha() != null && !filtro.getFecha().isEmpty()) {
+			str += obtenerOperadorBusqueda(str) + " mov.fecha='" + filtro.getFecha() + "'";
 		}
 		
 		qp.setSql(query + str);

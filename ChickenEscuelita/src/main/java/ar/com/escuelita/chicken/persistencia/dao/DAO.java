@@ -22,20 +22,7 @@ public class DAO {
 
 	public List buscarUsandoQueryConParametros(QueryParametrosUtil qp) {
 
-//		EntityManager em = entityManagerFactory.createEntityManager();
-//
-//		Query query = em.createQuery(qp.formatHQLtoJPQL());
 		Session session = sessionFactory.openSession();
-		
-//		if(qp.getArrayValores() != null) { 
-//			int contador = 1;
-//			for (Object parametro: qp.getArrayValores()) {
-//				query.setParameter(contador, parametro);
-//				contador++;
-//			}
-//		}
-		
-		//List list = query.getResultList();
 		List list = session.createQuery(qp.formatHQLtoJPQL()).list();
 		return list;
 	}
