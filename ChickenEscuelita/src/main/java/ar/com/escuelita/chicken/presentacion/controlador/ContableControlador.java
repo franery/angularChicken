@@ -60,7 +60,7 @@ public class ContableControlador extends Controlador{
 		return model;
 	}
 	
-	@RequestMapping(path="/proveedoresContable")
+	@RequestMapping(path="/proveedoresBorrarContable")
 	public ModelAndView proveedoresContable(@PathVariable("proveedorId") long proveedorId) {
 		ModelAndView model;
 		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
