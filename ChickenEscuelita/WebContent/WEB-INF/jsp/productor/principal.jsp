@@ -9,8 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Productor</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
-
 </head>
 <body>
 	<!-- NavBar -->
@@ -24,7 +22,6 @@
 		<!-- Menu -->
 		<jsp:include page="../productor/menuProductor.jsp"></jsp:include>
 	</div>
-
 	<div class="pantalla">
 		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
 	</div>
