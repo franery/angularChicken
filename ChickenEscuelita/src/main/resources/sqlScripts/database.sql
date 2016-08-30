@@ -1,8 +1,8 @@
+drop database db_chicken;
+
 create database db_chicken;
 
 use db_chicken;
-
-create sequence
 
 create table Usuario (
 	id bigint(10) primary key not null auto_increment,
@@ -10,7 +10,7 @@ create table Usuario (
     nombre varchar(50) not null,
     apellido varchar(50) not null,
     perfil varchar(50) not null,
-    contrasenia bigint(50) not null
+    contrasenia varchar(50) not null
 );
 
 create table Proveedor (
