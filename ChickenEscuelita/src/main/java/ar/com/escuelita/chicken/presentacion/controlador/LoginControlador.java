@@ -36,6 +36,7 @@ public class LoginControlador extends Controlador{
 		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
 		for(DTO usuarioDto : listaUsuarios) {
 			if(((UsuarioDTO)usuarioDto).getNombreUsuario().equals(user.getNombreUsuario()) && ((UsuarioDTO)usuarioDto).getContrasenia().equals(user.getContrasenia())) {
+				setUsuario((UsuarioDTO)usuarioDto);
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.PRODUCTOR)) {
 					ModelAndView model = new ModelAndView(PRODUCTOR_VIEW);
 					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
@@ -58,8 +59,7 @@ public class LoginControlador extends Controlador{
 		}
 		
 		ModelAndView model = new ModelAndView(LOGIN_VIEW);
-		UsuarioDTO usuarioDto = new UsuarioDTO();
-		model.addObject("usuario", usuarioDto);
+		model.addObject("usuario", getUsuario());
 		return model;
 	}
 }

@@ -20,6 +20,7 @@
 		<form:input type="hidden" path="perfil" value="${usuarioActual.getPerfil()}" />
 		<input class="menu" type="submit" value=<spring:message code="productor.nuevoMovimiento"/> />
 	</form:form>
-
+<%-- 		<a href="reportes" class="menu"><spring:message code="productor.reportes"/></a> --%>
+<%-- 		<a href="reportes" class="menu"><spring:message code="productor.nuevoMovimiento"/></a> --%>
 </body>
 </html>
