@@ -13,26 +13,24 @@
 <body>
 	<h1>Nuevo Usuario</h1>
 
-	<form:form method="POST" action="NuevoUsuarioPost"
-		commandName="usuarioNuevo">
+	<form:form method="POST" action="NuevoUsuarioPost"	commandName="usuarioNuevo">
 		<table>
 			<tr>
-				<td class="label"><spring:message code="nombreUsuario" /></td>
+				<td><spring:message code="nombreUsuario" /></td>
 				<td><form:input path="nombreUsuario" /></td>
 			</tr>
 			<tr>
-				<td class="label"><spring:message code="nombre" /></td>
+				<td><spring:message code="nombre" /></td>
 				<td><form:input path="nombre" /></td>
-
-				<td class="label"><spring:message code="apellido" /></td>
+				<td><spring:message code="apellido" /></td>
 				<td><form:input path="apellido" /></td>
 			</tr>
 			<tr>
-				<td class="label"><spring:message code="contrasenia" /></td>
+				<td><spring:message code="contrasenia" /></td>
 				<td><form:input path="contrasenia" /></td>
 			</tr>
 			<tr>
-				<td class="label"><spring:message code="perfil" /></td>
+				<td><spring:message code="perfil" /></td>
 				<td><form:select path="perfil">
 						<option value=""><spring:message code="seleccionar" /></option>
 						<c:forEach var="perfil" items="${perfiles}">
