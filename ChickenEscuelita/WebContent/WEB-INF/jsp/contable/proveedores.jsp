@@ -12,7 +12,11 @@
 </head>
 <body>
 
-<table>
+<form:form action="proveedoresNuevoContable" method="post" commandName="proveedor">
+	<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+</form:form>
+
+<table id="tablita">
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -28,10 +32,18 @@
 				<td><c:out value="${proveedor.getDireccion()}"></c:out></td>
 				<td><c:out value="${proveedor.getMail()}"></c:out></td>
 				<td><c:out value="${proveedor.getTelefono()}"></c:out></td>
-				<form:form action="proveedoresBorrarContable" method="post" commandName="proveedorBorrar">
-				<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
-				<input type="submit" value=<spring:message code="borrar" text="Borrar"/> />
-				</form:form>
+				<td>
+					<form:form action="proveedoresBorrarContable" method="post" commandName="proveedor">
+						<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
+						<input type="submit" value=<spring:message code="borrar" text="Borrar"/> />
+					</form:form>
+				</td>
+				<td>
+					<form:form action="proveedoresModificarContable" method="post" commandName="proveedor">
+						<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
+						<input type="submit" value=<spring:message code="modificar" text="Modificar"/> />
+					</form:form>
+				</td>
 			</tr>
 		</c:forEach>
 	</c:if>

@@ -26,6 +26,7 @@ public class ContableControlador extends Controlador{
 	private IProveedorServicio proveedorServicio;
 	
 	private static final String PROVEEDORES_VIEW = "contable/proveedores";
+	private static final String PROVEEDORES_NUEVO_VIEW = "contable/proveedoresNuevo";
 	private static final String GALLINEROS_VIEW = "contable/gallineros";
 	private static final String DEPOSITOS_VIEW = "contable/depositos";
 	private static final String VENTAS_VIEW = "contable/ventas";
@@ -57,13 +58,64 @@ public class ContableControlador extends Controlador{
 		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaProveedores", listaProveedores);
-		model.addObject("proveedorBorrar", new ProveedorDTO());
+		model.addObject("proveedor", new ProveedorDTO());
+		model.addObject("pageToLoad", PROVEEDORES_VIEW);
+		return model;
+	}
+	
+	@RequestMapping(path="/proveedoresNuevoContable")
+	public ModelAndView proveedoresNuevoContable() {
+		ModelAndView model;
+		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
+			model = new ModelAndView(CONTABLE_VIEW);
+		}
+		else {
+			model = new ModelAndView(ADMIN_VIEW);
+		}
+		model.addObject("usuarioActual", usuario);
+		model.addObject("proveedor", new ProveedorDTO());
+		model.addObject("pageToLoad", PROVEEDORES_NUEVO_VIEW);
+		return model;
+	}
+	
+	@RequestMapping(path="/proveedoresCrearNuevoContable")
+	public ModelAndView proveedoresCrearNuevoContable(@ModelAttribute("proveedor") ProveedorDTO proveedor) {
+		ModelAndView model;
+		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
+			model = new ModelAndView(CONTABLE_VIEW);
+		}
+		else {
+			model = new ModelAndView(ADMIN_VIEW);
+		}
+		proveedorServicio.crear(proveedor);
+		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
+		model.addObject("usuarioActual", usuario);
+		model.addObject("listaProveedores", listaProveedores);
+		model.addObject("proveedor", new ProveedorDTO());
 		model.addObject("pageToLoad", PROVEEDORES_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/proveedoresBorrarContable")
-	public ModelAndView proveedoresContable(@ModelAttribute("proveedorBorrar") ProveedorDTO proveedor) {
+	public ModelAndView proveedoresBorrarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor) {
+		ModelAndView model;
+		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
+			model = new ModelAndView(CONTABLE_VIEW);
+		}
+		else {
+			model = new ModelAndView(ADMIN_VIEW);
+		}
+		proveedorServicio.borrar(proveedor);
+		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
+		model.addObject("usuarioActual", usuario);
+		model.addObject("listaProveedores", listaProveedores);
+		model.addObject("proveedor", new ProveedorDTO());
+		model.addObject("pageToLoad", PROVEEDORES_VIEW);
+		return model;
+	}
+	/*
+	@RequestMapping(path="/proveedoresModificarContable")
+	public ModelAndView proveedoresModificarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor) {
 		ModelAndView model;
 		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
 			model = new ModelAndView(CONTABLE_VIEW);
@@ -78,7 +130,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("pageToLoad", PROVEEDORES_VIEW);
 		return model;
 	}
-	
+	*/
 	@RequestMapping(path="/gallinerosContable")
 	public ModelAndView gallinerosContable() {
 		ModelAndView model;
