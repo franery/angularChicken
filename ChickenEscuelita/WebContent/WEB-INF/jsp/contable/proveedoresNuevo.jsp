@@ -14,21 +14,26 @@
 
 <form:form action="proveedoresModificarCrearNuevoContable" method="post" commandName="proveedor">
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
-	
-	<form:label path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label>
-	<form:input path="nombre" value="${proveedor.getNombre()}"/>
-	<br>
-	<form:label path="direccion"><spring:message code="direccion" text="Direccion"/>:</form:label>
-	<form:input path="direccion" value="${proveedor.getDireccion()}"/>
-	<br>
-	<form:label path="mail"><spring:message code="mail" text="Mail"/>:</form:label>
-	<form:input path="mail" value="${proveedor.getMail()}"/>
-	<br>
-	<form:label path="telefono"><spring:message code="telefono" text="Telefono"/>:</form:label>
-	<form:input path="telefono" value="${proveedor.getTelefono()}"/>
-	<br>
+	<table>
+		<tr>
+			<td><form:label path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label></td>
+			<td><form:input path="nombre" value="${proveedor.getNombre()}"/></td>
+		</tr>
+		<tr>
+			<td><form:label path="direccion"><spring:message code="direccion" text="Direccion"/>:</form:label></td>
+			<td><form:input path="direccion" value="${proveedor.getDireccion()}"/></td>
+		</tr>
+		<tr>
+			<td><form:label path="mail"><spring:message code="mail" text="Mail"/>:</form:label></td>
+			<td><form:input path="mail" value="${proveedor.getMail()}"/></td>
+		</tr>
+		<tr>
+			<td><form:label path="telefono"><spring:message code="telefono" text="Telefono"/>:</form:label></td>
+			<td><form:input path="telefono" value="${proveedor.getTelefono()}"/></td>
+		</tr>
+	</table>
 	<input type="hidden" name="flag" value="${flag}"/>
-	<input type="submit" value=<spring:message code="ok" text="Ok"/> />
+	<input type="submit" value=<spring:message code="guardar"/> />
 </form:form>
 
 </body>
