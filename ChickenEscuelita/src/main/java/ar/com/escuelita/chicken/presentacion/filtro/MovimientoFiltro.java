@@ -1,14 +1,12 @@
 package ar.com.escuelita.chicken.presentacion.filtro;
 
-import java.sql.Date;
-
 public class MovimientoFiltro extends Filtro {
 
 	private long productorId = -1;
 	
-	private Date fecha;
+	private String fecha;
 	
-	private long cantidad = -1;
+	private String cantidad;
 
 	public MovimientoFiltro() {
 	}
@@ -21,19 +19,19 @@ public class MovimientoFiltro extends Filtro {
 		this.productorId = productorId;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
-	public long getCantidad() {
+	public String getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(long cantidad) {
+	public void setCantidad(String cantidad) {
 		this.cantidad = cantidad;
 	}
 }
