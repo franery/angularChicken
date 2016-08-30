@@ -10,6 +10,7 @@ import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IGallineroDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.GallineroModel;
 import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
 
 public class GallineroServicioImpl extends Servicio implements IGallineroServicio {
 
@@ -45,6 +46,12 @@ public class GallineroServicioImpl extends Servicio implements IGallineroServici
 	@Override
 	public void borrar(DTO dto) {
 		gallineroDAO.borrar(((GallineroDTO)dto).getId());		
+	}
+
+	@Override
+	public Collection<DTO> listar(Filtro filtro) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

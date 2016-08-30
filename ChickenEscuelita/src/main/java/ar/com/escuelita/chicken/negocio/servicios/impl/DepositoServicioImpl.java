@@ -10,6 +10,7 @@ import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IDepositoDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
 
 public class DepositoServicioImpl extends Servicio implements IDepositoServicio {
 
@@ -61,6 +62,12 @@ public class DepositoServicioImpl extends Servicio implements IDepositoServicio 
 
 	public void setDepositoDAO(IDepositoDAO depositoDAO) {
 		this.depositoDAO = depositoDAO;
+	}
+
+	@Override
+	public Collection<DTO> listar(Filtro filtro) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

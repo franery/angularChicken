@@ -10,6 +10,7 @@ import ar.com.escuelita.chicken.negocio.servicios.IParametroServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IParametroDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.ParametroModel;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
 
 public class ParametroServicioImpl extends Servicio implements IParametroServicio {
 	
@@ -69,5 +70,11 @@ public class ParametroServicioImpl extends Servicio implements IParametroServici
 
 	public void setParametroDAO(IParametroDAO parametroDAO) {
 		this.parametroDAO = parametroDAO;
+	}
+
+	@Override
+	public Collection<DTO> listar(Filtro filtro) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

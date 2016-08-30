@@ -10,6 +10,7 @@ import ar.com.escuelita.chicken.negocio.servicios.IProveedorServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IProveedorDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.ProveedorModel;
 import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
 
 public class ProveedorServicioImpl extends Servicio implements IProveedorServicio {
 	
@@ -45,6 +46,12 @@ public class ProveedorServicioImpl extends Servicio implements IProveedorServici
 	@Override
 	public void borrar(DTO dto) {
 		proveedorDAO.borrar(((ProveedorDTO)dto).getId());		
+	}
+
+	@Override
+	public Collection<DTO> listar(Filtro filtro) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

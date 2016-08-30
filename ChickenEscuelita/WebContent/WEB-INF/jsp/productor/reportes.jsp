@@ -34,7 +34,6 @@
 		</tbody>
 
 	</table>
-	BOOOO
 
 </body>
 </html>

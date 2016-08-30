@@ -10,6 +10,7 @@ import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
 
 public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	
@@ -45,6 +46,12 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	@Override
 	public void borrar(DTO dto) {
 		usuarioDAO.borrar(((UsuarioDTO)dto).getId());		
+	}
+
+	@Override
+	public Collection<DTO> listar(Filtro filtro) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

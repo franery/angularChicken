@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
 @Controller
 public class ProductorControlador extends Controlador {
@@ -29,7 +30,9 @@ public class ProductorControlador extends Controlador {
 		}
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", REPORTES_VIEW);
-		model.addObject("listaMovimientos",movimientoServicio.listar());
+		MovimientoFiltro m = new MovimientoFiltro();
+		m.setProductorId(usuario.getId());
+		model.addObject("listaMovimientos",movimientoServicio.listar(m));
 		return model;
 	}
 	

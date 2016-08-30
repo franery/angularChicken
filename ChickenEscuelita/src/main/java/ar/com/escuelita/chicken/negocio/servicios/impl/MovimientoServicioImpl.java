@@ -10,6 +10,8 @@ import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IMovimientoDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
+import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
 public class MovimientoServicioImpl extends Servicio implements IMovimientoServicio {
 	
@@ -46,5 +48,16 @@ public class MovimientoServicioImpl extends Servicio implements IMovimientoServi
 	public void borrar(DTO dto) {
 		movimientoDAO.borrar(((MovimientoDTO)dto).getId());		
 	}
+
+	@Override
+	public Collection<DTO> listar(Filtro filtro) {
+		MovimientoFiltro movimientoFiltro = (MovimientoFiltro) filtro;
+		Collection<MovimientoModel> listaMovimientoModel = movimientoDAO.listar(movimientoFiltro);
+		Collection<DTO> listaMovimientoDto = movimientoMapeador.map(listaMovimientoModel);
+		
+		return listaMovimientoDto;
+	}
+	
+	
 
 }
