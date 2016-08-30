@@ -29,3 +29,36 @@ a.menu:hover {
     background-color: #45a049;
 }
 
+table.fija {
+        width: 100%;
+    }
+
+thead.fija, tbody.fija, tr.fija, td.fija, th.fija { display: block; }
+
+tr.fija:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+thead th.fija {
+    height: 30px;
+
+    /*text-align: left;*/
+}
+
+tbody.fija {
+    height: 120px;
+    overflow-y: auto;
+}
+
+thead.fija {
+    /* fallback */
+}
+
+
+tbody td.fija, thead th.fija {
+    width: 19.2%;
+    float: left;
+}
