@@ -13,6 +13,7 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IProveedorServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
+import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 @Controller
@@ -56,12 +57,13 @@ public class ContableControlador extends Controlador{
 		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaProveedores", listaProveedores);
+		model.addObject("proveedorBorrar", new ProveedorDTO());
 		model.addObject("pageToLoad", PROVEEDORES_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/proveedoresBorrarContable")
-	public ModelAndView proveedoresContable(@PathVariable("proveedorId") long proveedorId) {
+	public ModelAndView proveedoresContable(@ModelAttribute("proveedorBorrar") ProveedorDTO proveedor) {
 		ModelAndView model;
 		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
 			model = new ModelAndView(CONTABLE_VIEW);
@@ -69,6 +71,7 @@ public class ContableControlador extends Controlador{
 		else {
 			model = new ModelAndView(ADMIN_VIEW);
 		}
+		proveedorServicio.borrar(proveedor);
 		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaProveedores", listaProveedores);
