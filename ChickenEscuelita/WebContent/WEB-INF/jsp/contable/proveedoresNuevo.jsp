@@ -28,7 +28,7 @@
 	<form:input path="telefono" value="${proveedor.getTelefono()}"/>
 	<br>
 	<input type="hidden" name="flag" value="${flag}"/>
-	<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+	<input type="submit" value=<spring:message code="ok" text="Ok"/> />
 </form:form>
 
 </body>
