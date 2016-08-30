@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
+import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IParametroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
@@ -89,6 +90,8 @@ public class AdminControlador extends Controlador{
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuarioNuevo", usuarioDto);
 		
+		model.addObject("perfiles",EnumPerfil.values());
+
 		model.addObject("pageToLoad", USUARIONUEVO_VIEW);
 		return model;
 	}

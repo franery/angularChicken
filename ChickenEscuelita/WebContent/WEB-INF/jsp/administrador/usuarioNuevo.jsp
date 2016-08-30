@@ -13,32 +13,38 @@
 <body>
 	<h1>Nuevo Usuario</h1>
 
-		<form:form action="NuevoUsuarioPost" method="post" commandName="usuarioNuevo">
-			<form:label path="nombreUsuario">Nombre de usuario: </form:label>
-			<form:input path="nombreUsuario" />
-			<br>
-			<form:label path="nombre">nombre: </form:label>
-			<form:input path="nombre" />
-			<br>
-			<form:label path="apellido">apellido: </form:label>
-			<form:input path="apellido" />
-			<br>
-			<form:label path="contrasenia">contraseña: </form:label>
-			<form:input path="contrasenia" />
-			<br>
-			<form:select path="perfil">
-					<form:option value="${EnumPerfil.CONTABLE}">
-						<c:out value="CONTABLE"></c:out>
-					</form:option>
-					<form:option value="${EnumPerfil.ADMINISTRADOR}">
-						<c:out value="ADMINISTRADOR"></c:out>
-					</form:option>
-					<form:option value="${EnumPerfil.PRODUCTOR}">
-						<c:out value="PRODUCTOR"></c:out>
-					</form:option>
-			</form:select>
-			<br>
-			<input type="submit" value="Guardar" />
-		</form:form>
+	<form:form method="POST" action="NuevoUsuarioPost"
+		commandName="usuarioNuevo">
+		<table>
+			<tr>
+				<td class="label"><spring:message code="nombreUsuario" /></td>
+				<td><form:input path="nombreUsuario" /></td>
+			</tr>
+			<tr>
+				<td class="label"><spring:message code="nombre" /></td>
+				<td><form:input path="nombre" /></td>
+
+				<td class="label"><spring:message code="apellido" /></td>
+				<td><form:input path="apellido" /></td>
+			</tr>
+			<tr>
+				<td class="label"><spring:message code="contrasenia" /></td>
+				<td><form:input path="contrasenia" /></td>
+			</tr>
+			<tr>
+				<td class="label"><spring:message code="perfil" /></td>
+				<td><form:select path="perfil">
+						<option value=""><spring:message code="seleccionar" /></option>
+						<c:forEach var="perfil" items="${perfiles}">
+							<option value="${perfil}">  ${perfil.getName()}  </option>
+						</c:forEach>
+					</form:select></td>
+			</tr>
+			<tr>
+				<td colspan="4" style="text-align: center;">
+				<input type="submit" value="<spring:message code="guardar"/>" /> </td>
+			</tr>
+		</table>
+	</form:form>
 </body>
 </html>
