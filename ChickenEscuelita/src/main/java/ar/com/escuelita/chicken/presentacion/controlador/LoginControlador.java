@@ -39,19 +39,19 @@ public class LoginControlador extends Controlador{
 				setUsuario((UsuarioDTO)usuarioDto);
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.PRODUCTOR)) {
 					ModelAndView model = new ModelAndView(PRODUCTOR_VIEW);
-					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
+					model.addObject("usuarioActual", usuario);
 					model.addObject("pageToLoad",VACIA_VIEW);
 					return model;
 				}
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.CONTABLE)) {
 					ModelAndView model = new ModelAndView(CONTABLE_VIEW);
-					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
+					model.addObject("usuarioActual", usuario);
 					model.addObject("pageToLoad",VACIA_VIEW);
 					return model;
 				}
 				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
 					ModelAndView model = new ModelAndView(ADMIN_VIEW);
-					model.addObject("usuarioActual", (UsuarioDTO)usuarioDto);
+					model.addObject("usuarioActual", usuario);
 					model.addObject("pageToLoad",VACIA_VIEW);
 					return model;
 				}

@@ -12,7 +12,30 @@
 </head>
 <body>
 
-PROVEEDORES
+<table>
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Direccion</th>
+			<th>Mail</th>
+			<th>Telefono</th>
+		</tr>
+	</thead>
+	<c:if test="${!empty listaProveedores}">
+		<c:forEach items="${listaProveedores}" var="proveedor">
+			<tr>
+				<td><c:out value="${proveedor.getNombre()}"></c:out></td>
+				<td><c:out value="${proveedor.getDireccion()}"></c:out></td>
+				<td><c:out value="${proveedor.getMail()}"></c:out></td>
+				<td><c:out value="${proveedor.getTelefono()}"></c:out></td>
+				<form:form action="proveedoresBorrarContable" method="post">
+				<form:input path="proveedorId" type="hidden" value="${proveedor.getId()}"/>
+				<input class="menu" type="submit" value=<spring:message code="proveedores"/> />
+				</form:form>
+			</tr>
+		</c:forEach>
+	</c:if>
+</table>
 
 </body>
 </html>
