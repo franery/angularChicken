@@ -6,6 +6,10 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <html>
+<head>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
+</head>
+
 <body>
 
   	<form:form action="proveedoresContable" method="post" commandName="usuarioActual">

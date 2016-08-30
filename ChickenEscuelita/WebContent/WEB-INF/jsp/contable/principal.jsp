@@ -9,7 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Contable</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css" />
 
 </head>
 <body>
@@ -19,8 +18,6 @@
 	<c:set var="Title" scope="request">
 		<spring:message code="${usuarioActual.getPerfil().toString() }" />
 	</c:set>
-	<%-- 	<c:set var="Title" value="${usuarioActual.getPerfil().toString() }" scope="request" />
- --%>
 	<c:set var="Nombre" value="${usuarioActual.getNombre() }"
 		scope="request" />
 	<jsp:include page="../template/navbar.jsp"></jsp:include>
