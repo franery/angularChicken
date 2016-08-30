@@ -12,18 +12,22 @@
 </head>
 <body>
 
-<form:form action="proveedoresCrearNuevoContable" method="post" commandName="proveedor">
+<form:form action="proveedoresModificarCrearNuevoContable" method="post" commandName="proveedor">
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
 	
 	<form:label path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label>
 	<form:input path="nombre" value="${proveedor.getNombre()}"/>
+	<br>
 	<form:label path="direccion"><spring:message code="direccion" text="Direccion"/>:</form:label>
 	<form:input path="direccion" value="${proveedor.getDireccion()}"/>
+	<br>
 	<form:label path="mail"><spring:message code="mail" text="Mail"/>:</form:label>
 	<form:input path="mail" value="${proveedor.getMail()}"/>
+	<br>
 	<form:label path="telefono"><spring:message code="telefono" text="Telefono"/>:</form:label>
 	<form:input path="telefono" value="${proveedor.getTelefono()}"/>
-	
+	<br>
+	<input type="hidden" name="flag" value="${flag}"/>
 	<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
 </form:form>
 

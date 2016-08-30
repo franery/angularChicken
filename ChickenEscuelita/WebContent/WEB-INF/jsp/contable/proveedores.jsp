@@ -13,6 +13,7 @@
 <body>
 
 <form:form action="proveedoresNuevoContable" method="post" commandName="proveedor">
+	<input type="hidden" name="flag" value="1"/>
 	<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
 </form:form>
 
@@ -41,6 +42,11 @@
 				<td>
 					<form:form action="proveedoresModificarContable" method="post" commandName="proveedor">
 						<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
+						<form:input path="nombre" type="hidden" value="${proveedor.getNombre()}"/>
+						<form:input path="direccion" type="hidden" value="${proveedor.getDireccion()}"/>
+						<form:input path="mail" type="hidden" value="${proveedor.getMail()}"/>
+						<form:input path="telefono" type="hidden" value="${proveedor.getTelefono()}"/>
+						<input type="hidden" name="flag" value="0"/>
 						<input type="submit" value=<spring:message code="modificar" text="Modificar"/> />
 					</form:form>
 				</td>
