@@ -1,11 +1,14 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.negocio.servicios.IParametroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
@@ -24,35 +27,86 @@ public class AdminControlador extends Controlador{
 	private static final String PARAMETROS_VIEW = "administrador/parametros";
 	private static final String ADMIN_VIEW = "administrador/principal";
 	private static final String VACIA_VIEW = "vacia";
-
+	private static final String USUARIONUEVO_VIEW = "administrador/usuarioNuevo";
+	
 	
 	@RequestMapping(path="/principalAdmin")
-	public ModelAndView inicioAdmin(@ModelAttribute("usuarioActual") UsuarioDTO user) {
+	public ModelAndView inicioAdmin() {
 		ModelAndView model = new ModelAndView(ADMIN_VIEW);
 		model.addObject("pageToLoad", VACIA_VIEW);
-		model.addObject("usuarioActual", user);
+		model.addObject("usuarioActual", usuario);
 		return model;
 	}
 	
 	
 	@RequestMapping(path="/parametros")
-	public ModelAndView parametros(@ModelAttribute("usuarioActual") UsuarioDTO user) {
+	public ModelAndView parametros() {
 		ModelAndView model = new ModelAndView(ADMIN_VIEW);
 		ParametroDTO parametroDto = new ParametroDTO();
 		model.addObject("parametro", parametroDto);
-		model.addObject("usuarioUsuarioActual", user);
+		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", PARAMETROS_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/usuarios")
-	public ModelAndView usuarios(@ModelAttribute("usuarioActual") UsuarioDTO user) {
+	public ModelAndView usuarios() {
 		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+		
+		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
+		model.addObject("listaUsuarios",listaUsuarios);
+		
 		UsuarioDTO usuarioDto = new UsuarioDTO();
-		model.addObject("usuarioNuevo", usuarioDto);
-		model.addObject("usuarioActual", user);
+		model.addObject("usuarioBorrar", usuarioDto);
+
+		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", USUARIOS_VIEW);
 		return model;
 	}
+	
+	@RequestMapping(path="/borrarUsuario")
+	public ModelAndView borrarUsuario(@ModelAttribute("usuarioBorrar") UsuarioDTO usuarioB ) {
+		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+		
+		usuarioServicio.borrar(usuarioB);
 
+		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
+		model.addObject("listaUsuarios",listaUsuarios);
+		
+		UsuarioDTO usuarioDto = new UsuarioDTO();
+		model.addObject("usuarioBorrar", usuarioDto);
+
+		model.addObject("usuarioActual", usuario);
+		model.addObject("pageToLoad", USUARIOS_VIEW);
+		return model;
+	}
+	
+	@RequestMapping("NuevoUsuario")
+	public ModelAndView NuevoUsuario(){
+		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+
+		model.addObject("usuarioActual", usuario);
+		UsuarioDTO usuarioDto = new UsuarioDTO();
+		model.addObject("usuarioNuevo", usuarioDto);
+		
+		model.addObject("pageToLoad", USUARIONUEVO_VIEW);
+		return model;
+	}
+	
+	@RequestMapping(path="NuevoUsuarioPost")
+	public ModelAndView AltaUsuario(@ModelAttribute("usuarioNuevo")UsuarioDTO usuarioNuevo){
+		usuarioServicio.crear(usuarioNuevo);
+
+		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+		
+		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
+		model.addObject("listaUsuarios",listaUsuarios);
+		
+		UsuarioDTO usuarioDto = new UsuarioDTO();
+		model.addObject("usuarioBorrar", usuarioDto);
+
+		model.addObject("usuarioActual", usuario);
+		model.addObject("pageToLoad", USUARIOS_VIEW);
+		return model;
+	}
 }
