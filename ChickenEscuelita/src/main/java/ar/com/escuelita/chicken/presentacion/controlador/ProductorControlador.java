@@ -13,6 +13,8 @@ import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
+import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
+import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
@@ -80,8 +82,10 @@ public class ProductorControlador extends Controlador {
 	}
 	
 	@RequestMapping(path="crearNuevoMovimiento")
-	public ModelAndView crearNuevoMovimiento(@ModelAttribute("movimiento") MovimientoDTO movimiientoDto) {
-		movimientoServicio.crear(movimiientoDto);
+	public ModelAndView crearNuevoMovimiento(@ModelAttribute("movimiento") MovimientoDTO movimientoDto) {
+//		movimientoDto.setGallinero((GallineroDTO)gallineroServicio.buscar(movimientoDto.getGallinero().getId()));
+//		movimientoDto.setDeposito((DepositoDTO)depositoServicio.buscar(movimientoDto.getDeposito().getId()));
+		movimientoServicio.crear(movimientoDto);
 		return new ModelAndView("redirect:/nuevoMovimiento");
 	}
 	

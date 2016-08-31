@@ -28,7 +28,7 @@ public class UsuarioMapeador extends Mapeador {
 		UsuarioDTO usuarioDTO = (UsuarioDTO) dto;	
 		UsuarioModel usuarioModel = (UsuarioModel) (vo != null ? vo : new UsuarioModel());
 		
-		usuarioModel.setId(usuarioDTO.getId());
+		//usuarioModel.setId(usuarioDTO.getId());
 		usuarioModel.setNombre(usuarioDTO.getNombre());
 		usuarioModel.setApellido(usuarioDTO.getApellido());
 		usuarioModel.setContrasenia(usuarioDTO.getContrasenia());

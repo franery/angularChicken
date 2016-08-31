@@ -16,31 +16,31 @@
 		commandName="movimiento">
 		<table>
 			<tr>
-				<td><form:label path="gallinero">
+				<td><form:label path="gallineroId">
 						<spring:message code="gallinero" text="gallinero" />:</form:label></td>
-				<td><form:select path="gallinero.id">
+				<td><form:select path="gallineroId">
 						<form:option value="0">
 							<spring:message code="seleccioneGallinero"
 								text="Seleccione gallinero" />
 						</form:option>
 						<c:forEach items="${listaGallineros}" var="gallineroVar">
-							<form:option value="${gallineroVar.id}">
-								<c:out value="${gallineroVar.nombre}"></c:out>
+							<form:option value="${gallineroVar.getId()}">
+								<c:out value="${gallineroVar.getNombre()}"></c:out>
 							</form:option>
 						</c:forEach>
 					</form:select></td>
 			</tr>
 			<tr>
-				<td><form:label path="deposito">
+				<td><form:label path="depositoId">
 						<spring:message code="deposito" text="deposito" />:</form:label></td>
-				<td><form:select path="deposito.id">
+				<td><form:select path="depositoId">
 						<form:option value="0">
 							<spring:message code="seleccioneDeposito"
 								text="Seleccione deposito" />
 						</form:option>
 						<c:forEach items="${listaDepositos}" var="depositoVar">
-							<form:option value="${depositoVarVar.id}">
-								<c:out value="${depositoVar.nombre}"></c:out>
+							<form:option value="${depositoVar.getId()}">
+								<c:out value="${depositoVar.getNombre()}"></c:out>
 							</form:option>
 						</c:forEach>
 					</form:select></td>

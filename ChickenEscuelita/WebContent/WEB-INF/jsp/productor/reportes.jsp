@@ -46,9 +46,9 @@
 							<td class="filterable-cell fija"><c:out
 									value="${movimiento.cantidad}"></c:out></td>
 							<td class="filterable-cell fija"><c:out
-									value="${movimiento.gallinero.nombre}"></c:out></td>
+									value="${movimiento.getGallineroNombre()}"></c:out></td>
 							<td class="filterable-cell fija"><c:out
-									value="${movimiento.deposito.nombre}"></c:out></td>
+									value="${movimiento.getDepositoNombre()}"></c:out></td>
 						</tr>
 					</c:forEach>
 				</c:if>

@@ -5,15 +5,18 @@ import java.sql.Date;
 import ar.com.escuelita.chicken.base.dto.DTO;
 
 public class MovimientoDTO extends DTO {
+	
 	private long id;
 	
 	private Date fecha;
 	
 	private long cantidad;
 
-	private GallineroDTO gallinero;
+	private long gallineroId;
+	private String gallineroNombre;
 
-	private DepositoDTO deposito;
+	private long depositoId;
+	private String depositoNombre;
 
 	public long getId() {
 		return id;
@@ -39,20 +42,36 @@ public class MovimientoDTO extends DTO {
 		this.cantidad = cantidad;
 	}
 
-	public GallineroDTO getGallinero() {
-		return gallinero;
+	public long getGallineroId() {
+		return gallineroId;
 	}
 
-	public void setGallinero(GallineroDTO gallinero) {
-		this.gallinero = gallinero;
+	public void setGallineroId(long gallineroId) {
+		this.gallineroId = gallineroId;
 	}
 
-	public DepositoDTO getDeposito() {
-		return deposito;
+	public long getDepositoId() {
+		return depositoId;
 	}
 
-	public void setDeposito(DepositoDTO deposito) {
-		this.deposito = deposito;
+	public void setDepositoId(long depositoId) {
+		this.depositoId = depositoId;
+	}
+
+	public String getGallineroNombre() {
+		return gallineroNombre;
+	}
+
+	public void setGallineroNombre(String gallineroNombre) {
+		this.gallineroNombre = gallineroNombre;
+	}
+
+	public String getDepositoNombre() {
+		return depositoNombre;
+	}
+
+	public void setDepositoNombre(String depositoNombre) {
+		this.depositoNombre = depositoNombre;
 	}
 
 }

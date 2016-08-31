@@ -5,6 +5,7 @@ import java.sql.Date;
 import ar.com.escuelita.chicken.base.dto.DTO;
 
 public class VentaDTO extends DTO {
+	
 	private long id;
 	
 	private Date fecha;
@@ -13,9 +14,11 @@ public class VentaDTO extends DTO {
 	
 	private float precio;
 	
-	private UsuarioDTO usuario;
+	private long usuarioId;
+	private String usuarioNombre;
 
-	private ProveedorDTO proveedor;
+	private long proveedorId;
+	private String proveedorNombre;
 
 	public long getId() {
 		return id;
@@ -49,20 +52,36 @@ public class VentaDTO extends DTO {
 		this.precio = precio;
 	}
 
-	public UsuarioDTO getUsuario() {
-		return usuario;
+	public long getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setUsuario(UsuarioDTO usuario) {
-		this.usuario = usuario;
+	public void setUsuarioId(long usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
-	public ProveedorDTO getProveedor() {
-		return proveedor;
+	public long getProveedorId() {
+		return proveedorId;
 	}
 
-	public void setProveedor(ProveedorDTO proveedor) {
-		this.proveedor = proveedor;
+	public void setProveedorId(long proveedorId) {
+		this.proveedorId = proveedorId;
 	}
-	
+
+	public String getUsuarioNombre() {
+		return usuarioNombre;
+	}
+
+	public void setUsuarioNombre(String usuarioNombre) {
+		this.usuarioNombre = usuarioNombre;
+	}
+
+	public String getProveedorNombre() {
+		return proveedorNombre;
+	}
+
+	public void setProveedorNombre(String proveedorNombre) {
+		this.proveedorNombre = proveedorNombre;
+	}
+
 }

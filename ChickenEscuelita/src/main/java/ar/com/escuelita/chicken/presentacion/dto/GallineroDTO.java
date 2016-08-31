@@ -3,10 +3,13 @@ package ar.com.escuelita.chicken.presentacion.dto;
 import ar.com.escuelita.chicken.base.dto.DTO;
 
 public class GallineroDTO extends DTO {
+	
 	private long id;
+	
 	private String nombre;
 	
-	private UsuarioDTO usuario;	
+	private long usuarioId;
+	private String usuarioNombre;	
 	
 	private long stockGallinas;
 
@@ -26,12 +29,12 @@ public class GallineroDTO extends DTO {
 		this.nombre = nombre;
 	}
 
-	public UsuarioDTO getUsuario() {
-		return usuario;
+	public long getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setUsuario(UsuarioDTO usuario) {
-		this.usuario = usuario;
+	public void setUsuarioId(long usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public long getStockGallinas() {
@@ -40,6 +43,14 @@ public class GallineroDTO extends DTO {
 
 	public void setStockGallinas(long stockGallinas) {
 		this.stockGallinas = stockGallinas;
+	}
+
+	public String getUsuarioNombre() {
+		return usuarioNombre;
+	}
+
+	public void setUsuarioNombre(String usuarioNombre) {
+		this.usuarioNombre = usuarioNombre;
 	}
 	
 }
