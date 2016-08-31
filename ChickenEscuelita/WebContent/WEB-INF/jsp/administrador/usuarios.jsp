@@ -12,6 +12,7 @@
 <body>
 		<!-- Nuevo Usuario -->
 		<form:form action="NuevoUsuario" method="post" commandName="usuarioNuevo">
+			<input type="hidden" name="flagNuevoModificar" value="1"/>
 				<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
 		</form:form>
 		
@@ -33,10 +34,22 @@
 							<td><c:out value="${user.getNombre()}"></c:out></td>
 							<td><c:out value="${user.getApellido()}"></c:out></td>
 							<td><c:out value="${user.getPerfil().toString()}"></c:out></td>
-							<td><form:form action="borrarUsuario" method="post" commandName="usuarioBorrar">
+							<td><form:form action="borrarUsuario" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
 								<input type="submit" value=<spring:message code="borrar" text="Borrar"/> />
 							</form:form></td>
+							<td>
+							<form:form action="ModificarUsuario" method="post" commandName="usuarioNM">
+								<form:input path="id" type="hidden" value="${user.getId() }"/>
+								<form:input path="nombreUsuario" type="hidden" value="${user.getNombreUsuario()}"/>
+								<form:input path="nombre" type="hidden" value="${user.getNombre()}"/>
+								<form:input path="apellido" type="hidden" value="${user.getApellido()}"/>
+								<form:input path="contrasenia" type="hidden" value="${user.getContrasenia()}"/>
+								<form:input path="perfil" type="hidden" value="${user.getPerfil()}"/>
+								<input type="hidden" name="flagNuevoModificar" value="0"/>
+								<input type="submit" value=<spring:message code="modificar" text="Modificar"/> />
+							</form:form>
+				</td>
 						 </tr>
 					</c:forEach>
 				</c:if>

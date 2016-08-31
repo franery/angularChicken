@@ -11,9 +11,11 @@
 
 </head>
 <body>
-	<h1>Nuevo Usuario</h1>
+	<h1>Usuario</h1>
 
-	<form:form method="POST" action="NuevoUsuarioPost"	commandName="usuarioNuevo">
+	<form:form method="POST" action="usuariosModificarNuevo"	commandName="usuarioNM">
+		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
+	
 		<table>
 			<tr>
 				<td><spring:message code="nombreUsuario" /></td>
@@ -40,6 +42,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" style="text-align: center;">
+				<input type="hidden" name="flagNuevoModificar" value="${flagNuevoModificar}"/>
 				<input type="submit" value="<spring:message code="guardar"/>" /> </td>
 			</tr>
 		</table>
