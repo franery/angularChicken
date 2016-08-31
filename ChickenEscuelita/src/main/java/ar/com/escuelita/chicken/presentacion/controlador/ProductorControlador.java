@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
+import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
+import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
+import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
@@ -22,6 +25,12 @@ public class ProductorControlador extends Controlador {
 	
 	@Autowired
 	IMovimientoServicio movimientoServicio;
+	
+	@Autowired
+	IGallineroServicio gallineroServicio;
+	
+	@Autowired
+	IDepositoServicio depositoServicio;
 	
 	@RequestMapping("reportes")
 	public ModelAndView reportes() {
@@ -39,7 +48,7 @@ public class ProductorControlador extends Controlador {
 		return model;
 	}
 	
-	@RequestMapping(path="reportes",method=RequestMethod.POST)
+	@RequestMapping(path="reportesFiltro")
 	public ModelAndView reportesConFiltro(@ModelAttribute("filtro") MovimientoFiltro filtro) {
 		ModelAndView model;
 		if (usuario.getPerfil().equals(EnumPerfil.PRODUCTOR)){
@@ -63,8 +72,17 @@ public class ProductorControlador extends Controlador {
 			model = new ModelAndView(ADMIN_VIEW);
 		}
 		model.addObject("usuarioActual", usuario);
+		model.addObject("movimiento", new MovimientoDTO());
+		model.addObject("listaDepositos", depositoServicio.listar());
+		model.addObject("listaGallineros", gallineroServicio.listar());
 		model.addObject("pageToLoad", NUEVO_MOVIMIENTO_VIEW);
 		return model;
+	}
+	
+	@RequestMapping(path="crearNuevoMovimiento")
+	public ModelAndView crearNuevoMovimiento(@ModelAttribute("movimiento") MovimientoDTO movimiientoDto) {
+		movimientoServicio.crear(movimiientoDto);
+		return new ModelAndView("redirect:/nuevoMovimiento");
 	}
 	
 }

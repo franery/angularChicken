@@ -25,7 +25,5 @@
 	<div class="pantalla">
 		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
 	</div>
-
-	PAGINA PRINCIPAL PRODUCTOR
 </body>
 </html>

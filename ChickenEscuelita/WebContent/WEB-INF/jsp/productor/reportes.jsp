@@ -7,16 +7,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-.paraTabla {
-	height: 500px;
-	overflow: scroll;
-}
-
-.fijo {
-	position: fixed;
-}
-</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -28,13 +18,17 @@
 <title>Reportes</title>
 </head>
 <body>
-	<form:form action="" method="POST" commandName="filtro">
-		<input type="text" name="fecha" placeholder="AAAA-MM-DD" />
+	<form:form action="nuevoMovimiento" mehtod="GET">
+		<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+	</form:form>
+
+	<form:form action="reportesFiltro" method="POST" commandName="filtro">
+		<input type="date" name="fecha" placeholder="AAAA-MM-DD" />
 		<input type="text" name="cantidad" placeholder="Cantidad" />
 		<input type="submit" value="Filtrar" />
 	</form:form>
 	<div class="paraTabla">
-		<table class="table table-striped table-hover header-fixed fija" >
+		<table class="table table-striped table-hover header-fixed fija">
 			<thead class="fija">
 				<tr class="fija">
 					<th class="fija">Fecha</th>
@@ -46,11 +40,15 @@
 			<tbody class="fija">
 				<c:if test="${!empty listaMovimientos}">
 					<c:forEach items="${listaMovimientos}" var="movimiento">
-						<tr  class="fija">
-							<td class="filterable-cell fija"><c:out value="${movimiento.fecha}"></c:out></td>
-							<td class="filterable-cell fija"><c:out value="${movimiento.cantidad}"></c:out></td>
-							<td class="filterable-cell fija"><c:out value="${movimiento.gallinero.nombre}"></c:out></td>
-							<td class="filterable-cell fija"><c:out value="${movimiento.deposito.nombre}"></c:out></td>
+						<tr class="fija">
+							<td class="filterable-cell fija"><c:out
+									value="${movimiento.fecha}"></c:out></td>
+							<td class="filterable-cell fija"><c:out
+									value="${movimiento.cantidad}"></c:out></td>
+							<td class="filterable-cell fija"><c:out
+									value="${movimiento.gallinero.nombre}"></c:out></td>
+							<td class="filterable-cell fija"><c:out
+									value="${movimiento.deposito.nombre}"></c:out></td>
 						</tr>
 					</c:forEach>
 				</c:if>
