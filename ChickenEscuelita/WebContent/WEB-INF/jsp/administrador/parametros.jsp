@@ -26,19 +26,19 @@
 			</thead>
 			<tbody>
 				<c:if test="${!empty listaParametros}">
-					<c:forEach items="${listaParametros}" var="param">
+					<c:forEach items="${listaParametros}" var="parametroVar">
 						<tr>
-							<td><c:out value="${param.getDescripcion() }"></c:out></td>
-							<td><c:out value="${param.getValor() }"></c:out></td>
+							<td><c:out value="${parametroVar.getDescripcion() }"></c:out></td>
+							<td><c:out value="${parametroVar.getValor() }"></c:out></td>
 							<td><form:form action="borrarParametro" method="post" commandName="parametro">
-								<form:input path="id" type="hidden" value="${param.getId() }"/>
+								<form:input path="id" type="hidden" value="${parametroVar.getId() }"/>
 								<input type="submit" value=<spring:message code="borrar" text="Borrar"/> />
 							</form:form></td>
 							<td>
 							<form:form action="ModificarParametro" method="post" commandName="parametro">
-								<form:input path="id" type="hidden" value="${param.getId() }"/>
-								<form:input path="descripcion" type="hidden" value="${param.getDescripcion()}"/>
-								<form:input path="valor" type="hidden" value="${param.getValor()}"/>
+								<form:input path="id" type="hidden" value="${parametroVar.getId() }"/>
+								<form:input path="descripcion" type="hidden" value="${parametroVar.getDescripcion()}"/>
+								<form:input path="valor" type="hidden" value="${parametroVar.getValor()}"/>
 								<input type="hidden" name="flagNuevoModificar" value="0"/>
 								<input type="submit" value=<spring:message code="modificar" text="Modificar"/> />
 							</form:form>
