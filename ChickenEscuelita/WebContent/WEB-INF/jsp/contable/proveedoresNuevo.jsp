@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<h1>Proveedor</h1>
+
 <form:form action="proveedoresModificarCrearNuevoContable" method="post" commandName="proveedor">
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
 	<table>

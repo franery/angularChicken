@@ -14,7 +14,6 @@ import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IParametroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
-import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 @Controller
@@ -124,11 +123,11 @@ public class AdminControlador extends Controlador{
 
 //	PARAMETROS
 	@RequestMapping(path="/parametros")
-	public ModelAndView parametros() {
+	public ModelAndView parametrosList() {
 		ModelAndView model = new ModelAndView(ADMIN_VIEW);
 		ParametroDTO parametro = new ParametroDTO();
-//		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
-		model.addObject("listaParametros",parametroServicio.listar());
+		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
+		model.addObject("listaParametros",listaParametros);
 		model.addObject("parametro", parametro);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", PARAMETROS_VIEW);
@@ -175,7 +174,7 @@ public class AdminControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/parametrosModificarNuevo")
-	public ModelAndView proveedoresCrearNuevo(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
+	public ModelAndView parametrosModificarNuevo(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
 		ModelAndView model = new ModelAndView(ADMIN_VIEW);
 		if(flagNuevoModificar == 0) {
 			parametroServicio.modificar(parametro);

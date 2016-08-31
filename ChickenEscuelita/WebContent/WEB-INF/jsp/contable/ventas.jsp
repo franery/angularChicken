@@ -12,7 +12,30 @@
 </head>
 <body>
 
-VENTAS
+<form:form action="ventasNuevoContable" method="post" commandName="venta">
+	<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+</form:form>
+
+<table id="tablita">
+	<thead>
+		<tr>
+			<th>Proveedor</th>
+			<th>Fecha</th>
+			<th>Cantidad</th>
+			<th>Precio</th>
+		</tr>
+	</thead>
+	<c:if test="${!empty listaVentas}">
+		<c:forEach items="${listaVentas}" var="venta">
+			<tr>
+				<td><c:out value="${venta.getProveedorNombre()}"></c:out></td>
+				<td><c:out value="${venta.getFecha()}"></c:out></td>
+				<td><c:out value="${venta.getCantidad()}"></c:out></td>
+				<td><c:out value="${venta.getPrecio()}"></c:out></td>
+			</tr>
+		</c:forEach>
+	</c:if>
+</table>
 
 </body>
 </html>
