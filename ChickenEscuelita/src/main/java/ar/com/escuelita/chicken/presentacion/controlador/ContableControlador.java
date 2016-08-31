@@ -13,7 +13,9 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IProveedorServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
+import ar.com.escuelita.chicken.negocio.servicios.IVentaServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
+import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
 
 @Controller
 public class ContableControlador extends Controlador{
@@ -24,11 +26,15 @@ public class ContableControlador extends Controlador{
 	@Autowired
 	private IProveedorServicio proveedorServicio;
 	
+	@Autowired
+	private IVentaServicio ventaServicio;
+	
 	private static final String PROVEEDORES_VIEW = "contable/proveedores";
 	private static final String PROVEEDORES_NUEVO_VIEW = "contable/proveedoresNuevo";
 	private static final String GALLINEROS_VIEW = "contable/gallineros";
 	private static final String DEPOSITOS_VIEW = "contable/depositos";
 	private static final String VENTAS_VIEW = "contable/ventas";
+	private static final String VENTAS_NUEVO_VIEW = "contable/ventasNuevo";
 	private static final String PRODUCCION_VIEW = "contable/produccion";
 	
 	@RequestMapping(path="/principal")
@@ -78,6 +84,22 @@ public class ContableControlador extends Controlador{
 		return model;
 	}
 	
+	@RequestMapping(path="/proveedoresModificarContable")
+	public ModelAndView proveedoresModificarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) {
+		ModelAndView model;
+		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
+			model = new ModelAndView(CONTABLE_VIEW);
+		}
+		else {
+			model = new ModelAndView(ADMIN_VIEW);
+		}
+		model.addObject("usuarioActual", usuario);
+		model.addObject("flag", flag);
+		model.addObject("proveedor", proveedor);
+		model.addObject("pageToLoad", PROVEEDORES_NUEVO_VIEW);
+		return model;
+	}
+	
 	@RequestMapping(path="/proveedoresModificarCrearNuevoContable")
 	public ModelAndView proveedoresCrearNuevoContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) {
 		ModelAndView model;
@@ -119,22 +141,6 @@ public class ContableControlador extends Controlador{
 		return model;
 	}
 	
-	@RequestMapping(path="/proveedoresModificarContable")
-	public ModelAndView proveedoresModificarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
-		model.addObject("usuarioActual", usuario);
-		model.addObject("flag", flag);
-		model.addObject("proveedor", proveedor);
-		model.addObject("pageToLoad", PROVEEDORES_NUEVO_VIEW);
-		return model;
-	}
-	
 	@RequestMapping(path="/gallinerosContable")
 	public ModelAndView gallinerosContable() {
 		ModelAndView model;
@@ -172,7 +178,45 @@ public class ContableControlador extends Controlador{
 		else {
 			model = new ModelAndView(ADMIN_VIEW);
 		}
+		List<DTO> listaVentas = (List<DTO>) ventaServicio.listar();
 		model.addObject("usuarioActual", usuario);
+		model.addObject("listaVentas", listaVentas);
+		model.addObject("venta", new VentaDTO());
+		model.addObject("pageToLoad", VENTAS_VIEW);
+		return model;
+	}
+	
+	@RequestMapping(path="/ventasNuevoContable")
+	public ModelAndView ventasNuevoContable() {
+		ModelAndView model;
+		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
+			model = new ModelAndView(CONTABLE_VIEW);
+		}
+		else {
+			model = new ModelAndView(ADMIN_VIEW);
+		}
+		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
+		model.addObject("listaProveedores", listaProveedores);
+		model.addObject("usuarioActual", usuario);
+		model.addObject("venta", new VentaDTO());
+		model.addObject("pageToLoad", VENTAS_NUEVO_VIEW);
+		return model;
+	}
+	
+	@RequestMapping(path="/ventasCrearNuevoContable")
+	public ModelAndView ventasCrearNuevoContable(@ModelAttribute("venta") VentaDTO venta) {
+		ModelAndView model;
+		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
+			model = new ModelAndView(CONTABLE_VIEW);
+		}
+		else {
+			model = new ModelAndView(ADMIN_VIEW);
+		}
+		ventaServicio.crear(venta);
+		List<DTO> listaVentas= (List<DTO>)ventaServicio.listar();
+		model.addObject("usuarioActual", usuario);
+		model.addObject("listaVentas", listaVentas);
+		model.addObject("proveedor", new VentaDTO());
 		model.addObject("pageToLoad", VENTAS_VIEW);
 		return model;
 	}
