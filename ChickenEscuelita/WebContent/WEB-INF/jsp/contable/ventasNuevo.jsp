@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<h1>Venta</h1>
+
 <form:form action="ventasCrearNuevoContable" method="post" commandName="venta">
 	<form:input path="id" type="hidden" value="${venta.getId()}"/>
 	<form:input path="usuarioId" type="hidden" value="${usuarioActual.getId()}"/>
