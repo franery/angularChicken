@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Parametros</title>
+<title><spring:message code="parametros" text="Parametros"/></title>
 
 </head>
 <body>
@@ -20,7 +20,7 @@
 		<table id="tablita">
 			<thead>
 				<tr>
-					<th>Descripcion</th>
+					<th><spring:message code="descripcion" text="Descripcion"/></th>
 					<th>Valor</th>
 				</tr>
 			</thead>

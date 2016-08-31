@@ -127,8 +127,8 @@ public class AdminControlador extends Controlador{
 	public ModelAndView parametros() {
 		ModelAndView model = new ModelAndView(ADMIN_VIEW);
 		ParametroDTO parametro = new ParametroDTO();
-		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
-		model.addObject("listaParametros",listaParametros);
+//		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
+		model.addObject("listaParametros",parametroServicio.listar());
 		model.addObject("parametro", parametro);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", PARAMETROS_VIEW);
