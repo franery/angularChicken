@@ -26,11 +26,12 @@ public class AdminControlador extends Controlador{
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
 	
-	private static final String USUARIOS_VIEW = "administrador/usuarios";
-	private static final String PARAMETROS_VIEW = "administrador/parametros";
 	private static final String ADMIN_VIEW = "administrador/principal";
-	private static final String VACIA_VIEW = "vacia";
+	private static final String USUARIOS_VIEW = "administrador/usuarios";
 	private static final String USUARIO_NUEVO_VIEW = "administrador/usuarioNuevo";
+	private static final String PARAMETROS_VIEW = "administrador/parametros";
+	private static final String PARAMETRO_NUEVO_VIEW = "administrador/parametroNuevo";
+	private static final String VACIA_VIEW = "vacia";
 	
 	
 	@RequestMapping(path="/principalAdmin")
@@ -41,17 +42,7 @@ public class AdminControlador extends Controlador{
 		return model;
 	}
 	
-	
-	@RequestMapping(path="/parametros")
-	public ModelAndView parametros() {
-		ModelAndView model = new ModelAndView(ADMIN_VIEW);
-		ParametroDTO parametroDto = new ParametroDTO();
-		model.addObject("parametro", parametroDto);
-		model.addObject("usuarioActual", usuario);
-		model.addObject("pageToLoad", PARAMETROS_VIEW);
-		return model;
-	}
-	
+//	USUARIOS
 	@RequestMapping(path="/usuarios")
 	public ModelAndView usuarios() {
 		ModelAndView model = new ModelAndView(ADMIN_VIEW);
@@ -84,7 +75,6 @@ public class AdminControlador extends Controlador{
 		return model;
 	}
 	
-	
 	@RequestMapping("/NuevoUsuario")
 	public ModelAndView NuevoUsuario( @RequestParam("flagNuevoModificar") int flagNuevoModificar ){
 		ModelAndView model = new ModelAndView(ADMIN_VIEW);
@@ -99,7 +89,6 @@ public class AdminControlador extends Controlador{
 		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
 		return model;
 	}
-	
 	
 	@RequestMapping(path="/ModificarUsuario")
 	public ModelAndView ModificarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
@@ -132,21 +121,75 @@ public class AdminControlador extends Controlador{
 		model.addObject("pageToLoad", USUARIOS_VIEW);
 		return model;
 	}
+
+//	PARAMETROS
+	@RequestMapping(path="/parametros")
+	public ModelAndView parametros() {
+		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+		ParametroDTO parametro = new ParametroDTO();
+		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
+		model.addObject("listaParametros",listaParametros);
+		model.addObject("parametro", parametro);
+		model.addObject("usuarioActual", usuario);
+		model.addObject("pageToLoad", PARAMETROS_VIEW);
+		return model;
+	}
 	
-//	@RequestMapping(path="NuevoUsuarioPost")
-//	public ModelAndView AltaUsuario(@ModelAttribute("usuarioNuevo")UsuarioDTO usuarioNuevo){
-//		usuarioServicio.crear(usuarioNuevo);
-//
-//		ModelAndView model = new ModelAndView(ADMIN_VIEW);
-//		
-//		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
-//		model.addObject("listaUsuarios",listaUsuarios);
-//		
-//		UsuarioDTO usuarioDto = new UsuarioDTO();
-//		model.addObject("usuarioBorrar", usuarioDto);
-//
-//		model.addObject("usuarioActual", usuario);
-//		model.addObject("pageToLoad", USUARIOS_VIEW);
-//		return model;
-//	}
+	@RequestMapping(path="/borrarParametro")
+	public ModelAndView borrarParametro(@ModelAttribute("parametro") ParametroDTO parametro ) {
+		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+		parametroServicio.borrar(parametro);
+		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
+		ParametroDTO parametroDto = new ParametroDTO();
+		model.addObject("listaParametros",listaParametros);
+		model.addObject("parametro", parametroDto);
+		model.addObject("usuarioActual", usuario);
+		model.addObject("pageToLoad", PARAMETROS_VIEW);
+		return model;
+	}
+	
+	@RequestMapping("/NuevoParametro")
+	public ModelAndView NuevoParametro( @RequestParam("flagNuevoModificar") int flagNuevoModificar ){
+		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+		
+		model.addObject("usuarioActual", usuario);
+		ParametroDTO parametro = new ParametroDTO();
+		model.addObject("parametro", parametro);
+		
+		model.addObject("flagNuevoModificar", flagNuevoModificar);
+		
+		model.addObject("pageToLoad", PARAMETRO_NUEVO_VIEW);
+		return model;
+	}
+	
+	
+	@RequestMapping(path="/ModificarParametro")
+	public ModelAndView ModificarParametro(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
+		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+		model.addObject("usuarioActual", usuario);
+		model.addObject("flagNuevoModificar", flagNuevoModificar);
+		model.addObject("parametro", parametro);
+
+		model.addObject("pageToLoad", PARAMETRO_NUEVO_VIEW);
+		return model;
+	}
+	
+	@RequestMapping(path="/parametrosModificarNuevo")
+	public ModelAndView proveedoresCrearNuevo(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
+		ModelAndView model = new ModelAndView(ADMIN_VIEW);
+		if(flagNuevoModificar == 0) {
+			parametroServicio.modificar(parametro);
+		}
+		else {
+			parametroServicio.crear(parametro);
+		}
+		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
+		model.addObject("usuarioActual", usuario);
+		model.addObject("listaParametros", listaParametros);
+		
+		model.addObject("parametro", new ParametroDTO());
+
+		model.addObject("pageToLoad", PARAMETROS_VIEW);
+		return model;
+	}
 }

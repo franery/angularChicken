@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Usuarios</title>
 
 </head>
 <body>
 		<!-- Nuevo Usuario -->
-		<form:form action="NuevoUsuario" method="post" commandName="usuarioNuevo">
+		<form:form action="NuevoUsuario" method="post" commandName="usuarioNM">
 			<input type="hidden" name="flagNuevoModificar" value="1"/>
 				<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
 		</form:form>

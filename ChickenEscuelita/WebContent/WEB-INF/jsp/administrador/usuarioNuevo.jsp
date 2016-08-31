@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Nuevo Usuario</title>
+<title>Usuario</title>
 
 </head>
 <body>
