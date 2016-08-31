@@ -11,6 +11,7 @@ import ar.com.escuelita.chicken.persistencia.dao.IGallineroDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.GallineroModel;
 import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
+import ar.com.escuelita.chicken.presentacion.filtro.GallineroFiltro;
 
 public class GallineroServicioImpl extends Servicio implements IGallineroServicio {
 
@@ -50,8 +51,11 @@ public class GallineroServicioImpl extends Servicio implements IGallineroServici
 
 	@Override
 	public Collection<DTO> listar(Filtro filtro) {
-		// TODO Auto-generated method stub
-		return null;
+		GallineroFiltro gallineroFiltro = (GallineroFiltro) filtro;
+		Collection<GallineroModel> listaGallineroModel = gallineroDAO.listar(gallineroFiltro);
+		Collection<DTO> listaGallineroDto = gallineroMapeador.map(listaGallineroModel);
+		
+		return listaGallineroDto;
 	}
 
 }
