@@ -17,6 +17,7 @@ import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.GallineroFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
 @Controller
@@ -76,7 +77,9 @@ public class ProductorControlador extends Controlador {
 		model.addObject("usuarioActual", usuario);
 		model.addObject("movimiento", new MovimientoDTO());
 		model.addObject("listaDepositos", depositoServicio.listar());
-		model.addObject("listaGallineros", gallineroServicio.listar());
+		GallineroFiltro gallineroFiltro = new GallineroFiltro();
+		gallineroFiltro.setUsuarioId(usuario.getId());
+		model.addObject("listaGallineros", gallineroServicio.listar(gallineroFiltro));
 		model.addObject("pageToLoad", NUEVO_MOVIMIENTO_VIEW);
 		return model;
 	}
@@ -86,7 +89,7 @@ public class ProductorControlador extends Controlador {
 //		movimientoDto.setGallinero((GallineroDTO)gallineroServicio.buscar(movimientoDto.getGallinero().getId()));
 //		movimientoDto.setDeposito((DepositoDTO)depositoServicio.buscar(movimientoDto.getDeposito().getId()));
 		movimientoServicio.crear(movimientoDto);
-		return new ModelAndView("redirect:/nuevoMovimiento");
+		return new ModelAndView("redirect:/reportes");
 	}
 	
 }
