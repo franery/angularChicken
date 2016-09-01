@@ -17,16 +17,36 @@
 </form:form>
 
 <form:form action="ventasContable" method="post" commandName="filtro">
-	<form:select path="proveedorId">
-		<form:option value="0"><spring:message code="proveedor" text="Proveedor"/></form:option>
-		<c:forEach items="${listaProveedores}" var="proveedor">
-			<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
-		</c:forEach>
-	</form:select>
-	<form:input type="date" path="fechaDesde" placeholder="FechaDesde" />
-	<form:input type="date" path="fechaHasta" placeholder="FechaHasta" />
-	<form:input type="text" path="cantidadDesde" placeholder="CantidadDesde" />
-	<form:input type="text" path="cantidadHasta" placeholder="CantidadHasta" />
+	<table id="tablita">
+		<thead>
+			<tr>
+				<th>Filtros</th>
+			</tr>
+		</thead>
+		<tr>
+			<td><form:label path="proveedorId"><spring:message code="proveedor" text="Proveedor"/>:</form:label></td>
+			<td>
+				<form:select path="proveedorId">
+					<form:option value="0"><spring:message code="proveedor" text="Proveedor"/></form:option>
+						<c:forEach items="${listaProveedores}" var="proveedor">
+					<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
+				</c:forEach>
+				</form:select>
+			</td>
+		</tr>
+		<tr>
+			<td><form:label path="fechaDesde"><spring:message code="fechaDesde" text="FechaDesde"/>:</form:label></td>
+			<td><form:input type="date" path="fechaDesde" placeholder="FechaDesde" /></td>
+			<td><form:label path="fechaHasta"><spring:message code="fechaHasta" text="fechaHasta"/>:</form:label></td>
+			<td><form:input type="date" path="fechaHasta" placeholder="FechaHasta" /></td>
+		</tr>
+		<tr>
+			<td><form:label path="cantidadDesde"><spring:message code="cantidadDesde" text="cantidadDesde"/>:</form:label></td>
+			<td><form:input type="text" path="cantidadDesde" placeholder="CantidadDesde" /></td>
+			<td><form:label path="cantidadHasta"><spring:message code="cantidadHasta" text="cantidadHasta"/>:</form:label></td>
+			<td><form:input type="text" path="cantidadHasta" placeholder="CantidadHasta" /></td>
+		</tr>
+	</table>
 	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/>/>
 </form:form>
 
