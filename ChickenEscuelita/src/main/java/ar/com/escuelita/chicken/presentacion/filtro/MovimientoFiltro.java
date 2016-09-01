@@ -4,9 +4,13 @@ public class MovimientoFiltro extends Filtro {
 
 	private long productorId = -1;
 	
-	private String fecha;
+	private String fechaDesde;
 	
-	private String cantidad;
+	private String fechaHasta;
+	
+	private String cantidadDesde;
+	
+	private String cantidadHasta;
 
 	public MovimientoFiltro() {
 	}
@@ -19,19 +23,36 @@ public class MovimientoFiltro extends Filtro {
 		this.productorId = productorId;
 	}
 
-	public String getFecha() {
-		return fecha;
+	public String getFechaDesde() {
+		return fechaDesde;
 	}
 
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
+	public void setFechaDesde(String fechaDesde) {
+		this.fechaDesde = fechaDesde;
 	}
 
-	public String getCantidad() {
-		return cantidad;
+	public String getFechaHasta() {
+		return fechaHasta;
 	}
 
-	public void setCantidad(String cantidad) {
-		this.cantidad = cantidad;
+	public void setFechaHasta(String fechaHasta) {
+		this.fechaHasta = fechaHasta;
 	}
+
+	public String getCantidadDesde() {
+		return cantidadDesde;
+	}
+
+	public void setCantidadDesde(String cantidadDesde) {
+		this.cantidadDesde = cantidadDesde;
+	}
+
+	public String getCantidadHasta() {
+		return cantidadHasta;
+	}
+
+	public void setCantidadHasta(String cantidadHasta) {
+		this.cantidadHasta = cantidadHasta;
+	}
+
 }

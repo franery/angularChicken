@@ -23,9 +23,25 @@
 	</form:form>
 
 	<form:form action="reportesFiltro" method="POST" commandName="filtro">
-		<input type="date" name="fecha" placeholder="AAAA-MM-DD" />
-		<input type="text" name="cantidad" placeholder="Cantidad" />
-		<input type="submit" value="Filtrar" />
+		<table>
+			<tr>
+				<td> <form:label path="fechaDesde"> Fecha desde </form:label> </td>
+				<td> <form:input path="fechaDesde" type="date" /> </td>
+			</tr>
+			<tr>
+				<td> <form:label path="fechaHasta"> Fecha hasta </form:label> </td>
+				<td> <form:input path="fechaHasta" type="date" /> </td>
+			</tr>
+			<tr> 
+				<td> <form:label path="cantidadDesde"> Cantidad Desde</form:label> </td>
+				<td> <form:input path="cantidadDesde" type="text" /> </td>
+			</tr>
+			<tr> 
+				<td> <form:label path="cantidadHasta"> Cantidad Hasta</form:label> </td>
+				<td> <form:input path="cantidadHasta" type="text" /> </td>
+			</tr>
+			<tr> <td> <input type="submit" value="Filtrar" /> </td> </tr>
+		</table>
 	</form:form>
 	<div class="paraTabla">
 		<table class="table table-striped table-hover header-fixed fija">
