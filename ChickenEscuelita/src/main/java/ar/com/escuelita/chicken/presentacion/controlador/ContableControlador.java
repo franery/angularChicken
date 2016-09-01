@@ -227,22 +227,22 @@ public class ContableControlador extends Controlador{
 		// Tabla Productores | Total Produccion
 		
 		
-		
-		Map<String, Long> totales = new Hashtable<String, Long>();
-		List<DTO> listaProductores = (List<DTO>) usuarioServicio.listar();
-			for (DTO productorActual : listaProductores) {
-				MovimientoFiltro m = new MovimientoFiltro();
-				m.setProductorId( ((UsuarioDTO)productorActual).getId() );
-				List<DTO> listaMovimientos = (List<DTO>) movimientoServicio.listar(m);
-				long sum = 0;
-			    for (DTO movimiento: listaMovimientos) {
-			        sum += ((MovimientoDTO)movimiento).getCantidad();
-			    }
-			    totales.put(((UsuarioDTO)productorActual).getNombre(), sum);
-			}
-		model.addObject("mapTotales", totales);
+//		
+//		Map<String, Long> totales = new Hashtable<String, Long>();
+//		List<DTO> listaProductores = (List<DTO>) usuarioServicio.listar();
+//			for (DTO productorActual : listaProductores) {
+//				MovimientoFiltro m = new MovimientoFiltro();
+//				m.setProductorId( ((UsuarioDTO)productorActual).getId() );
+//				List<DTO> listaMovimientos = (List<DTO>) movimientoServicio.listar(m);
+//				long sum = 0;
+//			    for (DTO movimiento: listaMovimientos) {
+//			        sum += ((MovimientoDTO)movimiento).getCantidad();
+//			    }
+//			    totales.put(((UsuarioDTO)productorActual).getNombre(), sum);
+//			}
+		//model.addObject("mapTotales", totales);
 			
-		//		model.addObject("mapTotales", usuarioService.getTotalesProduccion());
+		model.addObject("mapTotales", usuarioServicio.getTotalesProduccion());
 
 		model.addObject("pageToLoad", PRODUCCION_VIEW);
 		return model;

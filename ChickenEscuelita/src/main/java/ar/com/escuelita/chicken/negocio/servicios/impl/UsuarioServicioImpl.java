@@ -1,6 +1,10 @@
 package ar.com.escuelita.chicken.negocio.servicios.impl;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,8 +13,10 @@ import ar.com.escuelita.chicken.negocio.mapeos.UsuarioMapeador;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
+import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
+import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
 public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	
@@ -53,5 +59,12 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public HashMap<UsuarioDTO, Long> getTotalesProduccion(){
+		usuarioDAO.getProduccionTotal();	
+		return null;
+	}
+
 
 }

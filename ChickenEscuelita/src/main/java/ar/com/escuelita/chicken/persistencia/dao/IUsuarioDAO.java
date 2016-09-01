@@ -1,5 +1,6 @@
 package ar.com.escuelita.chicken.persistencia.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
@@ -14,4 +15,6 @@ public interface IUsuarioDAO {
 	public void modificar(UsuarioModel usuarioModel);
 	
 	public void borrar(long id);
+
+	HashMap<UsuarioModel, Long> getProduccionTotal();
 }

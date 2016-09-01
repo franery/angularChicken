@@ -23,7 +23,7 @@
 		</c:forEach>
 	</form:select>
 	<form:input type="text" path="depositoNombre" />
-	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/>/>
+	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/> />
 </form:form>
 	
 		<table id="tablita">
