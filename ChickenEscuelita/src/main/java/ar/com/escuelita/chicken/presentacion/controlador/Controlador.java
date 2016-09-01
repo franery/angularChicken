@@ -9,6 +9,9 @@ public class Controlador {
 	public static final String ADMIN_VIEW = "administrador/principal";
 	public static final String VACIA_VIEW = "vacia";
 	
+	protected static int NUEVO = 0;
+	protected static int MODIFICAR = 1;
+	
 	protected static UsuarioDTO usuario;
 	
 	public static void setUsuario(UsuarioDTO user) {

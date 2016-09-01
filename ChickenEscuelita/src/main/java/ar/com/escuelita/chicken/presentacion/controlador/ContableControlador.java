@@ -11,9 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
+import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IProveedorServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IVentaServicio;
+import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
 
@@ -29,10 +31,14 @@ public class ContableControlador extends Controlador{
 	@Autowired
 	private IVentaServicio ventaServicio;
 	
+	@Autowired
+	private IDepositoServicio depositoServicio;
+	
 	private static final String PROVEEDORES_VIEW = "contable/proveedores";
 	private static final String PROVEEDORES_NUEVO_VIEW = "contable/proveedoresNuevo";
 	private static final String GALLINEROS_VIEW = "contable/gallineros";
 	private static final String DEPOSITOS_VIEW = "contable/depositos";
+	private static final String DEPOSITOS_NUEVO_VIEW = "contable/depositosNuevo";
 	private static final String VENTAS_VIEW = "contable/ventas";
 	private static final String VENTAS_NUEVO_VIEW = "contable/ventasNuevo";
 	private static final String PRODUCCION_VIEW = "contable/produccion";
@@ -165,8 +171,60 @@ public class ContableControlador extends Controlador{
 			model = new ModelAndView(ADMIN_VIEW);
 		}
 		model.addObject("usuarioActual", usuario);
+		model.addObject("deposito",new DepositoDTO());
+		model.addObject("listaDepositos",depositoServicio.listar());
 		model.addObject("pageToLoad", DEPOSITOS_VIEW);
 		return model;
+	}
+	
+	@RequestMapping(path="depositosNuevoContable")
+	public ModelAndView depositosNuevoContable() {
+		ModelAndView model;
+		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
+			model = new ModelAndView(CONTABLE_VIEW);
+		}
+		else {
+			model = new ModelAndView(ADMIN_VIEW);
+		}
+		model.addObject("usuarioActual", usuario);
+		model.addObject("flag", NUEVO);
+		model.addObject("deposito", new DepositoDTO());
+		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
+		return model;
+	}
+	
+	@RequestMapping(path="/depositosModificarContable")
+	public ModelAndView depositosModificarContable(@ModelAttribute("deposito") DepositoDTO deposito) {
+		ModelAndView model;
+		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
+			model = new ModelAndView(CONTABLE_VIEW);
+		}
+		else {
+			model = new ModelAndView(ADMIN_VIEW);
+		}
+		model.addObject("usuarioActual", usuario);
+		model.addObject("flag", MODIFICAR);
+		model.addObject("deposito", deposito);
+		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
+		return model;
+	}
+	
+	@RequestMapping(path="/depositosBorrarContable")
+	public ModelAndView depositosBorrarContable(@ModelAttribute("deposito") DepositoDTO deposito) {
+		depositoServicio.borrar(deposito);
+		return new ModelAndView("redirect:/depositosContable");
+	}
+		
+	
+	@RequestMapping(path="/depositosModificarCrearNuevoContable")
+	public ModelAndView depositosCrearNuevoContable(@ModelAttribute("deposito") DepositoDTO deposito, @RequestParam("flag") int flag) {
+		if(flag == MODIFICAR) {
+			depositoServicio.modificar(deposito);
+		}
+		else {
+			depositoServicio.crear(deposito);
+		}
+		return new ModelAndView("redirect:/depositosContable");
 	}
 	
 	@RequestMapping(path="/ventasContable")
