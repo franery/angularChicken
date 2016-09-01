@@ -56,13 +56,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/principal")
 	public ModelAndView inicioContable() {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", VACIA_VIEW);
 		return model;
@@ -70,13 +64,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/proveedoresContable")
 	public ModelAndView proveedoresContable() {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaProveedores", listaProveedores);
@@ -87,13 +75,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/proveedoresNuevoContable")
 	public ModelAndView proveedoresNuevoContable(@RequestParam("flag") int flag) {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("flag", flag);
 		model.addObject("proveedor", new ProveedorDTO());
@@ -103,13 +85,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/proveedoresModificarContable")
 	public ModelAndView proveedoresModificarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("flag", flag);
 		model.addObject("proveedor", proveedor);
@@ -119,13 +95,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/proveedoresModificarCrearNuevoContable")
 	public ModelAndView proveedoresCrearNuevoContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		if(flag == 0) {
 			proveedorServicio.modificar(proveedor);
 		}
@@ -142,13 +112,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/proveedoresBorrarContable")
 	public ModelAndView proveedoresBorrarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor) {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		proveedorServicio.borrar(proveedor);
 		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
@@ -160,13 +124,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/gallinerosContable")
 	public ModelAndView gallinerosContable() {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", GALLINEROS_VIEW);
 		return model;
@@ -174,13 +132,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/depositosContable")
 	public ModelAndView depositosContable() {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito",new DepositoDTO());
 		model.addObject("listaDepositos",depositoServicio.listar());
@@ -190,13 +142,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="depositosNuevoContable")
 	public ModelAndView depositosNuevoContable() {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("flag", NUEVO);
 		model.addObject("deposito", new DepositoDTO());
@@ -206,13 +152,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/depositosModificarContable")
 	public ModelAndView depositosModificarContable(@ModelAttribute("deposito") DepositoDTO deposito) {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("flag", MODIFICAR);
 		model.addObject("deposito", deposito);
@@ -240,13 +180,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/ventasContable")
 	public ModelAndView ventasContable(@ModelAttribute("filtro") VentaFiltro filtro) {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		List<DTO> listaVentas = (List<DTO>) ventaServicio.listar(filtro);
 		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
@@ -259,13 +193,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/ventasNuevoContable")
 	public ModelAndView ventasNuevoContable() {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
 		model.addObject("listaProveedores", listaProveedores);
 		model.addObject("usuarioActual", usuario);
@@ -276,13 +204,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/ventasCrearNuevoContable")
 	public ModelAndView ventasCrearNuevoContable(@ModelAttribute("venta") VentaDTO venta) {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		ventaServicio.crear(venta);
 		List<DTO> listaVentas= (List<DTO>)ventaServicio.listar();
 		model.addObject("usuarioActual", usuario);
@@ -294,13 +216,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/produccionContable")
 	public ModelAndView produccionContable(@ModelAttribute("filtro") DepositoFiltro filtro) {
-		ModelAndView model;
-		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
-			model = new ModelAndView(CONTABLE_VIEW);
-		}
-		else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		
 		// Tabla Depositos | Stock Huevos

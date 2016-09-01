@@ -1,5 +1,6 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
+import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 public class Controlador {
@@ -20,5 +21,17 @@ public class Controlador {
 	
 	public static UsuarioDTO getUsuario() {
 		return usuario;
+	}
+	
+	protected String obtenerVista() {
+		if(usuario.getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
+			return ADMIN_VIEW;
+		}
+		else if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
+			return CONTABLE_VIEW;
+		}
+		else {
+			return PRODUCTOR_VIEW;
+		}
 	}
 }
