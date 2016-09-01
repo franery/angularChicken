@@ -8,7 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IDepositoDAO;
+import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
 import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
+import ar.com.escuelita.chicken.persistencia.modelo.VentaModel;
+import ar.com.escuelita.chicken.presentacion.filtro.DepositoFiltro;
+import ar.com.escuelita.chicken.presentacion.filtro.VentaFiltro;
 
 public class DepositoDAOImpl extends DAO implements IDepositoDAO {
 
@@ -55,5 +59,34 @@ public class DepositoDAOImpl extends DAO implements IDepositoDAO {
 		s.getTransaction().commit();
 		s.close();
 	}
+	
+	public List<DepositoModel> listar(DepositoFiltro filtro){
+		String query = "select deposito from DepositoModel as deposito";
+		
+		QueryParametrosUtil qp = generarConsulta(query, filtro);
+		List<DepositoModel> lista = (List<DepositoModel>) buscarUsandoQueryConParametros(qp);
+		return lista;
 
+	}
+
+
+	private QueryParametrosUtil generarConsulta(String query, DepositoFiltro filtro){
+		QueryParametrosUtil qp = new QueryParametrosUtil();
+		
+		String str = "";
+		
+		/*   Nombre   */
+		if (filtro.getDepositoNombre() != null) {
+			str += obtenerOperadorBusqueda(str) + " deposito.nombre like '%" + filtro.getDepositoNombre() + "%'";
+		}
+		
+		/*   Id   */
+		if (filtro.getDepositoId() != 0) {
+			str += obtenerOperadorBusqueda(str) + " deposito.id=" + filtro.getDepositoId();
+		}
+		
+		
+		qp.setSql(query + str);
+		return qp;
+	}
 }

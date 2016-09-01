@@ -1,6 +1,8 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +14,17 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
+import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IProveedorServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IVentaServicio;
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
+import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
+import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.DepositoFiltro;
+import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.VentaFiltro;
 
 @Controller
@@ -34,6 +41,9 @@ public class ContableControlador extends Controlador{
 	
 	@Autowired
 	private IDepositoServicio depositoServicio;
+	
+	@Autowired
+	private IMovimientoServicio movimientoServicio;
 	
 	private static final String PROVEEDORES_VIEW = "contable/proveedores";
 	private static final String PROVEEDORES_NUEVO_VIEW = "contable/proveedoresNuevo";
@@ -283,7 +293,7 @@ public class ContableControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/produccionContable")
-	public ModelAndView produccionContable() {
+	public ModelAndView produccionContable(@ModelAttribute("filtro") DepositoFiltro filtro) {
 		ModelAndView model;
 		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
 			model = new ModelAndView(CONTABLE_VIEW);
@@ -292,7 +302,35 @@ public class ContableControlador extends Controlador{
 			model = new ModelAndView(ADMIN_VIEW);
 		}
 		model.addObject("usuarioActual", usuario);
+		
+		// Tabla Depositos | Stock Huevos
+		model.addObject("listaDepositos", depositoServicio.listar(filtro));
+		model.addObject("listaDepositosDropDown", depositoServicio.listar());
+
+		
+		// Tabla Productores | Total Produccion
+		
+		
+		
+		Map<String, Long> totales = new Hashtable<String, Long>();
+		List<DTO> listaProductores = (List<DTO>) usuarioServicio.listar();
+			for (DTO productorActual : listaProductores) {
+				MovimientoFiltro m = new MovimientoFiltro();
+				m.setProductorId( ((UsuarioDTO)productorActual).getId() );
+				List<DTO> listaMovimientos = (List<DTO>) movimientoServicio.listar(m);
+				long sum = 0;
+			    for (DTO movimiento: listaMovimientos) {
+			        sum += ((MovimientoDTO)movimiento).getCantidad();
+			    }
+			    totales.put(((UsuarioDTO)productorActual).getNombre(), sum);
+			}
+		model.addObject("mapTotales", totales);
+			
+		//		model.addObject("mapTotales", usuarioService.getTotalesProduccion());
+
 		model.addObject("pageToLoad", PRODUCCION_VIEW);
 		return model;
 	}
+	
+	
 }

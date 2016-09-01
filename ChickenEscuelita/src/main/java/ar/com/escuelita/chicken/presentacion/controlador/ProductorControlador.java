@@ -38,15 +38,15 @@ public class ProductorControlador extends Controlador {
 	@RequestMapping("reportes")
 	public ModelAndView reportes() {
 		ModelAndView model;
+		MovimientoFiltro m = new MovimientoFiltro();
 		if (usuario.getPerfil().equals(EnumPerfil.PRODUCTOR)){
 			model = new ModelAndView(PRODUCTOR_VIEW);
+			m.setProductorId(usuario.getId());
 		} else {
 			model = new ModelAndView(ADMIN_VIEW);
 		}
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", REPORTES_VIEW);
-		MovimientoFiltro m = new MovimientoFiltro();
-		m.setProductorId(usuario.getId());
 		model.addObject("listaMovimientos",movimientoServicio.listar(m));
 		return model;
 	}

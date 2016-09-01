@@ -12,6 +12,81 @@
 </head>
 <body>
 
+		<!-- Tabla Depositos|Cant Huevos -->
+	<div>
+	
+	<form:form action="produccionContable" method="post" commandName="filtro">
+	<form:select path="depositoId">
+		<form:option value="0"><spring:message code="seleccionar" text="Seleccionar"/></form:option>
+		<c:forEach items="${listaDepositosDropDown}" var="deposito">
+			<form:option value="${deposito.getId()}"><c:out value="${deposito.getNombre()}"></c:out></form:option>
+		</c:forEach>
+	</form:select>
+	<form:input type="text" path="depositoNombre" />
+	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/>/>
+</form:form>
+	
+		<table id="tablita">
+			<thead>
+				<tr>
+					<th><spring:message code="deposito" text="Deposito"/></th>
+					<th><spring:message code="cantidadHuevos" text="Cantidad de Huevos"/></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:if test="${!empty listaDepositos}">
+					<c:forEach items="${listaDepositos}" var="depositoVar">
+						<tr>
+							<td><c:out value="${depositoVar.getNombre() }"></c:out></td>
+							<td><c:out value="${depositoVar.getStockHuevos() }"></c:out></td>
+						 </tr>
+					</c:forEach>
+				</c:if>
+				<c:if test="${empty listaDepositos}">
+					<tr>
+						<td colspan="5"><spring:message code="noHayDatos"/></td>
+					</tr>
+				</c:if>
+			</tbody>
+		</table>
+	</div>
+
+<br>
+<br>
+<br>
+
+		<!-- Tabla Productor|Produccion Total -->
+	<div>
+	<form:form action="filtroProductorTotalProduccion" method="POST" commandName="filtroProductorTotal">
+		<input type="text" name="nombre" placeholder="<spring:message code="productor" text="Nombre Productor"/>" />
+		<input type="submit" value="<spring:message code="filtrar" text="Filtrar"/>" />
+	</form:form>
+		<table id="tablita">
+			<thead>
+				<tr>
+					<th><spring:message code="productor" text="Productor"/></th>
+					<th><spring:message code="ProduccionTotal" text="Produccion Total"/></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:if test="${!empty mapTotales}">
+					<c:forEach items="${mapTotales}" var="productorMap">
+						<tr>
+							<td><c:out value="${productorMap.key }"></c:out></td>
+							<td><c:out value="${productorMap.value }"></c:out></td>
+						 </tr>
+					</c:forEach>
+				</c:if>
+				<c:if test="${empty mapTotales}">
+					<tr>
+						<td colspan="5"><spring:message code="noHayDatos"/></td>
+					</tr>
+				</c:if>
+			</tbody>
+		</table>
+	</div>
+
+
 PRODUCCION
 
 </body>

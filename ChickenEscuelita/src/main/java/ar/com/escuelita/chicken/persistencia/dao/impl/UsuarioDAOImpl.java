@@ -8,7 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
+import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
+import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
+import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
 public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 
@@ -55,4 +58,5 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 		s.getTransaction().commit();
 		s.close();
 	}
+	
 }

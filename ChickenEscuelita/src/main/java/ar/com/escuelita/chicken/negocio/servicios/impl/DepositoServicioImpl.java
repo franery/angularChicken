@@ -9,8 +9,11 @@ import ar.com.escuelita.chicken.negocio.mapeos.DepositoMapeador;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IDepositoDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
+import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.DepositoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
+import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
 public class DepositoServicioImpl extends Servicio implements IDepositoServicio {
 
@@ -66,8 +69,11 @@ public class DepositoServicioImpl extends Servicio implements IDepositoServicio 
 
 	@Override
 	public Collection<DTO> listar(Filtro filtro) {
-		// TODO Auto-generated method stub
-		return null;
+		DepositoFiltro depositoFiltro = (DepositoFiltro) filtro;
+		Collection<DepositoModel> listaDepositoModel = depositoDAO.listar(depositoFiltro);
+		Collection<DTO> listaDepositoDto = depositoMapeador.map(listaDepositoModel);
+		
+		return listaDepositoDto;
 	}
 
 	

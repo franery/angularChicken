@@ -1,5 +1,6 @@
 package ar.com.escuelita.chicken.presentacion.dto;
 
+
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 
@@ -10,7 +11,7 @@ public class UsuarioDTO extends DTO {
 	private String apellido;
 	private String contrasenia;
 	private EnumPerfil perfil;
-	
+		
 	public long getId() {
 		return id;
 	}
