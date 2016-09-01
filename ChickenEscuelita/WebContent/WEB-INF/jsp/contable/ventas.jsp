@@ -16,6 +16,20 @@
 	<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
 </form:form>
 
+<form:form action="ventasContable" method="post" commandName="filtro">
+	<form:select path="proveedorId">
+		<form:option value="0"><spring:message code="proveedor" text="Proveedor"/></form:option>
+		<c:forEach items="${listaProveedores}" var="proveedor">
+			<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
+		</c:forEach>
+	</form:select>
+	<form:input type="date" path="fechaDesde" placeholder="FechaDesde" />
+	<form:input type="date" path="fechaHasta" placeholder="FechaHasta" />
+	<form:input type="text" path="cantidadDesde" placeholder="CantidadDesde" />
+	<form:input type="text" path="cantidadHasta" placeholder="CantidadHasta" />
+	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/>/>
+</form:form>
+
 <table id="tablita">
 	<thead>
 		<tr>

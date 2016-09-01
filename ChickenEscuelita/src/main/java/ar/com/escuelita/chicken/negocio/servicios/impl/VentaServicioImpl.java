@@ -11,6 +11,7 @@ import ar.com.escuelita.chicken.persistencia.dao.IVentaDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.VentaModel;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
+import ar.com.escuelita.chicken.presentacion.filtro.VentaFiltro;
 
 public class VentaServicioImpl extends Servicio implements IVentaServicio {
 	
@@ -50,8 +51,7 @@ public class VentaServicioImpl extends Servicio implements IVentaServicio {
 
 	@Override
 	public Collection<DTO> listar(Filtro filtro) {
-		// TODO Auto-generated method stub
-		return null;
+		return ventaMapeador.map(ventaDAO.listar((VentaFiltro)filtro));
 	}
 
 }

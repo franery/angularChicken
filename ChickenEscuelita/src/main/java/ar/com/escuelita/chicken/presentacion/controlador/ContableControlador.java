@@ -16,6 +16,7 @@ import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IVentaServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.VentaFiltro;
 
 @Controller
 public class ContableControlador extends Controlador{
@@ -170,7 +171,7 @@ public class ContableControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/ventasContable")
-	public ModelAndView ventasContable() {
+	public ModelAndView ventasContable(@ModelAttribute("filtro") VentaFiltro filtro) {
 		ModelAndView model;
 		if(usuario.getPerfil().equals(EnumPerfil.CONTABLE)) {
 			model = new ModelAndView(CONTABLE_VIEW);
@@ -178,9 +179,11 @@ public class ContableControlador extends Controlador{
 		else {
 			model = new ModelAndView(ADMIN_VIEW);
 		}
-		List<DTO> listaVentas = (List<DTO>) ventaServicio.listar();
+		List<DTO> listaVentas = (List<DTO>) ventaServicio.listar(filtro);
+		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaVentas", listaVentas);
+		model.addObject("listaProveedores", listaProveedores);
 		model.addObject("venta", new VentaDTO());
 		model.addObject("pageToLoad", VENTAS_VIEW);
 		return model;

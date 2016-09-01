@@ -15,8 +15,6 @@ import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
 
 public class DAO {
 
-	private EntityManagerFactory entityManagerFactory;
-
 	@Autowired
 	protected SessionFactory sessionFactory;
 
