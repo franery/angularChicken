@@ -18,7 +18,7 @@
 <title>Reportes</title>
 </head>
 <body>
-	<form:form action="nuevoMovimiento" mehtod="GET">
+	<form:form action="nuevoMovimiento">
 		<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
 	</form:form>
 
