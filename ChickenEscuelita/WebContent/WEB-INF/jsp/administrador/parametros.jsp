@@ -21,7 +21,7 @@
 			<thead>
 				<tr>
 					<th><spring:message code="descripcion" text="Descripcion"/></th>
-					<th>Valor</th>
+					<th><spring:message code="valor" text="Valor"/></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,7 +48,7 @@
 				</c:if>
 				<c:if test="${empty listaParametros}">
 					<tr>
-						<td colspan="5">No hay datos disponibles por el momento</td>
+						<td colspan="5"><spring:message code="noHayDatos"/></td>
 					</tr>
 				</c:if>
 			</tbody>
