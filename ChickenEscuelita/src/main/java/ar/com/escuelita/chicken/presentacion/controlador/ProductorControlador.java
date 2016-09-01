@@ -47,6 +47,7 @@ public class ProductorControlador extends Controlador {
 		model.addObject("pageToLoad", REPORTES_VIEW);
 		MovimientoFiltro m = new MovimientoFiltro();
 		m.setProductorId(usuario.getId());
+		model.addObject("filtro",m);
 		model.addObject("listaMovimientos",movimientoServicio.listar(m));
 		return model;
 	}

@@ -79,14 +79,24 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 			str += " where u.id=" + filtro.getProductorId();
 		}
 		
-		/*   CANTIDAD   */
-		if (filtro.getCantidad() != null && !filtro.getCantidad().isEmpty()) {
-			str += obtenerOperadorBusqueda(str) + " mov.cantidad=" + filtro.getCantidad();
+		/*   CANTIDAD  DESDE */
+		if (filtro.getCantidadDesde() != null && !filtro.getCantidadDesde().isEmpty()) {
+			str += obtenerOperadorBusqueda(str) + " mov.cantidad>=" + filtro.getCantidadDesde();
 		}
 		
-		/*   FECHA   */
-		if (filtro.getFecha() != null && !filtro.getFecha().isEmpty()) {
-			str += obtenerOperadorBusqueda(str) + " mov.fecha='" + filtro.getFecha() + "'";
+		/*   CANTIDAD  HASTA*/
+		if (filtro.getCantidadHasta() != null && !filtro.getCantidadHasta().isEmpty()) {
+			str += obtenerOperadorBusqueda(str) + " mov.cantidad<=" + filtro.getCantidadHasta();
+		}
+		
+		/*   FECHA DESDE  */
+		if (filtro.getFechaDesde() != null && !filtro.getFechaDesde().isEmpty()) {
+			str += obtenerOperadorBusqueda(str) + " mov.fecha>='" + filtro.getFechaDesde() + "'";
+		}
+		
+		/*   FECHA HASTA*/
+		if (filtro.getFechaHasta() != null && !filtro.getFechaHasta().isEmpty()) {
+			str += obtenerOperadorBusqueda(str) + " mov.fecha<='" + filtro.getFechaHasta() + "'";
 		}
 		
 		qp.setSql(query + str);
