@@ -37,12 +37,7 @@ public class ProductorControlador extends Controlador {
 	
 	@RequestMapping("reportes")
 	public ModelAndView reportes() {
-		ModelAndView model;
-		if (usuario.getPerfil().equals(EnumPerfil.PRODUCTOR)){
-			model = new ModelAndView(PRODUCTOR_VIEW);
-		} else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", REPORTES_VIEW);
 		MovimientoFiltro m = new MovimientoFiltro();
@@ -54,12 +49,7 @@ public class ProductorControlador extends Controlador {
 	
 	@RequestMapping(path="reportesFiltro")
 	public ModelAndView reportesConFiltro(@ModelAttribute("filtro") MovimientoFiltro filtro) {
-		ModelAndView model;
-		if (usuario.getPerfil().equals(EnumPerfil.PRODUCTOR)){
-			model = new ModelAndView(PRODUCTOR_VIEW);
-		} else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", REPORTES_VIEW);
 		filtro.setProductorId(usuario.getId());
@@ -69,12 +59,7 @@ public class ProductorControlador extends Controlador {
 	
 	@RequestMapping("nuevoMovimiento")
 	public ModelAndView nuevoMovimiento() {
-		ModelAndView model;
-		if (usuario.getPerfil().equals(EnumPerfil.PRODUCTOR)){
-			model = new ModelAndView(PRODUCTOR_VIEW);
-		} else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("movimiento", new MovimientoDTO());
 		model.addObject("listaDepositos", depositoServicio.listar());
