@@ -3,6 +3,7 @@ package ar.com.escuelita.chicken.negocio.servicios.impl;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -62,8 +63,18 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	
 	@Override
 	public HashMap<UsuarioDTO, Long> getTotalesProduccion(){
-		usuarioDAO.getProduccionTotal();	
-		return null;
+		
+		HashMap<UsuarioModel, Long> hash = usuarioDAO.getProduccionTotal();
+		
+		HashMap<UsuarioDTO, Long> hashNuevo = new HashMap<UsuarioDTO, Long>();
+		
+	    Iterator it = hash.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        hashNuevo.put((UsuarioDTO) usuarioMapeador.map((UsuarioModel)pair.getKey()), (Long)pair.getValue());
+	    }
+	    return hashNuevo;
+	    
 	}
 
 

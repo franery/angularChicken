@@ -69,15 +69,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:if test="${!empty mapTotales}">
-					<c:forEach items="${mapTotales}" var="productorMap">
+				<c:if test="${!empty hashTotales}">
+					<c:forEach items="${hashTotales}" var="hashProductor">
 						<tr>
-							<td><c:out value="${productorMap.key }"></c:out></td>
-							<td><c:out value="${productorMap.value }"></c:out></td>
+							<td><c:out value="${hashProductor.key.getNombre() }"></c:out></td>
+							<td><c:out value="${hashProductor.value }"></c:out></td>
 						 </tr>
 					</c:forEach>
 				</c:if>
-				<c:if test="${empty mapTotales}">
+				<c:if test="${empty hashTotales}">
 					<tr>
 						<td colspan="5"><spring:message code="noHayDatos"/></td>
 					</tr>

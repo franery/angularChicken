@@ -1,6 +1,7 @@
 package ar.com.escuelita.chicken.persistencia.dao.impl;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -72,9 +73,20 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 		
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 		qp.setSql(query);
+		
 		List list = buscarUsandoQueryConParametros(qp);
-		System.out.println("pasaba por aca...");
-		return null;
+		
+		Iterator iterator = list.iterator();
+
+		HashMap<UsuarioModel, Long> hash = new HashMap<UsuarioModel, Long>();
+		while ( iterator.hasNext() ) {
+			Object[] tuple = (Object[]) iterator.next();
+			UsuarioModel kitten = (UsuarioModel) tuple[0];
+			Long mother = (Long) tuple[1];
+			hash.put(kitten, mother);
+		}
+		
+		return hash;
 	}
 //	
 //	private QueryParametrosUtil generarConsulta(String query, MovimientoFiltro filtro){
