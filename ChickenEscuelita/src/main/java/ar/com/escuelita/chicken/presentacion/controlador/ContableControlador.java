@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
+import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
@@ -141,7 +142,9 @@ public class ContableControlador extends Controlador{
 	@RequestMapping(path="/gallinerosNuevoContable")
 	public ModelAndView gallinerosNuevoContable() {
 		ModelAndView model = new ModelAndView(obtenerVista());
+				
 		model.addObject("usuarioActual", usuario);
+		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
 		model.addObject("flag", NUEVO);
 		model.addObject("gallinero", new GallineroDTO());
 		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
@@ -152,10 +155,30 @@ public class ContableControlador extends Controlador{
 	@RequestMapping(path="/gallinerosModificarContable")
 	public ModelAndView gallinerosModificarContable(@ModelAttribute("gallinero") GallineroDTO gallinero) {
 		ModelAndView model = new ModelAndView(obtenerVista());
+		
+		model.addObject("usuarioActual", usuario);
+		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
 		model.addObject("flag", MODIFICAR);
 		model.addObject("gallinero", gallinero);
 		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
 		return model;
+	}
+	
+	@RequestMapping(path="/gallinerosModificarCrearNuevoContable")
+	public ModelAndView gallinerosModificarCrearNuevoContable(@ModelAttribute("gallinero") GallineroDTO gallinero, @RequestParam("flag") int flag) {
+		ModelAndView model = new ModelAndView(obtenerVista());
+
+		if(flag == MODIFICAR) {
+			gallineroServicio.modificar(gallinero);
+		}
+		else {
+			gallineroServicio.crear(gallinero);
+		}
+		model.addObject("usuarioActual", usuario);
+		model.addObject("gallinero",new GallineroDTO());
+		model.addObject("listaGallineros",gallineroServicio.listar());
+		model.addObject("pageToLoad", GALLINEROS_VIEW);
+		return new ModelAndView("redirect:/gallinerosContable");
 	}
 	
 	@RequestMapping(path="/gallinerosBorrarContable")

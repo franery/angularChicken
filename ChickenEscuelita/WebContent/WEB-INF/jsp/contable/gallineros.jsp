@@ -13,8 +13,7 @@
 <body>
 
 
-	<form:form action="gallinerosNuevoContable" method="post"
-		commandName="gallinero">
+	<form:form action="gallinerosNuevoContable" method="post" commandName="gallinero">
 		<input type="hidden" name="flag" value="1" />
 		<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
 	</form:form>
@@ -34,24 +33,25 @@
 					<td><c:out value="${gallinero.getUsuarioNombre()}"></c:out></td>
 					<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
 					<td>
-						<form:form action="gallinerosBorrarContable" method="post"
-							commandName="gallinero">
+						<form:form action="gallinerosBorrarContable" method="post" commandName="gallinero">
 							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
 							<input type="submit"
 								value=<spring:message code="borrar" text="Borrar"/> />
 						</form:form>
 					</td>
 					<td>
-						<form:form action="gallinerosModificarContable"
-							method="post" commandName="gallinero">
-							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
+						<form:form action="gallinerosModificarContable" method="post" commandName="gallinero">
+							<form:input path="id" type="hidden" 
+								value="${gallinero.getId()}" />
+							<form:input path="usuarioId" type="hidden"
+								value="${gallinero.getUsuarioId()}" />
 							<form:input path="nombre" type="hidden"
 								value="${gallinero.getNombre()}" />
 							<form:input path="usuarioNombre" type="hidden"
 								value="${gallinero.getUsuarioNombre()}" />
 							<form:input path="stockGallinas" type="hidden"
 								value="${gallinero.getStockGallinas()}" />
-							<input type="submit"
+							<input type="submit" 
 								value=<spring:message code="modificar" text="Modificar"/> />
 						</form:form>
 					</td>

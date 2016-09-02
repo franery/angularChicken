@@ -19,22 +19,28 @@
 	<table>
 		<tr>
 			<td><form:label path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label></td>
-			<td><form:input path="nombre" value="${gallinero.getNombre()}"/></td>
+			<td><form:input path="nombre" value="${gallinero.getNombre()}" /></td>
 		</tr>
 		<tr>
-			<td><form:label path="direccion"><spring:message code="direccion" text="Direccion"/>:</form:label></td>
-			<td><form:input path="direccion" value="${gallinero.getDireccion()}"/></td>
+			<td><form:label path="usuarioId"><spring:message code="usuario" text="Usuario"/>:</form:label></td>
+			<td>
+				<form:select path="usuarioId">
+					<form:option value="0"><spring:message code="seleccionar" /></form:option>
+						<c:forEach items="${listaUsuarios}" var="usuario">
+							<form:option value="${usuario.getId()}">
+								<c:out value="${usuario.getNombre()}"></c:out>
+							</form:option>
+						</c:forEach>
+				</form:select>
+			</td>
 		</tr>
 		<tr>
-			<td><form:label path="mail"><spring:message code="mail" text="Mail"/>:</form:label></td>
-			<td><form:input path="mail" value="${gallinero.getMail()}"/></td>
+			<td><form:label path="stockGallinas"><spring:message code="stock" text="Stock"/>:</form:label></td>
+			<td><form:input path="stockGallinas"  value="${gallinero.getStockGallinas()}" /></td>
 		</tr>
-		<tr>
-			<td><form:label path="telefono"><spring:message code="telefono" text="Telefono"/>:</form:label></td>
-			<td><form:input path="telefono" value="${gallinero.getTelefono()}"/></td>
-		</tr>
+		
 	</table>
-	<input type="hidden" name="flag" value="${flag}"/>
+	<input type="hidden" name="flag" value="${flag}"/>	
 	<input type="submit" value=<spring:message code="guardar"/> />
 </form:form>
 
