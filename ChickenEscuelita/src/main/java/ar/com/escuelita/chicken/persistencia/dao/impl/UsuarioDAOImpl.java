@@ -35,6 +35,14 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 		session.close();
 		return lista;
 	}
+	
+	public List<UsuarioModel> listarProductores(){
+		Session session = sessionFactory.openSession();
+		@SuppressWarnings("unchecked")
+		List<UsuarioModel> lista = session.createQuery("from UsuarioModel E where E.perfil='PRODUCTOR'").list();
+		session.close();
+		return lista;	}
+
 
 	@Transactional
 	public void guardar(UsuarioModel usuarioModel) {
@@ -63,8 +71,6 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 		s.getTransaction().commit();
 		s.close();
 	}
-	
-	
 	
 	@Override
 	public HashMap<UsuarioModel, Long> getProduccionTotal(UsuarioFiltro usuarioFiltro) {

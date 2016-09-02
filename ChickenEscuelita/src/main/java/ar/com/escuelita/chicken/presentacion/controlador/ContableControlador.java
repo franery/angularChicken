@@ -229,8 +229,7 @@ public class ContableControlador extends Controlador{
 		
 		// Tabla Productores | Total Produccion
 		model.addObject("hashTotales", usuarioServicio.getTotalesProduccion(usuarioFiltro));
-		//model.addObject("listaProductoresDropDown", usuarioServicio.listarProductores());
-		model.addObject("listaProductoresDropDown", usuarioServicio.listar());
+		model.addObject("listaProductoresDropDown", usuarioServicio.listarProductores());
 
 		model.addObject("pageToLoad", PRODUCCION_VIEW);
 		return model;

@@ -78,5 +78,10 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	    
 	}
 
+	@Override
+	public Collection<DTO> listarProductores() {
+		return usuarioMapeador.map(usuarioDAO.listarProductores());
+	}
+
 
 }
