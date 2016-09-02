@@ -14,7 +14,7 @@
 
 		<!-- Tabla Depositos|Cant Huevos -->
 	<div>
-	
+	<h2> <spring:message code="tablaDepositosStock"/></h2>
 	<form:form action="produccionContable" method="post" commandName="depositoFiltro">
 	<form:select path="depositoId">
 		<form:option value="0"><spring:message code="seleccionar" text="Seleccionar"/></form:option>
@@ -52,11 +52,11 @@
 	</div>
 
 <br>
-<br>
-<br>
+
 
 		<!-- Tabla Productor|Produccion Total -->
 	<div>
+	<h2> <spring:message code="tablaTotalesProductor"/></h2>
 
 	<form:form action="produccionContable" method="post" commandName="usuarioFiltro">
 	<form:select path="id">
