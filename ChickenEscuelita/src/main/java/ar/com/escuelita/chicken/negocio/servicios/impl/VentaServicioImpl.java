@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.negocio.mapeos.VentaMapeador;
 import ar.com.escuelita.chicken.negocio.servicios.IVentaServicio;
+import ar.com.escuelita.chicken.persistencia.dao.IDepositoDAO;
 import ar.com.escuelita.chicken.persistencia.dao.IVentaDAO;
+import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.VentaModel;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
@@ -20,6 +22,9 @@ public class VentaServicioImpl extends Servicio implements IVentaServicio {
 	
 	@Autowired
 	IVentaDAO ventaDAO;
+	
+	@Autowired
+	IDepositoDAO depositoDAO;
 	
 	@Override
 	public DTO buscar(long id) {
@@ -34,6 +39,15 @@ public class VentaServicioImpl extends Servicio implements IVentaServicio {
 	@Override
 	public void crear(DTO dto) {
 		ventaDAO.guardar((VentaModel)ventaMapeador.map(dto, null));
+		DepositoModel nuevoDeposito = new DepositoModel();
+		for(DepositoModel deposito : depositoDAO.listar()) {
+			if(deposito.getStockHuevos() >= ((VentaDTO)dto).getCantidad()) {
+				nuevoDeposito = deposito;
+				nuevoDeposito.setStockHuevos(nuevoDeposito.getStockHuevos() - ((VentaDTO)dto).getCantidad());
+				break;
+			}
+		}
+		depositoDAO.modificar(nuevoDeposito);
 	}
 
 	@Override

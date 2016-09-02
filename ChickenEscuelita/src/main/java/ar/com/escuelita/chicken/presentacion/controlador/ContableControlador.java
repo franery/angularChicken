@@ -27,6 +27,7 @@ import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.DepositoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
+import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.VentaFiltro;
 
 @Controller
@@ -242,28 +243,30 @@ public class ContableControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaVentas", listaVentas);
 		model.addObject("proveedor", new VentaDTO());
+		model.addObject("filtro", new VentaFiltro());
 		model.addObject("pageToLoad", VENTAS_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/produccionContable")
-	public ModelAndView produccionContable(@ModelAttribute("filtro") DepositoFiltro filtro) {
+	public ModelAndView produccionContable(@ModelAttribute("usuarioFiltro") UsuarioFiltro usuarioFiltro, @ModelAttribute("depositoFiltro") 
+	DepositoFiltro depositoFiltro) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		
 		// Tabla Depositos | Stock Huevos
-		model.addObject("listaDepositos", depositoServicio.listar(filtro));
+		model.addObject("listaDepositos", depositoServicio.listar(depositoFiltro));
 		model.addObject("listaDepositosDropDown", depositoServicio.listar());
 
 		
 		// Tabla Productores | Total Produccion
-		
-			
-		model.addObject("hashTotales", usuarioServicio.getTotalesProduccion());
+		model.addObject("hashTotales", usuarioServicio.getTotalesProduccion(usuarioFiltro));
+		model.addObject("listaProductoresDropDown", usuarioServicio.listarProductores());
 
 		model.addObject("pageToLoad", PRODUCCION_VIEW);
 		return model;
 	}
 	
+
 	
 }

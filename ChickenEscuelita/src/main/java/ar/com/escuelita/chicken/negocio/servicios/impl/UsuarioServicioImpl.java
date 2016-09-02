@@ -18,6 +18,7 @@ import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
+import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 
 public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	
@@ -62,9 +63,9 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	}
 	
 	@Override
-	public HashMap<UsuarioDTO, Long> getTotalesProduccion(){
+	public HashMap<UsuarioDTO, Long> getTotalesProduccion(UsuarioFiltro usuarioFiltro){
 		
-		HashMap<UsuarioModel, Long> hash = usuarioDAO.getProduccionTotal();
+		HashMap<UsuarioModel, Long> hash = usuarioDAO.getProduccionTotal(usuarioFiltro);
 		
 		HashMap<UsuarioDTO, Long> hashNuevo = new HashMap<UsuarioDTO, Long>();
 		
@@ -75,6 +76,11 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	    }
 	    return hashNuevo;
 	    
+	}
+
+	@Override
+	public Collection<DTO> listarProductores() {
+		return usuarioMapeador.map(usuarioDAO.listarProductores());
 	}
 
 
