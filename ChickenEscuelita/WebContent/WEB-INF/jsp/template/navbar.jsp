@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/navbar.css" />
+<jsp:include page="importacion.jsp"></jsp:include>
 <body>
 
 	<ul class="ul">
