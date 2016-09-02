@@ -2,6 +2,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/navbar.css" />
+<jsp:include page="importacion.jsp"></jsp:include>
 <body>
 	<ul class="ul">
 		<li class="liLeft" id="text">${Title}</li>
