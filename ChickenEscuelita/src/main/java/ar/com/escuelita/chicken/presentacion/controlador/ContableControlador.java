@@ -211,6 +211,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaVentas", listaVentas);
 		model.addObject("proveedor", new VentaDTO());
+		model.addObject("filtro", new VentaFiltro());
 		model.addObject("pageToLoad", VENTAS_VIEW);
 		return model;
 	}
