@@ -12,11 +12,9 @@
 </head>
 <body>
 
-	GALLINEROS
 
-
-	<form:form action="proveedoresNuevoContable" method="post"
-		commandName="proveedor">
+	<form:form action="gallinerosNuevoContable" method="post"
+		commandName="gallinero">
 		<input type="hidden" name="flag" value="1" />
 		<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
 	</form:form>
@@ -25,39 +23,38 @@
 		<thead>
 			<tr>
 				<th>Nombre</th>
-				<th>Direccion</th>
-				<th>Mail</th>
-				<th>Telefono</th>
+				<th>Nombre del usuario</th>
+				<th>Stock</th>
 			</tr>
 		</thead>
-		<c:if test="${!empty listaProveedores}">
-			<c:forEach items="${listaProveedores}" var="proveedor">
+		<c:if test="${!empty listaGallineros}">
+			<c:forEach items="${listaGallineros}" var="gallinero">
 				<tr>
-					<td><c:out value="${proveedor.getNombre()}"></c:out></td>
-					<td><c:out value="${proveedor.getDireccion()}"></c:out></td>
-					<td><c:out value="${proveedor.getMail()}"></c:out></td>
-					<td><c:out value="${proveedor.getTelefono()}"></c:out></td>
-					<td><form:form action="proveedoresBorrarContable"
-							method="post" commandName="proveedor">
-							<form:input path="id" type="hidden" value="${proveedor.getId()}" />
+					<td><c:out value="${gallinero.getNombre()}"></c:out></td>
+					<td><c:out value="${gallinero.getUsuarioNombre()}"></c:out></td>
+					<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
+					<td>
+						<form:form action="gallinerosBorrarContable" method="post"
+							commandName="gallinero">
+							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
 							<input type="submit"
 								value=<spring:message code="borrar" text="Borrar"/> />
-						</form:form></td>
-					<td><form:form action="proveedoresModificarContable"
-							method="post" commandName="proveedor">
-							<form:input path="id" type="hidden" value="${proveedor.getId()}" />
+						</form:form>
+					</td>
+					<td>
+						<form:form action="gallinerosModificarContable"
+							method="post" commandName="gallinero">
+							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
 							<form:input path="nombre" type="hidden"
-								value="${proveedor.getNombre()}" />
-							<form:input path="direccion" type="hidden"
-								value="${proveedor.getDireccion()}" />
-							<form:input path="mail" type="hidden"
-								value="${proveedor.getMail()}" />
-							<form:input path="telefono" type="hidden"
-								value="${proveedor.getTelefono()}" />
-							<input type="hidden" name="flag" value="0" />
+								value="${gallinero.getNombre()}" />
+							<form:input path="usuarioNombre" type="hidden"
+								value="${gallinero.getUsuarioNombre()}" />
+							<form:input path="stockGallinas" type="hidden"
+								value="${gallinero.getStockGallinas()}" />
 							<input type="submit"
 								value=<spring:message code="modificar" text="Modificar"/> />
-						</form:form></td>
+						</form:form>
+					</td>
 				</tr>
 			</c:forEach>
 		</c:if>

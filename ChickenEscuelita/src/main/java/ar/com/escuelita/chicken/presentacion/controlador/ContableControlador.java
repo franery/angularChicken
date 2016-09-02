@@ -133,6 +133,8 @@ public class ContableControlador extends Controlador{
 	public ModelAndView gallinerosContable() {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
+		model.addObject("gallinero",new GallineroDTO());
+		model.addObject("listaGallineros",gallineroServicio.listar());
 		model.addObject("pageToLoad", GALLINEROS_VIEW);
 		return model;
 	}
