@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.negocio.mapeos.MovimientoMapeador;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
+import ar.com.escuelita.chicken.persistencia.dao.IDepositoDAO;
 import ar.com.escuelita.chicken.persistencia.dao.IMovimientoDAO;
+import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
@@ -20,6 +22,9 @@ public class MovimientoServicioImpl extends Servicio implements IMovimientoServi
 	
 	@Autowired
 	IMovimientoDAO movimientoDAO;
+	
+	@Autowired
+	IDepositoDAO depositoDAO;
 	
 	@Override
 	public DTO buscar(long id) {
@@ -34,13 +39,16 @@ public class MovimientoServicioImpl extends Servicio implements IMovimientoServi
 	@Override
 	public void crear(DTO dto) {
 		movimientoDAO.guardar((MovimientoModel)movimientoMapeador.map(dto, null));
+		DepositoModel nuevoDeposito = depositoDAO.get(((MovimientoDTO)dto).getDepositoId());
+		nuevoDeposito.setStockHuevos(nuevoDeposito.getStockHuevos()+((MovimientoDTO)dto).getCantidad());
+		depositoDAO.modificar(nuevoDeposito);
 	}
 
 	@Override
 	public void modificar(DTO dto) {
 		MovimientoModel movimientoModel = (MovimientoModel)movimientoMapeador.map(dto, null);
 		MovimientoDTO movimientoDTO = (MovimientoDTO) dto;
-		movimientoModel.setId(movimientoDTO.getId());		
+		movimientoModel.setId(movimientoDTO.getId());
 		movimientoDAO.modificar(movimientoModel);
 	}
 
