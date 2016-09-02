@@ -15,7 +15,7 @@
 		<!-- Tabla Depositos|Cant Huevos -->
 	<div>
 	
-	<form:form action="produccionContable" method="post" commandName="filtro">
+	<form:form action="produccionContable" method="post" commandName="depositoFiltro">
 	<form:select path="depositoId">
 		<form:option value="0"><spring:message code="seleccionar" text="Seleccionar"/></form:option>
 		<c:forEach items="${listaDepositosDropDown}" var="deposito">
@@ -57,14 +57,30 @@
 
 		<!-- Tabla Productor|Produccion Total -->
 	<div>
-	<form:form action="filtroProductorTotalProduccion" method="POST" commandName="filtroProductorTotal">
-		<input type="text" name="nombre" placeholder="<spring:message code="productor" text="Nombre Productor"/>" />
-		<input type="submit" value="<spring:message code="filtrar" text="Filtrar"/>" />
-	</form:form>
+
+	<form:form action="produccionContable" method="post" commandName="usuarioFiltro">
+	<form:select path="id">
+		<form:option value="0"><spring:message code="seleccionar" text="Seleccionar"/></form:option>
+		<c:forEach items="${listaProductoresDropDown}" var="productor">
+			<form:option value="${productor.getId()}"><c:out value="${productor.getNombre()}"></c:out></form:option>
+		</c:forEach>
+	</form:select>
+	<form:label path="nombre"> <spring:message code="nombre"/> </form:label>
+	<form:input type="text" path="nombre"  />
+	<form:label path="apellido"> <spring:message code="apellido"/> </form:label>
+	<form:input type="text" path="apellido" />
+	
+	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/> />
+</form:form>
+
+
+
+
 		<table id="tablita">
 			<thead>
 				<tr>
-					<th><spring:message code="productor" text="Productor"/></th>
+					<th><spring:message code="nombre" text="Productor"/></th>
+					<th><spring:message code="apellido" text="Productor"/></th>
 					<th><spring:message code="ProduccionTotal" text="Produccion Total"/></th>
 				</tr>
 			</thead>
@@ -73,6 +89,7 @@
 					<c:forEach items="${hashTotales}" var="hashProductor">
 						<tr>
 							<td><c:out value="${hashProductor.key.getNombre() }"></c:out></td>
+							<td><c:out value="${hashProductor.key.getApellido() }"></c:out></td>
 							<td><c:out value="${hashProductor.value }"></c:out></td>
 						 </tr>
 					</c:forEach>
@@ -87,7 +104,6 @@
 	</div>
 
 
-PRODUCCION
 
 </body>
 </html>
