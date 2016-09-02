@@ -101,6 +101,10 @@ div.pantalla{
 
 #tablita tr:hover {background-color: #ddd;}
 
+.depositoRojo {
+	background-color:#FF0000;
+}
+
 #tablita th {
     padding-top: 12px;
     padding-bottom: 12px;

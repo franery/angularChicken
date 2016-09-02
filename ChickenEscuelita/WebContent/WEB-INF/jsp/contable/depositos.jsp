@@ -27,7 +27,16 @@
 	</thead>
 	<c:if test="${!empty listaDepositos}">
 		<c:forEach items="${listaDepositos}" var="deposito">
-			<tr>
+				<c:choose>
+					<c:when
+						test="${deposito.getStockHuevos() > deposito.getStockMaximo()}">
+						<tr class="depositoRojo">
+					</c:when>
+					<c:otherwise>
+						<tr>
+					</c:otherwise>
+				</c:choose>
+
 				<td><c:out value="${deposito.getNombre()}"></c:out></td>
 				<td><c:out value="${deposito.getStockHuevos()}"></c:out></td>
 				<td><c:out value="${deposito.getStockMaximo()}"></c:out></td>
@@ -50,5 +59,6 @@
 		</c:forEach>
 	</c:if>
 </table>
+
 </body>
 </html>
