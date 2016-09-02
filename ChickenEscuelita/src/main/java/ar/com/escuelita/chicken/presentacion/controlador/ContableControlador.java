@@ -14,11 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
+import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IProveedorServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IVentaServicio;
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
+import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
@@ -45,9 +47,13 @@ public class ContableControlador extends Controlador{
 	@Autowired
 	private IMovimientoServicio movimientoServicio;
 	
+	@Autowired
+	private IGallineroServicio gallineroServicio;
+	
 	private static final String PROVEEDORES_VIEW = "contable/proveedores";
 	private static final String PROVEEDORES_NUEVO_VIEW = "contable/proveedoresNuevo";
 	private static final String GALLINEROS_VIEW = "contable/gallineros";
+	private static final String GALLINEROS_NUEVO_VIEW = "contable/gallinerosNuevo";
 	private static final String DEPOSITOS_VIEW = "contable/depositos";
 	private static final String DEPOSITOS_NUEVO_VIEW = "contable/depositosNuevo";
 	private static final String VENTAS_VIEW = "contable/ventas";
@@ -128,6 +134,32 @@ public class ContableControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", GALLINEROS_VIEW);
 		return model;
+	}
+
+	@RequestMapping(path="/gallinerosNuevoContable")
+	public ModelAndView gallinerosNuevoContable() {
+		ModelAndView model = new ModelAndView(obtenerVista());
+		model.addObject("usuarioActual", usuario);
+		model.addObject("flag", NUEVO);
+		model.addObject("gallinero", new GallineroDTO());
+		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
+		return model;
+	}
+	
+
+	@RequestMapping(path="/gallinerosModificarContable")
+	public ModelAndView gallinerosModificarContable(@ModelAttribute("gallinero") GallineroDTO gallinero) {
+		ModelAndView model = new ModelAndView(obtenerVista());
+		model.addObject("flag", MODIFICAR);
+		model.addObject("gallinero", gallinero);
+		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
+		return model;
+	}
+	
+	@RequestMapping(path="/gallinerosBorrarContable")
+	public ModelAndView gallinerosBorrarContable(@ModelAttribute("gallinero") GallineroDTO gallinero) {
+		gallineroServicio.borrar(gallinero);
+		return new ModelAndView("redirect:/gallineroContable");
 	}
 	
 	@RequestMapping(path="/depositosContable")
