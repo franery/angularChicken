@@ -184,7 +184,7 @@ public class ContableControlador extends Controlador{
 	@RequestMapping(path="/gallinerosBorrarContable")
 	public ModelAndView gallinerosBorrarContable(@ModelAttribute("gallinero") GallineroDTO gallinero) {
 		gallineroServicio.borrar(gallinero);
-		return new ModelAndView("redirect:/gallineroContable");
+		return new ModelAndView("redirect:/gallinerosContable");
 	}
 	
 	@RequestMapping(path="/depositosContable")
