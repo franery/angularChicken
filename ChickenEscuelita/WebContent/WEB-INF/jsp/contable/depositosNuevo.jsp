@@ -8,11 +8,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Nuevo Deposito</title>
+<title><spring:message code="depositoNuevo"/></title>
 </head>
 <body>
 
-<h1>Deposito</h1>
+<h1><spring:message code="depositoNuevo"/></h1>
 
 <form:form action="depositosModificarCrearNuevoContable" method="post" commandName="deposito">
 	<form:input path="id" type="hidden" value="${deposito.getId()}"/>

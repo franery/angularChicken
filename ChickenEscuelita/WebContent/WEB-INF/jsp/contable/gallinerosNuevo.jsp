@@ -8,21 +8,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Nuevo Gallinero</title>
+<title><spring:message code="gallineroNuevo"/></title>
 </head>
 <body>
 
-<h1>Gallinero</h1>
+<h1><spring:message code="gallineroNuevo"/></h1>
 
 <form:form action="gallinerosModificarCrearNuevoContable" method="post" commandName="gallinero">
 	<form:input path="id" type="hidden" value="${gallinero.getId()}"/>
 	<table>
 		<tr>
-			<td><form:label path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label></td>
+			<td><form:label path="nombre"><spring:message code="nombre"/>:</form:label></td>
 			<td><form:input path="nombre" value="${gallinero.getNombre()}" /></td>
 		</tr>
 		<tr>
-			<td><form:label path="usuarioId"><spring:message code="usuario" text="Usuario"/>:</form:label></td>
+			<td><form:label path="usuarioId"><spring:message code="usuario"/>:</form:label></td>
 			<td>
 				<form:select path="usuarioId">
 					<form:option value="0"><spring:message code="seleccionar" /></form:option>

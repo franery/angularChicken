@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Depositos</title>
+<title><spring:message code="depositos"/></title>
 </head>
 <body>
 
@@ -20,9 +20,9 @@
 <table id="tablita">
 	<thead>
 		<tr>
-			<th>Nombre</th>
-			<th>Stock</th>
-			<th>Stock Maximo</th>
+			<th><spring:message code="nombre"/></th>
+			<th><spring:message code="stock"/></th>
+			<th><spring:message code="stockMax"/></th>
 		</tr>
 	</thead>
 	<c:if test="${!empty listaDepositos}">

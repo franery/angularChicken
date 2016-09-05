@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Ventas</title>
+<title><spring:message code="ventas"/></title>
 </head>
 <body>
 
@@ -20,7 +20,7 @@
 	<table id="tablita">
 		<thead>
 			<tr>
-				<th>Filtros</th>
+				<th><spring:message code="filtros"/></th>
 			</tr>
 		</thead>
 		<tr>
@@ -36,15 +36,15 @@
 		</tr>
 		<tr>
 			<td><form:label path="fechaDesde"><spring:message code="fechaDesde"/>:</form:label></td>
-			<td><form:input type="date" path="fechaDesde" placeholder="FechaDesde" /></td>
+			<td><form:input type="date" path="fechaDesde" /></td>
 			<td><form:label path="fechaHasta"><spring:message code="fechaHasta"/>:</form:label></td>
-			<td><form:input type="date" path="fechaHasta" placeholder="FechaHasta" /></td>
+			<td><form:input type="date" path="fechaHasta" /></td>
 		</tr>
 		<tr>
 			<td><form:label path="cantidadDesde"><spring:message code="cantidadDesde"/>:</form:label></td>
-			<td><form:input type="text" path="cantidadDesde" placeholder="CantidadDesde" /></td>
+			<td><form:input type="text" path="cantidadDesde" /></td>
 			<td><form:label path="cantidadHasta"><spring:message code="cantidadHasta"/>:</form:label></td>
-			<td><form:input type="text" path="cantidadHasta" placeholder="CantidadHasta" /></td>
+			<td><form:input type="text" path="cantidadHasta" /></td>
 		</tr>
 	</table>
 	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/>/>

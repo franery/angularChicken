@@ -21,9 +21,9 @@
 	<table id="tablita">
 		<thead>
 			<tr>
-				<th>Nombre</th>
-				<th>Nombre del usuario</th>
-				<th>Stock</th>
+				<th><spring:message code="nombre"/></th>
+				<th><spring:message code="nombreUsuario"/></th>
+				<th><spring:message code="stock"/></th>
 			</tr>
 		</thead>
 		<c:if test="${!empty listaGallineros}">

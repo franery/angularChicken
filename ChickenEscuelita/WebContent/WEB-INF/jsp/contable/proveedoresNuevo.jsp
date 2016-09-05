@@ -8,11 +8,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Nuevo Proveedor</title>
+<title><spring:message code="proveedor"/></title>
 </head>
 <body>
 
-<h1>Proveedor</h1>
+<h1><spring:message code="proveedor"/></h1>
 
 <form:form action="proveedoresModificarCrearNuevoContable" method="post" commandName="proveedor">
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
