@@ -6,7 +6,7 @@ use db_chicken;
 
 create table Usuario (
 	id bigint(10) primary key not null auto_increment,
-	nombreUsuario varchar(50) not null,
+	nombreUsuario varchar(50) unique not null,
     nombre varchar(50) not null,
     apellido varchar(50) not null,
     perfil varchar(50) not null,
