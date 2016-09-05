@@ -19,11 +19,11 @@
 		<table>
 			<tr>
 				<td><spring:message code="descripcion" /></td>
-				<td><form:input path="descripcion" /></td>
+				<td><form:input path="descripcion" required="required"/></td>
 			</tr>
 			<tr>
 				<td><spring:message code="valor" /></td>
-				<td><form:input path="valor" /></td>
+				<td><form:input path="valor" required="required"/></td>
 			</tr>
 			<tr>
 				<td colspan="4" style="text-align: center;">

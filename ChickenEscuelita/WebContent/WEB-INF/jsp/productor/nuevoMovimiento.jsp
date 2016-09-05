@@ -18,7 +18,7 @@
 			<tr>
 				<td><form:label path="gallineroId">
 						<spring:message code="gallinero"/>:</form:label></td>
-				<td><form:select path="gallineroId">
+				<td><form:select path="gallineroId" required="required">
 						<form:option value="0">
 							<spring:message code="seleccioneGallinero"/>
 						</form:option>
@@ -30,7 +30,7 @@
 					</form:select></td>
 			</tr>
 			<tr>
-				<td><form:label path="depositoId">
+				<td><form:label path="depositoId" required="required">
 						<spring:message code="deposito"/>:</form:label></td>
 				<td><form:select path="depositoId">
 						<form:option value="0">
@@ -46,12 +46,12 @@
 			<tr>
 				<td><form:label path="cantidad">
 						<spring:message code="cantidad"/>:</form:label></td>
-				<td><form:input path="cantidad" /></td>
+				<td><form:input path="cantidad" required="required"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="fecha">
 						<spring:message code="fecha"/>:</form:label></td>
-				<td><form:input path="fecha" type="date" /></td>
+				<td><form:input path="fecha" type="date" required="required"/></td>
 			</tr>
 		</table>
 		<input type="submit" value=<spring:message code="guardar"/> />

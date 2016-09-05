@@ -19,21 +19,21 @@
 		<table>
 			<tr>
 				<td><spring:message code="nombreUsuario" /></td>
-				<td><form:input path="nombreUsuario" /></td>
+				<td><form:input path="nombreUsuario" required="required"/></td>
 			</tr>
 			<tr>
 				<td><spring:message code="nombre" /></td>
-				<td><form:input path="nombre" /></td>
+				<td><form:input path="nombre" required="required"/></td>
 				<td><spring:message code="apellido" /></td>
-				<td><form:input path="apellido" /></td>
+				<td><form:input path="apellido" required="required"/></td>
 			</tr>
 			<tr>
 				<td><spring:message code="contrasenia" /></td>
-				<td><form:input path="contrasenia" /></td>
+				<td><form:input path="contrasenia" type="password" required="required"/></td>
 			</tr>
 			<tr>
 				<td><spring:message code="perfil" /></td>
-				<td><form:select path="perfil">
+				<td><form:select path="perfil" required="required">
 						<option value=""><spring:message code="seleccionar" /></option>
 						<c:forEach var="perfil" items="${perfiles}">
 							<option value="${perfil}">  ${perfil.getName()}  </option>
