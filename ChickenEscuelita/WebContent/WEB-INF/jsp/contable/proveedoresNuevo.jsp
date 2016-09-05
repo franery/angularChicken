@@ -18,19 +18,19 @@
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
 	<table>
 		<tr>
-			<td><form:label path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label></td>
+			<td><form:label path="nombre"><spring:message code="nombre"/>:</form:label></td>
 			<td><form:input path="nombre" value="${proveedor.getNombre()}"/></td>
 		</tr>
 		<tr>
-			<td><form:label path="direccion"><spring:message code="direccion" text="Direccion"/>:</form:label></td>
+			<td><form:label path="direccion"><spring:message code="direccion"/>:</form:label></td>
 			<td><form:input path="direccion" value="${proveedor.getDireccion()}"/></td>
 		</tr>
 		<tr>
-			<td><form:label path="mail"><spring:message code="mail" text="Mail"/>:</form:label></td>
+			<td><form:label path="mail"><spring:message code="mail"/>:</form:label></td>
 			<td><form:input path="mail" value="${proveedor.getMail()}"/></td>
 		</tr>
 		<tr>
-			<td><form:label path="telefono"><spring:message code="telefono" text="Telefono"/>:</form:label></td>
+			<td><form:label path="telefono"><spring:message code="telefono"/>:</form:label></td>
 			<td><form:input path="telefono" value="${proveedor.getTelefono()}"/></td>
 		</tr>
 	</table>

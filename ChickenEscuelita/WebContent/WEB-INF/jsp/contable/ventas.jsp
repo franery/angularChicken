@@ -13,7 +13,7 @@
 <body>
 
 <form:form action="ventasNuevoContable" method="post" commandName="venta">
-	<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+	<input type="submit" value=<spring:message code="nuevo"/> />
 </form:form>
 
 <form:form action="ventasContable" method="post" commandName="filtro">
@@ -24,10 +24,10 @@
 			</tr>
 		</thead>
 		<tr>
-			<td><form:label path="proveedorId"><spring:message code="proveedor" text="Proveedor"/>:</form:label></td>
+			<td><form:label path="proveedorId"><spring:message code="proveedor"/>:</form:label></td>
 			<td>
 				<form:select path="proveedorId">
-					<form:option value="0"><spring:message code="proveedor" text="Proveedor"/></form:option>
+					<form:option value="0"><spring:message code="proveedor"/></form:option>
 						<c:forEach items="${listaProveedores}" var="proveedor">
 					<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
 				</c:forEach>
@@ -35,15 +35,15 @@
 			</td>
 		</tr>
 		<tr>
-			<td><form:label path="fechaDesde"><spring:message code="fechaDesde" text="FechaDesde"/>:</form:label></td>
+			<td><form:label path="fechaDesde"><spring:message code="fechaDesde"/>:</form:label></td>
 			<td><form:input type="date" path="fechaDesde" placeholder="FechaDesde" /></td>
-			<td><form:label path="fechaHasta"><spring:message code="fechaHasta" text="fechaHasta"/>:</form:label></td>
+			<td><form:label path="fechaHasta"><spring:message code="fechaHasta"/>:</form:label></td>
 			<td><form:input type="date" path="fechaHasta" placeholder="FechaHasta" /></td>
 		</tr>
 		<tr>
-			<td><form:label path="cantidadDesde"><spring:message code="cantidadDesde" text="cantidadDesde"/>:</form:label></td>
+			<td><form:label path="cantidadDesde"><spring:message code="cantidadDesde"/>:</form:label></td>
 			<td><form:input type="text" path="cantidadDesde" placeholder="CantidadDesde" /></td>
-			<td><form:label path="cantidadHasta"><spring:message code="cantidadHasta" text="cantidadHasta"/>:</form:label></td>
+			<td><form:label path="cantidadHasta"><spring:message code="cantidadHasta"/>:</form:label></td>
 			<td><form:input type="text" path="cantidadHasta" placeholder="CantidadHasta" /></td>
 		</tr>
 	</table>
@@ -53,10 +53,10 @@
 <table id="tablita">
 	<thead>
 		<tr>
-			<th>Proveedor</th>
-			<th>Fecha</th>
-			<th>Cantidad</th>
-			<th>Precio</th>
+			<th><spring:message code="proveedor"/></th>
+			<th><spring:message code="fecha"/></th>
+			<th><spring:message code="cantidad"/></th>
+			<th><spring:message code="precio"/></th>
 		</tr>
 	</thead>
 	<c:if test="${!empty listaVentas}">

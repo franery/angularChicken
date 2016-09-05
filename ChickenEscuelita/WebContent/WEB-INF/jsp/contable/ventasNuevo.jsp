@@ -19,7 +19,7 @@
 	<form:input path="usuarioId" type="hidden" value="${usuarioActual.getId()}"/>
 	<table>
 		<tr>
-			<td><form:label path="proveedorId"><spring:message code="proveedor" text="Proveedor"/>:</form:label></td>
+			<td><form:label path="proveedorId"><spring:message code="proveedor"/>:</form:label></td>
 			<td>
 				<form:select path="proveedorId">
 					<form:option value="0"><spring:message code="seleccionar" /></form:option>
@@ -30,15 +30,15 @@
 			</td>
 		</tr>
 		<tr>
-			<td><form:label path="fecha"><spring:message code="fecha" text="Fecha"/>:</form:label></td>
+			<td><form:label path="fecha"><spring:message code="fecha"/>:</form:label></td>
 			<td><form:input type="date" path="fecha"/></td>
 		</tr>
 		<tr>
-			<td><form:label path="cantidad"><spring:message code="cantidad" text="Cantidad"/>:</form:label></td>
+			<td><form:label path="cantidad"><spring:message code="cantidad"/>:</form:label></td>
 			<td><form:input path="cantidad"/></td>
 		</tr>
 		<tr>
-			<td><form:label path="precio"><spring:message code="precio" text="Precio"/>:</form:label></td>
+			<td><form:label path="precio"><spring:message code="precio"/>:</form:label></td>
 			<td><form:input path="precio"/></td>
 		</tr>
 	</table>

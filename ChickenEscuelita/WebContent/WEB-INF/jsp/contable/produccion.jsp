@@ -17,13 +17,13 @@
 	<h2> <spring:message code="tablaDepositosStock"/></h2>
 	<form:form action="produccionContable" method="post" commandName="depositoFiltro">
 	<form:select path="depositoId">
-		<form:option value="0"><spring:message code="seleccionar" text="Seleccionar"/></form:option>
+		<form:option value="0"><spring:message code="seleccionar"/></form:option>
 		<c:forEach items="${listaDepositosDropDown}" var="deposito">
 			<form:option value="${deposito.getId()}"><c:out value="${deposito.getNombre()}"></c:out></form:option>
 		</c:forEach>
 	</form:select>
 	<form:input type="text" path="depositoNombre" />
-	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/> />
+	<input type="submit" value=<spring:message code="filtrar"/> />
 </form:form>
 	
  
@@ -32,7 +32,7 @@
 			<thead>
 				<tr>
 					<th><spring:message code="deposito" text="Deposito"/></th>
-					<th><spring:message code="cantidadHuevos" text="Cantidad de Huevos"/></th>
+					<th><spring:message code="cantidadHuevos"/></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -62,7 +62,7 @@
 
 	<form:form action="produccionContable" method="post" commandName="usuarioFiltro">
 	<form:select path="id">
-		<form:option value="0"><spring:message code="seleccionar" text="Seleccionar"/></form:option>
+		<form:option value="0"><spring:message code="seleccionar"/></form:option>
 		<c:forEach items="${listaProductoresDropDown}" var="productor">
 			<form:option value="${productor.getId()}"><c:out value="${productor.getNombre()}"></c:out></form:option>
 		</c:forEach>
@@ -72,7 +72,7 @@
 	<form:label path="apellido"> <spring:message code="apellido"/> </form:label>
 	<form:input type="text" path="apellido" />
 	
-	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/> />
+	<input type="submit" value=<spring:message code="filtrar"/> />
 </form:form>
 
 
@@ -81,9 +81,9 @@
 		<table id="tablita">
 			<thead>
 				<tr>
-					<th><spring:message code="nombre" text="Productor"/></th>
-					<th><spring:message code="apellido" text="Productor"/></th>
-					<th><spring:message code="ProduccionTotal" text="Produccion Total"/></th>
+					<th><spring:message code="nombre"/></th>
+					<th><spring:message code="apellido"/></th>
+					<th><spring:message code="ProduccionTotal"/></th>
 				</tr>
 			</thead>
 			<tbody>

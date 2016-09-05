@@ -35,7 +35,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><form:label path="stockGallinas"><spring:message code="stock" text="Stock"/>:</form:label></td>
+			<td><form:label path="stockGallinas"><spring:message code="stock"/>:</form:label></td>
 			<td><form:input path="stockGallinas"  value="${gallinero.getStockGallinas()}" /></td>
 		</tr>
 		

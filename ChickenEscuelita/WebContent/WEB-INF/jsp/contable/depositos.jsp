@@ -14,7 +14,7 @@
 
 
 <form:form action="depositosNuevoContable" method="post" commandName="deposito">
-	<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+	<input type="submit" value=<spring:message code="nuevo"/> />
 </form:form>
 
 <table id="tablita">
@@ -43,7 +43,7 @@
 				<td>
 					<form:form action="depositosBorrarContable" method="post" commandName="deposito">
 						<form:input path="id" type="hidden" value="${deposito.getId()}"/>
-						<input type="submit" value=<spring:message code="borrar" text="Borrar"/> />
+						<input type="submit" value=<spring:message code="borrar"/> />
 					</form:form>
 				</td>
 				<td>
@@ -52,7 +52,7 @@
 						<form:input path="nombre" type="hidden" value="${deposito.getNombre()}"/>
 						<form:input path="stockHuevos" type="hidden" value="${deposito.getStockHuevos()}"/>
 						<form:input path="stockMaximo" type="hidden" value="${deposito.getStockMaximo()}"/>
-						<input type="submit" value=<spring:message code="modificar" text="Modificar"/> />
+						<input type="submit" value=<spring:message code="modificar"/> />
 					</form:form>
 				</td>
 			</tr>

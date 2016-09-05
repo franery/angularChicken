@@ -14,16 +14,16 @@
 
 <form:form action="proveedoresNuevoContable" method="post" commandName="proveedor">
 	<input type="hidden" name="flag" value="1"/>
-	<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+	<input type="submit" value=<spring:message code="nuevo"/> />
 </form:form>
 
 <table id="tablita">
 	<thead>
 		<tr>
-			<th>Nombre</th>
-			<th>Direccion</th>
-			<th>Mail</th>
-			<th>Telefono</th>
+			<th><spring:message code="nombre"/></th>
+			<th><spring:message code="direccion"/></th>
+			<th><spring:message code="mail"/></th>
+			<th><spring:message code="telefono"/></th>
 		</tr>
 	</thead>
 	<c:if test="${!empty listaProveedores}">
@@ -36,7 +36,7 @@
 				<td>
 					<form:form action="proveedoresBorrarContable" method="post" commandName="proveedor">
 						<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
-						<input type="submit" value=<spring:message code="borrar" text="Borrar"/> />
+						<input type="submit" value=<spring:message code="borrar"/> />
 					</form:form>
 				</td>
 				<td>
@@ -47,7 +47,7 @@
 						<form:input path="mail" type="hidden" value="${proveedor.getMail()}"/>
 						<form:input path="telefono" type="hidden" value="${proveedor.getTelefono()}"/>
 						<input type="hidden" name="flag" value="0"/>
-						<input type="submit" value=<spring:message code="modificar" text="Modificar"/> />
+						<input type="submit" value=<spring:message code="modificar"/> />
 					</form:form>
 				</td>
 			</tr>

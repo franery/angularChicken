@@ -15,7 +15,7 @@
 
 	<form:form action="gallinerosNuevoContable" method="post" commandName="gallinero">
 		<input type="hidden" name="flag" value="1" />
-		<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+		<input type="submit" value=<spring:message code="nuevo"/> />
 	</form:form>
 
 	<table id="tablita">
@@ -36,7 +36,7 @@
 						<form:form action="gallinerosBorrarContable" method="post" commandName="gallinero">
 							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
 							<input type="submit"
-								value=<spring:message code="borrar" text="Borrar"/> />
+								value=<spring:message code="borrar"/> />
 						</form:form>
 					</td>
 					<td>
@@ -52,7 +52,7 @@
 							<form:input path="stockGallinas" type="hidden"
 								value="${gallinero.getStockGallinas()}" />
 							<input type="submit" 
-								value=<spring:message code="modificar" text="Modificar"/> />
+								value=<spring:message code="modificar"/> />
 						</form:form>
 					</td>
 				</tr>
