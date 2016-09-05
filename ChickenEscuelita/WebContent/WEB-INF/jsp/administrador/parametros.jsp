@@ -13,15 +13,15 @@
 		<!-- Nuevo Parametro -->
 		<form:form action="NuevoParametro" method="post" commandName="parametro">
 			<input type="hidden" name="flagNuevoModificar" value="1"/>
-				<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+				<input type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		
 		<!-- Tabla Parametros -->
 		<table id="tablita">
 			<thead>
 				<tr>
-					<th><spring:message code="descripcion" text="Descripcion"/></th>
-					<th><spring:message code="valor" text="Valor"/></th>
+					<th><spring:message code="descripcion"/></th>
+					<th><spring:message code="valor"/></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,7 +32,7 @@
 							<td><c:out value="${parametroVar.getValor() }"></c:out></td>
 							<td><form:form action="borrarParametro" method="post" commandName="parametro">
 								<form:input path="id" type="hidden" value="${parametroVar.getId() }"/>
-								<input type="submit" value=<spring:message code="borrar" text="Borrar"/> />
+								<input type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
 							<form:form action="ModificarParametro" method="post" commandName="parametro">
@@ -40,7 +40,7 @@
 								<form:input path="descripcion" type="hidden" value="${parametroVar.getDescripcion()}"/>
 								<form:input path="valor" type="hidden" value="${parametroVar.getValor()}"/>
 								<input type="hidden" name="flagNuevoModificar" value="0"/>
-								<input type="submit" value=<spring:message code="modificar" text="Modificar"/> />
+								<input type="submit" value=<spring:message code="modificar"/> />
 							</form:form>
 				</td>
 						 </tr>

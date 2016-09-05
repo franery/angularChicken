@@ -13,7 +13,7 @@
 		<!-- Nuevo Usuario -->
 		<form:form action="NuevoUsuario" method="post" commandName="usuarioNM">
 			<input type="hidden" name="flagNuevoModificar" value="1"/>
-				<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+				<input type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		
 		<!-- Tabla Usuarios -->
@@ -36,7 +36,7 @@
 							<td><c:out value="${user.getPerfil().toString()}"></c:out></td>
 							<td><form:form action="borrarUsuario" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
-								<input type="submit" value=<spring:message code="borrar" text="Borrar"/> />
+								<input type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
 							<form:form action="ModificarUsuario" method="post" commandName="usuarioNM">
@@ -47,7 +47,7 @@
 								<form:input path="contrasenia" type="hidden" value="${user.getContrasenia()}"/>
 								<form:input path="perfil" type="hidden" value="${user.getPerfil()}"/>
 								<input type="hidden" name="flagNuevoModificar" value="0"/>
-								<input type="submit" value=<spring:message code="modificar" text="Modificar"/> />
+								<input type="submit" value=<spring:message code="modificar"/> />
 							</form:form>
 				</td>
 						 </tr>
