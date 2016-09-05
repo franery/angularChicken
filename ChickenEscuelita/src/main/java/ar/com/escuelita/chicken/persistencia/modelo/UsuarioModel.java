@@ -31,7 +31,7 @@ public class UsuarioModel extends Modelo {
 	@Column(name="contrasenia")
 	private String contrasenia;
 	
-	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER,cascade=CascadeType.PERSIST)
 	private List<GallineroModel> listaGallineros = new ArrayList<>();
 	
 	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)

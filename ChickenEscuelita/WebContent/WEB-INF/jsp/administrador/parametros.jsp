@@ -30,7 +30,11 @@
 						<tr>
 							<td><c:out value="${parametroVar.getDescripcion() }"></c:out></td>
 							<td><c:out value="${parametroVar.getValor() }"></c:out></td>
-							<td><form:form action="borrarParametro" method="post" commandName="parametro">
+							<td><c:set var="mensajeConfirmacion" scope="request">
+								<spring:message code="mensajeConfirmacion"></spring:message>
+							</c:set>
+							<form:form action="borrarParametro" onsubmit="return confirm('${mensajeConfirmacion} ${parametroVar.getDescripcion()}?');" 
+										method="post" commandName="parametro">
 								<form:input path="id" type="hidden" value="${parametroVar.getId() }"/>
 								<input type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>

@@ -34,7 +34,11 @@
 							<td><c:out value="${user.getNombre()}"></c:out></td>
 							<td><c:out value="${user.getApellido()}"></c:out></td>
 							<td><c:out value="${user.getPerfil().toString()}"></c:out></td>
-							<td><form:form action="borrarUsuario" method="post" commandName="usuarioNM">
+							<td>
+							<c:set var="mensajeConfirmacion" scope="request">
+								<spring:message code="mensajeConfirmacion"></spring:message>
+							</c:set>
+							<form:form action="borrarUsuario" onsubmit="return confirm('${mensajeConfirmacion} ${user.getNombreUsuario()}?');" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
 								<input type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>

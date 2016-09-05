@@ -62,16 +62,7 @@ public class AdminControlador extends Controlador{
 		ModelAndView model = new ModelAndView(obtenerVista());
 		
 		usuarioServicio.borrar(usuarioNM);
-
-		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
-		model.addObject("listaUsuarios",listaUsuarios);
-		
-		UsuarioDTO usuarioDto = new UsuarioDTO();
-		model.addObject("usuarioNM", usuarioDto);
-
-		model.addObject("usuarioActual", usuario);
-		model.addObject("pageToLoad", USUARIOS_VIEW);
-		return model;
+		return new ModelAndView("redirect:/usuarios");
 	}
 	
 	@RequestMapping("/NuevoUsuario")
@@ -110,15 +101,7 @@ public class AdminControlador extends Controlador{
 		else {
 			usuarioServicio.crear(usuarioNM);
 		}
-		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
-		model.addObject("usuarioActual", usuario);
-		model.addObject("listaUsuarios", listaUsuarios);
-		
-		model.addObject("usuarioNM", new UsuarioDTO());
-		model.addObject("perfiles",EnumPerfil.values());
-
-		model.addObject("pageToLoad", USUARIOS_VIEW);
-		return model;
+		return new ModelAndView("redirect:/usuarios");
 	}
 
 //	PARAMETROS
@@ -138,13 +121,7 @@ public class AdminControlador extends Controlador{
 	public ModelAndView borrarParametro(@ModelAttribute("parametro") ParametroDTO parametro ) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		parametroServicio.borrar(parametro);
-		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
-		ParametroDTO parametroDto = new ParametroDTO();
-		model.addObject("listaParametros",listaParametros);
-		model.addObject("parametro", parametroDto);
-		model.addObject("usuarioActual", usuario);
-		model.addObject("pageToLoad", PARAMETROS_VIEW);
-		return model;
+		return new ModelAndView("redirect:/parametros");
 	}
 	
 	@RequestMapping("/NuevoParametro")
@@ -182,13 +159,6 @@ public class AdminControlador extends Controlador{
 		else {
 			parametroServicio.crear(parametro);
 		}
-		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
-		model.addObject("usuarioActual", usuario);
-		model.addObject("listaParametros", listaParametros);
-		
-		model.addObject("parametro", new ParametroDTO());
-
-		model.addObject("pageToLoad", PARAMETROS_VIEW);
-		return model;
+		return new ModelAndView("redirect:/parametros");
 	}
 }

@@ -32,8 +32,10 @@
 					<td><c:out value="${gallinero.getNombre()}"></c:out></td>
 					<td><c:out value="${gallinero.getUsuarioNombre()}"></c:out></td>
 					<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
-					<td>
-						<form:form action="gallinerosBorrarContable" method="post" commandName="gallinero">
+					<td><c:set var="mensajeConfirmacion" scope="request">
+							<spring:message code="mensajeConfirmacion"></spring:message>
+						</c:set> 
+						<form:form onsubmit="return confirm('${mensajeConfirmacion} ${gallinero.getNombre()}?');" action="gallinerosBorrarContable" method="post" commandName="gallinero">
 							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
 							<input type="submit"
 								value=<spring:message code="borrar"/> />
