@@ -13,7 +13,7 @@
 <body>
 	<h1>Usuario</h1>
 
-	<form:form method="POST" action="usuariosModificarNuevo"	commandName="usuarioNM">
+	<form:form method="POST" action="usuariosModificarNuevo" commandName="usuarioNM">
 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
 	
 		<table>

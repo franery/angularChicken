@@ -19,25 +19,25 @@
 </head>
 <body>
 	<form:form action="nuevoMovimiento">
-		<input type="submit" value=<spring:message code="nuevo" text="Nuevo"/> />
+		<input type="submit" value=<spring:message code="nuevo"/> />
 	</form:form>
 
 	<form:form action="reportesFiltro" method="POST" commandName="filtro">
 		<table>
 			<tr>
-				<td> <form:label path="fechaDesde"> Fecha desde </form:label> </td>
+				<td> <form:label path="fechaDesde"><spring:message code="fechaDesde"/></form:label> </td>
 				<td> <form:input path="fechaDesde" type="date" /> </td>
 			</tr>
 			<tr>
-				<td> <form:label path="fechaHasta"> Fecha hasta </form:label> </td>
+				<td> <form:label path="fechaHasta"><spring:message code="fechaHasta"/></form:label> </td>
 				<td> <form:input path="fechaHasta" type="date" /> </td>
 			</tr>
 			<tr> 
-				<td> <form:label path="cantidadDesde"> Cantidad Desde</form:label> </td>
+				<td> <form:label path="cantidadDesde"><spring:message code="cantidadDesde"/></form:label> </td>
 				<td> <form:input path="cantidadDesde" type="text" /> </td>
 			</tr>
 			<tr> 
-				<td> <form:label path="cantidadHasta"> Cantidad Hasta</form:label> </td>
+				<td> <form:label path="cantidadHasta"><spring:message code="cantidadHasta"/></form:label> </td>
 				<td> <form:input path="cantidadHasta" type="text" /> </td>
 			</tr>
 			<tr> <td> <input type="submit" value="Filtrar" /> </td> </tr>
@@ -47,10 +47,10 @@
 		<table class="table table-striped table-hover header-fixed fija">
 			<thead class="fija">
 				<tr class="fija">
-					<th class="fija">Fecha</th>
-					<th class="fija">Cantidad</th>
-					<th class="fija">Gallinero</th>
-					<th class="fija">Deposito</th>
+					<th class="fija"><spring:message code="fecha"/></th>
+					<th class="fija"><spring:message code="cantidad"/></th>
+					<th class="fija"><spring:message code="gallinero"/></th>
+					<th class="fija"><spring:message code="deposito"/></th>
 				</tr>
 			</thead>
 			<tbody class="fija">

@@ -17,11 +17,10 @@
 		<table>
 			<tr>
 				<td><form:label path="gallineroId">
-						<spring:message code="gallinero" text="gallinero" />:</form:label></td>
+						<spring:message code="gallinero"/>:</form:label></td>
 				<td><form:select path="gallineroId">
 						<form:option value="0">
-							<spring:message code="seleccioneGallinero"
-								text="Seleccione gallinero" />
+							<spring:message code="seleccioneGallinero"/>
 						</form:option>
 						<c:forEach items="${listaGallineros}" var="gallineroVar">
 							<form:option value="${gallineroVar.getId()}">
@@ -32,11 +31,10 @@
 			</tr>
 			<tr>
 				<td><form:label path="depositoId">
-						<spring:message code="deposito" text="deposito" />:</form:label></td>
+						<spring:message code="deposito"/>:</form:label></td>
 				<td><form:select path="depositoId">
 						<form:option value="0">
-							<spring:message code="seleccioneDeposito"
-								text="Seleccione deposito" />
+							<spring:message code="seleccioneDeposito"/>
 						</form:option>
 						<c:forEach items="${listaDepositos}" var="depositoVar">
 							<form:option value="${depositoVar.getId()}">
@@ -47,12 +45,12 @@
 			</tr>
 			<tr>
 				<td><form:label path="cantidad">
-						<spring:message code="cantidad" text="cantidad" />:</form:label></td>
+						<spring:message code="cantidad"/>:</form:label></td>
 				<td><form:input path="cantidad" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="fecha">
-						<spring:message code="fecha" text="fecha" />:</form:label></td>
+						<spring:message code="fecha"/>:</form:label></td>
 				<td><form:input path="fecha" type="date" /></td>
 			</tr>
 		</table>
