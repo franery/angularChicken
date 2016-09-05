@@ -62,24 +62,3 @@ create table Parametro (
     descripcion varchar(50) not null,
     valor varchar(50) not null
 );
-
-
-delete from Parametro;
-select * from Parametro;
-
-
-use db_chicken;
-
-select * from Usuario;
-select * from Movimiento;
-select * from gallinero;
-select * from deposito;
-insert into Usuario(nombreUsuario,nombre,apellido,perfil,contrasenia) values ('Probando','pepe','dd',2,'cc');
-insert into Gallinero(nombre,idUsuario,stockGallinas) values ('Gall1',112,50),('Gall2',112,60);
-insert into Movimiento(fecha,cantidad,idGallinero,idDeposito) values ('2000-11-11',20,52,66),('2000-11-12',30,53,66);
-delete from Movimiento;
-delete from Venta;
-delete from Proveedor;
-delete from Deposito;
-delete from Gallinero;
-delete from Usuario;
