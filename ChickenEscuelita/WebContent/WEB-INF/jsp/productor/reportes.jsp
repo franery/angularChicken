@@ -40,7 +40,7 @@
 				<td> <form:label path="cantidadHasta"><spring:message code="cantidadHasta"/></form:label> </td>
 				<td> <form:input path="cantidadHasta" type="text" /> </td>
 			</tr>
-			<tr> <td> <input type="submit" value="Filtrar" /> </td> </tr>
+			<tr> <td> <input type="submit" value=<spring:message code="filtrar"/> /> </td> </tr>
 		</table>
 	</form:form>
 	<div class="paraTabla">
