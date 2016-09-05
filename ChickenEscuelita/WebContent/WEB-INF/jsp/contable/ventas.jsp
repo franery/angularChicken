@@ -47,7 +47,7 @@
 			<td><form:input type="text" path="cantidadHasta" /></td>
 		</tr>
 	</table>
-	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/>/>
+	<input type="submit" value=<spring:message code="filtrar"/>>
 </form:form>
 
 <table id="tablita">
