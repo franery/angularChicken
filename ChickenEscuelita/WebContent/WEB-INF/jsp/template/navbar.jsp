@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/navbar.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.dataTables.min.css" />
+
 <jsp:include page="importacion.jsp"></jsp:include>
 <body>
 

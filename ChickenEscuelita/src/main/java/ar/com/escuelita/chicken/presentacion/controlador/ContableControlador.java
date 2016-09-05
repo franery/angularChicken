@@ -1,8 +1,6 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
-import java.util.Hashtable;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
-import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
@@ -21,12 +18,9 @@ import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IVentaServicio;
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
-import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.ProveedorDTO;
-import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.DepositoFiltro;
-import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.VentaFiltro;
 

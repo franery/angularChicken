@@ -21,35 +21,6 @@
 		<input class="menu" type="submit" value=<spring:message code="parametros"/> />
 	</form:form>
 
-	<!-- Menu productor -->
-	<form:form action="proveedoresContable" method="post">
-		<input class="menu" type="submit"	value= <spring:message code="proveedores"/> />
-	</form:form>
-
-	<form:form action="gallinerosContable" method="post" >
-		<input class="menu" type="submit" value=<spring:message code="gallineros"/> />
-	</form:form>
-
-	<form:form action="depositosContable" method="post" >
-		<input class="menu" type="submit"
-			value=<spring:message code="depositos"/> />
-	</form:form>
-
-	<form:form action="ventasContable" method="post" >
-		<input class="menu" type="submit" value=<spring:message code="ventas"/> />
-	</form:form>
-
-	<form:form action="produccionContable" method="post" >
-		<input class="menu" type="submit" value=<spring:message code="produccion"/> />
-	</form:form>
-
-	<form:form action="reportes" method="post">
-		<input class="menu" type="submit" value=<spring:message code="productor.reportes"/> />
-	</form:form>
-
-	<form:form action="nuevoMovimiento" method="post">
-		<input class="menu" type="submit" value=<spring:message code="productor.nuevoMovimiento"/> />
-	</form:form>
 
 </body>
 </html>

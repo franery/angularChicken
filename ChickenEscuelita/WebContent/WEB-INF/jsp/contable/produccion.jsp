@@ -26,7 +26,9 @@
 	<input type="submit" value=<spring:message code="filtrar" text="Filtrar"/> />
 </form:form>
 	
-		<table id="tablita">
+ 
+		<!-- <table id="" class="display" cellspacing="0" width="100%"> -->
+		<table id="tablita"> 
 			<thead>
 				<tr>
 					<th><spring:message code="deposito" text="Deposito"/></th>
@@ -102,8 +104,5 @@
 			</tbody>
 		</table>
 	</div>
-
-
-
 </body>
 </html>
