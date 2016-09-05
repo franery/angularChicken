@@ -30,9 +30,9 @@
 					</form:select></td>
 			</tr>
 			<tr>
-				<td><form:label path="depositoId" required="required">
+				<td><form:label path="depositoId">
 						<spring:message code="deposito"/>:</form:label></td>
-				<td><form:select path="depositoId">
+				<td><form:select path="depositoId" required="required">
 						<form:option value="0">
 							<spring:message code="seleccioneDeposito"/>
 						</form:option>
