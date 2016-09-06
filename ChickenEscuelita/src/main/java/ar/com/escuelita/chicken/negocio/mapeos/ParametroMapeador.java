@@ -13,7 +13,7 @@ public class ParametroMapeador extends Mapeador {
 		ParametroModel parametroModel = (ParametroModel) vo;
 		ParametroDTO dto = new ParametroDTO();
 		
-		dto.setId(parametroModel.getId());
+		dto.setId(String.valueOf(parametroModel.getId()));
 		dto.setDescripcion(parametroModel.getDescripcion());
 		dto.setValor(parametroModel.getValor());
 		

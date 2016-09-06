@@ -13,7 +13,7 @@ public class DepositoMapeador extends Mapeador {
 		DepositoModel depositoModel = (DepositoModel) vo;
 		DepositoDTO dto = new DepositoDTO();
 		
-		dto.setId(depositoModel.getId());
+		dto.setId(String.valueOf(depositoModel.getId()));
 		dto.setNombre(depositoModel.getNombre());
 		dto.setStockHuevos(depositoModel.getStockHuevos());
 		dto.setStockMaximo(depositoModel.getStockMaximo());

@@ -13,7 +13,7 @@ public class ProveedorMapeador extends Mapeador {
 		ProveedorModel proveedorModel = (ProveedorModel) vo;
 		ProveedorDTO dto = new ProveedorDTO();
 		
-		dto.setId(proveedorModel.getId());
+		dto.setId(String.valueOf(proveedorModel.getId()));
 		dto.setNombre(proveedorModel.getNombre());
 		dto.setDireccion(proveedorModel.getDireccion());
 		dto.setMail(proveedorModel.getMail());
