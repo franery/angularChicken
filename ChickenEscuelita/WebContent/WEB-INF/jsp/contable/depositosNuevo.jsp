@@ -20,11 +20,11 @@
 	<table>
 		<tr>
 			<td><form:label path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label></td>
-			<td><form:input path="nombre" value="${deposito.getNombre()}"/></td>
+			<td><form:input path="nombre" value="${deposito.getNombre()}" required="required"/></td>
 		</tr>
 		<tr>
 			<td><form:label path="stockMaximo"><spring:message code="stockMaximo" text="Stock Maximo"/>:</form:label></td>
-			<td><form:input path="stockMaximo" value="${deposito.getStockMaximo()}"/></td>
+			<td><form:input path="stockMaximo" value="${deposito.getStockMaximo()}" required="required"/></td>
 		</tr>
 	</table>
 	<input type="hidden" name="flag" value="${flag}"/>
