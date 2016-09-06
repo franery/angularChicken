@@ -40,13 +40,13 @@ public class GallineroServicioImpl extends Servicio implements IGallineroServici
 	public void modificar(DTO dto) {
 		GallineroModel gallineroModel = (GallineroModel)gallineroMapeador.map(dto, null);
 		GallineroDTO gallineroDTO = (GallineroDTO) dto;
-		gallineroModel.setId(gallineroDTO.getId());		
+		gallineroModel.setId(Long.parseLong(gallineroDTO.getId()));		
 		gallineroDAO.modificar(gallineroModel);
 	}
 
 	@Override
 	public void borrar(DTO dto) {
-		gallineroDAO.borrar(((GallineroDTO)dto).getId());		
+		gallineroDAO.borrar(Long.parseLong(((GallineroDTO)dto).getId()));		
 	}
 
 	@Override

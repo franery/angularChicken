@@ -40,13 +40,13 @@ public class DepositoServicioImpl extends Servicio implements IDepositoServicio 
 	public void modificar(DTO dto) {
 		DepositoModel depositoModel = (DepositoModel)depositoMapeador.map(dto, null);
 		DepositoDTO depositoDTO = (DepositoDTO) dto;
-		depositoModel.setId(depositoDTO.getId());		
+		depositoModel.setId(Long.parseLong(depositoDTO.getId()));		
 		depositoDAO.modificar(depositoModel);
 	}
 
 	@Override
 	public void borrar(DTO dto) {
-		depositoDAO.borrar(((DepositoDTO)dto).getId());		
+		depositoDAO.borrar(Long.parseLong(((DepositoDTO)dto).getId()));		
 	}
 
 	public DepositoMapeador getDepositoMapeador() {

@@ -39,7 +39,7 @@ public class MovimientoServicioImpl extends Servicio implements IMovimientoServi
 	@Override
 	public void crear(DTO dto) {
 		movimientoDAO.guardar((MovimientoModel)movimientoMapeador.map(dto, null));
-		DepositoModel nuevoDeposito = depositoDAO.get(((MovimientoDTO)dto).getDepositoId());
+		DepositoModel nuevoDeposito = depositoDAO.get(Long.parseLong(((MovimientoDTO)dto).getDepositoId()));
 		nuevoDeposito.setStockHuevos(nuevoDeposito.getStockHuevos()+((MovimientoDTO)dto).getCantidad());
 		depositoDAO.modificar(nuevoDeposito);
 	}
@@ -48,13 +48,13 @@ public class MovimientoServicioImpl extends Servicio implements IMovimientoServi
 	public void modificar(DTO dto) {
 		MovimientoModel movimientoModel = (MovimientoModel)movimientoMapeador.map(dto, null);
 		MovimientoDTO movimientoDTO = (MovimientoDTO) dto;
-		movimientoModel.setId(movimientoDTO.getId());
+		movimientoModel.setId(Long.parseLong(movimientoDTO.getId()));
 		movimientoDAO.modificar(movimientoModel);
 	}
 
 	@Override
 	public void borrar(DTO dto) {
-		movimientoDAO.borrar(((MovimientoDTO)dto).getId());		
+		movimientoDAO.borrar(Long.parseLong(((MovimientoDTO)dto).getId()));		
 	}
 
 	@Override

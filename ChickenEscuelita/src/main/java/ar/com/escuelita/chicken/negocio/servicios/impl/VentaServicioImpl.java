@@ -54,13 +54,13 @@ public class VentaServicioImpl extends Servicio implements IVentaServicio {
 	public void modificar(DTO dto) {
 		VentaModel ventaModel = (VentaModel)ventaMapeador.map(dto, null);
 		VentaDTO ventaDTO = (VentaDTO) dto;
-		ventaModel.setId(ventaDTO.getId());		
+		ventaModel.setId(Long.parseLong(ventaDTO.getId()));		
 		ventaDAO.modificar(ventaModel);
 	}
 
 	@Override
 	public void borrar(DTO dto) {
-		ventaDAO.borrar(((VentaDTO)dto).getId());		
+		ventaDAO.borrar(Long.parseLong(((VentaDTO)dto).getId()));		
 	}
 
 	@Override

@@ -39,13 +39,13 @@ public class ProveedorServicioImpl extends Servicio implements IProveedorServici
 	public void modificar(DTO dto) {
 		ProveedorModel proveedorModel = (ProveedorModel)proveedorMapeador.map(dto, null);
 		ProveedorDTO proveedorDTO = (ProveedorDTO) dto;
-		proveedorModel.setId(proveedorDTO.getId());		
+		proveedorModel.setId(Long.parseLong(proveedorDTO.getId()));		
 		proveedorDAO.modificar(proveedorModel);
 	}
 
 	@Override
 	public void borrar(DTO dto) {
-		proveedorDAO.borrar(((ProveedorDTO)dto).getId());		
+		proveedorDAO.borrar(Long.parseLong(((ProveedorDTO)dto).getId()));		
 	}
 
 	@Override

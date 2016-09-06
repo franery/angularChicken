@@ -39,14 +39,14 @@ public class ParametroServicioImpl extends Servicio implements IParametroServici
 	@Override
 	public void modificar(DTO dto) {
 		// Recuperar el modelo
-		ParametroModel model = parametroDAO.get(((ParametroDTO)dto).getId());
+		ParametroModel model = parametroDAO.get(Long.parseLong(((ParametroDTO)dto).getId()));
 		ParametroModel parametroModel = (ParametroModel)parametroMapeador.map(dto, model);
 		parametroDAO.modificar(parametroModel);
 	}
 
 	@Override
 	public void borrar(DTO dto) {
-		parametroDAO.borrar(((ParametroDTO)dto).getId());		
+		parametroDAO.borrar(Long.parseLong(((ParametroDTO)dto).getId()));		
 	}
 
 	
