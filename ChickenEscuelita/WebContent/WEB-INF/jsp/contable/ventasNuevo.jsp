@@ -21,7 +21,7 @@
 		<tr>
 			<td><form:label path="proveedorId"><spring:message code="proveedor"/>:</form:label></td>
 			<td>
-				<form:select path="proveedorId">
+				<form:select path="proveedorId" required="required">
 					<form:option value="0"><spring:message code="seleccionar" /></form:option>
 						<c:forEach items="${listaProveedores}" var="proveedor">
 							<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
@@ -31,15 +31,15 @@
 		</tr>
 		<tr>
 			<td><form:label path="fecha"><spring:message code="fecha"/>:</form:label></td>
-			<td><form:input type="date" path="fecha"/></td>
+			<td><form:input type="date" path="fecha" required="required"/></td>
 		</tr>
 		<tr>
 			<td><form:label path="cantidad"><spring:message code="cantidad"/>:</form:label></td>
-			<td><form:input path="cantidad"/></td>
+			<td><form:input path="cantidad" required="required"/></td>
 		</tr>
 		<tr>
 			<td><form:label path="precio"><spring:message code="precio"/>:</form:label></td>
-			<td><form:input path="precio"/></td>
+			<td><form:input path="precio" required="required"/></td>
 		</tr>
 	</table>
 	<input type="submit" value=<spring:message code="guardar"/> />
