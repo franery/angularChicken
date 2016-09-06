@@ -5,18 +5,24 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 
 public class UsuarioDTO extends DTO {
-	private long id;
+	
+	private String id;
+	
 	private String nombreUsuario;
+	
 	private String nombre;
+	
 	private String apellido;
+	
 	private String contrasenia;
+	
 	private EnumPerfil perfil;
-		
-	public long getId() {
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

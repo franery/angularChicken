@@ -6,23 +6,25 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 
 public class MovimientoDTO extends DTO {
 	
-	private long id;
+	private String id;
 	
 	private Date fecha;
 	
 	private long cantidad;
 
-	private long gallineroId;
+	private String gallineroId;
+	
 	private String gallineroNombre;
 
-	private long depositoId;
+	private String depositoId;
+	
 	private String depositoNombre;
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -42,19 +44,19 @@ public class MovimientoDTO extends DTO {
 		this.cantidad = cantidad;
 	}
 
-	public long getGallineroId() {
+	public String getGallineroId() {
 		return gallineroId;
 	}
 
-	public void setGallineroId(long gallineroId) {
+	public void setGallineroId(String gallineroId) {
 		this.gallineroId = gallineroId;
 	}
 
-	public long getDepositoId() {
+	public String getDepositoId() {
 		return depositoId;
 	}
 
-	public void setDepositoId(long depositoId) {
+	public void setDepositoId(String depositoId) {
 		this.depositoId = depositoId;
 	}
 

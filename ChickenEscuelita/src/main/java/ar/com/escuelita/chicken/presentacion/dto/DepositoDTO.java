@@ -4,7 +4,7 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 
 public class DepositoDTO extends DTO {
 
-	private long id;
+	private String id;
 	
 	private String nombre;
 	
@@ -12,11 +12,11 @@ public class DepositoDTO extends DTO {
 	
 	private long stockMaximo;
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

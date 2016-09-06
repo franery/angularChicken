@@ -2,21 +2,15 @@ package ar.com.escuelita.chicken.presentacion.controlador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.test.annotation.Commit;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
-import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
-import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
-import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.GallineroFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
@@ -41,7 +35,7 @@ public class ProductorControlador extends Controlador {
 		MovimientoFiltro m = new MovimientoFiltro();
 		if (usuario.getPerfil().equals(EnumPerfil.PRODUCTOR)){
 			model = new ModelAndView(PRODUCTOR_VIEW);
-			m.setProductorId(usuario.getId());
+			m.setProductorId(Long.parseLong(usuario.getId()));
 		} else {
 			model = new ModelAndView(ADMIN_VIEW);
 		}
@@ -57,7 +51,7 @@ public class ProductorControlador extends Controlador {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", REPORTES_VIEW);
-		filtro.setProductorId(usuario.getId());
+		filtro.setProductorId(Long.parseLong(usuario.getId()));
 		model.addObject("listaMovimientos",movimientoServicio.listar(filtro));
 		return model;
 	}
@@ -69,7 +63,7 @@ public class ProductorControlador extends Controlador {
 		model.addObject("movimiento", new MovimientoDTO());
 		model.addObject("listaDepositos", depositoServicio.listar());
 		GallineroFiltro gallineroFiltro = new GallineroFiltro();
-		gallineroFiltro.setUsuarioId(usuario.getId());
+		gallineroFiltro.setUsuarioId(Long.parseLong(usuario.getId()));
 		model.addObject("listaGallineros", gallineroServicio.listar(gallineroFiltro));
 		model.addObject("pageToLoad", NUEVO_MOVIMIENTO_VIEW);
 		return model;

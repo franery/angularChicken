@@ -3,17 +3,18 @@ package ar.com.escuelita.chicken.presentacion.dto;
 import ar.com.escuelita.chicken.base.dto.DTO;
 
 public class ParametroDTO extends DTO {
-	private long id;
+	
+	private String id;
 	
 	private String descripcion;
 	
 	private String valor;
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

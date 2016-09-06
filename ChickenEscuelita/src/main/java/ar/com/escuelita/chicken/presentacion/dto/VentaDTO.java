@@ -6,7 +6,7 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 
 public class VentaDTO extends DTO {
 	
-	private long id;
+	private String id;
 	
 	private Date fecha;
 	
@@ -14,17 +14,19 @@ public class VentaDTO extends DTO {
 	
 	private float precio;
 	
-	private long usuarioId;
+	private String usuarioId;
+	
 	private String usuarioNombre;
 
-	private long proveedorId;
+	private String proveedorId;
+	
 	private String proveedorNombre;
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -52,19 +54,19 @@ public class VentaDTO extends DTO {
 		this.precio = precio;
 	}
 
-	public long getUsuarioId() {
+	public String getUsuarioId() {
 		return usuarioId;
 	}
 
-	public void setUsuarioId(long usuarioId) {
+	public void setUsuarioId(String usuarioId) {
 		this.usuarioId = usuarioId;
 	}
 
-	public long getProveedorId() {
+	public String getProveedorId() {
 		return proveedorId;
 	}
 
-	public void setProveedorId(long proveedorId) {
+	public void setProveedorId(String proveedorId) {
 		this.proveedorId = proveedorId;
 	}
 

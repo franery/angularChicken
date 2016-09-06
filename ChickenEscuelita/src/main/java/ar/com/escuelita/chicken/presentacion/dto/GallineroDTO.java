@@ -4,20 +4,21 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 
 public class GallineroDTO extends DTO {
 	
-	private long id;
+	private String id;
 	
 	private String nombre;
 	
-	private long usuarioId;
+	private String usuarioId;
+	
 	private String usuarioNombre;	
 	
 	private long stockGallinas;
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -29,11 +30,11 @@ public class GallineroDTO extends DTO {
 		this.nombre = nombre;
 	}
 
-	public long getUsuarioId() {
+	public String getUsuarioId() {
 		return usuarioId;
 	}
 
-	public void setUsuarioId(long usuarioId) {
+	public void setUsuarioId(String usuarioId) {
 		this.usuarioId = usuarioId;
 	}
 
