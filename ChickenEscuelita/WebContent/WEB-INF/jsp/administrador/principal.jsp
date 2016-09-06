@@ -27,6 +27,6 @@
 	<div class="pantalla">
 		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
 	</div>
-
+	
 </body>
 </html>
