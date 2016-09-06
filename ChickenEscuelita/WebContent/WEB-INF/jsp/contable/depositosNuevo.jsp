@@ -14,7 +14,7 @@
 
 <h1><spring:message code="depositoNuevo"/></h1>
 
-<form:form action="depositosModificarCrearNuevoContable" method="post" commandName="deposito">
+<form:form action="depositosModificarCrearNuevoContable" onsubmit="return chequearSiTirarAlerta()" method="post" commandName="deposito">
 	<form:input path="id" type="hidden" value="${deposito.getId()}"/>
 	<form:input path="stockHuevos" type="hidden" value="${deposito.getStockHuevos()}"/>
 	<table>
@@ -30,6 +30,24 @@
 	<input type="hidden" name="flag" value="${flag}"/>
 	<input type="submit" value=<spring:message code="guardar"/> />
 </form:form>
+	
+	<c:set var="value">
+		<spring:message code="mensajeModificar" />
+	</c:set>
+	<input id="mensajeModificar" type="hidden" value="${value}" />
+	<script>
+	function chequearSiTirarAlerta() {
+		var flag = "${flagNuevoModificar}";
+		if (flag == 0) {
+			return true;
+		} else {
+			var mensaje = document.getElementById("mensajeModificar").value;
+			return confirm(mensaje);
+		}		
+		
+	}
+	
+	</script>
 
 </body>
 </html>

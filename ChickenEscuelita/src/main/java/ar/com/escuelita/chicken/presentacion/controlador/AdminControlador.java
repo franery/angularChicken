@@ -27,7 +27,6 @@ public class AdminControlador extends Controlador{
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
 	
-	private static final String ADMIN_VIEW = "administrador/principal";
 	private static final String USUARIOS_VIEW = "administrador/usuarios";
 	private static final String USUARIO_NUEVO_VIEW = "administrador/usuarioNuevo";
 	private static final String PARAMETROS_VIEW = "administrador/parametros";
@@ -61,7 +60,6 @@ public class AdminControlador extends Controlador{
 	
 	@RequestMapping(path="/borrarUsuario")
 	public ModelAndView borrarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM ) {
-		ModelAndView model = new ModelAndView(obtenerVista());
 		
 		usuarioServicio.borrar(usuarioNM);
 		return new ModelAndView("redirect:/usuarios");
@@ -72,7 +70,6 @@ public class AdminControlador extends Controlador{
 		ModelAndView model = new ModelAndView(obtenerVista());
 		
 		model.addObject("usuarioActual", usuario);
-//		UsuarioDTO usuarioNM = new UsuarioDTO();
 		UsuarioDTO usuarioNM;
 		if (usuarioParam != null) {
 			usuarioNM = usuarioParam;
@@ -105,7 +102,6 @@ public class AdminControlador extends Controlador{
 			@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM, 
 			@RequestParam("flagNuevoModificar") int flagNuevoModificar, final RedirectAttributes redirectAttributes) {
 		
-		ModelAndView model = new ModelAndView(obtenerVista());
 		try {
 			if(flagNuevoModificar == MODIFICAR) {
 				usuarioServicio.modificar(usuarioNM);
@@ -139,7 +135,7 @@ public class AdminControlador extends Controlador{
 	
 	@RequestMapping(path="/borrarParametro")
 	public ModelAndView borrarParametro(@ModelAttribute("parametro") ParametroDTO parametro ) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+	
 		parametroServicio.borrar(parametro);
 		return new ModelAndView("redirect:/parametros");
 	}
@@ -152,7 +148,7 @@ public class AdminControlador extends Controlador{
 		ParametroDTO parametro = new ParametroDTO();
 		model.addObject("parametro", parametro);
 		
-		model.addObject("flagNuevoModificar", flagNuevoModificar);
+		model.addObject("flagNuevoModificar", NUEVO);
 		
 		model.addObject("pageToLoad", PARAMETRO_NUEVO_VIEW);
 		return model;
@@ -163,7 +159,7 @@ public class AdminControlador extends Controlador{
 	public ModelAndView ModificarParametro(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flagNuevoModificar", flagNuevoModificar);
+		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("parametro", parametro);
 
 		model.addObject("pageToLoad", PARAMETRO_NUEVO_VIEW);
@@ -172,8 +168,7 @@ public class AdminControlador extends Controlador{
 	
 	@RequestMapping(path="/parametrosModificarNuevo")
 	public ModelAndView parametrosModificarNuevo(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) throws Exception {
-		ModelAndView model = new ModelAndView(obtenerVista());
-		if(flagNuevoModificar == 0) {
+		if(flagNuevoModificar == MODIFICAR) {
 			parametroServicio.modificar(parametro);
 		}
 		else {

@@ -13,7 +13,7 @@
 <body>
 	<h1>Usuario</h1>
 
-	<form:form method="POST" action="usuariosModificarNuevo" commandName="usuarioNM">
+	<form:form method="POST" onsubmit="return chequearSiTirarAlerta()" action="usuariosModificarNuevo" commandName="usuarioNM">
 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
 	
 		<table>
@@ -47,5 +47,23 @@
 			</tr>
 		</table>
 	</form:form>
+	
+	<c:set var="value">
+		<spring:message code="mensajeModificar" />
+	</c:set>
+	<input id="mensajeModificar" type="hidden" value="${value}" />
+	<script>
+	function chequearSiTirarAlerta() {
+		var flag = "${flagNuevoModificar}";
+		if (flag == 0) {
+			return true;
+		} else {
+			var mensaje = document.getElementById("mensajeModificar").value;
+			return confirm(mensaje);
+		}		
+		
+	}
+	
+	</script>
 </body>
 </html>

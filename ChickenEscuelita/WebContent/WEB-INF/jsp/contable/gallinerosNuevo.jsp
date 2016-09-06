@@ -14,7 +14,7 @@
 
 <h1><spring:message code="gallineroNuevo"/></h1>
 
-<form:form action="gallinerosModificarCrearNuevoContable" method="post" commandName="gallinero">
+<form:form action="gallinerosModificarCrearNuevoContable" onsubmit="return chequearSiTirarAlerta()" method="post" commandName="gallinero">
 	<form:input path="id" type="hidden" value="${gallinero.getId()}"/>
 	<table>
 		<tr>
@@ -43,6 +43,23 @@
 	<input type="hidden" name="flag" value="${flag}"/>	
 	<input type="submit" value=<spring:message code="guardar"/> />
 </form:form>
-
+	
+	<c:set var="value">
+		<spring:message code="mensajeModificar" />
+	</c:set>
+	<input id="mensajeModificar" type="hidden" value="${value}" />
+	<script>
+	function chequearSiTirarAlerta() {
+		var flag = "${flagNuevoModificar}";
+		if (flag == 0) {
+			return true;
+		} else {
+			var mensaje = document.getElementById("mensajeModificar").value;
+			return confirm(mensaje);
+		}		
+		
+	}
+	
+	</script>
 </body>
 </html>
