@@ -55,7 +55,7 @@ public class ContableControlador extends Controlador{
 	private static final String VENTAS_NUEVO_VIEW = "contable/ventasNuevo";
 	private static final String PRODUCCION_VIEW = "contable/produccion";
 	
-	@RequestMapping(path="/principal")
+	@RequestMapping(path="/principalContable")
 	public ModelAndView inicioContable() {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);

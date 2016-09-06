@@ -15,15 +15,14 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 public class LenguajeController extends Controlador{
 
 
-    @RequestMapping(value = "/principalAdmin2")
-    public ModelAndView changeLang(@RequestParam("urlRequest") String  urlRequest, @RequestParam("languageRequest") String languageRequest, HttpServletRequest request, HttpServletResponse response) {
-    	if (languageRequest != "") { 
-    	LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-        localeResolver.setLocale(request, response, StringUtils.parseLocaleString(languageRequest)); }
-		
-    	String[] spliteado = urlRequest.split("/");
-    	String str = spliteado[spliteado.length - 1];
-    	System.out.println(str);
-    	return new ModelAndView("redirect:/"+str);
-    }
+	@RequestMapping(value = "/principalAdmin2")
+	public ModelAndView changeLang(@RequestParam("urlRequest") String  urlRequest, @RequestParam("languageRequest") String languageRequest, HttpServletRequest request, HttpServletResponse response) {
+		if (languageRequest != "") { 
+			LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
+			localeResolver.setLocale(request, response, StringUtils.parseLocaleString(languageRequest)); 
+		}
+		String[] spliteado = urlRequest.split("/");
+		String str = spliteado[spliteado.length - 1];
+		return new ModelAndView("redirect:/"+str);
+	}
 }

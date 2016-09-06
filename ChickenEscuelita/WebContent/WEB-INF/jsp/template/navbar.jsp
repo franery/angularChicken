@@ -17,10 +17,9 @@
 		<li class="liRight">
 	</ul>
 
-		<spring:message code="lenguaje"/>:
 	<form:form onsubmit="myFunction()" method="POST" action="principalAdmin2">
-				<select name="languageRequest">
-							
+				<select name="languageRequest"> 
+							<option value=""> <spring:message code="lenguaje"/> </option>
 							<option value="en"> <spring:message code="ingles"/> </option>
 							<option value="es"> <spring:message code="espaniol"/> </option>
 					</select>

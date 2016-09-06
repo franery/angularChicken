@@ -29,6 +29,14 @@ public class ProductorControlador extends Controlador {
 	@Autowired
 	IDepositoServicio depositoServicio;
 	
+	@RequestMapping(path="/principalProductor")
+	public ModelAndView inicioProductor() {
+		ModelAndView model = new ModelAndView(obtenerVista());
+		model.addObject("usuarioActual", usuario);
+		model.addObject("pageToLoad", VACIA_VIEW);
+		return model;
+	}
+	
 	@RequestMapping("reportes")
 	public ModelAndView reportes() {
 		ModelAndView model;
