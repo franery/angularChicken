@@ -24,7 +24,7 @@
 		<tr>
 			<td><form:label path="usuarioId"><spring:message code="usuario"/>:</form:label></td>
 			<td>
-				<form:select path="usuarioId">
+				<form:select path="usuarioId" required="required">
 					<form:option value="0"><spring:message code="seleccionar" /></form:option>
 						<c:forEach items="${listaUsuarios}" var="usuario">
 							<form:option value="${usuario.getId()}">

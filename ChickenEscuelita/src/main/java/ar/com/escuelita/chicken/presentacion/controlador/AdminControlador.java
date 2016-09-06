@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
+import ar.com.escuelita.chicken.base.excepciones.NegocioExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IParametroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
@@ -66,25 +68,31 @@ public class AdminControlador extends Controlador{
 	}
 	
 	@RequestMapping("/NuevoUsuario")
-	public ModelAndView NuevoUsuario( @RequestParam("flagNuevoModificar") int flagNuevoModificar ){
+	public ModelAndView NuevoUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioParam){
 		ModelAndView model = new ModelAndView(obtenerVista());
 		
 		model.addObject("usuarioActual", usuario);
-		UsuarioDTO usuarioNM = new UsuarioDTO();
+//		UsuarioDTO usuarioNM = new UsuarioDTO();
+		UsuarioDTO usuarioNM;
+		if (usuarioParam != null) {
+			usuarioNM = usuarioParam;
+		} else {
+			usuarioNM = new UsuarioDTO();
+		}
 		model.addObject("usuarioNM", usuarioNM);
 		model.addObject("perfiles",EnumPerfil.values());
 		
-		model.addObject("flagNuevoModificar", flagNuevoModificar);
+		model.addObject("flagNuevoModificar", NUEVO);
 		
 		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/ModificarUsuario")
-	public ModelAndView ModificarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
+	public ModelAndView ModificarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flagNuevoModificar", flagNuevoModificar);
+		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("usuarioNM", usuarioNM);
 		model.addObject("perfiles",EnumPerfil.values());
 
@@ -93,13 +101,25 @@ public class AdminControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/usuariosModificarNuevo")
-	public ModelAndView proveedoresCrearNuevo(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
+	public ModelAndView proveedoresCrearNuevo(
+			@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM, 
+			@RequestParam("flagNuevoModificar") int flagNuevoModificar, final RedirectAttributes redirectAttributes) {
+		
 		ModelAndView model = new ModelAndView(obtenerVista());
-		if(flagNuevoModificar == 0) {
-			usuarioServicio.modificar(usuarioNM);
-		}
-		else {
-			usuarioServicio.crear(usuarioNM);
+		try {
+			if(flagNuevoModificar == MODIFICAR) {
+				usuarioServicio.modificar(usuarioNM);
+			} else {	
+				usuarioServicio.crear(usuarioNM);
+			}
+		} catch (NegocioExcepcion e) {
+			redirectAttributes.addFlashAttribute("usuarioNM",usuarioNM);
+			if(flagNuevoModificar == MODIFICAR) {
+				return new ModelAndView("redirect:/ModificarUsuario");
+			} else {	
+				return new ModelAndView("redirect:/NuevoUsuario");
+			}
+			
 		}
 		return new ModelAndView("redirect:/usuarios");
 	}
@@ -151,7 +171,7 @@ public class AdminControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/parametrosModificarNuevo")
-	public ModelAndView parametrosModificarNuevo(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
+	public ModelAndView parametrosModificarNuevo(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) throws Exception {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		if(flagNuevoModificar == 0) {
 			parametroServicio.modificar(parametro);

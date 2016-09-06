@@ -37,7 +37,7 @@ public class GallineroTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_InsertarYBuscarGallinero() {
+	public void test_InsertarYBuscarGallinero() throws Exception {
 		
 		UsuarioModel u = crearUsuario();
 		usuarioDAO.guardar(u);
@@ -59,7 +59,7 @@ public class GallineroTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_BorrarGallinero() {
+	public void test_BorrarGallinero() throws Exception  {
 		UsuarioModel u = crearUsuario();
 		usuarioDAO.guardar(u);
 		
@@ -79,7 +79,7 @@ public class GallineroTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_ModificarGallinero() {
+	public void test_ModificarGallinero() throws Exception {
 		UsuarioModel u = crearUsuario();
 		usuarioDAO.guardar(u);
 		

@@ -1,11 +1,6 @@
 package ar.com.escuelita.chicken.persistencia.dao;
 
-import java.util.Date;
 import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

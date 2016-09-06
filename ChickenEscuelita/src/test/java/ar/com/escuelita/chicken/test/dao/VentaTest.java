@@ -42,7 +42,7 @@ public class VentaTest {
 		return u;
 	}
 	
-	private ProveedorModel crearProveedor(){
+	private ProveedorModel crearProveedor() {
 		ProveedorModel p = new ProveedorModel();
 		p.setDireccion("CalleFalsa123");
 		p.setMail("pepe@gmail.com");
@@ -51,7 +51,7 @@ public class VentaTest {
 		return p;
 	}
 	
-	private VentaModel crearVenta() {
+	private VentaModel crearVenta() throws Exception  {
 		ProveedorModel p = crearProveedor();
 		proveedorDAO.guardar(p);
 		UsuarioModel u = crearUsuario();
@@ -68,7 +68,7 @@ public class VentaTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_InsertarYBuscarVenta() {
+	public void test_InsertarYBuscarVenta() throws Exception  {
 		VentaModel v = crearVenta();
 		ventaDAO.guardar(v);
 		
@@ -83,7 +83,7 @@ public class VentaTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_BorrarVenta() {
+	public void test_BorrarVenta() throws Exception {
 		VentaModel v = crearVenta();
 		ventaDAO.guardar(v);
 		
@@ -96,7 +96,7 @@ public class VentaTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_ModificarVenta() {
+	public void test_ModificarVenta() throws Exception {
 		VentaModel v = crearVenta();
 		
 		ventaDAO.guardar(v);

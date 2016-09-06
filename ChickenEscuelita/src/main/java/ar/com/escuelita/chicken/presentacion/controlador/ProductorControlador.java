@@ -70,7 +70,7 @@ public class ProductorControlador extends Controlador {
 	}
 	
 	@RequestMapping(path="crearNuevoMovimiento")
-	public ModelAndView crearNuevoMovimiento(@ModelAttribute("movimiento") MovimientoDTO movimientoDto) {
+	public ModelAndView crearNuevoMovimiento(@ModelAttribute("movimiento") MovimientoDTO movimientoDto) throws Exception {
 //		movimientoDto.setGallinero((GallineroDTO)gallineroServicio.buscar(movimientoDto.getGallinero().getId()));
 //		movimientoDto.setDeposito((DepositoDTO)depositoServicio.buscar(movimientoDto.getDeposito().getId()));
 		movimientoServicio.crear(movimientoDto);

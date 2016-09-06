@@ -95,7 +95,7 @@ public class ContableControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/proveedoresModificarCrearNuevoContable")
-	public ModelAndView proveedoresCrearNuevoContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) {
+	public ModelAndView proveedoresCrearNuevoContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) throws Exception {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		if(flag == 0) {
 			proveedorServicio.modificar(proveedor);
@@ -159,7 +159,7 @@ public class ContableControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/gallinerosModificarCrearNuevoContable")
-	public ModelAndView gallinerosModificarCrearNuevoContable(@ModelAttribute("gallinero") GallineroDTO gallinero, @RequestParam("flag") int flag) {
+	public ModelAndView gallinerosModificarCrearNuevoContable(@ModelAttribute("gallinero") GallineroDTO gallinero, @RequestParam("flag") int flag) throws Exception {
 		ModelAndView model = new ModelAndView(obtenerVista());
 
 		if(flag == MODIFICAR) {
@@ -219,7 +219,7 @@ public class ContableControlador extends Controlador{
 		
 	
 	@RequestMapping(path="/depositosModificarCrearNuevoContable")
-	public ModelAndView depositosCrearNuevoContable(@ModelAttribute("deposito") DepositoDTO deposito, @RequestParam("flag") int flag) {
+	public ModelAndView depositosCrearNuevoContable(@ModelAttribute("deposito") DepositoDTO deposito, @RequestParam("flag") int flag) throws Exception {
 		if(flag == MODIFICAR) {
 			depositoServicio.modificar(deposito);
 		}
@@ -254,7 +254,7 @@ public class ContableControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/ventasCrearNuevoContable")
-	public ModelAndView ventasCrearNuevoContable(@ModelAttribute("venta") VentaDTO venta) {
+	public ModelAndView ventasCrearNuevoContable(@ModelAttribute("venta") VentaDTO venta) throws Exception {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		ventaServicio.crear(venta);
 		List<DTO> listaVentas= (List<DTO>)ventaServicio.listar();

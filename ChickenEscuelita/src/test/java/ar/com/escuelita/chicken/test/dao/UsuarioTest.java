@@ -22,7 +22,7 @@ public class UsuarioTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_InsertarYBuscarUsuario() {
+	public void test_InsertarYBuscarUsuario() throws Exception {
 		UsuarioModel u = new UsuarioModel();
 		u.setApellido("dd");
 		u.setContrasenia("cc");
@@ -44,7 +44,7 @@ public class UsuarioTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_BorrarUsuario() {
+	public void test_BorrarUsuario() throws Exception {
 		UsuarioModel u = new UsuarioModel();
 		u.setApellido("dd");
 		u.setContrasenia("cc");
@@ -63,7 +63,7 @@ public class UsuarioTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_ModificarUsuario() {
+	public void test_ModificarUsuario() throws Exception {
 		UsuarioModel u = new UsuarioModel();
 		u.setApellido("dd");
 		u.setContrasenia("cc");

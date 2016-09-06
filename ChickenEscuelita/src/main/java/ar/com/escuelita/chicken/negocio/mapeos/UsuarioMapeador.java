@@ -13,7 +13,7 @@ public class UsuarioMapeador extends Mapeador {
 		UsuarioModel usuarioModel = (UsuarioModel) vo;
 		UsuarioDTO dto = new UsuarioDTO();
 		
-		dto.setId(usuarioModel.getId());
+		dto.setId(String.valueOf(usuarioModel.getId()));
 		dto.setNombre(usuarioModel.getNombre());
 		dto.setApellido(usuarioModel.getApellido());
 		dto.setContrasenia(usuarioModel.getContrasenia());

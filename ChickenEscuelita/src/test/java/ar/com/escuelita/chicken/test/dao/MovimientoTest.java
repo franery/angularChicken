@@ -56,7 +56,7 @@ public class MovimientoTest {
 		return u;
 	}
 	
-	private GallineroModel crearGallinero() {
+	private GallineroModel crearGallinero() throws Exception  {
 		UsuarioModel u = crearUsuario();
 		usuarioDAO.guardar(u);
 		
@@ -70,7 +70,7 @@ public class MovimientoTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_InsertarYBuscarMovimiento() {
+	public void test_InsertarYBuscarMovimiento() throws Exception  {
 		DepositoModel d = crearDeposito();
 		depositoDAO.guardar(d);
 		
@@ -95,7 +95,7 @@ public class MovimientoTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_BorrarMovimiento() {
+	public void test_BorrarMovimiento() throws Exception {
 		DepositoModel d = crearDeposito();
 		depositoDAO.guardar(d);
 		
@@ -119,7 +119,7 @@ public class MovimientoTest {
 	
 	@Test
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRED)
-	public void test_ModificarMovimiento() {
+	public void test_ModificarMovimiento() throws Exception {
 		DepositoModel d = crearDeposito();
 		depositoDAO.guardar(d);
 		
