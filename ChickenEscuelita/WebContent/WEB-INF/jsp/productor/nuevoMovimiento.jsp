@@ -19,7 +19,7 @@
 				<td><form:label path="gallineroId">
 						<spring:message code="gallinero"/>:</form:label></td>
 				<td><form:select path="gallineroId" required="required">
-						<form:option value="0">
+						<form:option value="">
 							<spring:message code="seleccioneGallinero"/>
 						</form:option>
 						<c:forEach items="${listaGallineros}" var="gallineroVar">
@@ -33,7 +33,7 @@
 				<td><form:label path="depositoId">
 						<spring:message code="deposito"/>:</form:label></td>
 				<td><form:select path="depositoId" required="required">
-						<form:option value="0">
+						<form:option value="">
 							<spring:message code="seleccioneDeposito"/>
 						</form:option>
 						<c:forEach items="${listaDepositos}" var="depositoVar">

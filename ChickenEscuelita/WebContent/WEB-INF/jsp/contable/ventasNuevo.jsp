@@ -22,7 +22,7 @@
 			<td><form:label path="proveedorId"><spring:message code="proveedor"/>:</form:label></td>
 			<td>
 				<form:select path="proveedorId" required="required">
-					<form:option value="0"><spring:message code="seleccionar" /></form:option>
+					<form:option value=""><spring:message code="seleccionar" /></form:option>
 						<c:forEach items="${listaProveedores}" var="proveedor">
 							<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
 						</c:forEach>
