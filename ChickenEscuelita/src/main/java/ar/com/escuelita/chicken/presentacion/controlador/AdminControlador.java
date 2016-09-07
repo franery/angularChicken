@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,6 @@ public class AdminControlador extends Controlador{
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
-		System.out.println("pepeLALALALALALALALALALALALALA");
 		binder.setValidator(usuarioValidacion);
     }
 	
@@ -117,20 +117,28 @@ public class AdminControlador extends Controlador{
 	@RequestMapping(path="/usuariosModificarNuevo")
 	public ModelAndView usuariosModificarNuevo(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM, 
 			@RequestParam("flagNuevoModificar") int flagNuevoModificar,
+			@Valid UsuarioDTO usuarioDTO,
 			final RedirectAttributes redirectAttributes,
-			BindingResult result) throws Exception {
-		
+			BindingResult result) {
+		System.out.println("C");
 		if (result.hasErrors()) {
+			System.out.println("FASDKNKASLKDNASLKDNASLKNDLKASND");
 			if(flagNuevoModificar == MODIFICAR) {
 				return ModificarUsuario(usuarioNM);
 			} else {	
 				return NuevoUsuario(usuarioNM);
 			}
 		}
+		try {
+		System.out.println("D");
 		if(flagNuevoModificar == MODIFICAR) {
 			usuarioServicio.modificar(usuarioNM);
 		} else {	
 			usuarioServicio.crear(usuarioNM);
+		}
+		}
+		catch (Exception e) {
+			System.out.println("Chupala");
 		}
 //		
 //		try {

@@ -13,6 +13,10 @@ public class UsuarioValidacion implements Validator {
 	@Autowired
 	IUsuarioValidacionServicio usuarioValidacionServicio;
 
+	public UsuarioValidacion() {
+		
+	}
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return UsuarioDTO.class.equals(clazz);
@@ -24,9 +28,20 @@ public class UsuarioValidacion implements Validator {
 		try {
 			usuarioValidacionServicio.validacionNombreUsuario(usuario.getNombreUsuario());
 		} catch (ValidacionExcepcion e) {
-			e.printStackTrace();
-			errores.rejectValue("nombreUsuario", e.getMessage());
+			
+			//e.printStackTrace();
+//			errores.rejectValue("nombreUsuario", e.getMessage());
+			errores.rejectValue("nombreUsuario", "mensajeErrorUsuario","Mesnaje default");
+			System.out.println("B");
 		}
 	}
 
+	public IUsuarioValidacionServicio getUsuarioValidacionServicio() {
+		return usuarioValidacionServicio;
+	}
+
+	public void setUsuarioValidacionServicio(
+			IUsuarioValidacionServicio usuarioValidacionServicio) {
+		this.usuarioValidacionServicio = usuarioValidacionServicio;
+	}
 }

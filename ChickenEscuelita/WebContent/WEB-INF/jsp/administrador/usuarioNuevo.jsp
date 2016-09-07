@@ -20,7 +20,7 @@
 			<tr>
 				<td><spring:message code="nombreUsuario" /></td>
 				<td><form:input path="nombreUsuario" required="required"/></td>
-				<td><form:errors path="nombreUsuario" /> </td>
+<%-- 				<td> <form:errors path="nombreUsuario" /> </td> --%>
 			</tr>
 			<tr>
 				<td><spring:message code="nombre" /></td>

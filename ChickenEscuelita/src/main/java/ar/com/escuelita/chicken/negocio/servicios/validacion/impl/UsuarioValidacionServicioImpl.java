@@ -13,16 +13,28 @@ import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio {
 
 	@Autowired 
-	IUsuarioServicio usuarioServicio;
+	private IUsuarioServicio usuarioServicio;
+	
+	public UsuarioValidacionServicioImpl() {
+		
+	}
 	
 	@Override
 	public void validacionNombreUsuario(String nombreUsuario) throws ValidacionExcepcion {
 		List<DTO> listaUsuarios = (List<DTO>) usuarioServicio.listar();
 		for(DTO dto : listaUsuarios) {
 			if (((UsuarioDTO)dto).getNombreUsuario().equals(nombreUsuario)) {
-				System.out.println("LALALALALALALALALALALALALA");
-				throw new ValidacionExcepcion("mensajeErrorUsuario");	
+				System.out.println("A");
+				throw new ValidacionExcepcion("");	
 			}
 		}
+	}
+
+	public IUsuarioServicio getUsuarioServicio() {
+		return usuarioServicio;
+	}
+
+	public void setUsuarioServicio(IUsuarioServicio usuarioServicio) {
+		this.usuarioServicio = usuarioServicio;
 	}
 }
