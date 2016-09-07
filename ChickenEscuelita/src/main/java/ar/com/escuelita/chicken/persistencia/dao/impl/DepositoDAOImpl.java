@@ -27,7 +27,7 @@ public class DepositoDAOImpl extends DAO implements IDepositoDAO {
 	public List<DepositoModel> listar() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<DepositoModel> lista = session.createQuery("from DepositoModel").list();
+		List<DepositoModel> lista = session.createQuery("from DepositoModel where borrado=false").list();
 		session.close();
 		return lista;
 	}
@@ -73,7 +73,7 @@ public class DepositoDAOImpl extends DAO implements IDepositoDAO {
 	private QueryParametrosUtil generarConsulta(String query, DepositoFiltro filtro){
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 		
-		String str = "";
+		String str = " where deposito.borrado=false ";
 		
 		/*   Nombre   */
 		if (filtro.getDepositoNombre() != null) {

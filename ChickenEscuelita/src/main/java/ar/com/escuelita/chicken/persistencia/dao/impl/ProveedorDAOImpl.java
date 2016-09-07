@@ -23,7 +23,7 @@ public class ProveedorDAOImpl extends DAO implements IProveedorDAO {
 	public List<ProveedorModel> listar() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<ProveedorModel> lista = session.createQuery("from ProveedorModel").list();
+		List<ProveedorModel> lista = session.createQuery("from ProveedorModel where borrado=false").list();
 		session.close();
 		return lista;
 	}

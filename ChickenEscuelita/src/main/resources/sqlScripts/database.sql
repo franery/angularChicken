@@ -1,3 +1,4 @@
+
 drop database db_chicken;
 
 create database db_chicken;
@@ -10,7 +11,8 @@ create table Usuario (
     nombre varchar(50) not null,
     apellido varchar(50) not null,
     perfil varchar(50) not null,
-    contrasenia varchar(50) not null
+    contrasenia varchar(50) not null,
+    borrado boolean default false not null
 );
 
 create table Proveedor (
@@ -18,22 +20,25 @@ create table Proveedor (
     nombre varchar(50) not null,
     direccion varchar(50) not null,
     mail varchar(50) not null,
-    telefono varchar(50) not null
+    telefono varchar(50) not null,
+    borrado boolean default false not null
 );
 
 create table Gallinero (
 	id bigint(10) primary key auto_increment,
     nombre varchar(50) not null,
-    idUsuario bigint(10) not null,
+    idUsuario bigint(10),
     stockGallinas bigint(10) not null,
-	foreign key (idUsuario) references Usuario (id)	on delete cascade
+    borrado boolean default false not null,
+	foreign key (idUsuario) references Usuario (id)
 );
 
 create table Deposito (
 	id bigint(10) primary key auto_increment,
     nombre varchar(50) not null,
     stockHuevos bigint(10) default 0,
-    stockMaximo bigint(10) not null
+    stockMaximo bigint(10) not null,
+    borrado boolean default false not null
 );
 
 create table Movimiento (
@@ -42,8 +47,9 @@ create table Movimiento (
     cantidad bigint(10) not null,
     idGallinero bigint(10) not null,
     idDeposito bigint(10) not null,
-    foreign key (idGallinero) references Gallinero (id) on delete cascade,
-	foreign key (idDeposito) references Deposito (id) on delete cascade
+    borrado boolean default false not null,
+    foreign key (idGallinero) references Gallinero (id),
+	foreign key (idDeposito) references Deposito (id)
 );
 
 create table Venta (
@@ -53,12 +59,14 @@ create table Venta (
     precio float not null,
     idProveedor bigint(10) not null,
     idUsuario bigint(10) not null,
-    foreign key (idProveedor) references Proveedor (id) on delete cascade,
-	foreign key (idUsuario) references Usuario (id) on delete cascade
+    borrado boolean default false not null,
+    foreign key (idProveedor) references Proveedor (id),
+	foreign key (idUsuario) references Usuario (id)
 );
 
 create table Parametro (
 	id bigint(10) primary key auto_increment,
     descripcion varchar(50) not null,
-    valor varchar(50) not null
+    valor varchar(50) not null,
+    borrado boolean default false not null
 );

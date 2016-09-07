@@ -11,7 +11,9 @@ public class DepositoDTO extends DTO {
 	private long stockHuevos;
 	
 	private long stockMaximo;
-
+	
+	private boolean borrado;
+	
 	public String getId() {
 		return id;
 	}
@@ -44,4 +46,12 @@ public class DepositoDTO extends DTO {
 		this.stockMaximo = stockMaximo;
 	}
 
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
+	}
+	
 }

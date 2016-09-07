@@ -25,7 +25,7 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 	public List<MovimientoModel> listar() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<MovimientoModel> lista = session.createQuery("from MovimientoModel").list();
+		List<MovimientoModel> lista = session.createQuery("from MovimientoModel where borrado=false").list();
 		session.close();
 		return lista;
 	}
@@ -72,11 +72,11 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 	private QueryParametrosUtil generarConsulta(String query, MovimientoFiltro filtro){
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 		
-		String str = "";
+		String str = " where mov.borrado=false ";
 		
 		/*   ID PRODUCTOR   */
 		if (filtro.getProductorId() != -1) {
-			str += " where u.id=" + filtro.getProductorId();
+			str += obtenerOperadorBusqueda(str) + " u.id=" + filtro.getProductorId();
 		}
 		
 		/*   CANTIDAD  DESDE */

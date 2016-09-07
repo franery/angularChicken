@@ -9,6 +9,8 @@ public class ParametroDTO extends DTO {
 	private String descripcion;
 	
 	private String valor;
+	
+	private boolean borrado;
 
 	public String getId() {
 		return id;
@@ -32,6 +34,14 @@ public class ParametroDTO extends DTO {
 
 	public void setValor(String valor) {
 		this.valor = valor;
+	}
+
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 	
 }

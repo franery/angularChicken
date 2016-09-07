@@ -16,6 +16,7 @@ public class ParametroMapeador extends Mapeador {
 		dto.setId(String.valueOf(parametroModel.getId()));
 		dto.setDescripcion(parametroModel.getDescripcion());
 		dto.setValor(parametroModel.getValor());
+		dto.setBorrado(parametroModel.isBorrado());
 		
 		return dto;
 	}
@@ -27,6 +28,7 @@ public class ParametroMapeador extends Mapeador {
 		
 		parametroModel.setDescripcion(parametroDTO.getDescripcion());
 		parametroModel.setValor(parametroDTO.getValor());
+		parametroModel.setBorrado(parametroDTO.isBorrado());
 		
 		return parametroModel;
 	}

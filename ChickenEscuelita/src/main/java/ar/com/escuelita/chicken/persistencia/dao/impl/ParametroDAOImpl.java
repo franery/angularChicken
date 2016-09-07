@@ -23,7 +23,7 @@ public class ParametroDAOImpl extends DAO implements IParametroDAO {
 	public List<ParametroModel> listar() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<ParametroModel> lista = session.createQuery("from ParametroModel").list();
+		List<ParametroModel> lista = session.createQuery("from ParametroModel where borrado=false").list();
 		session.close();
 		return lista;
 	}

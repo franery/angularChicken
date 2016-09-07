@@ -19,6 +19,8 @@ public class MovimientoDTO extends DTO {
 	private String depositoId;
 	
 	private String depositoNombre;
+	
+	private boolean borrado;
 
 	public String getId() {
 		return id;
@@ -76,4 +78,12 @@ public class MovimientoDTO extends DTO {
 		this.depositoNombre = depositoNombre;
 	}
 
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
+	}
+	
 }

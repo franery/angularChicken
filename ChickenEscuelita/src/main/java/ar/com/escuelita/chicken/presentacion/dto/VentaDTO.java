@@ -21,6 +21,8 @@ public class VentaDTO extends DTO {
 	private String proveedorId;
 	
 	private String proveedorNombre;
+	
+	private boolean borrado;
 
 	public String getId() {
 		return id;
@@ -84,6 +86,14 @@ public class VentaDTO extends DTO {
 
 	public void setProveedorNombre(String proveedorNombre) {
 		this.proveedorNombre = proveedorNombre;
+	}
+
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 
 }

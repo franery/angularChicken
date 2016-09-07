@@ -22,6 +22,9 @@ public class VentaModel extends Modelo {
 	@Column(name="precio")
 	private float precio;
 	
+	@Column(name="borrado")
+	private boolean borrado;
+	
 	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.PERSIST)
 	@JoinColumn(name="idUsuario")
 	private UsuarioModel usuario;
@@ -64,6 +67,14 @@ public class VentaModel extends Modelo {
 
 	public void setPrecio(float precio) {
 		this.precio = precio;
+	}
+	
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 
 	public UsuarioModel getUsuario() {

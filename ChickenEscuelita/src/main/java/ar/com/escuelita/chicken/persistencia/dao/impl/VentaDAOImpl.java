@@ -27,7 +27,7 @@ public class VentaDAOImpl extends DAO implements IVentaDAO {
 	public List<VentaModel> listar() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<VentaModel> lista = session.createQuery("from VentaModel").list();
+		List<VentaModel> lista = session.createQuery("from VentaModel where borrado=false").list();
 		session.close();
 		return lista;
 	}
@@ -72,7 +72,7 @@ public class VentaDAOImpl extends DAO implements IVentaDAO {
 	private QueryParametrosUtil generarConsulta(String query, VentaFiltro filtro){
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 		
-		String str = "";
+		String str = " where venta.borrado=false ";
 		
 		/*   PROVEEDOR   */
 		if (filtro.getProveedorId() != 0) {

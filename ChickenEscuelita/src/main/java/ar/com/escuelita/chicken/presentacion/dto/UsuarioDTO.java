@@ -17,6 +17,8 @@ public class UsuarioDTO extends DTO {
 	private String contrasenia;
 	
 	private EnumPerfil perfil;
+	
+	private boolean borrado;
 
 	public String getId() {
 		return id;
@@ -64,5 +66,13 @@ public class UsuarioDTO extends DTO {
 
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
+	}
+
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 }

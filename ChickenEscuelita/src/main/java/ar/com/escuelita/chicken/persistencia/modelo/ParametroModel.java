@@ -22,6 +22,9 @@ public class ParametroModel extends Modelo {
 	@Column(name="valor")
 	private String valor;
 	
+	@Column(name="borrado")
+	private boolean borrado;
+	
 	public long getId() {
 		return id;
 	}
@@ -44,6 +47,14 @@ public class ParametroModel extends Modelo {
 
 	public void setValor(String valor) {
 		this.valor = valor;
+	}
+
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 	
 }

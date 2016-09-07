@@ -13,6 +13,8 @@ public class GallineroDTO extends DTO {
 	private String usuarioNombre;	
 	
 	private long stockGallinas;
+	
+	private boolean borrado;
 
 	public String getId() {
 		return id;
@@ -53,5 +55,12 @@ public class GallineroDTO extends DTO {
 	public void setUsuarioNombre(String usuarioNombre) {
 		this.usuarioNombre = usuarioNombre;
 	}
-	
+
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
+	}
 }

@@ -13,6 +13,8 @@ public class ProveedorDTO extends DTO {
 	private String mail;
 	
 	private String telefono;
+	
+	private boolean borrado;
 
 	public String getId() {
 		return id;
@@ -54,4 +56,12 @@ public class ProveedorDTO extends DTO {
 		this.telefono = telefono;
 	}
 
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
+	}
+	
 }

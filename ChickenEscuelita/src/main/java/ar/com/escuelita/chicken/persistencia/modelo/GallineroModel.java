@@ -17,6 +17,9 @@ public class GallineroModel extends Modelo {
 	@Column(name="nombre")
 	private String nombre;
 	
+	@Column(name="borrado")
+	private boolean borrado;
+	
 	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.PERSIST)
 	@JoinColumn(name="idUsuario")
 	private UsuarioModel usuario;
@@ -68,6 +71,14 @@ public class GallineroModel extends Modelo {
 
 	public void setStockGallinas(long stockGallinas) {
 		this.stockGallinas = stockGallinas;
+	}
+
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 	
 }

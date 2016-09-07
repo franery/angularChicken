@@ -31,6 +31,9 @@ public class UsuarioModel extends Modelo {
 	@Column(name="contrasenia")
 	private String contrasenia;
 	
+	@Column(name="borrado")
+	private boolean borrado;
+	
 	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER,cascade=CascadeType.PERSIST)
 	private List<GallineroModel> listaGallineros = new ArrayList<>();
 	
@@ -87,6 +90,14 @@ public class UsuarioModel extends Modelo {
 
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
+	}
+	
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 
 	public List<GallineroModel> getListaGallineros() {

@@ -28,7 +28,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 	public List<UsuarioModel> listar() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<UsuarioModel> lista = session.createQuery("from UsuarioModel").list();
+		List<UsuarioModel> lista = session.createQuery("from UsuarioModel where borrado=false").list();
 		session.close();
 		return lista;
 	}
@@ -36,7 +36,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 	public List<UsuarioModel> listarProductores(){
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<UsuarioModel> lista = session.createQuery("from UsuarioModel U where U.perfil=2").list();
+		List<UsuarioModel> lista = session.createQuery("from UsuarioModel U where U.perfil=2 and U.borrado=false").list();
 		session.close();
 		return lista;	}
 
@@ -106,7 +106,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 	private QueryParametrosUtil generarConsulta(String query, UsuarioFiltro filtro){
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 
-		String str = "";
+		String str = " where usuario.borrado=false ";
 
 		/*   Id   */
 		if (filtro.getId() != 0) {

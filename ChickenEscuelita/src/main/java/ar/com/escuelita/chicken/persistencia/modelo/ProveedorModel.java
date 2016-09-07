@@ -26,6 +26,9 @@ public class ProveedorModel extends Modelo {
 	@Column(name="telefono")
 	private String telefono;
 	
+	@Column(name="borrado")
+	private boolean borrado;
+	
 	@OneToMany(mappedBy="proveedor",fetch=FetchType.EAGER)
 	private List<VentaModel> listaVentas = new ArrayList<>();
 	
@@ -71,6 +74,14 @@ public class ProveedorModel extends Modelo {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 
 	public List<VentaModel> getListaVentas() {

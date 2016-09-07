@@ -27,7 +27,7 @@ public class GallineroDAOImpl extends DAO implements IGallineroDAO {
 	public List<GallineroModel> listar() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<GallineroModel> lista = session.createQuery("from GallineroModel").list();
+		List<GallineroModel> lista = session.createQuery("from GallineroModel where borrado=false").list();
 		session.close();
 		return lista;
 	}
@@ -73,11 +73,11 @@ public class GallineroDAOImpl extends DAO implements IGallineroDAO {
 	private QueryParametrosUtil generarConsulta(String query, GallineroFiltro filtro){
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 		
-		String str = "";
+		String str = " where u.borrado=false ";
 		
 		/*   ID PRODUCTOR   */
 		if (filtro.getUsuarioId() != -1) {
-			str += " where u.id=" + filtro.getUsuarioId();
+			str += obtenerOperadorBusqueda(str) + " u.id=" + filtro.getUsuarioId();
 		}
 		
 		qp.setSql(query + str);

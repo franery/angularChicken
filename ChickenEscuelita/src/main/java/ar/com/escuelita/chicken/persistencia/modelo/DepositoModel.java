@@ -23,6 +23,9 @@ public class DepositoModel extends Modelo {
 	@Column(name="stockMaximo")
 	private long stockMaximo;
 	
+	@Column(name="borrado")
+	private boolean borrado;
+	
 	@OneToMany(mappedBy="deposito",fetch=FetchType.EAGER)
 	private List<MovimientoModel> listaMovimientos = new ArrayList<>();	
 	
@@ -60,6 +63,14 @@ public class DepositoModel extends Modelo {
 
 	public void setStockMaximo(long stockMaximo) {
 		this.stockMaximo = stockMaximo;
+	}
+	
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 
 	public List<MovimientoModel> getListaMovimientos() {

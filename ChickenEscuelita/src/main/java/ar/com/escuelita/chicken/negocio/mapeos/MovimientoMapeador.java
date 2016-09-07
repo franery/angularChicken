@@ -30,6 +30,7 @@ public class MovimientoMapeador extends Mapeador {
 		dto.setFecha(model.getFecha());
 		dto.setGallineroId(String.valueOf(model.getGallinero().getId()));
 		dto.setGallineroNombre(model.getGallinero().getNombre());
+		dto.setBorrado(model.isBorrado());
 		return dto;
 	}
 
@@ -42,6 +43,7 @@ public class MovimientoMapeador extends Mapeador {
 		movimientoModel.setDeposito(depositoDAO.get(Long.parseLong(movimientoDTO.getDepositoId())));
 		movimientoModel.setFecha(movimientoDTO.getFecha());
 		movimientoModel.setGallinero(gallineroDAO.get(Long.parseLong(movimientoDTO.getGallineroId())));
+		movimientoModel.setBorrado(movimientoDTO.isBorrado());
 		
 		return movimientoModel;
 	}

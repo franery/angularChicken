@@ -19,6 +19,9 @@ public class MovimientoModel extends Modelo {
 	@Column(name="cantidad")
 	private long cantidad;
 	
+	@Column(name="borrado")
+	private boolean borrado;
+	
 	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.PERSIST)
 	@JoinColumn(name="idGallinero")
 	private GallineroModel gallinero;
@@ -53,6 +56,14 @@ public class MovimientoModel extends Modelo {
 
 	public void setCantidad(long cantidad) {
 		this.cantidad = cantidad;
+	}
+	
+	public boolean isBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(boolean borrado) {
+		this.borrado = borrado;
 	}
 
 	public GallineroModel getGallinero() {
