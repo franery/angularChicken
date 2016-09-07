@@ -24,8 +24,7 @@ public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio
 		List<DTO> listaUsuarios = (List<DTO>) usuarioServicio.listar();
 		for(DTO dto : listaUsuarios) {
 			if (((UsuarioDTO)dto).getNombreUsuario().equals(nombreUsuario)) {
-				System.out.println("A");
-				throw new ValidacionExcepcion("");	
+				throw new ValidacionExcepcion("mensajeErrorUsuario");	
 			}
 		}
 	}

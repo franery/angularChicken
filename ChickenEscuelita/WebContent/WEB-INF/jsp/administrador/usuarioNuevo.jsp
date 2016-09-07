@@ -8,7 +8,13 @@
 <html>
 <head>
 <title>Usuario</title>
-
+<style>
+    .error 
+    {
+        color: #ff0000;
+        font-weight: bold;
+    }
+    </style>
 </head>
 <body>
 	<h1>Usuario</h1>
@@ -20,7 +26,6 @@
 			<tr>
 				<td><spring:message code="nombreUsuario" /></td>
 				<td><form:input path="nombreUsuario" required="required"/></td>
-<%-- 				<td> <form:errors path="nombreUsuario" /> </td> --%>
 			</tr>
 			<tr>
 				<td><spring:message code="nombre" /></td>
@@ -45,6 +50,9 @@
 				<td colspan="4" style="text-align: center;">
 				<input type="hidden" name="flagNuevoModificar" value="${flagNuevoModificar}"/>
 				<input type="submit" value="<spring:message code="guardar"/>" /> </td>
+			</tr>
+			<tr>
+				<td colspan="2"> <form:errors path="nombreUsuario" cssClass="error" /> </td> 
 			</tr>
 		</table>
 	</form:form>

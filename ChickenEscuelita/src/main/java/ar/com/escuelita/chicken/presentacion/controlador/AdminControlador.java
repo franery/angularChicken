@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -115,43 +116,21 @@ public class AdminControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/usuariosModificarNuevo")
-	public ModelAndView usuariosModificarNuevo(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM, 
-			@RequestParam("flagNuevoModificar") int flagNuevoModificar,
-			@Valid UsuarioDTO usuarioDTO,
-			final RedirectAttributes redirectAttributes,
-			BindingResult result) {
-		System.out.println("C");
+	public ModelAndView usuariosModificarNuevo(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
+			BindingResult result,
+			@RequestParam("flagNuevoModificar") int flagNuevoModificar) throws Exception {
 		if (result.hasErrors()) {
-			System.out.println("FASDKNKASLKDNASLKDNASLKNDLKASND");
 			if(flagNuevoModificar == MODIFICAR) {
 				return ModificarUsuario(usuarioNM);
 			} else {	
 				return NuevoUsuario(usuarioNM);
 			}
 		}
-		try {
-		System.out.println("D");
 		if(flagNuevoModificar == MODIFICAR) {
 			usuarioServicio.modificar(usuarioNM);
 		} else {	
 			usuarioServicio.crear(usuarioNM);
 		}
-		}
-		catch (Exception e) {
-			System.out.println("Chupala");
-		}
-//		
-//		try {
-//
-//		} catch (NegocioExcepcion e) {
-//			redirectAttributes.addFlashAttribute("usuarioNM",usuarioNM);
-//			if(flagNuevoModificar == MODIFICAR) {
-//				return new ModelAndView("redirect:/ModificarUsuario");
-//			} else {	
-//				return new ModelAndView("redirect:/NuevoUsuario");
-//			}
-//			
-//		}
 		return new ModelAndView("redirect:/usuarios");
 	}
 

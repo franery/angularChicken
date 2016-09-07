@@ -18,13 +18,6 @@ body{
 	width: 100%;
 }
 
-select.backVerde {
-	background-color: #4CAF50;
-}
-submit.backVerde {
-	background-color: #4CAF50;
-}
-
 ul.ul {
 	list-style-type: none;
 	margin: 0;
@@ -118,4 +111,43 @@ div.pantalla{
     text-align: left;
     background-color: #4CAF50;
     color: white;
+}
+
+input[type=submit].langg {
+    width: 50%;
+    background-color: #4CAF50;
+    color: white;
+/*     padding: 10px 20px;
+ */    margin: 0px 0;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+input[type=submit].langg:hover {
+    background-color: #45a049;
+}
+
+a.langg {
+    width: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 0px 0;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a.langg:hover {
+    background-color: #45a049;
+}
+
+select.backVerde {
+	background-color: #4CAF50;
+}
+
+submit.backVerde {
+    background-color: #4CAF50;
 }

@@ -12,9 +12,7 @@ public class UsuarioValidacion implements Validator {
 
 	@Autowired
 	IUsuarioValidacionServicio usuarioValidacionServicio;
-
 	public UsuarioValidacion() {
-		
 	}
 	
 	@Override
@@ -28,11 +26,7 @@ public class UsuarioValidacion implements Validator {
 		try {
 			usuarioValidacionServicio.validacionNombreUsuario(usuario.getNombreUsuario());
 		} catch (ValidacionExcepcion e) {
-			
-			//e.printStackTrace();
-//			errores.rejectValue("nombreUsuario", e.getMessage());
-			errores.rejectValue("nombreUsuario", "mensajeErrorUsuario","Mesnaje default");
-			System.out.println("B");
+			errores.rejectValue("nombreUsuario", e.getMessage(),"Mesnaje default");
 		}
 	}
 

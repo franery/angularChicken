@@ -26,8 +26,8 @@ submit.backVerde {
 							<option value="es"> <spring:message code="espaniol"/> </option>
 					</select>
 				<input type="hidden" name="urlRequest" id="urlRequest" >
-				<input type="submit" class="menu2" value="<spring:message code="guardar"/>" />
-		</form:form>
+				<input type="submit" class="langg" value=<spring:message code="cambiar"/> />
+		</form:form></li>
 	</ul>
 <br>
 <br>
