@@ -27,13 +27,20 @@
 		<property name="annotatedClasses">
 			<list>
 				<!-- Aca pondremos las clases que mapeemos -->
-				<value>ar.com.escuelita.chicken.persistencia.modelo.DepositoModel</value>
-				<value>ar.com.escuelita.chicken.persistencia.modelo.GallineroModel</value>
-				<value>ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel</value>
-				<value>ar.com.escuelita.chicken.persistencia.modelo.ParametroModel</value>
-				<value>ar.com.escuelita.chicken.persistencia.modelo.ProveedorModel</value>
-				<value>ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel</value>
-				<value>ar.com.escuelita.chicken.persistencia.modelo.VentaModel</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.DepositoModel
+				</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.GallineroModel
+				</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel
+				</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.ParametroModel
+				</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.ProveedorModel
+				</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel
+				</value>
+				<value>ar.com.escuelita.chicken.persistencia.modelo.VentaModel
+				</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -82,14 +89,27 @@
 		class="ar.com.escuelita.chicken.negocio.servicios.impl.ParametroServicioImpl" />
 	<bean id="ventaServicio"
 		class="ar.com.escuelita.chicken.negocio.servicios.impl.VentaServicioImpl" />
+	<bean name="usuarioValidacionServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.validacion.impl.UsuarioValidacionServicioImpl" />
+
+	<bean name="usuarioValidacion" 
+		class="ar.com.escuelita.chicken.presentacion.validacion.UsuarioValidacion" >
+<!-- 		<property name="usuarioValidacionServicio" ref="usuarioValidacionServicio"/> -->
+	</bean>
+
 
 	<!-- Mapeadores -->
-	
-	<bean id="depositoMapeo" class="ar.com.escuelita.chicken.negocio.mapeos.DepositoMapeador"/>
-	<bean id="gallineroMapeo" class="ar.com.escuelita.chicken.negocio.mapeos.GallineroMapeador"/>
-	<bean id="movimientoMapeo" class="ar.com.escuelita.chicken.negocio.mapeos.MovimientoMapeador"/>
-	<bean id="parametroMapeo" class="ar.com.escuelita.chicken.negocio.mapeos.ParametroMapeador"/>
-	<bean id="proveedorMapeo" class="ar.com.escuelita.chicken.negocio.mapeos.ProveedorMapeador"/>
-	<bean id="usuarioMapeo" class="ar.com.escuelita.chicken.negocio.mapeos.UsuarioMapeador"/>
-	<bean id="ventaMapeo" class="ar.com.escuelita.chicken.negocio.mapeos.VentaMapeador"/>
+
+	<bean id="depositoMapeo"
+		class="ar.com.escuelita.chicken.negocio.mapeos.DepositoMapeador" />
+	<bean id="gallineroMapeo"
+		class="ar.com.escuelita.chicken.negocio.mapeos.GallineroMapeador" />
+	<bean id="movimientoMapeo"
+		class="ar.com.escuelita.chicken.negocio.mapeos.MovimientoMapeador" />
+	<bean id="parametroMapeo"
+		class="ar.com.escuelita.chicken.negocio.mapeos.ParametroMapeador" />
+	<bean id="proveedorMapeo"
+		class="ar.com.escuelita.chicken.negocio.mapeos.ProveedorMapeador" />
+	<bean id="usuarioMapeo" class="ar.com.escuelita.chicken.negocio.mapeos.UsuarioMapeador" />
+	<bean id="ventaMapeo" class="ar.com.escuelita.chicken.negocio.mapeos.VentaMapeador" />
 </beans>

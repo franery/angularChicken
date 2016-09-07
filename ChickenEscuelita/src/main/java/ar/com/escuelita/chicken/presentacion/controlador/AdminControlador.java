@@ -2,8 +2,15 @@ package ar.com.escuelita.chicken.presentacion.controlador;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,8 +22,10 @@ import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.base.excepciones.NegocioExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IParametroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
+import ar.com.escuelita.chicken.negocio.servicios.validacion.IUsuarioValidacionServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
+import ar.com.escuelita.chicken.presentacion.validacion.UsuarioValidacion;
 
 @Controller
 public class AdminControlador extends Controlador{
@@ -27,12 +36,20 @@ public class AdminControlador extends Controlador{
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
 	
+	@Autowired
+	private UsuarioValidacion usuarioValidacion;
+	
 	private static final String USUARIOS_VIEW = "administrador/usuarios";
 	private static final String USUARIO_NUEVO_VIEW = "administrador/usuarioNuevo";
 	private static final String PARAMETROS_VIEW = "administrador/parametros";
 	private static final String PARAMETRO_NUEVO_VIEW = "administrador/parametroNuevo";
 	private static final String VACIA_VIEW = "vacia";
 	
+	@InitBinder
+    protected void initBinder(WebDataBinder binder) throws Exception {
+		System.out.println("pepeLALALALALALALALALALALALALA");
+		binder.setValidator(usuarioValidacion);
+    }
 	
 	@RequestMapping(path="/principalAdmin")
 	public ModelAndView inicioAdmin() {
@@ -98,25 +115,35 @@ public class AdminControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/usuariosModificarNuevo")
-	public ModelAndView proveedoresCrearNuevo(
-			@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM, 
-			@RequestParam("flagNuevoModificar") int flagNuevoModificar, final RedirectAttributes redirectAttributes) {
+	public ModelAndView usuariosModificarNuevo(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM, 
+			@RequestParam("flagNuevoModificar") int flagNuevoModificar,
+			final RedirectAttributes redirectAttributes,
+			BindingResult result) throws Exception {
 		
-		try {
+		if (result.hasErrors()) {
 			if(flagNuevoModificar == MODIFICAR) {
-				usuarioServicio.modificar(usuarioNM);
+				return ModificarUsuario(usuarioNM);
 			} else {	
-				usuarioServicio.crear(usuarioNM);
+				return NuevoUsuario(usuarioNM);
 			}
-		} catch (NegocioExcepcion e) {
-			redirectAttributes.addFlashAttribute("usuarioNM",usuarioNM);
-			if(flagNuevoModificar == MODIFICAR) {
-				return new ModelAndView("redirect:/ModificarUsuario");
-			} else {	
-				return new ModelAndView("redirect:/NuevoUsuario");
-			}
-			
 		}
+		if(flagNuevoModificar == MODIFICAR) {
+			usuarioServicio.modificar(usuarioNM);
+		} else {	
+			usuarioServicio.crear(usuarioNM);
+		}
+//		
+//		try {
+//
+//		} catch (NegocioExcepcion e) {
+//			redirectAttributes.addFlashAttribute("usuarioNM",usuarioNM);
+//			if(flagNuevoModificar == MODIFICAR) {
+//				return new ModelAndView("redirect:/ModificarUsuario");
+//			} else {	
+//				return new ModelAndView("redirect:/NuevoUsuario");
+//			}
+//			
+//		}
 		return new ModelAndView("redirect:/usuarios");
 	}
 
@@ -176,4 +203,10 @@ public class AdminControlador extends Controlador{
 		}
 		return new ModelAndView("redirect:/parametros");
 	}
+//	
+//	@ExceptionHandler(Exception.class)
+//	public ModelAndView handleException(Exception ex,HttpServletRequest request, HttpServletResponse response) {
+//		System.out.println(ex.getMessage());
+//		return new ModelAndView();
+//	}
 }

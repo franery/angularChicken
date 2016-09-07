@@ -1,6 +1,6 @@
 package ar.com.escuelita.chicken.base.excepciones;
 
-public class PersistenciaExcepcion extends Exception {
+public class PersistenciaExcepcion extends Excepcion {
 
 	private static final long serialVersionUID = -295681890231255878L;
 

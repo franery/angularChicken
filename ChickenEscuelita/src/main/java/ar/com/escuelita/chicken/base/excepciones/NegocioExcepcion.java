@@ -1,6 +1,6 @@
 package ar.com.escuelita.chicken.base.excepciones;
 
-public class NegocioExcepcion extends Exception {
+public class NegocioExcepcion extends Excepcion {
 	
 	private static final long serialVersionUID = 1658413577187121146L;
 
