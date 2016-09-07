@@ -78,7 +78,7 @@ public class ContableControlador extends Controlador{
 	public ModelAndView proveedoresNuevoContable(@RequestParam("flag") int flag) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flag", flag);
+		model.addObject("flagNuevoModificar", NUEVO);
 		model.addObject("proveedor", new ProveedorDTO());
 		model.addObject("pageToLoad", PROVEEDORES_NUEVO_VIEW);
 		return model;
@@ -88,7 +88,7 @@ public class ContableControlador extends Controlador{
 	public ModelAndView proveedoresModificarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flag", flag);
+		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("proveedor", proveedor);
 		model.addObject("pageToLoad", PROVEEDORES_NUEVO_VIEW);
 		return model;
@@ -97,7 +97,7 @@ public class ContableControlador extends Controlador{
 	@RequestMapping(path="/proveedoresModificarCrearNuevoContable")
 	public ModelAndView proveedoresCrearNuevoContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) throws Exception {
 		ModelAndView model = new ModelAndView(obtenerVista());
-		if(flag == 0) {
+		if(flag == MODIFICAR) {
 			proveedorServicio.modificar(proveedor);
 		}
 		else {
@@ -139,7 +139,7 @@ public class ContableControlador extends Controlador{
 				
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
-		model.addObject("flag", NUEVO);
+		model.addObject("flagNuevoModificar", NUEVO);
 		model.addObject("gallinero", new GallineroDTO());
 		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
 		return model;
@@ -152,7 +152,7 @@ public class ContableControlador extends Controlador{
 		
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
-		model.addObject("flag", MODIFICAR);
+		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("gallinero", gallinero);
 		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
 		return model;
@@ -195,7 +195,7 @@ public class ContableControlador extends Controlador{
 	public ModelAndView depositosNuevoContable() {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flag", NUEVO);
+		model.addObject("flagNuevoModificar", NUEVO);
 		model.addObject("deposito", new DepositoDTO());
 		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
 		return model;
@@ -205,7 +205,7 @@ public class ContableControlador extends Controlador{
 	public ModelAndView depositosModificarContable(@ModelAttribute("deposito") DepositoDTO deposito) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flag", MODIFICAR);
+		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("deposito", deposito);
 		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
 		return model;
