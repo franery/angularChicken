@@ -33,6 +33,7 @@ public class ProveedorServicioImpl extends Servicio implements IProveedorServici
 	@Override
 	public void crear(DTO dto) {
 		proveedorDAO.guardar((ProveedorModel)proveedorMapeador.map(dto, null));
+		System.out.println("ProveedorServicioImpl.crear");
 	}
 
 	@Override

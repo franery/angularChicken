@@ -14,7 +14,7 @@ public class ProveedorDTO extends DTO {
 	
 	private String telefono;
 	
-	private boolean borrado;
+	private String borrado = "0";
 
 	public String getId() {
 		return id;
@@ -56,11 +56,11 @@ public class ProveedorDTO extends DTO {
 		this.telefono = telefono;
 	}
 
-	public boolean isBorrado() {
+	public String getBorrado() {
 		return borrado;
 	}
 
-	public void setBorrado(boolean borrado) {
+	public void setBorrado(String borrado) {
 		this.borrado = borrado;
 	}
 	

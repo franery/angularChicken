@@ -16,6 +16,7 @@
 
 <form:form action="proveedoresModificarCrearNuevoContable" onsubmit="return chequearSiTirarAlerta()" method="post" commandName="proveedor">
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
+	<form:input path="borrado" type="hidden" value="${proveedor.getBorrado()}"/>
 	<table>
 		<tr>
 			<td><form:label path="nombre"><spring:message code="nombre"/>:</form:label></td>
@@ -34,7 +35,7 @@
 			<td><form:input path="telefono" value="${proveedor.getTelefono()}" required="required"/></td>
 		</tr>
 	</table>
-	<input type="hidden" name="flag" value="${flag}"/>
+	<input type="hidden" name="flag" value="${flagNuevoModificar}"/>
 	<input type="submit" value=<spring:message code="guardar"/> />
 </form:form>
 	

@@ -30,6 +30,9 @@ public class ProveedorDAOImpl extends DAO implements IProveedorDAO {
 
 	@Transactional
 	public void guardar(ProveedorModel proveedorModel) {
+		
+		System.out.println("ProveedorDAOImpl.guardar");
+		
 		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.save(proveedorModel);

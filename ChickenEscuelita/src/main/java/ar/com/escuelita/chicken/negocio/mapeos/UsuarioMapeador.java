@@ -19,7 +19,7 @@ public class UsuarioMapeador extends Mapeador {
 		dto.setContrasenia(usuarioModel.getContrasenia());
 		dto.setNombreUsuario(usuarioModel.getNombreUsuario());
 		dto.setPerfil(usuarioModel.getPerfil());
-		dto.setBorrado(usuarioModel.isBorrado());
+		dto.setBorrado(String.valueOf(usuarioModel.isBorrado()));
 		
 		return dto;
 	}
@@ -35,7 +35,7 @@ public class UsuarioMapeador extends Mapeador {
 		usuarioModel.setContrasenia(usuarioDTO.getContrasenia());
 		usuarioModel.setNombreUsuario(usuarioDTO.getNombreUsuario());
 		usuarioModel.setPerfil(usuarioDTO.getPerfil());
-		usuarioModel.setBorrado(usuarioDTO.isBorrado());
+		usuarioModel.setBorrado(Boolean.parseBoolean(usuarioDTO.getBorrado()));
 		
 		return usuarioModel;
 	}

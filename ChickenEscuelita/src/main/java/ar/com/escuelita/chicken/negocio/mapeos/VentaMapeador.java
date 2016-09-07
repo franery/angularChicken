@@ -30,7 +30,7 @@ public class VentaMapeador extends Mapeador {
 		dto.setUsuarioId(String.valueOf(ventaModel.getUsuario().getId()));
 		dto.setProveedorId(String.valueOf(ventaModel.getProveedor().getId()));
 		dto.setProveedorNombre(ventaModel.getProveedor().getNombre());
-		dto.setBorrado(ventaModel.isBorrado());
+		dto.setBorrado(String.valueOf(ventaModel.isBorrado()));
 		return dto;
 	}
 
@@ -45,7 +45,7 @@ public class VentaMapeador extends Mapeador {
 		ventaModel.setPrecio(ventaDTO.getPrecio());
 		ventaModel.setUsuario(usuarioDAO.get(Long.parseLong(ventaDTO.getUsuarioId())));
 		ventaModel.setProveedor(proveedorDAO.get(Long.parseLong(ventaDTO.getProveedorId())));
-		ventaModel.setBorrado(ventaDTO.isBorrado());
+		ventaModel.setBorrado(Boolean.parseBoolean(ventaDTO.getBorrado()));
 		
 		return ventaModel;
 	}

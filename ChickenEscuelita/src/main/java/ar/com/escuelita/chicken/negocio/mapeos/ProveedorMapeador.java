@@ -18,7 +18,7 @@ public class ProveedorMapeador extends Mapeador {
 		dto.setDireccion(proveedorModel.getDireccion());
 		dto.setMail(proveedorModel.getMail());
 		dto.setTelefono(proveedorModel.getTelefono());
-		dto.setBorrado(proveedorModel.isBorrado());
+		dto.setBorrado(String.valueOf(proveedorModel.isBorrado()));
 		
 		return dto;
 	}
@@ -32,7 +32,12 @@ public class ProveedorMapeador extends Mapeador {
 		proveedorModel.setDireccion(proveedorDTO.getDireccion());
 		proveedorModel.setMail(proveedorDTO.getMail());
 		proveedorModel.setTelefono(proveedorDTO.getTelefono());
-		proveedorModel.setBorrado(proveedorDTO.isBorrado());
+		
+		System.out.println("ProveedorMapeador.map a Modelo parser");
+		
+		proveedorModel.setBorrado(Boolean.parseBoolean(proveedorDTO.getBorrado()));
+		
+		System.out.println("ProveedorMapeador.map a Modelo");
 		
 		return proveedorModel;
 	}

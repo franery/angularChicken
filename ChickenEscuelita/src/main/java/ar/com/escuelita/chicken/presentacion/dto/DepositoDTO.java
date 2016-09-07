@@ -12,7 +12,7 @@ public class DepositoDTO extends DTO {
 	
 	private long stockMaximo;
 	
-	private boolean borrado;
+	private String borrado;
 	
 	public String getId() {
 		return id;
@@ -46,11 +46,11 @@ public class DepositoDTO extends DTO {
 		this.stockMaximo = stockMaximo;
 	}
 
-	public boolean isBorrado() {
+	public String getBorrado() {
 		return borrado;
 	}
 
-	public void setBorrado(boolean borrado) {
+	public void setBorrado(String borrado) {
 		this.borrado = borrado;
 	}
 	

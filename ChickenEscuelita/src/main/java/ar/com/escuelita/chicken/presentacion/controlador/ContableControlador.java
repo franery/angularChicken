@@ -2,8 +2,12 @@ package ar.com.escuelita.chicken.presentacion.controlador;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -97,6 +101,7 @@ public class ContableControlador extends Controlador{
 	@RequestMapping(path="/proveedoresModificarCrearNuevoContable")
 	public ModelAndView proveedoresCrearNuevoContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) throws Exception {
 		ModelAndView model = new ModelAndView(obtenerVista());
+		System.out.println("Carajoooooooooooooooooo");
 		if(flag == MODIFICAR) {
 			proveedorServicio.modificar(proveedor);
 		}
@@ -284,7 +289,6 @@ public class ContableControlador extends Controlador{
 		model.addObject("pageToLoad", PRODUCCION_VIEW);
 		return model;
 	}
-	
 
 	
 }

@@ -22,7 +22,7 @@ public class VentaDTO extends DTO {
 	
 	private String proveedorNombre;
 	
-	private boolean borrado;
+	private String borrado;
 
 	public String getId() {
 		return id;
@@ -88,11 +88,11 @@ public class VentaDTO extends DTO {
 		this.proveedorNombre = proveedorNombre;
 	}
 
-	public boolean isBorrado() {
+	public String getBorrado() {
 		return borrado;
 	}
 
-	public void setBorrado(boolean borrado) {
+	public void setBorrado(String borrado) {
 		this.borrado = borrado;
 	}
 

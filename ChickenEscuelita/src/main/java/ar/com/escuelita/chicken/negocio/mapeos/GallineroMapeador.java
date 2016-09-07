@@ -24,7 +24,7 @@ public class GallineroMapeador extends Mapeador {
 		dto.setStockGallinas(gallineroModel.getStockGallinas());
 		dto.setUsuarioId(String.valueOf(gallineroModel.getUsuario().getId()));
 		dto.setUsuarioNombre(gallineroModel.getUsuario().getNombre());
-		dto.setBorrado(gallineroModel.isBorrado());
+		dto.setBorrado(String.valueOf(gallineroModel.isBorrado()));
 		return dto;
 	}
 
@@ -36,7 +36,7 @@ public class GallineroMapeador extends Mapeador {
 		gallineroModel.setNombre(gallineroDTO.getNombre());
 		gallineroModel.setStockGallinas(gallineroDTO.getStockGallinas());
 		gallineroModel.setUsuario(usuarioDAO.get(Long.parseLong(gallineroDTO.getUsuarioId())));
-		gallineroModel.setBorrado(gallineroDTO.isBorrado());
+		gallineroModel.setBorrado(Boolean.parseBoolean(gallineroDTO.getBorrado()));
 		return gallineroModel;
 	}
 }
