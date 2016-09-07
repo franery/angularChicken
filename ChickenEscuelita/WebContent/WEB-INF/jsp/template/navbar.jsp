@@ -15,17 +15,16 @@
 		<li class="liRightHov"><a class="sup" href="<%=request.getContextPath()%>/index.jsp">Logout</a></li>
 		<li class="liRight">${Nombre}</li>
 		<li class="liRight">
-	</ul>
-
-	<form:form onsubmit="myFunction()" method="POST" action="principalAdmin2">
-				<select name="languageRequest"> 
+		<form:form onsubmit="myFunction()" method="POST" action="principalAdmin2">
+				<select class="backVerde" name="languageRequest"> 
 							<option value=""> <spring:message code="lenguaje"/> </option>
 							<option value="en"> <spring:message code="ingles"/> </option>
 							<option value="es"> <spring:message code="espaniol"/> </option>
 					</select>
 				<input type="hidden" name="urlRequest" id="urlRequest" >
-				<input type="submit" value="<spring:message code="guardar"/>" />
-	</form:form>
+				<input type="submit" class="menu2" value="<spring:message code="guardar"/>" />
+		</form:form></li>
+	</ul>
  <%-- 			 Current Locale : ${pageContext.response.locale }
  			 
  --%> <br>

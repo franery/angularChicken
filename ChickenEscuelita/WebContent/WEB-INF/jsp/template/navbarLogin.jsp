@@ -1,14 +1,33 @@
 <!DOCTYPE html>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/navbar.css" />
 <jsp:include page="importacion.jsp"></jsp:include>
+
+<head>
+<style type="text/css">
+select.backVerde {
+	background-color: #4CAF50;
+}
+submit.backVerde {
+	background-color: #4CAF50;
+}
+</style></head>
+
 <body>
 	<ul class="ul">
 		<li class="liLeft" id="text">${Title}</li>
 		<li class="liRight">
-		<spring:message code="lenguaje"/>:
-		<a href="?lang=en">EN</a> | <a href="?lang=es">ES</a></li>
+		<form:form onsubmit="myFunction()" method="POST" action="principalAdmin2">
+				<select class="backVerde" name="languageRequest"> 
+							<option value=""> <spring:message code="lenguaje"/> </option>
+							<option value="en"> <spring:message code="ingles"/> </option>
+							<option value="es"> <spring:message code="espaniol"/> </option>
+					</select>
+				<input type="hidden" name="urlRequest" id="urlRequest" >
+				<input type="submit" class="menu2" value="<spring:message code="guardar"/>" />
+		</form:form>
 	</ul>
 <br>
 <br>

@@ -25,6 +25,18 @@ a.menu {
     text-decoration: none;
 }
 
+a.menu2 {
+    width: 20%%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 0px 0;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 a.menu:hover {
     background-color: #45a049;
 }

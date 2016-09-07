@@ -18,6 +18,13 @@ body{
 	width: 100%;
 }
 
+select.backVerde {
+	background-color: #4CAF50;
+}
+submit.backVerde {
+	background-color: #4CAF50;
+}
+
 ul.ul {
 	list-style-type: none;
 	margin: 0;
