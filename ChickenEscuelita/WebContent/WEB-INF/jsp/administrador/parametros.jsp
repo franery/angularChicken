@@ -12,7 +12,6 @@
 <body>
 		<!-- Nuevo Parametro -->
 		<form:form action="NuevoParametro" method="post" commandName="parametro">
-			<input type="hidden" name="flagNuevoModificar" value="1"/>
 				<input type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		

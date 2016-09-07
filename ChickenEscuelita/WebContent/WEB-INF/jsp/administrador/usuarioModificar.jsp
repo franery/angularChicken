@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><spring:message code="usuarioNuevo" /></title>
+<title><spring:message code="usuarioModificar" /></title>
 <style>
     .error 
     {
@@ -17,9 +17,9 @@
     </style>
 </head>
 <body>
-	<h1><spring:message code="usuarioNuevo" /></h1>
+	<h1><spring:message code="usuarioModificar" /></h1>
 
-	<form:form method="POST" action="usuariosProcesarNuevo" commandName="usuarioNM">
+	<form:form method="POST" onsubmit="return TirarAlerta()" action="usuariosProcesarModificar" commandName="usuarioNM">
 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
 	
 		<table>
@@ -55,5 +55,16 @@
 			</tr>
 		</table>
 	</form:form>
+	
+	<c:set var="value">
+		<spring:message code="mensajeModificar" />
+	</c:set>
+	<input id="mensajeModificar" type="hidden" value="${value}" />
+	<script>
+	function TirarAlerta() {
+			var mensaje = document.getElementById("mensajeModificar").value;
+			return confirm(mensaje);
+	}
+	</script>
 </body>
 </html>

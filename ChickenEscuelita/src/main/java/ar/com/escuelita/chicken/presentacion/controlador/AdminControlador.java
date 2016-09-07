@@ -2,29 +2,22 @@ package ar.com.escuelita.chicken.presentacion.controlador;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
+import javassist.expr.Instanceof;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
-import ar.com.escuelita.chicken.base.excepciones.NegocioExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IParametroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
-import ar.com.escuelita.chicken.negocio.servicios.validacion.IUsuarioValidacionServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.validacion.UsuarioValidacion;
@@ -43,13 +36,17 @@ public class AdminControlador extends Controlador{
 	
 	private static final String USUARIOS_VIEW = "administrador/usuarios";
 	private static final String USUARIO_NUEVO_VIEW = "administrador/usuarioNuevo";
+	private static final String USUARIO_MODIFICAR_VIEW = "administrador/usuarioModificar";
 	private static final String PARAMETROS_VIEW = "administrador/parametros";
 	private static final String PARAMETRO_NUEVO_VIEW = "administrador/parametroNuevo";
+	private static final String PARAMETRO_MODIFICAR_VIEW = "administrador/parametroModificar";
 	private static final String VACIA_VIEW = "vacia";
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
+		if (binder.getTarget() instanceof UsuarioDTO){
 		binder.setValidator(usuarioValidacion);
+		}
     }
 	
 	@RequestMapping(path="/principalAdmin")
@@ -78,7 +75,6 @@ public class AdminControlador extends Controlador{
 	
 	@RequestMapping(path="/borrarUsuario")
 	public ModelAndView borrarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM ) {
-		
 		usuarioServicio.borrar(usuarioNM);
 		return new ModelAndView("redirect:/usuarios");
 	}
@@ -96,9 +92,6 @@ public class AdminControlador extends Controlador{
 		}
 		model.addObject("usuarioNM", usuarioNM);
 		model.addObject("perfiles",EnumPerfil.values());
-		
-		model.addObject("flagNuevoModificar", NUEVO);
-		
 		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
 		return model;
 	}
@@ -107,33 +100,32 @@ public class AdminControlador extends Controlador{
 	public ModelAndView ModificarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("usuarioNM", usuarioNM);
 		model.addObject("perfiles",EnumPerfil.values());
 
-		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
+		model.addObject("pageToLoad", USUARIO_MODIFICAR_VIEW);
 		return model;
 	}
 	
-	@RequestMapping(path="/usuariosModificarNuevo")
-	public ModelAndView usuariosModificarNuevo(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
-			BindingResult result,
-			@RequestParam("flagNuevoModificar") int flagNuevoModificar) throws Exception {
+	//procesar nuevo usuario
+	@RequestMapping(path="/usuariosProcesarNuevo")
+	public ModelAndView usuariosProcesarNuevo(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
+			BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			if(flagNuevoModificar == MODIFICAR) {
-				return ModificarUsuario(usuarioNM);
-			} else {	
 				return NuevoUsuario(usuarioNM);
-			}
 		}
-		if(flagNuevoModificar == MODIFICAR) {
-			usuarioServicio.modificar(usuarioNM);
-		} else {	
 			usuarioServicio.crear(usuarioNM);
-		}
 		return new ModelAndView("redirect:/usuarios");
 	}
 
+	//procesar modificar usuario
+	@RequestMapping(path="/usuariosProcesarModificar")
+	public ModelAndView usuariosProcesarModificar(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
+			BindingResult result) throws Exception {
+			usuarioServicio.modificar(usuarioNM);
+		return new ModelAndView("redirect:/usuarios");
+	}
+	
 //	PARAMETROS
 	@RequestMapping(path="/parametros")
 	public ModelAndView parametrosList() {
@@ -155,39 +147,34 @@ public class AdminControlador extends Controlador{
 	}
 	
 	@RequestMapping("/NuevoParametro")
-	public ModelAndView NuevoParametro( @RequestParam("flagNuevoModificar") int flagNuevoModificar ){
+	public ModelAndView NuevoParametro( ){
 		ModelAndView model = new ModelAndView(obtenerVista());
-		
 		model.addObject("usuarioActual", usuario);
 		ParametroDTO parametro = new ParametroDTO();
 		model.addObject("parametro", parametro);
-		
-		model.addObject("flagNuevoModificar", NUEVO);
-		
 		model.addObject("pageToLoad", PARAMETRO_NUEVO_VIEW);
 		return model;
 	}
 	
 	
 	@RequestMapping(path="/ModificarParametro")
-	public ModelAndView ModificarParametro(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) {
+	public ModelAndView ModificarParametro(@ModelAttribute("parametro") ParametroDTO parametro) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("parametro", parametro);
-
-		model.addObject("pageToLoad", PARAMETRO_NUEVO_VIEW);
+		model.addObject("pageToLoad", PARAMETRO_MODIFICAR_VIEW);
 		return model;
 	}
 	
-	@RequestMapping(path="/parametrosModificarNuevo")
-	public ModelAndView parametrosModificarNuevo(@ModelAttribute("parametro") ParametroDTO parametro, @RequestParam("flagNuevoModificar") int flagNuevoModificar) throws Exception {
-		if(flagNuevoModificar == MODIFICAR) {
-			parametroServicio.modificar(parametro);
-		}
-		else {
+	@RequestMapping(path="/parametrosNuevo")
+	public ModelAndView parametrosNuevo(@ModelAttribute("parametro") ParametroDTO parametro) throws Exception {
 			parametroServicio.crear(parametro);
-		}
+		return new ModelAndView("redirect:/parametros");
+	}
+	
+	@RequestMapping(path="/parametrosModificar")
+	public ModelAndView parametrosModificar(@ModelAttribute("parametro") ParametroDTO parametro) throws Exception {
+			parametroServicio.modificar(parametro);
 		return new ModelAndView("redirect:/parametros");
 	}
 //	

@@ -13,7 +13,7 @@
 <body>
 	<h1><spring:message code="parametroNuevo" /></h1>
 
-	<form:form method="POST" action="parametrosNuevo"	commandName="parametro">
+	<form:form method="POST" onsubmit="return TirarAlerta()" action="parametrosModificar"	commandName="parametro">
 		<form:input path="id" type="hidden" value="${parametro.getId()}"/>
 	
 		<table>
@@ -31,5 +31,16 @@
 			</tr>
 		</table>
 	</form:form>
+	<c:set var="value">
+		<spring:message code="mensajeModificar" />
+	</c:set>
+	<input id="mensajeModificar" type="hidden" value="${value}" />
+	<script>
+	function TirarAlerta() {
+			var mensaje = document.getElementById("mensajeModificar").value;
+			return confirm(mensaje);
+	}
+	
+	</script>
 </body>
 </html>
