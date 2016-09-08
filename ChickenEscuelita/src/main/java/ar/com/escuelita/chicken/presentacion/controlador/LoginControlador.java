@@ -32,7 +32,7 @@ public class LoginControlador extends Controlador{
 	private static final String PRODUCTOR_VIEW = "productor/principal";
 	private static final String VACIA_VIEW = "vacia";
 	
-	@RequestMapping("/login")
+	@RequestMapping("/inicio")
 	public ModelAndView login() {
 		ModelAndView model = new ModelAndView(LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
@@ -42,6 +42,7 @@ public class LoginControlador extends Controlador{
 	
 	@RequestMapping(path="/ingresar")
 	public ModelAndView loginVerificacion(@ModelAttribute("usuario") UsuarioDTO user) {
+		System.out.println("I need to know now");
 		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
 		for(DTO usuarioDto : listaUsuarios) {
 			if(((UsuarioDTO)usuarioDto).getNombreUsuario().equals(user.getNombreUsuario()) && ((UsuarioDTO)usuarioDto).getContrasenia().equals(user.getContrasenia())) {

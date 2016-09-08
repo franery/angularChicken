@@ -29,13 +29,13 @@
 <!-- 				</tr> -->
 <!-- 				<tr> -->
 <!-- 					<td align="center" colspan="2"><input type="submit" value=<spring:message code="submit"/> /></td> -->
-<!-- 				</tr> -->
+<!-- 				</tr> --
 <%-- 			</form:form> --%>
 <!-- 		</table> -->
 	<table align="center">
-		<form:form action ="${pageContext.request.contextPath}/j_spring_security_check" method="POST">
-			Usuario: <input type ="text" name="j_username" /> <br />
-			Contraseña: <input type ="password" name="j_password" /> <br />
+		<form:form action ="${pageContext.request.contextPath}/login" method="POST" commandName="usuario">
+			Usuario: <form:input path="nombreUsuario" type ="text" name="username" /> <br />
+			Contraseña: <form:input path="nombreUsuario" type ="password" name="password" /> <br />
 			<input type="submit" value="Entrar" />
 		</form:form>
 	</table>
