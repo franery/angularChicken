@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><spring:message code="depositoNuevo"/></title>
+<title><spring:message code="depositoModificar"/></title>
 </head>
 <body>
 
-<h1><spring:message code="depositoNuevo"/></h1>
+<h1><spring:message code="depositoModificar"/></h1>
 
-<form:form action="depositosProcesarNuevoContable" method="post" commandName="deposito">
+<form:form action="depositosProcesarModificarContable" onsubmit="return tirarAlerta()" method="post" commandName="deposito">
 	<form:input path="id" type="hidden" value="${deposito.getId()}"/>
 	<form:input path="stockHuevos" type="hidden" value="${deposito.getStockHuevos()}"/>
 	<table>
@@ -24,11 +24,22 @@
 		</tr>
 		<tr>
 			<td><form:label path="stockMaximo"><spring:message code="stockMaximo" text="Stock Maximo"/>:</form:label></td>
-			<td><form:input path="stockMaximo" value="${deposito.getStockMaximo()}" required="required"/></td>
+			<td><form:input path="stockMaximo" value="${deposito.getStockMaximo()}" /></td>
 		</tr>
 	</table>
 	<input type="submit" value=<spring:message code="guardar"/> />
 </form:form>
+	
+	<c:set var="value">
+		<spring:message code="mensajeModificar" />
+	</c:set>
+	<input id="mensajeModificar" type="hidden" value="${value}" />
+	<script>
+	function tirarAlerta() {
+			var mensaje = document.getElementById("mensajeModificar").value;
+			return confirm(mensaje);
+	}
+	</script>
 
 </body>
 </html>

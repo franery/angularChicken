@@ -51,12 +51,16 @@ public class ContableControlador extends Controlador{
 	
 	private static final String PROVEEDORES_VIEW = "contable/proveedores";
 	private static final String PROVEEDORES_NUEVO_VIEW = "contable/proveedoresNuevo";
+	private static final String PROVEEDORES_MODIFICAR_VIEW = "contable/proveedoresModificar";
 	private static final String GALLINEROS_VIEW = "contable/gallineros";
 	private static final String GALLINEROS_NUEVO_VIEW = "contable/gallinerosNuevo";
+	private static final String GALLINEROS_MODIFICAR_VIEW = "contable/gallinerosModificar";
 	private static final String DEPOSITOS_VIEW = "contable/depositos";
 	private static final String DEPOSITOS_NUEVO_VIEW = "contable/depositosNuevo";
+	private static final String DEPOSITOS_MODIFICAR_VIEW = "contable/depositosModificar";
 	private static final String VENTAS_VIEW = "contable/ventas";
 	private static final String VENTAS_NUEVO_VIEW = "contable/ventasNuevo";
+	private static final String VENTAS_MODIFICAR_VIEW = "contable/ventasModificar";
 	private static final String PRODUCCION_VIEW = "contable/produccion";
 	
 	@RequestMapping(path="/principalContable")
@@ -79,53 +83,41 @@ public class ContableControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/proveedoresNuevoContable")
-	public ModelAndView proveedoresNuevoContable(@RequestParam("flag") int flag) {
+	public ModelAndView proveedoresNuevoContable() {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flagNuevoModificar", NUEVO);
 		model.addObject("proveedor", new ProveedorDTO());
 		model.addObject("pageToLoad", PROVEEDORES_NUEVO_VIEW);
 		return model;
 	}
 	
 	@RequestMapping(path="/proveedoresModificarContable")
-	public ModelAndView proveedoresModificarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) {
+	public ModelAndView proveedoresModificarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("proveedor", proveedor);
-		model.addObject("pageToLoad", PROVEEDORES_NUEVO_VIEW);
+		model.addObject("pageToLoad", PROVEEDORES_MODIFICAR_VIEW);
 		return model;
 	}
 	
-	@RequestMapping(path="/proveedoresModificarCrearNuevoContable")
-	public ModelAndView proveedoresCrearNuevoContable(@ModelAttribute("proveedor") ProveedorDTO proveedor, @RequestParam("flag") int flag) throws Exception {
-		ModelAndView model = new ModelAndView(obtenerVista());
-		System.out.println("Carajoooooooooooooooooo");
-		if(flag == MODIFICAR) {
-			proveedorServicio.modificar(proveedor);
-		}
-		else {
-			proveedorServicio.crear(proveedor);
-		}
-		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
-		model.addObject("usuarioActual", usuario);
-		model.addObject("listaProveedores", listaProveedores);
-		model.addObject("proveedor", new ProveedorDTO());
-		model.addObject("pageToLoad", PROVEEDORES_VIEW);
-		return model;
+	//Procesar Nuevo
+	@RequestMapping(path="/proveedoresProcesarNuevoContable")
+	public ModelAndView proveedoresProcesarNuevoContable(@ModelAttribute("proveedor") ProveedorDTO proveedor) throws Exception {
+		proveedorServicio.crear(proveedor);
+		return new ModelAndView("redirect:/proveedoresContable");
+	}
+	
+	//Procesar Modificar
+	@RequestMapping(path="/proveedoresProcesarModificarContable")
+	public ModelAndView proveedoresProcesarModificarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor) throws Exception {
+		proveedorServicio.modificar(proveedor);
+		return new ModelAndView("redirect:/proveedoresContable");
 	}
 	
 	@RequestMapping(path="/proveedoresBorrarContable")
 	public ModelAndView proveedoresBorrarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor) {
-		ModelAndView model = new ModelAndView(obtenerVista());
 		proveedorServicio.borrar(proveedor);
-		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
-		model.addObject("usuarioActual", usuario);
-		model.addObject("listaProveedores", listaProveedores);
-		model.addObject("proveedor", new ProveedorDTO());
-		model.addObject("pageToLoad", PROVEEDORES_VIEW);
-		return model;
+		return new ModelAndView("redirect:/proveedoresContable");
 	}
 	
 	@RequestMapping(path="/gallinerosContable")
@@ -141,10 +133,8 @@ public class ContableControlador extends Controlador{
 	@RequestMapping(path="/gallinerosNuevoContable")
 	public ModelAndView gallinerosNuevoContable() {
 		ModelAndView model = new ModelAndView(obtenerVista());
-				
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
-		model.addObject("flagNuevoModificar", NUEVO);
 		model.addObject("gallinero", new GallineroDTO());
 		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
 		return model;
@@ -154,29 +144,22 @@ public class ContableControlador extends Controlador{
 	@RequestMapping(path="/gallinerosModificarContable")
 	public ModelAndView gallinerosModificarContable(@ModelAttribute("gallinero") GallineroDTO gallinero) {
 		ModelAndView model = new ModelAndView(obtenerVista());
-		
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
-		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("gallinero", gallinero);
-		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
+		model.addObject("pageToLoad", GALLINEROS_MODIFICAR_VIEW);
 		return model;
 	}
 	
-	@RequestMapping(path="/gallinerosModificarCrearNuevoContable")
-	public ModelAndView gallinerosModificarCrearNuevoContable(@ModelAttribute("gallinero") GallineroDTO gallinero, @RequestParam("flag") int flag) throws Exception {
-		ModelAndView model = new ModelAndView(obtenerVista());
-
-		if(flag == MODIFICAR) {
-			gallineroServicio.modificar(gallinero);
-		}
-		else {
-			gallineroServicio.crear(gallinero);
-		}
-		model.addObject("usuarioActual", usuario);
-		model.addObject("gallinero",new GallineroDTO());
-		model.addObject("listaGallineros",gallineroServicio.listar());
-		model.addObject("pageToLoad", GALLINEROS_VIEW);
+	@RequestMapping(path="/gallinerosProcesarNuevoContable")
+	public ModelAndView gallinerosProcesarNuevoContable(@ModelAttribute("gallinero") GallineroDTO gallinero) throws Exception {
+		gallineroServicio.crear(gallinero);
+		return new ModelAndView("redirect:/gallinerosContable");
+	}
+	
+	@RequestMapping(path="/gallinerosProcesarModificarContable")
+	public ModelAndView gallinerosProcesarModificarContable(@ModelAttribute("gallinero") GallineroDTO gallinero) throws Exception {
+		gallineroServicio.modificar(gallinero);
 		return new ModelAndView("redirect:/gallinerosContable");
 	}
 	
@@ -200,7 +183,6 @@ public class ContableControlador extends Controlador{
 	public ModelAndView depositosNuevoContable() {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flagNuevoModificar", NUEVO);
 		model.addObject("deposito", new DepositoDTO());
 		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
 		return model;
@@ -210,7 +192,6 @@ public class ContableControlador extends Controlador{
 	public ModelAndView depositosModificarContable(@ModelAttribute("deposito") DepositoDTO deposito) {
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
-		model.addObject("flagNuevoModificar", MODIFICAR);
 		model.addObject("deposito", deposito);
 		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
 		return model;
@@ -223,17 +204,18 @@ public class ContableControlador extends Controlador{
 	}
 		
 	
-	@RequestMapping(path="/depositosModificarCrearNuevoContable")
-	public ModelAndView depositosCrearNuevoContable(@ModelAttribute("deposito") DepositoDTO deposito, @RequestParam("flag") int flag) throws Exception {
-		if(flag == MODIFICAR) {
-			depositoServicio.modificar(deposito);
-		}
-		else {
-			depositoServicio.crear(deposito);
-		}
+	@RequestMapping(path="/depositosProcesarNuevoContable")
+	public ModelAndView depositosProcesarNuevoContable(@ModelAttribute("deposito") DepositoDTO deposito) throws Exception {
+		depositoServicio.crear(deposito);
 		return new ModelAndView("redirect:/depositosContable");
 	}
 	
+	@RequestMapping(path="/depositosProcesarModificarContable")
+	public ModelAndView depositosProcesarModificarContable(@ModelAttribute("deposito") DepositoDTO deposito) throws Exception {
+		depositoServicio.modificar(deposito);
+		return new ModelAndView("redirect:/depositosContable");
+	}
+
 	@RequestMapping(path="/ventasContable")
 	public ModelAndView ventasContable(@ModelAttribute("filtro") VentaFiltro filtro) {
 		ModelAndView model = new ModelAndView(obtenerVista());
@@ -258,17 +240,32 @@ public class ContableControlador extends Controlador{
 		return model;
 	}
 	
-	@RequestMapping(path="/ventasCrearNuevoContable")
-	public ModelAndView ventasCrearNuevoContable(@ModelAttribute("venta") VentaDTO venta) throws Exception {
+	@RequestMapping(path="/ventasModificarContable")
+	public ModelAndView ventasModificarContable(@ModelAttribute("venta") VentaDTO  venta) {
 		ModelAndView model = new ModelAndView(obtenerVista());
-		ventaServicio.crear(venta);
-		List<DTO> listaVentas= (List<DTO>)ventaServicio.listar();
+		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
+		model.addObject("listaProveedores", listaProveedores);
 		model.addObject("usuarioActual", usuario);
-		model.addObject("listaVentas", listaVentas);
-		model.addObject("proveedor", new VentaDTO());
-		model.addObject("filtro", new VentaFiltro());
-		model.addObject("pageToLoad", VENTAS_VIEW);
+		model.addObject("venta", venta);
+		model.addObject("pageToLoad", VENTAS_MODIFICAR_VIEW);
 		return model;
+	}
+
+	@RequestMapping(path="/ventasProcesarNuevoContable")
+	public ModelAndView ventasProcesarNuevoContable(@ModelAttribute("venta") VentaDTO venta) throws Exception {
+		ventaServicio.crear(venta);
+//		ModelAndView model =  new ModelAndView("redirect:/ventasContable");
+//		model.addObject("filtro", new VentaFiltro());
+//
+//		return model;
+		return new ModelAndView("redirect:/ventasContable");
+
+	}
+	
+	@RequestMapping(path="/ventasProcesarModificarContable")
+	public ModelAndView ventasProcesarModificarContable(@ModelAttribute("venta") VentaDTO venta) throws Exception {
+		ventaServicio.modificar(venta);
+		return new ModelAndView("redirect:/ventasContable");
 	}
 	
 	@RequestMapping(path="/produccionContable")

@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><spring:message code="proveedoresNuevo"/></title>
+<title><spring:message code="proveedoresModificar"/></title>
 </head>
 <body>
 
-<h1><spring:message code="proveedoresNuevo"/></h1>
+<h1><spring:message code="proveedoresModificar"/></h1>
 
-<form:form action="proveedoresProcesarNuevoContable" method="post" commandName="proveedor">
+<form:form action="proveedoresProcesarModificarContable" onsubmit="return tirarAlerta()" method="post" commandName="proveedor">
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
 	<form:input path="borrado" type="hidden" value="${proveedor.getBorrado()}"/>
 	<table>
@@ -38,5 +38,16 @@
 	<input type="submit" value=<spring:message code="guardar"/> />
 </form:form>
 	
+	<c:set var="value">
+		<spring:message code="mensajeModificar" />
+	</c:set>
+	<input id="mensajeModificar" type="hidden" value="${value}" />
+	<script>
+	function tirarAlerta() {
+			var mensaje = document.getElementById("mensajeModificar").value;
+			return confirm(mensaje);
+	}
+	</script>
+
 </body>
 </html>

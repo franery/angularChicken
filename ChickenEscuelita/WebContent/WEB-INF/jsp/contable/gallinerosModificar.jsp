@@ -8,18 +8,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><spring:message code="gallineroNuevo"/></title>
+<title><spring:message code="gallinerosModificar"/></title>
 </head>
 <body>
 
-<h1><spring:message code="gallineroNuevo"/></h1>
+<h1><spring:message code="gallinerosModificar"/></h1>
 
-<form:form action="gallinerosProcesarNuevoContable" method="post" commandName="gallinero">
+<form:form action="gallinerosProcesarModificarContable" onsubmit="return tirarAlerta()" method="post" commandName="gallinero">
 	<form:input path="id" type="hidden" value="${gallinero.getId()}"/>
 	<table>
 		<tr>
 			<td><form:label path="nombre"><spring:message code="nombre"/>:</form:label></td>
-			<td><form:input path="nombre" value="${gallinero.getNombre()}" required="required"/></td>
+			<td><form:input path="nombre" value="${gallinero.getNombre()}" /></td>
 		</tr>
 		<tr>
 			<td><form:label path="usuarioId"><spring:message code="usuario"/>:</form:label></td>
@@ -36,12 +36,22 @@
 		</tr>
 		<tr>
 			<td><form:label path="stockGallinas"><spring:message code="stock"/>:</form:label></td>
-			<td><form:input path="stockGallinas"  value="${gallinero.getStockGallinas()}" /></td>
+			<td><form:input path="stockGallinas"  value="${gallinero.getStockGallinas()}" required="required"/></td>
 		</tr>
-		
 	</table>
 	<input type="submit" value=<spring:message code="guardar"/> />
 </form:form>
+	
+	<c:set var="value">
+		<spring:message code="mensajeModificar" />
+	</c:set>
+	<input id="mensajeModificar" type="hidden" value="${value}" />
+	<script>
+	function tirarAlerta() {
+			var mensaje = document.getElementById("mensajeModificar").value;
+			return confirm(mensaje);
+	}
+	</script>
 
 </body>
 </html>
