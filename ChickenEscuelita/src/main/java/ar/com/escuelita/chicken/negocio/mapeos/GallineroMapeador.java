@@ -22,8 +22,14 @@ public class GallineroMapeador extends Mapeador {
 		dto.setId(String.valueOf(gallineroModel.getId()));
 		dto.setNombre(gallineroModel.getNombre());
 		dto.setStockGallinas(gallineroModel.getStockGallinas());
-		dto.setUsuarioId(String.valueOf(gallineroModel.getUsuario().getId()));
-		dto.setUsuarioNombre(gallineroModel.getUsuario().getNombre());
+		if(gallineroModel.getUsuario() != null) {
+			dto.setUsuarioId(String.valueOf(gallineroModel.getUsuario().getId()));
+			dto.setUsuarioNombre(gallineroModel.getUsuario().getNombre());
+		}
+		else {
+			dto.setUsuarioId(null);
+			dto.setUsuarioNombre(null);
+		}
 		dto.setBorrado(String.valueOf(gallineroModel.isBorrado()));
 		return dto;
 	}
@@ -35,7 +41,12 @@ public class GallineroMapeador extends Mapeador {
 		
 		gallineroModel.setNombre(gallineroDTO.getNombre());
 		gallineroModel.setStockGallinas(gallineroDTO.getStockGallinas());
-		gallineroModel.setUsuario(usuarioDAO.get(Long.parseLong(gallineroDTO.getUsuarioId())));
+		if (gallineroDTO.getUsuarioId() != null) {
+			gallineroModel.setUsuario(usuarioDAO.get(Long.parseLong(gallineroDTO.getUsuarioId())));
+		}
+		else {
+			gallineroModel.setUsuario(null);
+		}
 		gallineroModel.setBorrado(Boolean.parseBoolean(gallineroDTO.getBorrado()));
 		return gallineroModel;
 	}

@@ -7,7 +7,7 @@ use db_chicken;
 
 create table Usuario (
 	id bigint(10) primary key not null auto_increment,
-	nombreUsuario varchar(50) unique not null,
+	nombreUsuario varchar(50) not null,
     nombre varchar(50) not null,
     apellido varchar(50) not null,
     perfil varchar(50) not null,
@@ -30,7 +30,7 @@ create table Gallinero (
     idUsuario bigint(10),
     stockGallinas bigint(10) not null,
     borrado boolean default false not null,
-	foreign key (idUsuario) references Usuario (id)
+	foreign key (idUsuario) references Usuario (id) on delete cascade
 );
 
 create table Deposito (
@@ -48,8 +48,8 @@ create table Movimiento (
     idGallinero bigint(10) not null,
     idDeposito bigint(10) not null,
     borrado boolean default false not null,
-    foreign key (idGallinero) references Gallinero (id),
-	foreign key (idDeposito) references Deposito (id)
+    foreign key (idGallinero) references Gallinero (id) on delete cascade,
+	foreign key (idDeposito) references Deposito (id) on delete cascade
 );
 
 create table Venta (
@@ -60,8 +60,8 @@ create table Venta (
     idProveedor bigint(10) not null,
     idUsuario bigint(10) not null,
     borrado boolean default false not null,
-    foreign key (idProveedor) references Proveedor (id),
-	foreign key (idUsuario) references Usuario (id)
+    foreign key (idProveedor) references Proveedor (id) on delete cascade,
+	foreign key (idUsuario) references Usuario (id) on delete cascade
 );
 
 create table Parametro (

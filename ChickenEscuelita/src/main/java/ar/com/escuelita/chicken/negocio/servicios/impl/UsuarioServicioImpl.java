@@ -70,9 +70,11 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	public void borrar(DTO dto) {
 		usuarioDAO.borrar(Long.parseLong(((UsuarioDTO)dto).getId()));
 		for(GallineroModel gallinero : gallineroDAO.listar()) {
-			if(gallinero.getUsuario().getId() == Long.parseLong(((UsuarioDTO)dto).getId())) {
-				gallinero.setUsuario(null);
-				gallineroDAO.modificar(gallinero);
+			if(gallinero.getUsuario()!=null){
+				if(gallinero.getUsuario().getId() == Long.parseLong(((UsuarioDTO)dto).getId())) {
+					gallinero.setUsuario(null);
+					gallineroDAO.modificar(gallinero);
+				}
 			}
 		}
 	}
