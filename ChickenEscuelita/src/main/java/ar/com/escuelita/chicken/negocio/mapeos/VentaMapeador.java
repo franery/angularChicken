@@ -39,7 +39,6 @@ public class VentaMapeador extends Mapeador {
 		VentaDTO ventaDTO = (VentaDTO) dto;	
 		VentaModel ventaModel = (VentaModel) (vo != null ? vo : new VentaModel());
 		
-		ventaModel.setId(Long.parseLong(ventaDTO.getId()));
 		ventaModel.setCantidad(ventaDTO.getCantidad());
 		ventaModel.setFecha(ventaDTO.getFecha());
 		ventaModel.setPrecio(ventaDTO.getPrecio());

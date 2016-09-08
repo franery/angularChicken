@@ -44,10 +44,10 @@ public class VentaServicioImpl extends Servicio implements IVentaServicio {
 			if(deposito.getStockHuevos() >= ((VentaDTO)dto).getCantidad()) {
 				nuevoDeposito = deposito;
 				nuevoDeposito.setStockHuevos(nuevoDeposito.getStockHuevos() - ((VentaDTO)dto).getCantidad());
+				depositoDAO.modificar(nuevoDeposito);
 				break;
 			}
 		}
-		depositoDAO.modificar(nuevoDeposito);
 	}
 
 	@Override

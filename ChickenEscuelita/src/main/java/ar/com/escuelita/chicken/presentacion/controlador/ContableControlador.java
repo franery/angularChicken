@@ -254,11 +254,11 @@ public class ContableControlador extends Controlador{
 	@RequestMapping(path="/ventasProcesarNuevoContable")
 	public ModelAndView ventasProcesarNuevoContable(@ModelAttribute("venta") VentaDTO venta) throws Exception {
 		ventaServicio.crear(venta);
-//		ModelAndView model =  new ModelAndView("redirect:/ventasContable");
-//		model.addObject("filtro", new VentaFiltro());
-//
-//		return model;
-		return new ModelAndView("redirect:/ventasContable");
+		ModelAndView model =  new ModelAndView("redirect:/ventasContable");
+		model.addObject("filtro", new VentaFiltro());
+
+		return model;
+//		return new ModelAndView("redirect:/ventasContable");
 
 	}
 	
