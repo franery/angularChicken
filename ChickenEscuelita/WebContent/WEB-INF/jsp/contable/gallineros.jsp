@@ -8,12 +8,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><spring:message code="gallinero"/></title>
+<title><spring:message code="gallinero" /></title>
 </head>
 <body>
 
-	<h1><spring:message code="gallinero"/></h1>
-	<form:form action="gallinerosNuevoContable" method="post" commandName="gallinero">
+	<h1>
+		<spring:message code="gallinero" />
+	</h1>
+	<form:form action="gallinerosNuevoContable" method="post"
+		commandName="gallinero">
 		<input type="hidden" name="flag" value="1" />
 		<input type="submit" value=<spring:message code="nuevo"/> />
 	</form:form>
@@ -21,30 +24,41 @@
 	<table id="tablita">
 		<thead>
 			<tr>
-				<th><spring:message code="nombre"/></th>
-				<th><spring:message code="nombreUsuario"/></th>
-				<th><spring:message code="stock"/></th>
+				<th><spring:message code="nombre" /></th>
+				<th><spring:message code="nombreUsuario" /></th>
+				<th><spring:message code="stock" /></th>
 			</tr>
 		</thead>
 		<c:if test="${!empty listaGallineros}">
 			<c:forEach items="${listaGallineros}" var="gallinero">
 				<tr>
 					<td><c:out value="${gallinero.getNombre()}"></c:out></td>
-					<td><c:out value="${gallinero.getUsuarioNombre()}"></c:out></td>
-					<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
+
+					<c:set var="sinUsuario" scope="request">
+						<spring:message code="sinUsuario"/>
+					</c:set>
+					
+					<c:choose>
+						<c:when test="${gallinero.getUsuarioId() != null}">
+							<td><c:out value="${gallinero.getUsuarioNombre()}"></c:out></td>
+						</c:when>
+						<c:when test="${gallinero.getUsuarioId() == null}">
+							<td><c:out value="${sinUsuario}"></c:out></td>
+						</c:when>
+					</c:choose>
+							<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
 					<td><c:set var="mensajeConfirmacion" scope="request">
 							<spring:message code="mensajeConfirmacion"></spring:message>
-						</c:set> 
-						<form:form onsubmit="return confirm('${mensajeConfirmacion} ${gallinero.getNombre()}?');" action="gallinerosBorrarContable" method="post" commandName="gallinero">
+						</c:set> <form:form
+							onsubmit="return confirm('${mensajeConfirmacion} ${gallinero.getNombre()}?');"
+							action="gallinerosBorrarContable" method="post"
+							commandName="gallinero">
 							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
-							<input type="submit"
-								value=<spring:message code="borrar"/> />
-						</form:form>
-					</td>
-					<td>
-						<form:form action="gallinerosModificarContable" method="post" commandName="gallinero">
-							<form:input path="id" type="hidden" 
-								value="${gallinero.getId()}" />
+							<input type="submit" value=<spring:message code="borrar"/> />
+						</form:form></td>
+					<td><form:form action="gallinerosModificarContable"
+							method="post" commandName="gallinero">
+							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
 							<form:input path="usuarioId" type="hidden"
 								value="${gallinero.getUsuarioId()}" />
 							<form:input path="nombre" type="hidden"
@@ -53,10 +67,8 @@
 								value="${gallinero.getUsuarioNombre()}" />
 							<form:input path="stockGallinas" type="hidden"
 								value="${gallinero.getStockGallinas()}" />
-							<input type="submit" 
-								value=<spring:message code="modificar"/> />
-						</form:form>
-					</td>
+							<input type="submit" value=<spring:message code="modificar"/> />
+						</form:form></td>
 				</tr>
 			</c:forEach>
 		</c:if>
