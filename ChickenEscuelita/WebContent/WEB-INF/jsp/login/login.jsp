@@ -17,23 +17,23 @@
 	<c:set var="Nombre" value="" scope="request" />
 	<jsp:include page="../template/navbarLogin.jsp"></jsp:include>
 
-	<!-- 	<table align="center"> -->
-	<%-- 		<form:form action="ingresar" method="post" commandName="usuario"> --%>
-	<!-- 			<tr> -->
-	<%-- 				<td><form:label path="nombreUsuario"><spring:message code="usuario" />:</form:label></td> --%>
-	<%-- 				<td><form:input path="nombreUsuario" /></td> --%>
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<%-- 				<td><form:label path="contrasenia"><spring:message code="contrasenia" />:</form:label></td> --%>
-	<%-- 				<td><form:input path="contrasenia" type="password" /></td> --%>
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<!-- 				<td align="center" colspan="2"><input type="submit" value=<spring:message code="submit"/> /></td> -->
-	<!-- 			</tr> -->
-	<%-- 		</form:form> --%>
-	<!-- 	</table> -->
+<!-- 		<table align="center"> -->
+<%-- 			<form:form action="ingresar" method="post" commandName="usuario"> --%>
+<!-- 				<tr> -->
+<%-- 					<td><form:label path="nombreUsuario"><spring:message code="usuario" />:</form:label></td> --%>
+<%-- 					<td><form:input path="nombreUsuario" /></td> --%>
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<%-- 					<td><form:label path="contrasenia"><spring:message code="contrasenia" />:</form:label></td> --%>
+<%-- 					<td><form:input path="contrasenia" type="password" /></td> --%>
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<!-- 					<td align="center" colspan="2"><input type="submit" value=<spring:message code="submit"/> /></td> -->
+<!-- 				</tr> -->
+<%-- 			</form:form> --%>
+<!-- 		</table> -->
 	<table align="center">
-		<form:form action ="j_spring_security_check" method="post">
+		<form:form action ="${pageContext.request.contextPath}/j_spring_security_check" method="POST">
 			Usuario: <input type ="text" name="j_username" /> <br />
 			Contraseña: <input type ="password" name="j_password" /> <br />
 			<input type="submit" value="Entrar" />

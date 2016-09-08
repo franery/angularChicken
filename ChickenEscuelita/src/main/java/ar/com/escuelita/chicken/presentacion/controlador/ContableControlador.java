@@ -193,7 +193,7 @@ public class ContableControlador extends Controlador{
 		ModelAndView model = new ModelAndView(obtenerVista());
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito", deposito);
-		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
+		model.addObject("pageToLoad", DEPOSITOS_MODIFICAR_VIEW);
 		return model;
 	}
 	
