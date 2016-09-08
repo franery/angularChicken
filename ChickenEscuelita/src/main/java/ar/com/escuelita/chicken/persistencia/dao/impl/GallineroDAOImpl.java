@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IGallineroDAO;
 import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
+import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.GallineroModel;
 import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.presentacion.filtro.GallineroFiltro;
@@ -55,7 +56,10 @@ public class GallineroDAOImpl extends DAO implements IGallineroDAO {
 	public void borrar(long id) {
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
-		s.delete(s.get(GallineroModel.class,id));
+		GallineroModel model = s.get(GallineroModel.class, id);
+		model.setBorrado(true);
+		s.update(model);
+		//s.delete(s.get(GallineroModel.class,id));
 		s.getTransaction().commit();
 		s.close();
 	}

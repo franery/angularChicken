@@ -55,7 +55,10 @@ public class DepositoDAOImpl extends DAO implements IDepositoDAO {
 	public void borrar(long id) {
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
-		s.delete(s.get(DepositoModel.class,id));
+		DepositoModel model = s.get(DepositoModel.class, id);
+		model.setBorrado(true);
+		s.update(model);
+		//s.delete(s.get(DepositoModel.class,id));
 		s.getTransaction().commit();
 		s.close();
 	}

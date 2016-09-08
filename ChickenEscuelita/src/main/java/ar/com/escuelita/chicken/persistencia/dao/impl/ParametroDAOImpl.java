@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IParametroDAO;
+import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.ParametroModel;
 
 public class ParametroDAOImpl extends DAO implements IParametroDAO {
@@ -51,7 +52,10 @@ public class ParametroDAOImpl extends DAO implements IParametroDAO {
 	public void borrar(long id) {
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
-		s.delete(s.get(ParametroModel.class,id));
+		ParametroModel model = s.get(ParametroModel.class, id);
+		model.setBorrado(true);
+		s.update(model);
+		//s.delete(s.get(ParametroModel.class,id));
 		s.getTransaction().commit();
 		s.close();
 	}

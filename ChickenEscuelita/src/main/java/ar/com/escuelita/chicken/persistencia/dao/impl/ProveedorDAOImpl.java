@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IProveedorDAO;
+import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.ProveedorModel;
 
 public class ProveedorDAOImpl extends DAO implements IProveedorDAO {
@@ -54,7 +55,10 @@ public class ProveedorDAOImpl extends DAO implements IProveedorDAO {
 	public void borrar(long id) {
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
-		s.delete(s.get(ProveedorModel.class,id));
+		ProveedorModel model = s.get(ProveedorModel.class, id);
+		model.setBorrado(true);
+		s.update(model);
+		//s.delete(s.get(ProveedorModel.class,id));
 		s.getTransaction().commit();
 		s.close();
 	}

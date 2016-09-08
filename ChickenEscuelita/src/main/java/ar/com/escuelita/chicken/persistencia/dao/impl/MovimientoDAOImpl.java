@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IMovimientoDAO;
 import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
+import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
@@ -53,7 +54,10 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 	public void borrar(long id) {
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
-		s.delete(s.get(MovimientoModel.class,id));
+		MovimientoModel model = s.get(MovimientoModel.class, id);
+		model.setBorrado(true);
+		s.update(model);
+		//s.delete(s.get(MovimientoModel.class,id));
 		s.getTransaction().commit();
 		s.close();
 	}

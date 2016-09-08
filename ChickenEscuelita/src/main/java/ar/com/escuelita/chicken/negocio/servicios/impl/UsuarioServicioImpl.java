@@ -14,7 +14,9 @@ import ar.com.escuelita.chicken.base.excepciones.NegocioExcepcion;
 import ar.com.escuelita.chicken.base.excepciones.PersistenciaExcepcion;
 import ar.com.escuelita.chicken.negocio.mapeos.UsuarioMapeador;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
+import ar.com.escuelita.chicken.persistencia.dao.IGallineroDAO;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
+import ar.com.escuelita.chicken.persistencia.modelo.GallineroModel;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
@@ -29,6 +31,9 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	
 	@Autowired
 	IUsuarioDAO usuarioDAO;
+	
+	@Autowired
+	IGallineroDAO gallineroDAO;
 	
 	@Override
 	public DTO buscar(long id) {
@@ -63,7 +68,13 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 
 	@Override
 	public void borrar(DTO dto) {
-		usuarioDAO.borrar(Long.parseLong(((UsuarioDTO)dto).getId()));		
+		usuarioDAO.borrar(Long.parseLong(((UsuarioDTO)dto).getId()));
+		for(GallineroModel gallinero : gallineroDAO.listar()) {
+			if(gallinero.getUsuario().getId() == Long.parseLong(((UsuarioDTO)dto).getId())) {
+				gallinero.setUsuario(null);
+				gallineroDAO.modificar(gallinero);
+			}
+		}
 	}
 
 	@Override
