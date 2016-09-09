@@ -1,0 +1,26 @@
+package ar.com.escuelita.chicken.presentacion.seguridad;
+
+import java.io.IOException;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+
+public class CustomAuthenticationFailureHandler 
+	extends SimpleUrlAuthenticationFailureHandler {
+
+	@Override
+	public void onAuthenticationFailure(
+	        HttpServletRequest request, HttpServletResponse response,
+	        AuthenticationException exception)
+	        throws IOException, ServletException {
+		System.out.println("CustomAuth");
+		String lastUserName = request.getParameter("username");
+		System.out.println("PEPE: " + lastUserName);
+	}
+}

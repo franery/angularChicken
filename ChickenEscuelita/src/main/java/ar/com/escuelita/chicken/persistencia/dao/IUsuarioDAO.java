@@ -12,6 +12,8 @@ public interface IUsuarioDAO {
 	
 	public List<UsuarioModel> listar();
 	
+	public List<UsuarioModel> listar(UsuarioFiltro usuarioFiltro);
+	
 	public void guardar(UsuarioModel usuarioModel) throws PersistenciaExcepcion;
 	
 	public void modificar(UsuarioModel usuarioModel) throws PersistenciaExcepcion;

@@ -33,9 +33,9 @@
 <%-- 			</form:form> --%>
 <!-- 		</table> -->
 	<table align="center">
-		<form:form action ="${pageContext.request.contextPath}/login" method="POST" commandName="usuario">
-			Usuario: <form:input path="nombreUsuario" type ="text" name="username" /> <br />
-			Contraseña: <form:input path="nombreUsuario" type ="password" name="password" /> <br />
+		<form:form action ="${pageContext.request.contextPath}/login" method="POST">
+			Usuario: <input type ="text" path="nombreUsuario" id="username" name="username" /> <br />
+			Contraseña: <input type ="password" path="contrasenia" id="password" name="password" /> <br />
 			<input type="submit" value="Entrar" />
 		</form:form>
 	</table>

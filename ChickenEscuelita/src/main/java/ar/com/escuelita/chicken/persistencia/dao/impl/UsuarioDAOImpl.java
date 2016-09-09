@@ -13,7 +13,9 @@ import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
 import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
 import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
+import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
+import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 
 public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
@@ -90,7 +92,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 
 
 		QueryParametrosUtil qp = generarConsulta(query, usuarioFiltro);;
-
+		qp.setSql(qp.getSql() + " group by usuario.id");
 		List list = buscarUsandoQueryConParametros(qp);
 
 		Iterator iterator = list.iterator();
@@ -106,7 +108,15 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 		return hash;
 	}
 
-
+	@Override
+	public List<UsuarioModel> listar(UsuarioFiltro usuarioFiltro) {
+		String query = "select usuario from UsuarioModel as usuario" ;
+		
+		QueryParametrosUtil qp = generarConsulta(query, usuarioFiltro);
+		List<UsuarioModel> list = (List<UsuarioModel>) buscarUsandoQueryConParametros(qp);
+		return list;
+	}
+	
 	private QueryParametrosUtil generarConsulta(String query, UsuarioFiltro filtro){
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 
@@ -117,6 +127,11 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 			str += obtenerOperadorBusqueda(str) + " usuario.id=" + filtro.getId();
 		}
 
+		/*   NombreUsuario   */
+		if (filtro.getNombreUsuario() != null) {
+			str += obtenerOperadorBusqueda(str) + " usuario.nombreUsuario like '" + filtro.getNombreUsuario() + "'";
+		}
+		
 		/*   Nombre   */
 		if (filtro.getNombre() != null) {
 			str += obtenerOperadorBusqueda(str) + " usuario.nombre like '%" + filtro.getNombre() + "%'";
@@ -127,7 +142,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 			str += obtenerOperadorBusqueda(str) + " usuario.apellido like '%" + filtro.getApellido() + "%'";
 		}
 
-		qp.setSql(query + str	+ " group by usuario.id");
+		qp.setSql(query + str);
 		return qp;
 	}
 

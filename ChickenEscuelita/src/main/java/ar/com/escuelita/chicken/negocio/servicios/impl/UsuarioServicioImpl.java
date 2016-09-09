@@ -17,6 +17,7 @@ import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IGallineroDAO;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.GallineroModel;
+import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
@@ -81,8 +82,11 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 
 	@Override
 	public Collection<DTO> listar(Filtro filtro) {
-		// TODO Auto-generated method stub
-		return null;
+		UsuarioFiltro usuarioFiltro = (UsuarioFiltro) filtro;
+		Collection<UsuarioModel> listaUsuarioModel = usuarioDAO.listar(usuarioFiltro);
+		Collection<DTO> listaUsuarioDto = usuarioMapeador.map(listaUsuarioModel);
+		
+		return listaUsuarioDto;
 	}
 	
 	@Override

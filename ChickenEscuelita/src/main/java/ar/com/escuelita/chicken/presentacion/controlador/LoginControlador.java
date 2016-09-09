@@ -1,11 +1,17 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +25,7 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 
 @Controller
 public class LoginControlador extends Controlador{
@@ -41,26 +48,26 @@ public class LoginControlador extends Controlador{
 	}
 	
 	@RequestMapping(path="/ingresar")
-	public ModelAndView loginVerificacion(@ModelAttribute("usuario") UsuarioDTO user) {
-		System.out.println("I need to know now");
-		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
-		for(DTO usuarioDto : listaUsuarios) {
-			if(((UsuarioDTO)usuarioDto).getNombreUsuario().equals(user.getNombreUsuario()) && ((UsuarioDTO)usuarioDto).getContrasenia().equals(user.getContrasenia())) {
-				setUsuario((UsuarioDTO)usuarioDto);
-				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.PRODUCTOR)) {
-					return new ModelAndView("redirect:/principalProductor");
-				}
-				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.CONTABLE)) {
-					return new ModelAndView("redirect:/principalContable");
-				}
-				if(((UsuarioDTO)usuarioDto).getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
-					return new ModelAndView("redirect:/principalAdmin");
-				}
-			}
-		}
+	public ModelAndView loginVerificacion() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
-		ModelAndView model = new ModelAndView(LOGIN_VIEW);
-		model.addObject("usuario", getUsuario());
+		UsuarioDTO usuarioDto = null;
+		UsuarioFiltro filtro = new UsuarioFiltro();
+		filtro.setNombreUsuario(auth.getName());
+		for (DTO usuarioDTO : usuarioServicio.listar(filtro)) {
+			usuarioDto = (UsuarioDTO) usuarioDTO;
+		}
+		setUsuario(usuarioDto);
+		if((usuarioDto).getPerfil().equals(EnumPerfil.PRODUCTOR)) {
+			return new ModelAndView("redirect:/principalProductor");
+		}
+		if((usuarioDto).getPerfil().equals(EnumPerfil.CONTABLE)) {
+			return new ModelAndView("redirect:/principalContable");
+		}
+		if((usuarioDto).getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
+			return new ModelAndView("redirect:/principalAdmin");
+		}
+		ModelAndView model = new ModelAndView("redirect:/vacia.jsp");
 		return model;
 	}
 }
