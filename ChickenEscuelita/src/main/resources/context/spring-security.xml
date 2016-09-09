@@ -34,6 +34,8 @@
 							default-target-url="/ingresar"
 							username-parameter="username" password-parameter="password" />
 		
+		<security:logout logout-success-url="/inicio"  />
+		
 		<security:csrf disabled="true"/>
 	</security:http>
 	
