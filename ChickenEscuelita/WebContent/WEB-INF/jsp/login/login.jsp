@@ -20,10 +20,12 @@
 	<table align="center">
 		<form:form action ="${pageContext.request.contextPath}/login" method="POST">
 		<tr>
-			<td><spring:message code="usuario"/>: <input type ="text" path="nombreUsuario" id="username" name="username" /> <br /></td>
+			<td> <spring:message code="usuario"/>: </td>
+			<td> <input type ="text" id="username" name="username" /> </td>
 		</tr>
 		<tr>
-			<td><spring:message code="contrasenia"/>: <input type ="password" path="contrasenia" id="password" name="password" /> <br /></td>
+			<td><spring:message code="contrasenia"/>: </td>
+			<td> <input type ="password" id="password" name="password" /> </td>
 		</tr>
 		<tr>	
 			<td align="center" colspan="2"><input type="submit" value=<spring:message code="ingresar" /> /></td>
