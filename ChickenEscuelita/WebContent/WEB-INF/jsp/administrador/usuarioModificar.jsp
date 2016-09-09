@@ -19,7 +19,7 @@
 <body>
 	<h1><spring:message code="usuarioModificar" /></h1>
 
-	<form:form method="POST" onsubmit="return TirarAlerta()" action="usuariosProcesarModificar" commandName="usuarioNM">
+	<form:form method="POST" id="formLogin" action="usuariosProcesarModificar" commandName="usuarioNM">
 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
 	
 		<table>
@@ -48,7 +48,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" style="text-align: center;">
-				<input type="submit" value="<spring:message code="guardar"/>" /> </td>
+				<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> </td>
 			</tr>
 			<tr>
 				<td colspan="2"> <form:errors path="nombreUsuario" cssClass="error" /> </td> 
@@ -60,11 +60,18 @@
 		<spring:message code="mensajeModificar" />
 	</c:set>
 	<input id="mensajeModificar" type="hidden" value="${value}" />
-	<script>
-	function TirarAlerta() {
-			var mensaje = document.getElementById("mensajeModificar").value;
-			return confirm(mensaje);
-	}
-	</script>
+	
+<script>
+
+$('#botonGuardar').on('click', function (e) {
+	var mensaje = document.getElementById("mensajeModificar").value;
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+            $('#formLogin').submit();
+        }
+    });
+});
+</script>
 </body>
 </html>
