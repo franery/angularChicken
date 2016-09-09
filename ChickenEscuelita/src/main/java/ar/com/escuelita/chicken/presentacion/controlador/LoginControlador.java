@@ -1,25 +1,11 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
-import java.util.Collection;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
@@ -34,10 +20,6 @@ public class LoginControlador extends Controlador{
 	private IUsuarioServicio usuarioServicio;
 	
 	private static final String LOGIN_VIEW = "login/login";
-	private static final String ADMIN_VIEW = "administrador/principal";
-	private static final String CONTABLE_VIEW = "contable/principal";
-	private static final String PRODUCTOR_VIEW = "productor/principal";
-	private static final String VACIA_VIEW = "vacia";
 	
 	@RequestMapping("/inicio")
 	public ModelAndView login() {
@@ -47,6 +29,13 @@ public class LoginControlador extends Controlador{
 		return model;
 	}
 	
+	@RequestMapping("/403")
+	public ModelAndView accesoDenegado() {
+		ModelAndView model = new ModelAndView(obtenerVista());
+		model.addObject("usuarioActual", usuario);
+		model.addObject("pageToLoad", "login/403");
+		return model;
+	}
 	@RequestMapping(path="/ingresar")
 	public ModelAndView loginVerificacion() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

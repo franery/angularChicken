@@ -28,13 +28,20 @@
 		<security:intercept-url pattern="/*reporte**" access="hasAuthority('2')" />
 		<security:intercept-url pattern="/*movimiento**" access="hasAuthority('2')" />
 		
+		<security:intercept-url pattern="/principalAdmin" access="hasAuthority('0')" />
+		<security:intercept-url pattern="/principalContable" access="hasAuthority('1')" />
+		<security:intercept-url pattern="/principalProductor" access="hasAuthority('2')" />
+		
 		<security:form-login login-page="/inicio"
 							authentication-details-source-ref="customAuthenticationDetailsHandler"
 							authentication-failure-handler-ref="customAuthenticationFailureHandler"
+							always-use-default-target="true"
 							default-target-url="/ingresar"
 							username-parameter="username" password-parameter="password" />
 		
 		<security:logout logout-success-url="/inicio"  />
+
+		 <security:access-denied-handler error-page="/403" />
 		
 		<security:csrf disabled="true"/>
 	</security:http>
