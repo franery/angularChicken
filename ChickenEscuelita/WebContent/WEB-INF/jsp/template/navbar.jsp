@@ -17,7 +17,7 @@
 		</a></li>
 		<li class="liRight">${Nombre}</li>
 		<li class="liRight">
-		<form:form onsubmit="myFunction()" method="POST" action="principalAdmin2">
+		<form:form onsubmit="myFunction()" method="POST" action="cambioLenguaje">
 				<select class="backVerde" name="languageRequest"> 
 							<option value=""> <spring:message code="lenguaje"/> </option>
 							<option value="en"> <spring:message code="ingles"/> </option>

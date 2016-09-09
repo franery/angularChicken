@@ -15,7 +15,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 public class LenguajeController extends Controlador{
 
 
-	@RequestMapping(value = "/principalAdmin2")
+	@RequestMapping(value = "/cambioLenguaje")
 	public ModelAndView changeLang(@RequestParam("urlRequest") String  urlRequest, @RequestParam("languageRequest") String languageRequest, HttpServletRequest request, HttpServletResponse response) {
 		if (languageRequest != "") { 
 			LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
