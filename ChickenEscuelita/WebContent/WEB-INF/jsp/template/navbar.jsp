@@ -12,7 +12,9 @@
 
 	<ul class="ul">
 		<li class="liLeft" >${Title}</li>
-		<li class="liRightHov"><a class="sup" href="<%=request.getContextPath()%>/logout">Logout</a></li>
+		<li class="liRightHov"><a class="sup" href="<%=request.getContextPath()%>/logout">
+			<spring:message code="logout"/>
+		</a></li>
 		<li class="liRight">${Nombre}</li>
 		<li class="liRight">
 		<form:form onsubmit="myFunction()" method="POST" action="principalAdmin2">
