@@ -22,54 +22,41 @@
 		<table id="tablita">
 			<thead>
 				<tr>
-					<th>Nombre de Usuario</th>
-					<th>Nombre</th>
-					<th>Apellido</th>
-					<th>Perfil</th>
+					<th><spring:message code="nombre"/></th>
+					<th><spring:message code="permisos"/></th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:if test="${!empty listaUsuarios}">
-					<c:forEach items="${listaUsuarios}" var="user">
+				<c:if test="${!empty listaPerfiles}">
+					<c:forEach items="${listaPerfiles}" var="perfil">
 						<tr>
-							<td><c:out value="${user.getNombreUsuario() }"></c:out></td>
-							<td><c:out value="${user.getNombre()}"></c:out></td>
-							<td><c:out value="${user.getApellido()}"></c:out></td>
-							<td><c:out value="${user.getPerfil().toString()}"></c:out></td>
+							<td><c:out value="${perfil.getNombre()}"></c:out></td>
+							<td><c:out value="${perfil.}"></c:out></td>
 							<td>
 							<c:set var="mensajeConfirmacion" scope="request">
 								<spring:message code="mensajeConfirmacion"></spring:message>
 							</c:set>
-							<form:form id="formBorrar" action="borrarUsuario" method="post" commandName="usuarioNM">
-								<form:input path="id" type="hidden" value="${user.getId() }"/>
+							<form:form id="formBorrar" action="borrarPerfil" method="post" commandName="perfil">
+								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
 								<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
-							<form:form action="ModificarUsuario" method="post" commandName="usuarioNM">
-								<form:input path="id" type="hidden" value="${user.getId() }"/>
-								<form:input path="nombreUsuario" type="hidden" value="${user.getNombreUsuario()}"/>
-								<form:input path="nombre" type="hidden" value="${user.getNombre()}"/>
-								<form:input path="apellido" type="hidden" value="${user.getApellido()}"/>
-								<form:input path="contrasenia" type="hidden" value="${user.getContrasenia()}"/>
-								<form:input path="perfil" type="hidden" value="${user.getPerfil()}"/>
-								<input type="hidden" name="flagNuevoModificar" value="0"/>
+							<form:form action="ModificarPerfil" method="post" commandName="perfil">
+								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
+								<form:input path="nombre" type="hidden" value="${perfil.getNombre()}"/>
 								<input type="submit" value=<spring:message code="modificar"/> />
 							</form:form>
 				</td>
 						 </tr>
 					</c:forEach>
 				</c:if>
-				<c:if test="${empty listaUsuarios}">
+				<c:if test="${empty listaPerfiles}">
 					<tr>
-						<td colspan="5">No hay datos disponibles por el momento</td>
+						<td colspan="5"><spring:message code="accesoDenegado"/></td>
 					</tr>
 				</c:if>
 			</tbody>
 		</table>
-		<div>
-			<!-- <a class="btn btn-default" href="Nuevo" role="button">Nueva
-				Mascota</a> -->
-		</div>
 
 	<c:set var="value">
 		<spring:message code="mensajeBorrar" />

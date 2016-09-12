@@ -49,29 +49,21 @@ public class ContableControlador extends Controlador{
 	@Autowired
 	private IGallineroServicio gallineroServicio;
 	
-	private static final String PROVEEDORES_VIEW = "contable/proveedores";
-	private static final String PROVEEDORES_NUEVO_VIEW = "contable/proveedoresNuevo";
-	private static final String PROVEEDORES_MODIFICAR_VIEW = "contable/proveedoresModificar";
-	private static final String GALLINEROS_VIEW = "contable/gallineros";
-	private static final String GALLINEROS_NUEVO_VIEW = "contable/gallinerosNuevo";
-	private static final String GALLINEROS_MODIFICAR_VIEW = "contable/gallinerosModificar";
-	private static final String DEPOSITOS_VIEW = "contable/depositos";
-	private static final String DEPOSITOS_NUEVO_VIEW = "contable/depositosNuevo";
-	private static final String DEPOSITOS_MODIFICAR_VIEW = "contable/depositosModificar";
-	private static final String VENTAS_VIEW = "contable/ventas";
-	private static final String VENTAS_NUEVO_VIEW = "contable/ventasNuevo";
-	private static final String VENTAS_MODIFICAR_VIEW = "contable/ventasModificar";
-	private static final String PRODUCCION_VIEW = "contable/produccion";
+	private static final String PROVEEDORES_VIEW = "proveedores/proveedores";
+	private static final String PROVEEDORES_NUEVO_VIEW = "proveedores/proveedoresNuevo";
+	private static final String PROVEEDORES_MODIFICAR_VIEW = "proveedores/proveedoresModificar";
+	private static final String GALLINEROS_VIEW = "gallineros/gallineros";
+	private static final String GALLINEROS_NUEVO_VIEW = "gallineros/gallinerosNuevo";
+	private static final String GALLINEROS_MODIFICAR_VIEW = "gallineros/gallinerosModificar";
+	private static final String DEPOSITOS_VIEW = "depositos/depositos";
+	private static final String DEPOSITOS_NUEVO_VIEW = "depositos/depositosNuevo";
+	private static final String DEPOSITOS_MODIFICAR_VIEW = "depositos/depositosModificar";
+	private static final String VENTAS_VIEW = "ventas/ventas";
+	private static final String VENTAS_NUEVO_VIEW = "ventas/ventasNuevo";
+	private static final String VENTAS_MODIFICAR_VIEW = "ventas/ventasModificar";
+	private static final String PRODUCCION_VIEW = "produccion/produccion";
 	
-	@RequestMapping(path="/principalContable")
-	public ModelAndView inicioContable() {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
-		model.addObject("usuarioActual", usuario);
-		model.addObject("pageToLoad", VACIA_VIEW);
-		return model;
-	}
-	
-	@RequestMapping(path="/proveedoresContable")
+	@RequestMapping(path="/proveedores")
 	public ModelAndView proveedoresContable() {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
@@ -120,7 +112,7 @@ public class ContableControlador extends Controlador{
 		return new ModelAndView("redirect:/proveedoresContable");
 	}
 	
-	@RequestMapping(path="/gallinerosContable")
+	@RequestMapping(path="/gallineros")
 	public ModelAndView gallinerosContable() {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
@@ -169,7 +161,7 @@ public class ContableControlador extends Controlador{
 		return new ModelAndView("redirect:/gallinerosContable");
 	}
 	
-	@RequestMapping(path="/depositosContable")
+	@RequestMapping(path="/depositos")
 	public ModelAndView depositosContable() {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
@@ -216,7 +208,7 @@ public class ContableControlador extends Controlador{
 		return new ModelAndView("redirect:/depositosContable");
 	}
 
-	@RequestMapping(path="/ventasContable")
+	@RequestMapping(path="/ventas")
 	public ModelAndView ventasContable(@ModelAttribute("filtro") VentaFiltro filtro) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		List<DTO> listaVentas = (List<DTO>) ventaServicio.listar(filtro);
@@ -268,7 +260,7 @@ public class ContableControlador extends Controlador{
 		return new ModelAndView("redirect:/ventasContable");
 	}
 	
-	@RequestMapping(path="/produccionContable")
+	@RequestMapping(path="/produccion")
 	public ModelAndView produccionContable(@ModelAttribute("usuarioFiltro") UsuarioFiltro usuarioFiltro, @ModelAttribute("depositoFiltro") 
 	DepositoFiltro depositoFiltro) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
