@@ -94,7 +94,7 @@ public class LoginControlador extends Controlador{
 					}
 				}
 				if(permiso.getNombre().matches("movimientos(.*)")) {
-					if(!listaPermisos.contains("movimientos")) {
+					if(!listaPermisos.contains("reportes")) {
 						listaPermisos.add("reportes");
 					}
 				}
