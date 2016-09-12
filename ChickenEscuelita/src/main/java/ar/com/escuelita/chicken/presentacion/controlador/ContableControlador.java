@@ -71,6 +71,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("listaProveedores", listaProveedores);
 		model.addObject("proveedor", new ProveedorDTO());
 		model.addObject("pageToLoad", PROVEEDORES_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -80,6 +81,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("proveedor", new ProveedorDTO());
 		model.addObject("pageToLoad", PROVEEDORES_NUEVO_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -89,6 +91,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("proveedor", proveedor);
 		model.addObject("pageToLoad", PROVEEDORES_MODIFICAR_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -119,6 +122,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("gallinero",new GallineroDTO());
 		model.addObject("listaGallineros",gallineroServicio.listar());
 		model.addObject("pageToLoad", GALLINEROS_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 
@@ -129,6 +133,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
 		model.addObject("gallinero", new GallineroDTO());
 		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -140,6 +145,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
 		model.addObject("gallinero", gallinero);
 		model.addObject("pageToLoad", GALLINEROS_MODIFICAR_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -168,6 +174,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("deposito",new DepositoDTO());
 		model.addObject("listaDepositos",depositoServicio.listar());
 		model.addObject("pageToLoad", DEPOSITOS_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -177,6 +184,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito", new DepositoDTO());
 		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -186,6 +194,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito", deposito);
 		model.addObject("pageToLoad", DEPOSITOS_MODIFICAR_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -218,6 +227,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("listaProveedores", listaProveedores);
 		model.addObject("venta", new VentaDTO());
 		model.addObject("pageToLoad", VENTAS_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -229,6 +239,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("venta", new VentaDTO());
 		model.addObject("pageToLoad", VENTAS_NUEVO_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -240,6 +251,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("venta", venta);
 		model.addObject("pageToLoad", VENTAS_MODIFICAR_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 
@@ -248,7 +260,6 @@ public class ContableControlador extends Controlador{
 		ventaServicio.crear(venta);
 		ModelAndView model =  new ModelAndView("redirect:/ventasContable");
 		model.addObject("filtro", new VentaFiltro());
-
 		return model;
 //		return new ModelAndView("redirect:/ventasContable");
 
@@ -276,6 +287,7 @@ public class ContableControlador extends Controlador{
 		model.addObject("listaProductoresDropDown", usuarioServicio.listarProductores());
 
 		model.addObject("pageToLoad", PRODUCCION_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 

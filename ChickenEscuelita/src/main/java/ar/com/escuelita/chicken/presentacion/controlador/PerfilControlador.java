@@ -33,6 +33,7 @@ public class PerfilControlador extends Controlador {
 		model.addObject("perfil", perfil);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", PERFILES_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	

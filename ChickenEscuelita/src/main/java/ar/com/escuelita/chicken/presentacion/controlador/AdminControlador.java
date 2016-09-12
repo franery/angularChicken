@@ -53,6 +53,7 @@ public class AdminControlador extends Controlador{
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("pageToLoad", VACIA_VIEW);
 		model.addObject("usuarioActual", usuario);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -69,6 +70,7 @@ public class AdminControlador extends Controlador{
 		
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", USUARIOS_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -92,6 +94,7 @@ public class AdminControlador extends Controlador{
 		model.addObject("usuarioNM", usuarioNM);
 		model.addObject("perfiles",EnumPerfil.values());
 		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -100,9 +103,8 @@ public class AdminControlador extends Controlador{
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("usuarioNM", usuarioNM);
-		model.addObject("perfiles",EnumPerfil.values());
-
 		model.addObject("pageToLoad", USUARIO_MODIFICAR_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -135,6 +137,7 @@ public class AdminControlador extends Controlador{
 		model.addObject("parametro", parametro);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", PARAMETROS_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -152,6 +155,7 @@ public class AdminControlador extends Controlador{
 		ParametroDTO parametro = new ParametroDTO();
 		model.addObject("parametro", parametro);
 		model.addObject("pageToLoad", PARAMETRO_NUEVO_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -162,6 +166,7 @@ public class AdminControlador extends Controlador{
 		model.addObject("usuarioActual", usuario);
 		model.addObject("parametro", parametro);
 		model.addObject("pageToLoad", PARAMETRO_MODIFICAR_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	

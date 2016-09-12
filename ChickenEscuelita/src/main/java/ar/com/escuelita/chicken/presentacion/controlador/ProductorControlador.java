@@ -35,6 +35,7 @@ public class ProductorControlador extends Controlador {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", VACIA_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -47,6 +48,7 @@ public class ProductorControlador extends Controlador {
 		model.addObject("pageToLoad", REPORTES_VIEW);
 		model.addObject("filtro",m);
 		model.addObject("listaMovimientos",movimientoServicio.listar(m));
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -57,6 +59,7 @@ public class ProductorControlador extends Controlador {
 		model.addObject("pageToLoad", REPORTES_VIEW);
 		filtro.setProductorId(Long.parseLong(usuario.getId()));
 		model.addObject("listaMovimientos",movimientoServicio.listar(filtro));
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
@@ -70,6 +73,7 @@ public class ProductorControlador extends Controlador {
 		gallineroFiltro.setUsuarioId(Long.parseLong(usuario.getId()));
 		model.addObject("listaGallineros", gallineroServicio.listar(gallineroFiltro));
 		model.addObject("pageToLoad", NUEVO_MOVIMIENTO_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
