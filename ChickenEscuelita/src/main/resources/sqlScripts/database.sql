@@ -1,4 +1,3 @@
-
 drop database db_chicken;
 
 create database db_chicken;
@@ -41,9 +40,6 @@ create table PerfilUsuario (
     foreign key (idUsuario) references Usuario (id) on delete cascade
 );
 
-
-
-
 create table Proveedor (
 	id bigint(10) primary key auto_increment,
     nombre varchar(50) not null,
@@ -59,7 +55,7 @@ create table Gallinero (
     idUsuario bigint(10),
     stockGallinas bigint(10) not null,
     borrado boolean default false not null,
-	foreign key (idUsuario) references Usuario (id) on delete cascade
+	foreign key (idUsuario) references Usuario (id)
 );
 
 create table Deposito (
@@ -77,8 +73,8 @@ create table Movimiento (
     idGallinero bigint(10) not null,
     idDeposito bigint(10) not null,
     borrado boolean default false not null,
-    foreign key (idGallinero) references Gallinero (id) on delete cascade,
-	foreign key (idDeposito) references Deposito (id) on delete cascade
+    foreign key (idGallinero) references Gallinero (id),
+	foreign key (idDeposito) references Deposito (id)
 );
 
 create table Venta (
@@ -89,8 +85,8 @@ create table Venta (
     idProveedor bigint(10) not null,
     idUsuario bigint(10) not null,
     borrado boolean default false not null,
-    foreign key (idProveedor) references Proveedor (id) on delete cascade,
-	foreign key (idUsuario) references Usuario (id) on delete cascade
+    foreign key (idProveedor) references Proveedor (id),
+	foreign key (idUsuario) references Usuario (id)
 );
 
 create table Parametro (

@@ -37,7 +37,7 @@ insert into PerfilPermiso (idPerfil, idPermiso) values
 (1,19),(1,20),(1,21),(1,22),(1,23),(1,24),(1,25),(1,26),(1,27),(1,28),(1,29);
 
 insert into Usuario (nombreUsuario,nombre,apellido,contrasenia) values
-					('root','root','root','root');
+					('root','DIOS','saiyajin','root');
 					
 insert into PerfilUsuario (idPerfil,idUsuario) values
 (1,1);
