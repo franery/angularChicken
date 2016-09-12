@@ -6,15 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><spring:message code="usuarios"/></title>
+<title><spring:message code="perfiles"/></title>
 
 </head>
 <body>
 
-<h1><spring:message code="usuarios"/></h1>
+<h1><spring:message code="perfiles"/></h1>
 
-		<!-- Nuevo Usuario -->
-		<form:form action="NuevoUsuario" method="post" commandName="usuarioNM">
+		<!-- Nuevo Perfil -->
+		<form:form action="perfilesNuevo" method="post" commandName="perfil">
 				<input type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		
@@ -22,10 +22,10 @@
 		<table id="tablita">
 			<thead>
 				<tr>
-					<th><spring:message code="nombreUsuario"/></th>
-					<th><spring:message code="nombre"/></th>
-					<th><spring:message code="apellido"/></th>
-					<th><spring:message code="perfiles"/></th>
+					<th>Nombre de Usuario</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Perfil</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,13 +35,7 @@
 							<td><c:out value="${user.getNombreUsuario() }"></c:out></td>
 							<td><c:out value="${user.getNombre()}"></c:out></td>
 							<td><c:out value="${user.getApellido()}"></c:out></td>
-							<td>
-							
-								<c:forEach items="${user.getListaPerfiles()}" var="perfil">
-									<c:out value="${perfil.getNombre()}"></c:out>
-								</c:forEach>							
-							
-							</td>
+							<td><c:out value="${user.getPerfil().toString()}"></c:out></td>
 							<td>
 							<c:set var="mensajeConfirmacion" scope="request">
 								<spring:message code="mensajeConfirmacion"></spring:message>
@@ -58,6 +52,7 @@
 								<form:input path="apellido" type="hidden" value="${user.getApellido()}"/>
 								<form:input path="contrasenia" type="hidden" value="${user.getContrasenia()}"/>
 								<form:input path="perfil" type="hidden" value="${user.getPerfil()}"/>
+								<input type="hidden" name="flagNuevoModificar" value="0"/>
 								<input type="submit" value=<spring:message code="modificar"/> />
 							</form:form>
 				</td>

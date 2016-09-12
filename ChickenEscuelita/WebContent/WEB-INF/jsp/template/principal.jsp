@@ -16,7 +16,7 @@
 
 	<!-- NavBar -->
 	<c:set var="Title" scope="request">
-		<spring:message code="${usuarioActual.getPerfil().toString() }" />
+		<spring:message code="${usuarioActual.getListaPerfiles().get(0).getNombre(); }" />
 	</c:set>
 	<c:set var="Nombre" value="${usuarioActual.getNombre() }"
 		scope="request" />
