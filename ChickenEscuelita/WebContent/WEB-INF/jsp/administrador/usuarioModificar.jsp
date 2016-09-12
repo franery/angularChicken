@@ -19,7 +19,7 @@
 <body>
 	<h1><spring:message code="usuarioModificar" /></h1>
 
-	<form:form method="POST" id="formLogin" action="usuariosProcesarModificar" commandName="usuarioNM">
+	<form:form method="POST" id="formModificar" action="usuariosProcesarModificar" commandName="usuarioNM">
 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
 	
 		<table>
@@ -68,10 +68,12 @@ $('#botonGuardar').on('click', function (e) {
     e.preventDefault();
     bootbox.confirm(mensaje, function (response) {        
         if(response) {
-            $('#formLogin').submit();
+            $('#formModificar').submit();
         }
     });
 });
+
 </script>
+
 </body>
 </html>

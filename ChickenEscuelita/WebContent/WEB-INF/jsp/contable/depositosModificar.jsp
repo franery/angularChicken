@@ -14,7 +14,7 @@
 
 <h1><spring:message code="depositoModificar"/></h1>
 
-<form:form action="depositosProcesarModificarContable" onsubmit="return tirarAlerta()" method="post" commandName="deposito">
+<form:form id="formModificar" action="depositosProcesarModificarContable" method="post" commandName="deposito">
 	<form:input path="id" type="hidden" value="${deposito.getId()}"/>
 	<form:input path="stockHuevos" type="hidden" value="${deposito.getStockHuevos()}"/>
 	<table>
@@ -27,19 +27,27 @@
 			<td><form:input path="stockMaximo" value="${deposito.getStockMaximo()}" /></td>
 		</tr>
 	</table>
-	<input type="submit" value=<spring:message code="guardar"/> />
+	<input id="botonGuardar" type="submit" value=<spring:message code="guardar"/> />
 </form:form>
 	
 	<c:set var="value">
 		<spring:message code="mensajeModificar" />
 	</c:set>
 	<input id="mensajeModificar" type="hidden" value="${value}" />
-	<script>
-	function tirarAlerta() {
-			var mensaje = document.getElementById("mensajeModificar").value;
-			return confirm(mensaje);
-	}
-	</script>
+	
+<script>
+
+$('#botonGuardar').on('click', function (e) {
+	var mensaje = document.getElementById("mensajeModificar").value;
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+            $('#formModificar').submit();
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>
