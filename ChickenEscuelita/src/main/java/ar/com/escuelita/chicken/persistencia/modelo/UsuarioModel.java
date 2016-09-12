@@ -25,9 +25,6 @@ public class UsuarioModel extends Modelo {
 	@Column(name="apellido")
 	private String apellido;
 	
-	@Column(name="perfil")
-	private EnumPerfil perfil;
-	
 	@Column(name="contrasenia")
 	private String contrasenia;
 	
@@ -40,10 +37,15 @@ public class UsuarioModel extends Modelo {
 	@OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
 	private List<VentaModel> listaVentas = new ArrayList<>();
 	
-	public UsuarioModel() {
-		
-	}
+	@ManyToMany(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
+	@JoinTable(name="PerfilUsuario",//bd
+	joinColumns={@JoinColumn(name="idUsuario")},//bd
+	inverseJoinColumns={@JoinColumn(name="idPerfil")})//bd		
+	private List<PerfilModel> listaPerfiles = new ArrayList<PerfilModel>();
 	
+	public UsuarioModel() {
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -76,14 +78,6 @@ public class UsuarioModel extends Modelo {
 		this.apellido = apellido;
 	}
 
-	public EnumPerfil getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(EnumPerfil perfil) {
-		this.perfil = perfil;
-	}
-
 	public String getContrasenia() {
 		return contrasenia;
 	}
@@ -91,7 +85,7 @@ public class UsuarioModel extends Modelo {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
-	
+
 	public boolean isBorrado() {
 		return borrado;
 	}
@@ -116,4 +110,11 @@ public class UsuarioModel extends Modelo {
 		this.listaVentas = listaVentas;
 	}
 
+	public List<PerfilModel> getListaPerfiles() {
+		return listaPerfiles;
+	}
+
+	public void setListaPerfiles(List<PerfilModel> listaPerfiles) {
+		this.listaPerfiles = listaPerfiles;
+	}
 }

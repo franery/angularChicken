@@ -1,13 +1,18 @@
 package ar.com.escuelita.chicken.negocio.mapeos;
 
+import java.util.List;
+
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.mapeador.Mapeador;
 import ar.com.escuelita.chicken.persistencia.modelo.Modelo;
+import ar.com.escuelita.chicken.persistencia.modelo.PerfilModel;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
+import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 public class UsuarioMapeador extends Mapeador {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public DTO map(Modelo vo) {
 		UsuarioModel usuarioModel = (UsuarioModel) vo;
@@ -18,12 +23,15 @@ public class UsuarioMapeador extends Mapeador {
 		dto.setApellido(usuarioModel.getApellido());
 		dto.setContrasenia(usuarioModel.getContrasenia());
 		dto.setNombreUsuario(usuarioModel.getNombreUsuario());
-		dto.setPerfil(usuarioModel.getPerfil());
+		
+		dto.setListaPerfiles((List<PerfilDTO>)map(usuarioModel.getListaPerfiles()));
+
 		dto.setBorrado(String.valueOf(usuarioModel.isBorrado()));
 		
 		return dto;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Modelo map(DTO dto, Modelo vo) {
 		UsuarioDTO usuarioDTO = (UsuarioDTO) dto;	
@@ -33,7 +41,9 @@ public class UsuarioMapeador extends Mapeador {
 		usuarioModel.setApellido(usuarioDTO.getApellido());
 		usuarioModel.setContrasenia(usuarioDTO.getContrasenia());
 		usuarioModel.setNombreUsuario(usuarioDTO.getNombreUsuario());
-		usuarioModel.setPerfil(usuarioDTO.getPerfil());
+		
+		usuarioModel.setListaPerfiles((List<PerfilModel>)map(usuarioDTO.getListaPerfiles()));
+		
 		usuarioModel.setBorrado(Boolean.parseBoolean(usuarioDTO.getBorrado()));
 		
 		return usuarioModel;

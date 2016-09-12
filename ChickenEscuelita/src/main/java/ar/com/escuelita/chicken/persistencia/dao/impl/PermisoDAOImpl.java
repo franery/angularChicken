@@ -7,42 +7,41 @@ import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
-import ar.com.escuelita.chicken.persistencia.dao.IParametroDAO;
-import ar.com.escuelita.chicken.persistencia.modelo.ParametroModel;
+import ar.com.escuelita.chicken.persistencia.dao.IPermisoDAO;
+import ar.com.escuelita.chicken.persistencia.modelo.PermisoModel;
 
-public class ParametroDAOImpl extends DAO implements IParametroDAO {
+public class PermisoDAOImpl extends DAO implements IPermisoDAO {
 
 	@Transactional
-	public ParametroModel get(long id) {
+	public PermisoModel get(long id) {
 		Session s = sessionFactory.openSession();
-		ParametroModel e = s.get(ParametroModel.class, id);
+		PermisoModel e = s.get(PermisoModel.class, id);
 		s.close();
 		return e;
 	}
 
-	public List<ParametroModel> listar() {
+	public List<PermisoModel> listar() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<ParametroModel> lista = session.createQuery("from ParametroModel where borrado=false").list();
+		List<PermisoModel> lista = session.createQuery("from PermisoModel").list();
 		session.close();
 		return lista;
 	}
 
 	@Transactional
-	public void guardar(ParametroModel parametroModel) {
+	public void guardar(PermisoModel permisoModel) {
 		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
-		s.save(parametroModel);
+		s.save(permisoModel);
 		tx.commit();
 		s.close();
-		
 	}
 
 	@Transactional
-	public void modificar(ParametroModel parametroModel) {
+	public void modificar(PermisoModel permisoModel) {
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
-		s.update(parametroModel);
+		s.update(permisoModel);
 		s.getTransaction().commit();
 		s.close();
 	}
@@ -51,10 +50,7 @@ public class ParametroDAOImpl extends DAO implements IParametroDAO {
 	public void borrar(long id) {
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
-		ParametroModel model = s.get(ParametroModel.class, id);
-		model.setBorrado(true);
-		s.update(model);
-		//s.delete(s.get(ParametroModel.class,id));
+		s.delete(s.get(PermisoModel.class,id));
 		s.getTransaction().commit();
 		s.close();
 	}

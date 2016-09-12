@@ -1,11 +1,9 @@
 package ar.com.escuelita.chicken.persistencia.modelo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="Perfil")
@@ -19,9 +17,21 @@ public class PerfilModel extends Modelo {
 	@Column(name="nombre")
 	private String nombre;
 	
-	@Column(name="permiso")
-	private String permiso;
+	@ManyToMany(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
+	@JoinTable(name="PerfilUsuario",//bd
+	joinColumns={@JoinColumn(name="idPerfil")},//bd
+	inverseJoinColumns={@JoinColumn(name="idUsuario")})//bd		
+	private List<UsuarioModel> listaUsuarios = new ArrayList<UsuarioModel>();
 	
+	@ManyToMany(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
+	@JoinTable(name="PerfilPermiso",//bd
+	joinColumns={@JoinColumn(name="idPerfil")},//bd
+	inverseJoinColumns={@JoinColumn(name="idPermiso")})//bd		
+	private List<PermisoModel> listaPermisos = new ArrayList<PermisoModel>();
+	
+	public PerfilModel(){
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -30,20 +40,27 @@ public class PerfilModel extends Modelo {
 		this.id = id;
 	}
 
-	public String getDescripcion() {
+	public String getNombre() {
 		return nombre;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.nombre = descripcion;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getValor() {
-		return permiso;
+	public List<UsuarioModel> getListaUsuarios() {
+		return listaUsuarios;
 	}
 
-	public void setValor(String valor) {
-		this.permiso = valor;
+	public void setListaUsuarios(List<UsuarioModel> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
-	
+
+	public List<PermisoModel> getListaPermisos() {
+		return listaPermisos;
+	}
+
+	public void setListaPermisos(List<PermisoModel> listaPermisos) {
+		this.listaPermisos = listaPermisos;
+	}
 }

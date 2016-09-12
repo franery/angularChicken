@@ -5,15 +5,44 @@ create database db_chicken;
 
 use db_chicken;
 
+create table Perfil (
+	id bigint(10) primary key not null auto_increment,
+	nombre varchar(50) unique not null
+);
+
+create table Permiso (
+	id bigint(10) primary key not null auto_increment,
+	nombre varchar(50) unique not null
+);
+
+create table PerfilPermiso (
+	id bigint(10) primary key not null auto_increment,
+	idPerfil bigint(10) not null,
+	idPermiso bigint(10) not null,
+    foreign key (idPerfil) references Perfil (id) on delete cascade,
+    foreign key (idPermiso) references Permiso (id)
+);
+
+
 create table Usuario (
 	id bigint(10) primary key not null auto_increment,
-	nombreUsuario varchar(50) not null,
+	nombreUsuario varchar(50) unique not null,
     nombre varchar(50) not null,
     apellido varchar(50) not null,
-    perfil varchar(50) not null,
     contrasenia varchar(50) not null,
     borrado boolean default false not null
 );
+
+create table PerfilUsuario (
+	id bigint(10) primary key not null auto_increment,
+	idPerfil bigint(10) not null,
+	idUsuario bigint(10) not null,
+    foreign key (idPerfil) references Perfil (id) on delete cascade,
+    foreign key (idUsuario) references Usuario (id) on delete cascade
+);
+
+
+
 
 create table Proveedor (
 	id bigint(10) primary key auto_increment,

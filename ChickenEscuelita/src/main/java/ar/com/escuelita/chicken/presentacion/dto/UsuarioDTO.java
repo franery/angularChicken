@@ -1,8 +1,9 @@
 package ar.com.escuelita.chicken.presentacion.dto;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
-import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 
 public class UsuarioDTO extends DTO {
 	
@@ -16,7 +17,7 @@ public class UsuarioDTO extends DTO {
 	
 	private String contrasenia;
 	
-	private EnumPerfil perfil;
+	private List<PerfilDTO> listaPerfiles = new ArrayList<PerfilDTO>();
 	
 	private String borrado;
 
@@ -52,20 +53,20 @@ public class UsuarioDTO extends DTO {
 		this.apellido = apellido;
 	}
 
-	public EnumPerfil getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(EnumPerfil perfil) {
-		this.perfil = perfil;
-	}
-
 	public String getContrasenia() {
 		return contrasenia;
 	}
 
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
+	}
+
+	public List<PerfilDTO> getListaPerfiles() {
+		return listaPerfiles;
+	}
+
+	public void setListaPerfiles(List<PerfilDTO> listaPerfiles) {
+		this.listaPerfiles = listaPerfiles;
 	}
 
 	public String getBorrado() {
