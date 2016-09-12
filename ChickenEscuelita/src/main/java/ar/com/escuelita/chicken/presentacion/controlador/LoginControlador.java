@@ -54,6 +54,7 @@ public class LoginControlador extends Controlador{
 		setListaPermisos(obtenerPermisos());
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual",usuario);
+		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
