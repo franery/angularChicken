@@ -11,6 +11,7 @@ import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
+import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.GallineroFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
@@ -31,7 +32,7 @@ public class ProductorControlador extends Controlador {
 	
 	@RequestMapping(path="/principalProductor")
 	public ModelAndView inicioProductor() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", VACIA_VIEW);
 		return model;
@@ -39,14 +40,9 @@ public class ProductorControlador extends Controlador {
 	
 	@RequestMapping("reportes")
 	public ModelAndView reportes() {
-		ModelAndView model;
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		MovimientoFiltro m = new MovimientoFiltro();
-		if (usuario.getPerfil().equals(EnumPerfil.PRODUCTOR)){
-			model = new ModelAndView(PRODUCTOR_VIEW);
-			m.setProductorId(Long.parseLong(usuario.getId()));
-		} else {
-			model = new ModelAndView(ADMIN_VIEW);
-		}
+		m.setProductorId(Long.parseLong(usuario.getId()));
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", REPORTES_VIEW);
 		model.addObject("filtro",m);
@@ -56,7 +52,7 @@ public class ProductorControlador extends Controlador {
 	
 	@RequestMapping(path="reportesFiltro")
 	public ModelAndView reportesConFiltro(@ModelAttribute("filtro") MovimientoFiltro filtro) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", REPORTES_VIEW);
 		filtro.setProductorId(Long.parseLong(usuario.getId()));
@@ -66,7 +62,7 @@ public class ProductorControlador extends Controlador {
 	
 	@RequestMapping("nuevoMovimiento")
 	public ModelAndView nuevoMovimiento() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("movimiento", new MovimientoDTO());
 		model.addObject("listaDepositos", depositoServicio.listar());

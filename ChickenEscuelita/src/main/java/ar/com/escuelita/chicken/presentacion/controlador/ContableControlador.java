@@ -65,7 +65,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/principalContable")
 	public ModelAndView inicioContable() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", VACIA_VIEW);
 		return model;
@@ -73,7 +73,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/proveedoresContable")
 	public ModelAndView proveedoresContable() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaProveedores", listaProveedores);
@@ -84,7 +84,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/proveedoresNuevoContable")
 	public ModelAndView proveedoresNuevoContable() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("proveedor", new ProveedorDTO());
 		model.addObject("pageToLoad", PROVEEDORES_NUEVO_VIEW);
@@ -93,7 +93,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/proveedoresModificarContable")
 	public ModelAndView proveedoresModificarContable(@ModelAttribute("proveedor") ProveedorDTO proveedor) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("proveedor", proveedor);
 		model.addObject("pageToLoad", PROVEEDORES_MODIFICAR_VIEW);
@@ -122,7 +122,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/gallinerosContable")
 	public ModelAndView gallinerosContable() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("gallinero",new GallineroDTO());
 		model.addObject("listaGallineros",gallineroServicio.listar());
@@ -132,7 +132,7 @@ public class ContableControlador extends Controlador{
 
 	@RequestMapping(path="/gallinerosNuevoContable")
 	public ModelAndView gallinerosNuevoContable() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
 		model.addObject("gallinero", new GallineroDTO());
@@ -143,7 +143,7 @@ public class ContableControlador extends Controlador{
 
 	@RequestMapping(path="/gallinerosModificarContable")
 	public ModelAndView gallinerosModificarContable(@ModelAttribute("gallinero") GallineroDTO gallinero) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
 		model.addObject("gallinero", gallinero);
@@ -171,7 +171,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/depositosContable")
 	public ModelAndView depositosContable() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito",new DepositoDTO());
 		model.addObject("listaDepositos",depositoServicio.listar());
@@ -181,7 +181,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="depositosNuevoContable")
 	public ModelAndView depositosNuevoContable() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito", new DepositoDTO());
 		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
@@ -190,7 +190,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/depositosModificarContable")
 	public ModelAndView depositosModificarContable(@ModelAttribute("deposito") DepositoDTO deposito) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito", deposito);
 		model.addObject("pageToLoad", DEPOSITOS_MODIFICAR_VIEW);
@@ -218,7 +218,7 @@ public class ContableControlador extends Controlador{
 
 	@RequestMapping(path="/ventasContable")
 	public ModelAndView ventasContable(@ModelAttribute("filtro") VentaFiltro filtro) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		List<DTO> listaVentas = (List<DTO>) ventaServicio.listar(filtro);
 		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
@@ -231,7 +231,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/ventasNuevoContable")
 	public ModelAndView ventasNuevoContable() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
 		model.addObject("listaProveedores", listaProveedores);
 		model.addObject("usuarioActual", usuario);
@@ -242,7 +242,7 @@ public class ContableControlador extends Controlador{
 	
 	@RequestMapping(path="/ventasModificarContable")
 	public ModelAndView ventasModificarContable(@ModelAttribute("venta") VentaDTO  venta) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
 		model.addObject("listaProveedores", listaProveedores);
 		model.addObject("usuarioActual", usuario);
@@ -271,7 +271,7 @@ public class ContableControlador extends Controlador{
 	@RequestMapping(path="/produccionContable")
 	public ModelAndView produccionContable(@ModelAttribute("usuarioFiltro") UsuarioFiltro usuarioFiltro, @ModelAttribute("depositoFiltro") 
 	DepositoFiltro depositoFiltro) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		
 		// Tabla Depositos | Stock Huevos

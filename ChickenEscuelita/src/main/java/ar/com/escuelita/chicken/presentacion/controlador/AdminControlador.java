@@ -40,7 +40,6 @@ public class AdminControlador extends Controlador{
 	private static final String PARAMETROS_VIEW = "administrador/parametros";
 	private static final String PARAMETRO_NUEVO_VIEW = "administrador/parametroNuevo";
 	private static final String PARAMETRO_MODIFICAR_VIEW = "administrador/parametroModificar";
-	private static final String VACIA_VIEW = "vacia";
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
@@ -51,7 +50,7 @@ public class AdminControlador extends Controlador{
 	
 	@RequestMapping(path="/principalAdmin")
 	public ModelAndView inicioAdmin() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("pageToLoad", VACIA_VIEW);
 		model.addObject("usuarioActual", usuario);
 		return model;
@@ -60,7 +59,7 @@ public class AdminControlador extends Controlador{
 //	USUARIOS
 	@RequestMapping(path="/usuarios")
 	public ModelAndView usuarios() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		
 		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
 		model.addObject("listaUsuarios",listaUsuarios);
@@ -81,7 +80,7 @@ public class AdminControlador extends Controlador{
 	
 	@RequestMapping("/NuevoUsuario")
 	public ModelAndView NuevoUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioParam){
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		
 		model.addObject("usuarioActual", usuario);
 		UsuarioDTO usuarioNM;
@@ -98,7 +97,7 @@ public class AdminControlador extends Controlador{
 	
 	@RequestMapping(path="/ModificarUsuario")
 	public ModelAndView ModificarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("usuarioNM", usuarioNM);
 		model.addObject("perfiles",EnumPerfil.values());
@@ -129,7 +128,7 @@ public class AdminControlador extends Controlador{
 //	PARAMETROS
 	@RequestMapping(path="/parametros")
 	public ModelAndView parametrosList() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		ParametroDTO parametro = new ParametroDTO();
 		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
 		model.addObject("listaParametros",listaParametros);
@@ -148,7 +147,7 @@ public class AdminControlador extends Controlador{
 	
 	@RequestMapping("/NuevoParametro")
 	public ModelAndView NuevoParametro( ){
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		ParametroDTO parametro = new ParametroDTO();
 		model.addObject("parametro", parametro);
@@ -159,7 +158,7 @@ public class AdminControlador extends Controlador{
 	
 	@RequestMapping(path="/ModificarParametro")
 	public ModelAndView ModificarParametro(@ModelAttribute("parametro") ParametroDTO parametro) {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("parametro", parametro);
 		model.addObject("pageToLoad", PARAMETRO_MODIFICAR_VIEW);

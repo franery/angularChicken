@@ -31,7 +31,7 @@ public class LoginControlador extends Controlador{
 	
 	@RequestMapping("/403")
 	public ModelAndView accesoDenegado() {
-		ModelAndView model = new ModelAndView(obtenerVista());
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", "login/403");
 		return model;
@@ -39,7 +39,6 @@ public class LoginControlador extends Controlador{
 	@RequestMapping(path="/ingresar")
 	public ModelAndView loginVerificacion() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
 		UsuarioDTO usuarioDto = null;
 		UsuarioFiltro filtro = new UsuarioFiltro();
 		filtro.setNombreUsuario(auth.getName());
@@ -47,16 +46,8 @@ public class LoginControlador extends Controlador{
 			usuarioDto = (UsuarioDTO) usuarioDTO;
 		}
 		setUsuario(usuarioDto);
-		if((usuarioDto).getPerfil().equals(EnumPerfil.PRODUCTOR)) {
-			return new ModelAndView("redirect:/principalProductor");
-		}
-		if((usuarioDto).getPerfil().equals(EnumPerfil.CONTABLE)) {
-			return new ModelAndView("redirect:/principalContable");
-		}
-		if((usuarioDto).getPerfil().equals(EnumPerfil.ADMINISTRADOR)) {
-			return new ModelAndView("redirect:/principalAdmin");
-		}
-		ModelAndView model = new ModelAndView("redirect:/vacia.jsp");
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		model.addObject("usuarioActual",usuario);
 		return model;
 	}
 }
