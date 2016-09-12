@@ -52,7 +52,6 @@ public class MovimientoTest {
 		u.setContrasenia("cc");
 		u.setNombre("NN");
 		u.setNombreUsuario("NU");
-		u.setPerfil(EnumPerfil.ADMINISTRADOR);
 		return u;
 	}
 	
@@ -114,7 +113,7 @@ public class MovimientoTest {
 		
 		MovimientoModel p2 = movimientoDAO.get(p.getId());
 		
-		Assert.assertTrue(p2 == null);
+		Assert.assertTrue(p2.isBorrado());
 	}
 	
 	@Test

@@ -51,7 +51,7 @@ public class DepositoTest {
 		
 		DepositoModel p2 = depositoDAO.get(p.getId());
 		
-		Assert.assertTrue(p2 == null);
+		Assert.assertTrue(p2.isBorrado());
 	}
 	
 	@Test

@@ -28,7 +28,6 @@ public class UsuarioTest {
 		u.setContrasenia("cc");
 		u.setNombre("Admin");
 		u.setNombreUsuario("Admin");
-		u.setPerfil(EnumPerfil.ADMINISTRADOR);
 		
 		usuarioDAO.guardar(u);
 		
@@ -38,7 +37,6 @@ public class UsuarioTest {
 		Assert.assertTrue(u2.getApellido().equals(u.getApellido()));
 		Assert.assertTrue(u2.getContrasenia().equals(u.getContrasenia()));
 		Assert.assertTrue(u2.getNombreUsuario().equals(u.getNombreUsuario()));
-		Assert.assertTrue(u2.getPerfil() == u.getPerfil());
 		Assert.assertTrue(u2.getId() == u.getId());
 	}
 	
@@ -50,7 +48,6 @@ public class UsuarioTest {
 		u.setContrasenia("cc");
 		u.setNombre("Productor");
 		u.setNombreUsuario("Productor");
-		u.setPerfil(EnumPerfil.PRODUCTOR);
 		
 		usuarioDAO.guardar(u);
 		
@@ -58,7 +55,7 @@ public class UsuarioTest {
 		
 		UsuarioModel p2 = usuarioDAO.get(u.getId());
 		
-		Assert.assertTrue(p2 == null);
+		Assert.assertTrue(p2.isBorrado());
 	}
 	
 	@Test
@@ -69,7 +66,6 @@ public class UsuarioTest {
 		u.setContrasenia("cc");
 		u.setNombre("Contable");
 		u.setNombreUsuario("Contable");
-		u.setPerfil(EnumPerfil.CONTABLE);
 		
 		usuarioDAO.guardar(u);
 		UsuarioModel u2 = usuarioDAO.get(u.getId());

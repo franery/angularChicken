@@ -25,7 +25,7 @@ create table PerfilPermiso (
 
 create table Usuario (
 	id bigint(10) primary key not null auto_increment,
-	nombreUsuario varchar(50) unique not null,
+	nombreUsuario varchar(50) not null,
     nombre varchar(50) not null,
     apellido varchar(50) not null,
     contrasenia varchar(50) not null,

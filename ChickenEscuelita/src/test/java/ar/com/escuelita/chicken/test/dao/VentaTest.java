@@ -38,7 +38,6 @@ public class VentaTest {
 		u.setContrasenia("cc");
 		u.setNombre("NN");
 		u.setNombreUsuario("NU");
-		u.setPerfil(EnumPerfil.CONTABLE);
 		return u;
 	}
 	
@@ -91,7 +90,7 @@ public class VentaTest {
 		
 		VentaModel p2 = ventaDAO.get(v.getId());
 		
-		Assert.assertTrue(p2 == null);
+		Assert.assertTrue(p2.isBorrado());
 	}
 	
 	@Test

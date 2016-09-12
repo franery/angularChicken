@@ -47,7 +47,7 @@ public class ParametroTest {
 		
 		ParametroModel p2 = parametroDAO.get(p.getId());
 		
-		Assert.assertTrue(p2 == null);
+		Assert.assertTrue(p2.isBorrado());
 	}
 	
 	@Test

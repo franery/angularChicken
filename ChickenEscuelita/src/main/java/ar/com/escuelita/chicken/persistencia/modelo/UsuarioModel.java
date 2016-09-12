@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
-
 @Entity
 @Table(name="Usuario")
 public class UsuarioModel extends Modelo {

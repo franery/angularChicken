@@ -53,7 +53,7 @@ public class ProveedorTest {
 		
 		ProveedorModel p2 = proveedorDAO.get(p.getId());
 		
-		Assert.assertTrue(p2 == null);
+		Assert.assertTrue(p2.isBorrado());
 	}
 	
 	@Test

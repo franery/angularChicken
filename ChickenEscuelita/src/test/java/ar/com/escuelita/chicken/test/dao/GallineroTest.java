@@ -31,7 +31,6 @@ public class GallineroTest {
 		u.setContrasenia("cc");
 		u.setNombre("Productor");
 		u.setNombreUsuario("Productor");
-		u.setPerfil(EnumPerfil.PRODUCTOR);
 		return u;
 	}
 	
@@ -74,7 +73,7 @@ public class GallineroTest {
 		
 		GallineroModel p2 = gallineroDAO.get(p.getId());
 		
-		Assert.assertTrue(p2 == null);
+		Assert.assertTrue(p2.isBorrado());
 	}
 	
 	@Test
