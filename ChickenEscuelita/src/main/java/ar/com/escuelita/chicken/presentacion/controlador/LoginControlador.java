@@ -55,6 +55,7 @@ public class LoginControlador extends Controlador{
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual",usuario);
 		model.addObject("listaPermisos", listaPermisos);
+		model.addObject("pageToLoad",VACIA_VIEW);
 		return model;
 	}
 	

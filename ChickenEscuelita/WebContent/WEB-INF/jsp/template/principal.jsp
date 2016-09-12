@@ -15,11 +15,8 @@
 
 
 	<!-- NavBar -->
-	<c:set var="Title" scope="request">
-		${usuarioActual.getListaPerfiles().get(0).getNombre(); }
-	</c:set>
-	<c:set var="Nombre" value="${usuarioActual.getNombre() }"
-		scope="request" />
+	<c:set var="Title" scope="request" value="${usuarioActual.getListaPerfiles().get(0).getNombre()}"/>
+	<c:set var="Nombre" value="${usuarioActual.getNombre() }"	scope="request" />
 	<jsp:include page="../template/navbar.jsp"></jsp:include>
 
 	<div class="alineacion">

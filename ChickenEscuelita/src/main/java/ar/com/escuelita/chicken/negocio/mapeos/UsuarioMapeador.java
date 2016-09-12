@@ -2,6 +2,8 @@ package ar.com.escuelita.chicken.negocio.mapeos;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.mapeador.Mapeador;
 import ar.com.escuelita.chicken.persistencia.modelo.Modelo;
@@ -12,6 +14,8 @@ import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 public class UsuarioMapeador extends Mapeador {
 
+	@Autowired PerfilMapeador perfilMapeo;
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public DTO map(Modelo vo) {
@@ -24,7 +28,7 @@ public class UsuarioMapeador extends Mapeador {
 		dto.setContrasenia(usuarioModel.getContrasenia());
 		dto.setNombreUsuario(usuarioModel.getNombreUsuario());
 		
-		dto.setListaPerfiles((List<PerfilDTO>)map(usuarioModel.getListaPerfiles()));
+		dto.setListaPerfiles((List<PerfilDTO>)perfilMapeo.map(usuarioModel.getListaPerfiles()));
 
 		dto.setBorrado(String.valueOf(usuarioModel.isBorrado()));
 		
@@ -42,7 +46,7 @@ public class UsuarioMapeador extends Mapeador {
 		usuarioModel.setContrasenia(usuarioDTO.getContrasenia());
 		usuarioModel.setNombreUsuario(usuarioDTO.getNombreUsuario());
 		
-		usuarioModel.setListaPerfiles((List<PerfilModel>)map(usuarioDTO.getListaPerfiles()));
+		usuarioModel.setListaPerfiles((List<PerfilModel>)perfilMapeo.map(usuarioDTO.getListaPerfiles()));
 		
 		usuarioModel.setBorrado(Boolean.parseBoolean(usuarioDTO.getBorrado()));
 		
