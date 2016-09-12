@@ -18,7 +18,7 @@
 				<input type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		
-		<!-- Tabla Usuarios -->
+		<!-- Tabla Perfiles -->
 		<table id="tablita">
 			<thead>
 				<tr>

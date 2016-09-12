@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><spring:message code="${usuarioActual.getNombre() }"/></title>
+<title>${usuarioActual.getNombre() }</title>
 
 </head>
 <body>
@@ -16,7 +16,7 @@
 
 	<!-- NavBar -->
 	<c:set var="Title" scope="request">
-		<spring:message code="${usuarioActual.getListaPerfiles().get(0).getNombre(); }" />
+		${usuarioActual.getListaPerfiles().get(0).getNombre(); }
 	</c:set>
 	<c:set var="Nombre" value="${usuarioActual.getNombre() }"
 		scope="request" />
