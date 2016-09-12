@@ -74,10 +74,6 @@
 	
 	<input type="submit" value=<spring:message code="filtrar"/> />
 </form:form>
-
-
-
-
 		<table id="tablita">
 			<thead>
 				<tr>

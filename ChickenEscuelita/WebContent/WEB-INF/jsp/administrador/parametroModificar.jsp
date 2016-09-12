@@ -13,7 +13,7 @@
 <body>
 	<h1><spring:message code="parametroNuevo" /></h1>
 
-	<form:form method="POST" onsubmit="return TirarAlerta()" action="parametrosModificar"	commandName="parametro">
+	<form:form id="formModificar" method="POST" action="parametrosModificar"	commandName="parametro">
 		<form:input path="id" type="hidden" value="${parametro.getId()}"/>
 	
 		<table>
@@ -27,20 +27,29 @@
 			</tr>
 			<tr>
 				<td colspan="4" style="text-align: center;">
-				<input type="submit" value="<spring:message code="guardar"/>" /> </td>
+				<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> </td>
 			</tr>
 		</table>
 	</form:form>
+	
 	<c:set var="value">
 		<spring:message code="mensajeModificar" />
 	</c:set>
 	<input id="mensajeModificar" type="hidden" value="${value}" />
-	<script>
-	function TirarAlerta() {
-			var mensaje = document.getElementById("mensajeModificar").value;
-			return confirm(mensaje);
-	}
 	
-	</script>
+<script>
+
+$('#botonGuardar').on('click', function (e) {
+	var mensaje = document.getElementById("mensajeModificar").value;
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+            $('#formModificar').submit();
+        }
+    });
+});
+
+</script>
+	
 </body>
 </html>

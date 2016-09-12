@@ -14,7 +14,7 @@
 
 <h1><spring:message code="proveedoresModificar"/></h1>
 
-<form:form action="proveedoresProcesarModificarContable" onsubmit="return tirarAlerta()" method="post" commandName="proveedor">
+<form:form id="formModificar" action="proveedoresProcesarModificarContable" method="post" commandName="proveedor">
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
 	<form:input path="borrado" type="hidden" value="${proveedor.getBorrado()}"/>
 	<table>
@@ -35,19 +35,27 @@
 			<td><form:input path="telefono" value="${proveedor.getTelefono()}" required="required"/></td>
 		</tr>
 	</table>
-	<input type="submit" value=<spring:message code="guardar"/> />
+	<input id="botonGuardar" type="submit" value=<spring:message code="guardar"/> />
 </form:form>
 	
 	<c:set var="value">
 		<spring:message code="mensajeModificar" />
 	</c:set>
 	<input id="mensajeModificar" type="hidden" value="${value}" />
-	<script>
-	function tirarAlerta() {
-			var mensaje = document.getElementById("mensajeModificar").value;
-			return confirm(mensaje);
-	}
-	</script>
+	
+<script>
+
+$('#botonGuardar').on('click', function (e) {
+	var mensaje = document.getElementById("mensajeModificar").value;
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+            $('#formModificar').submit();
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>

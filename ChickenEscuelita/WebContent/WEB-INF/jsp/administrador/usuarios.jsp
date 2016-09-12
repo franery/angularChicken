@@ -41,9 +41,9 @@
 							<c:set var="mensajeConfirmacion" scope="request">
 								<spring:message code="mensajeConfirmacion"></spring:message>
 							</c:set>
-							<form:form action="borrarUsuario" onsubmit="return confirm('${mensajeConfirmacion} ${user.getNombreUsuario()}?');" method="post" commandName="usuarioNM">
+							<form:form id="formBorrar" action="borrarUsuario" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
-								<input type="submit" value=<spring:message code="borrar"/> />
+								<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
 							<form:form action="ModificarUsuario" method="post" commandName="usuarioNM">
@@ -71,6 +71,25 @@
 			<!-- <a class="btn btn-default" href="Nuevo" role="button">Nueva
 				Mascota</a> -->
 		</div>
+
+	<c:set var="value">
+		<spring:message code="mensajeBorrar" />
+	</c:set>
+	<input id="mensajeBorrar" type="hidden" value="${value}" />
+
+<script>
+
+$('#botonBorrar').on('click', function (e) {
+	var mensaje = document.getElementById("mensajeBorrar").value;
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+            $('#formBorrar').submit();
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>

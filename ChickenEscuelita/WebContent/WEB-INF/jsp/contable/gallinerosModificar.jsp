@@ -14,7 +14,7 @@
 
 <h1><spring:message code="gallinerosModificar"/></h1>
 
-<form:form action="gallinerosProcesarModificarContable" onsubmit="return tirarAlerta()" method="post" commandName="gallinero">
+<form:form id="formModificar" action="gallinerosProcesarModificarContable" method="post" commandName="gallinero">
 	<form:input path="id" type="hidden" value="${gallinero.getId()}"/>
 	<table>
 		<tr>
@@ -39,19 +39,27 @@
 			<td><form:input path="stockGallinas"  value="${gallinero.getStockGallinas()}" required="required"/></td>
 		</tr>
 	</table>
-	<input type="submit" value=<spring:message code="guardar"/> />
+	<input id="botonGuardar" type="submit" value=<spring:message code="guardar"/> />
 </form:form>
 	
 	<c:set var="value">
 		<spring:message code="mensajeModificar" />
 	</c:set>
 	<input id="mensajeModificar" type="hidden" value="${value}" />
-	<script>
-	function tirarAlerta() {
-			var mensaje = document.getElementById("mensajeModificar").value;
-			return confirm(mensaje);
-	}
-	</script>
+	
+<script>
+
+$('#botonGuardar').on('click', function (e) {
+	var mensaje = document.getElementById("mensajeModificar").value;
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+            $('#formModificar').submit();
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>

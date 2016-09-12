@@ -43,9 +43,9 @@
 				<td><c:set var="mensajeConfirmacion" scope="request">
 						<spring:message code="mensajeConfirmacion"></spring:message>
 					</c:set> 
-					<form:form onsubmit="return confirm('${mensajeConfirmacion} ${deposito.getNombre()}?');" action="depositosBorrarContable" method="post" commandName="deposito">
+					<form:form id="formBorrar" action="depositosBorrarContable" method="post" commandName="deposito">
 						<form:input path="id" type="hidden" value="${deposito.getId()}"/>
-						<input type="submit" value=<spring:message code="borrar"/> />
+						<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 					</form:form>
 				</td>
 				<td>
@@ -61,6 +61,25 @@
 		</c:forEach>
 	</c:if>
 </table>
+
+	<c:set var="value">
+		<spring:message code="mensajeBorrar" />
+	</c:set>
+	<input id="mensajeBorrar" type="hidden" value="${value}" />
+
+<script>
+
+$('#botonBorrar').on('click', function (e) {
+	var mensaje = document.getElementById("mensajeBorrar").value;
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+            $('#formBorrar').submit();
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>

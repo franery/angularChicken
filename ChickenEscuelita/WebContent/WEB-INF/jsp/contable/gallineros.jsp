@@ -49,12 +49,9 @@
 							<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
 					<td><c:set var="mensajeConfirmacion" scope="request">
 							<spring:message code="mensajeConfirmacion"></spring:message>
-						</c:set> <form:form
-							onsubmit="return confirm('${mensajeConfirmacion} ${gallinero.getNombre()}?');"
-							action="gallinerosBorrarContable" method="post"
-							commandName="gallinero">
+						</c:set> <form:form id="formBorrar" action="gallinerosBorrarContable" method="post" commandName="gallinero">
 							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
-							<input type="submit" value=<spring:message code="borrar"/> />
+							<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 						</form:form></td>
 					<td><form:form action="gallinerosModificarContable"
 							method="post" commandName="gallinero">
@@ -73,6 +70,25 @@
 			</c:forEach>
 		</c:if>
 	</table>
+
+	<c:set var="value">
+		<spring:message code="mensajeBorrar" />
+	</c:set>
+	<input id="mensajeBorrar" type="hidden" value="${value}" />
+
+<script>
+
+$('#botonBorrar').on('click', function (e) {
+	var mensaje = document.getElementById("mensajeBorrar").value;
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+            $('#formBorrar').submit();
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>
