@@ -1,5 +1,7 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
+import java.util.List;
+
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 public class Controlador {
@@ -8,6 +10,7 @@ public class Controlador {
 	public static final String VACIA_VIEW = "vacia";
 	
 	protected static UsuarioDTO usuario;
+	protected static List<String> listaPermisos;
 	
 	public static void setUsuario(UsuarioDTO user) {
 		usuario = user;
@@ -15,5 +18,13 @@ public class Controlador {
 	
 	public static UsuarioDTO getUsuario() {
 		return usuario;
+	}
+
+	public static List<String> getListaPermisos() {
+		return listaPermisos;
+	}
+
+	public static void setListaPermisos(List<String> listaPermisos) {
+		Controlador.listaPermisos = listaPermisos;
 	}
 }
