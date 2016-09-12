@@ -11,9 +11,9 @@ public interface IPerfilDAO {
 	
 	public List<PerfilModel> listar();
 	
-	public void guardar(PerfilModel perfilModel) throws PersistenciaExcepcion;
+	public void guardar(PerfilModel perfilModel);
 	
-	public void modificar(PerfilModel perfilModel) throws PersistenciaExcepcion;
+	public void modificar(PerfilModel perfilModel);
 	
 	public void borrar(long id);
 

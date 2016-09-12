@@ -13,9 +13,9 @@ public interface IPermisoDAO {
 	
 	public List<PermisoModel> listar();
 	
-	public void guardar(PermisoModel permisoModel) throws PersistenciaExcepcion;
+	public void guardar(PermisoModel permisoModel);
 	
-	public void modificar(PermisoModel permisoModel) throws PersistenciaExcepcion;
+	public void modificar(PermisoModel permisoModel);
 	
 	public void borrar(long id);
 
