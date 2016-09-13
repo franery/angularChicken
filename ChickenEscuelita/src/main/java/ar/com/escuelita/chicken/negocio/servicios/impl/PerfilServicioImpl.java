@@ -51,7 +51,9 @@ public class PerfilServicioImpl extends Servicio implements IPerfilServicio {
 		perfilDTO.setNombre(nombre);
 		List<PermisoDTO> listaPermisos = new ArrayList<>();
 		for(String permiso : arrayPermisos) {
-			PermisoDTO permisoDTO = (PermisoDTO) permisoServicio.buscar(Long.parseLong(permiso));
+//			PermisoDTO permisoDTO = (PermisoDTO) permisoServicio.buscar(Long.parseLong(permiso));
+			PermisoDTO permisoDTO = new PermisoDTO();
+			permisoDTO.setId(permiso);
 			listaPermisos.add(permisoDTO);
 		}
 		perfilDTO.setListaPermisos(listaPermisos);
