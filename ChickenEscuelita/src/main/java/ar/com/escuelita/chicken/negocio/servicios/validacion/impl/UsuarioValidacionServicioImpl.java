@@ -11,7 +11,9 @@ import ar.com.escuelita.chicken.negocio.servicios.validacion.IUsuarioValidacionS
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio {
-
+	
+	public static long USUARIO_ROOT_ID = 1;
+	
 	@Autowired 
 	private IUsuarioServicio usuarioServicio;
 	
@@ -28,7 +30,19 @@ public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio
 			}
 		}
 	}
-
+	
+	public void validacionBorrarUsuarioRoot(long usuarioId) throws ValidacionExcepcion {
+		if(usuarioId == USUARIO_ROOT_ID) {
+			throw new ValidacionExcepcion("mensajeErrorBorrarUsuarioRoot");
+		}
+	}
+	
+	public void validacionModificarUsuarioRoot(long usuarioActualId, long usuarioId) throws ValidacionExcepcion {
+		if(usuarioId == USUARIO_ROOT_ID && usuarioActualId != USUARIO_ROOT_ID) {
+			throw new ValidacionExcepcion("mensajeErrorModificarUsuarioRoot");
+		}
+	}
+	
 	public IUsuarioServicio getUsuarioServicio() {
 		return usuarioServicio;
 	}

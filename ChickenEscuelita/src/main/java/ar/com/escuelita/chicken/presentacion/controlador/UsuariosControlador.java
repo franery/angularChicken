@@ -57,7 +57,11 @@ public class UsuariosControlador extends Controlador {
 	}
 	
 	@RequestMapping(path="/usuariosBorrar")
-	public ModelAndView borrarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM ) {
+	public ModelAndView borrarUsuario(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
+			BindingResult result) throws Exception {
+		if(result.hasErrors()) {
+			return usuarios();
+		}
 		usuarioServicio.borrar(usuarioNM);
 		return new ModelAndView("redirect:/usuarios");
 	}
@@ -65,7 +69,6 @@ public class UsuariosControlador extends Controlador {
 	@RequestMapping("/usuariosNuevo")
 	public ModelAndView nuevoUsuario(){
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
-		
 		model.addObject("usuarioActual", usuario);
 		UsuarioDTO usuarioNM = new UsuarioDTO();
 		model.addObject("usuarioNM", usuarioNM);

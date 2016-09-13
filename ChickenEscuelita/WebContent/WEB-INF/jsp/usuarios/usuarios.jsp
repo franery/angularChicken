@@ -41,7 +41,7 @@
 									</c:forEach>							
 							</td>
 							<td>
-							<form:form id="formBorrar" action="borrarUsuario" method="post" commandName="usuarioNM">
+							<form:form id="formBorrar" action="usuariosBorrar" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
 								<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>

@@ -28,6 +28,11 @@ public class UsuarioValidacion implements Validator {
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("nombreUsuario", e.getMessage(),"Mesnaje default");
 		}
+		try {
+			usuarioValidacionServicio.validacionBorrarUsuarioRoot(Long.parseLong(usuario.getId()));
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("id", e.getMessage(),"Mesnaje default");
+		}
 	}
 
 	public IUsuarioValidacionServicio getUsuarioValidacionServicio() {
