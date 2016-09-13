@@ -2,11 +2,11 @@ package ar.com.escuelita.chicken.base.enumerador;
 
 public enum EnumPermiso {
 	
-	C("crear"),
-	R("listar"),
-	U("modificar"),
-	D("borrar"),
-	E("exportar");
+	C("Crear"),
+	R("Listar"),
+	U("Modificar"),
+	D("Borrar"),
+	E("Exportar");
 	
 	private String name;
 	
