@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><spring:message code="usuarioModificar" /></title>
+<title><spring:message code="perfilModificar" /></title>
 <style>
     .error 
     {
@@ -17,21 +17,15 @@
     </style>
 </head>
 <body>
-	<h1><spring:message code="usuarioModificar" /></h1>
+	<h1><spring:message code="perfilModificar" /></h1>
 
-	<form:form method="POST" id="formModificar" action="usuariosProcesarModificar" commandName="usuarioNM">
-		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
+	<form:form method="POST" id="formModificar" action="perfilesProcesarModificar" commandName="perfil">
+		<form:input path="id" type="hidden" value="${perfil.getId()}"/>
 	
 		<table>
 			<tr>
-				<td><spring:message code="nombreUsuario" /></td>
-				<td><form:input path="nombreUsuario" required="required"/></td>
-			</tr>
-			<tr>
 				<td><spring:message code="nombre" /></td>
 				<td><form:input path="nombre" required="required"/></td>
-				<td><spring:message code="apellido" /></td>
-				<td><form:input path="apellido" required="required"/></td>
 			</tr>
 			<tr>
 				<td><spring:message code="contrasenia" /></td>
