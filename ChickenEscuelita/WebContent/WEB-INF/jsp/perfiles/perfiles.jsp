@@ -54,7 +54,7 @@
 				</c:if>
 				<c:if test="${empty listaPerfiles}">
 					<tr>
-						<td colspan="5"><spring:message code="accesoDenegado"/></td>
+						<td colspan="5"><spring:message code="noHayDatos"/></td>
 					</tr>
 				</c:if>
 			</tbody>

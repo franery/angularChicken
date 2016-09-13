@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<h1><spring:message code="proveedores"/></h1>
+
 	<form:form action="proveedoresNuevo" method="post"
 		commandName="proveedor">
 		<input type="submit" value=<spring:message code="nuevo"/> />

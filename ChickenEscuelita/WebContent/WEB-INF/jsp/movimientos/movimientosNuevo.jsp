@@ -8,9 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><spring:message code=""/></title>
+<title><spring:message code="movimientosNuevo"/></title>
 </head>
 <body>
+<h1><spring:message code="movimientosNuevo"/></h1>
 
 	<form:form action="crearNuevoMovimiento" method="POST"
 		commandName="movimiento">

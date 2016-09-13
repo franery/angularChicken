@@ -10,6 +10,8 @@
 
 </head>
 <body>
+<h1><spring:message code="parametros"/></h1>
+
 	<!-- Nuevo Parametro -->
 	<form:form action="parametrosNuevo" method="post"
 		commandName="parametro">

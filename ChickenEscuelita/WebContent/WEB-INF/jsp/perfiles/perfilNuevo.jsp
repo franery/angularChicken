@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><spring:message code="usuarioNuevo" /></title>
+<title><spring:message code="perfilNuevo" /></title>
 <style>
 .error {
 	color: #ff0000;
@@ -17,11 +17,9 @@
 </head>
 <body>
 	<h1>
-		<spring:message code="usuarioNuevo" />
+		<spring:message code="perfilNuevo" />
 	</h1>
 
-	<%-- 	<form:form method="POST" action="usuariosProcesarNuevo" commandName="usuarioNM"> --%>
-	<%-- 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/> --%>
 	<form:form id="formCrear" method="POST" action="perfilesProcesarNuevo">
 	<table>
 		<thead>

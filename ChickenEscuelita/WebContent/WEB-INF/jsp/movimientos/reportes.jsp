@@ -18,6 +18,8 @@
 <title><spring:message code="movimientos"/></title>
 </head>
 <body>
+<h1><spring:message code="movimientos"/></h1>
+
 	<form:form action="movimientosNuevo">
 		<input type="submit" value=<spring:message code="nuevo"/> />
 	</form:form>
