@@ -6,6 +6,7 @@ import org.springframework.validation.Validator;
 
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.validacion.IUsuarioValidacionServicio;
+import ar.com.escuelita.chicken.presentacion.controlador.Controlador;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 public class UsuarioValidacion implements Validator {
@@ -25,7 +26,7 @@ public class UsuarioValidacion implements Validator {
 	public void validate(Object target, Errors errores) {
 		UsuarioDTO usuario = (UsuarioDTO) target;
 		try {
-			usuarioValidacionServicio.validacionNombreUsuario(usuario.getNombreUsuario());
+			usuarioValidacionServicio.validacionNombreUsuario(usuario.getNombreUsuario(), usuario.getId());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("nombreUsuario", e.getMessage(),"Mesnaje default");
 		}
@@ -35,7 +36,7 @@ public class UsuarioValidacion implements Validator {
 			errores.rejectValue("borrado", e.getMessage(),"Mesnaje default");
 		}
 		try {
-			usuarioValidacionServicio.validacionModificarUsuarioRoot(Long.parseLong(usuario.getId()), Long.parseLong(usuario.getId()));
+			usuarioValidacionServicio.validacionModificarUsuarioRoot(Long.parseLong(Controlador.usuario.getId()), Long.parseLong(usuario.getId()));
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("id", e.getMessage(),"Mesnaje default");
 		}

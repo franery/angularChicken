@@ -9,8 +9,8 @@ public class Controlador {
 	public static final String PRINCIPAL_VIEW = "template/principal";
 	public static final String VACIA_VIEW = "vacia";
 	
-	protected static UsuarioDTO usuario;
-	protected static List<String> listaPermisos;
+	public static UsuarioDTO usuario;
+	public static List<String> listaPermisos;
 	
 	public static void setUsuario(UsuarioDTO user) {
 		usuario = user;

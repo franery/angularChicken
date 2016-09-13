@@ -22,11 +22,11 @@ public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio
 	}
 	
 	@Override
-	public void validacionNombreUsuario(String nombreUsuario) throws ValidacionExcepcion {
+	public void validacionNombreUsuario(String nombreUsuario, String usuarioId) throws ValidacionExcepcion {
 		List<DTO> listaUsuarios = (List<DTO>) usuarioServicio.listar();
 		for(DTO dto : listaUsuarios) {
-			if (((UsuarioDTO)dto).getNombreUsuario().equals(nombreUsuario)) {
-				throw new ValidacionExcepcion("mensajeErrorUsuario");	
+			if ((usuarioId != null && !usuarioId.isEmpty()) && ((UsuarioDTO)dto).getNombreUsuario().equals(nombreUsuario)) {
+				throw new ValidacionExcepcion("mensajeErrorUsuario");
 			}
 		}
 	}
