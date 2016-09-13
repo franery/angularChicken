@@ -3,6 +3,7 @@ package ar.com.escuelita.chicken.presentacion.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +14,7 @@ import ar.com.escuelita.chicken.negocio.servicios.IVentaServicio;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.VentaFiltro;
 
+@Controller
 public class VentasControlador extends Controlador {
 	
 	@Autowired

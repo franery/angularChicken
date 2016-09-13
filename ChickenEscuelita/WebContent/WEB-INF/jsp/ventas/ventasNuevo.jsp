@@ -14,11 +14,9 @@
 
 <h1><spring:message code="venta"/></h1>
 
-<form:form action="ventasProcesarNuevoContable" method="post" commandName="venta">
+<form:form action="ventasProcesarNuevo" method="post" commandName="venta">
 	<form:input path="id" type="hidden" value="${venta.getId()}"/>
 	<form:input path="usuarioId" type="hidden" value="${usuarioActual.getId()}"/>
-<%-- 	<form:input path="borrado" type="hidden" value="0"/>
- --%>
 	<table>
 		<tr>
 			<td><form:label path="proveedorId"><spring:message code="proveedor"/>:</form:label></td>

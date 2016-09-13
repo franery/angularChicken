@@ -13,7 +13,7 @@
 <body>
 <h1><spring:message code="movimientosNuevo"/></h1>
 
-	<form:form action="crearNuevoMovimiento" method="POST"
+	<form:form action="movimientosProcesarNuevo" method="POST"
 		commandName="movimiento">
 		<table>
 			<tr>

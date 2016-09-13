@@ -38,14 +38,18 @@
 				<td><form:input path="contrasenia" type="password" required="required"/></td>
 			</tr>
 			<tr>
-				<td><spring:message code="perfil" /></td>
-				<td><form:select path="listaPerfiles" required="required">
-						<option value=""><spring:message code="seleccionar" /></option>
-						<c:forEach var="perfil" items="${perfiles}">
-							<option value="${perfil}">  ${perfil.getNombre()}  </option>
-						</c:forEach>
-					</form:select></td>
+				<td><spring:message code="perfil" />:</td>
+			
+			<c:forEach var="perfil" items="${perfiles}">
+				</td>
+					<td>
+			        	<form:checkbox path="listaPerfiles" value="${perfil}"/>${perfil.getNombre()}
+	                </td>
+				</tr>
+				<td>
+			</c:forEach>
 			</tr>
+			
 			<tr>
 				<td colspan="4" style="text-align: center;">
 				<input type="submit" value="<spring:message code="guardar"/>" /> </td>

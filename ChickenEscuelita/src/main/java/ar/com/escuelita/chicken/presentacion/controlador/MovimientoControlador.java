@@ -92,6 +92,6 @@ public class MovimientoControlador extends Controlador {
 	@RequestMapping(path="movimientosProcesarNuevo")
 	public ModelAndView crearNuevoMovimiento(@ModelAttribute("movimiento") MovimientoDTO movimientoDto) throws Exception {
 		movimientoServicio.crear(movimientoDto);
-		return new ModelAndView("redirect:/reportes");
+		return new ModelAndView("redirect:/movimientos");
 	}
 }

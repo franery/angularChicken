@@ -11,12 +11,12 @@
 <title><spring:message code="ventas"/></title>
 </head>
 <body>
-
-<form:form action="ventasNuevoContable" method="post" commandName="venta">
+<h1><spring:message code="ventas"/></h1>
+<form:form action="ventasNuevo" method="post" commandName="venta">
 	<input type="submit" value=<spring:message code="nuevo"/> />
 </form:form>
 
-<form:form action="ventasContable" method="post" commandName="filtro">
+<form:form action="ventas" method="post" commandName="filtro">
 	<table id="tablita">
 		<thead>
 			<tr>
@@ -69,6 +69,11 @@
 			</tr>
 		</c:forEach>
 	</c:if>
+				<c:if test="${empty listaVentas}">
+					<tr>
+						<td colspan="5"><spring:message code="noHayDatos"/></td>
+					</tr>
+				</c:if>
 </table>
 
 </body>
