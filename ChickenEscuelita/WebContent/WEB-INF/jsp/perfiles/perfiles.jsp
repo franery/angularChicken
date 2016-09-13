@@ -31,7 +31,12 @@
 					<c:forEach items="${listaPerfiles}" var="perfil">
 						<tr>
 							<td><c:out value="${perfil.getNombre()}"></c:out></td>
-							<td><c:out value="${perfil.getListaPermisos().toString()}"></c:out></td>
+							<td>
+								<c:forEach items="${perfil.getListaPermisos() }" var="permiso">
+									<c:out value="${permiso.getModulo() }"></c:out>
+									<c:out value="${permiso.getPermiso() }"></c:out>								
+								</c:forEach>
+							</td>
 							<td>
 							<form:form id="formBorrar" action="borrarPerfil" method="post" commandName="perfil">
 								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
