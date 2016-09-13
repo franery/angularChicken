@@ -31,14 +31,14 @@ public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio
 		}
 	}
 	
-	public void validacionBorrarUsuarioRoot(long usuarioId) throws ValidacionExcepcion {
-		if(usuarioId == USUARIO_ROOT_ID) {
+	public void validacionBorrarUsuarioRoot(String usuarioId) throws ValidacionExcepcion {
+		if(String.valueOf(USUARIO_ROOT_ID).equals(usuarioId)) {
 			throw new ValidacionExcepcion("mensajeErrorBorrarUsuarioRoot");
 		}
 	}
 	
-	public void validacionModificarUsuarioRoot(long usuarioActualId, long usuarioId) throws ValidacionExcepcion {
-		if(usuarioId == USUARIO_ROOT_ID && usuarioActualId != USUARIO_ROOT_ID) {
+	public void validacionModificarUsuarioRoot(String usuarioActualId, String usuarioId) throws ValidacionExcepcion {
+		if(String.valueOf(USUARIO_ROOT_ID).equals(usuarioId) && !String.valueOf(USUARIO_ROOT_ID).equals(usuarioActualId)) {
 			throw new ValidacionExcepcion("mensajeErrorModificarUsuarioRoot");
 		}
 	}

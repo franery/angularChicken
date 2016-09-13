@@ -31,12 +31,12 @@ public class UsuarioValidacion implements Validator {
 			errores.rejectValue("nombreUsuario", e.getMessage(),"Mesnaje default");
 		}
 		try {
-			usuarioValidacionServicio.validacionBorrarUsuarioRoot(Long.parseLong(usuario.getId()));
+			usuarioValidacionServicio.validacionBorrarUsuarioRoot(usuario.getId());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("borrado", e.getMessage(),"Mesnaje default");
 		}
 		try {
-			usuarioValidacionServicio.validacionModificarUsuarioRoot(Long.parseLong(Controlador.usuario.getId()), Long.parseLong(usuario.getId()));
+			usuarioValidacionServicio.validacionModificarUsuarioRoot(Controlador.usuario.getId(), usuario.getId());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("id", e.getMessage(),"Mesnaje default");
 		}
