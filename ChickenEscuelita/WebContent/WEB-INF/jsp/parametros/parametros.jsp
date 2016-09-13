@@ -6,72 +6,73 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><spring:message code="parametros" text="Parametros"/></title>
+<title><spring:message code="parametros" text="Parametros" /></title>
 
 </head>
 <body>
-		<!-- Nuevo Parametro -->
-		<form:form action="NuevoParametro" method="post" commandName="parametro">
-				<input type="submit" value=<spring:message code="nuevo"/> />
-		</form:form>
-		
-		<!-- Tabla Parametros -->
-		<table id="tablita">
-			<thead>
-				<tr>
-					<th><spring:message code="descripcion"/></th>
-					<th><spring:message code="valor"/></th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:if test="${!empty listaParametros}">
-					<c:forEach items="${listaParametros}" var="parametroVar">
-						<tr>
-							<td><c:out value="${parametroVar.getDescripcion() }"></c:out></td>
-							<td><c:out value="${parametroVar.getValor() }"></c:out></td>
-							<td>
-							<form:form id="formBorrar" action="borrarParametro" method="post" commandName="parametro">
-								<form:input path="id" type="hidden" value="${parametroVar.getId() }"/>
-								<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
-							</form:form></td>
-							<td>
-							<form:form action="ModificarParametro" method="post" commandName="parametro">
-								<form:input path="id" type="hidden" value="${parametroVar.getId() }"/>
-								<form:input path="descripcion" type="hidden" value="${parametroVar.getDescripcion()}"/>
-								<form:input path="valor" type="hidden" value="${parametroVar.getValor()}"/>
-								<input type="hidden" name="flagNuevoModificar" value="0"/>
-								<input type="submit" value=<spring:message code="modificar"/> />
-							</form:form>
-				</td>
-						 </tr>
-					</c:forEach>
-				</c:if>
-				<c:if test="${empty listaParametros}">
+	<!-- Nuevo Parametro -->
+	<form:form action="parametrosNuevo" method="post"
+		commandName="parametro">
+		<input type="submit" value=<spring:message code="nuevo"/> />
+	</form:form>
+
+	<!-- Tabla Parametros -->
+	<table id="tablita">
+		<thead>
+			<tr>
+				<th><spring:message code="descripcion" /></th>
+				<th><spring:message code="valor" /></th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:if test="${!empty listaParametros}">
+				<c:forEach items="${listaParametros}" var="parametroVar">
 					<tr>
-						<td colspan="5"><spring:message code="noHayDatos"/></td>
+						<td><c:out value="${parametroVar.getDescripcion() }"></c:out></td>
+						<td><c:out value="${parametroVar.getValor() }"></c:out></td>
+						<td><form:form id="formBorrar" action="parametrosBorrar"
+								method="post" commandName="parametro">
+								<form:input path="id" type="hidden"
+									value="${parametroVar.getId() }" />
+								<input id="botonBorrar" type="submit"
+									value=<spring:message code="borrar"/> />
+							</form:form></td>
+						<td><form:form action="parametrosModificar" method="post"
+								commandName="parametro">
+								<form:input path="id" type="hidden"
+									value="${parametroVar.getId() }" />
+								<form:input path="descripcion" type="hidden"
+									value="${parametroVar.getDescripcion()}" />
+								<form:input path="valor" type="hidden"
+									value="${parametroVar.getValor()}" />
+								<input type="hidden" name="flagNuevoModificar" value="0" />
+								<input type="submit" value=<spring:message code="modificar"/> />
+							</form:form></td>
 					</tr>
-				</c:if>
-			</tbody>
-		</table>
-		
+				</c:forEach>
+			</c:if>
+			<c:if test="${empty listaParametros}">
+				<tr>
+					<td colspan="5"><spring:message code="noHayDatos" /></td>
+				</tr>
+			</c:if>
+		</tbody>
+	</table>
+
 	<c:set var="value">
 		<spring:message code="mensajeBorrar" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
-	
-<script>
-
-$('#botonBorrar').on('click', function (e) {
-	var mensaje = document.getElementById("mensajeBorrar").value;
-    e.preventDefault();
-    bootbox.confirm(mensaje, function (response) {        
-        if(response) {
-            $('#formBorrar').submit();
-        }
-    });
-});
-
-</script>
-
+	<script>
+		$('#botonBorrar').on('click', function(e) {
+			var mensaje = document.getElementById("mensajeBorrar").value;
+			e.preventDefault();
+			bootbox.confirm(mensaje, function(response) {
+				if (response) {
+					$('#formBorrar').submit();
+				}
+			});
+		});
+	</script>
 </body>
 </html>

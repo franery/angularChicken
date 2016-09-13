@@ -14,7 +14,7 @@
 
 <h1><spring:message code="depositoModificar"/></h1>
 
-<form:form id="formModificar" action="depositosProcesarModificarContable" method="post" commandName="deposito">
+<form:form id="formModificar" action="depositosProcesarModificar" method="post" commandName="deposito">
 	<form:input path="id" type="hidden" value="${deposito.getId()}"/>
 	<form:input path="stockHuevos" type="hidden" value="${deposito.getStockHuevos()}"/>
 	<table>

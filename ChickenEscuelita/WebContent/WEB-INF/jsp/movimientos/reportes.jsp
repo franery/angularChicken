@@ -15,14 +15,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Reportes</title>
+<title><spring:message code="movimientos"/></title>
 </head>
 <body>
-	<form:form action="nuevoMovimiento">
+	<form:form action="movimientosNuevo">
 		<input type="submit" value=<spring:message code="nuevo"/> />
 	</form:form>
 
-	<form:form action="reportesFiltro" method="POST" commandName="filtro">
+	<form:form action="movimientosFiltro" method="POST" commandName="filtro">
 		<table>
 			<tr>
 				<td> <form:label path="fechaDesde"><spring:message code="fechaDesde"/></form:label> </td>

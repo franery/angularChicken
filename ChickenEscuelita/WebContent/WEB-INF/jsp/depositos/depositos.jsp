@@ -13,7 +13,7 @@
 <body>
 
 
-<form:form action="depositosNuevoContable" method="post" commandName="deposito">
+<form:form action="depositosNuevo" method="post" commandName="deposito">
 	<input type="submit" value=<spring:message code="nuevo"/> />
 </form:form>
 
@@ -41,13 +41,13 @@
 				<td><c:out value="${deposito.getStockHuevos()}"></c:out></td>
 				<td><c:out value="${deposito.getStockMaximo()}"></c:out></td>
 				<td>
-					<form:form id="formBorrar" action="depositosBorrarContable" method="post" commandName="deposito">
+					<form:form id="formBorrar" action="depositosBorrar" method="post" commandName="deposito">
 						<form:input path="id" type="hidden" value="${deposito.getId()}"/>
 						<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 					</form:form>
 				</td>
 				<td>
-					<form:form action="depositosModificarContable" method="post" commandName="deposito">
+					<form:form action="depositosModificar" method="post" commandName="deposito">
 						<form:input path="id" type="hidden" value="${deposito.getId()}"/>
 						<form:input path="nombre" type="hidden" value="${deposito.getNombre()}"/>
 						<form:input path="stockHuevos" type="hidden" value="${deposito.getStockHuevos()}"/>
@@ -58,6 +58,11 @@
 			</tr>
 		</c:forEach>
 	</c:if>
+	<c:if test="${empty listaDepositos}">
+				<tr>
+					<td colspan="5"><spring:message code="noHayDatos" /></td>
+				</tr>
+			</c:if>
 </table>
 
 	<c:set var="value">

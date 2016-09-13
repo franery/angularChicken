@@ -1,6 +1,7 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,7 @@ import ar.com.escuelita.chicken.presentacion.filtro.GallineroFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 
+@Controller
 public class MovimientoControlador extends Controlador {
 
 	@Autowired
@@ -30,8 +32,8 @@ public class MovimientoControlador extends Controlador {
 	private IGallineroServicio gallineroServicio;
 	
 	private static final String PRODUCCION_VIEW = "produccion/produccion";
-	private static final String REPORTES_VIEW = "productor/reportes";
-	private static final String NUEVO_MOVIMIENTO_VIEW = "productor/nuevoMovimiento";
+	private static final String REPORTES_VIEW = "movimientos/reportes";
+	private static final String NUEVO_MOVIMIENTO_VIEW = "movimientos/movimientosNuevo";
 	
 	@RequestMapping(path="/produccion")
 	public ModelAndView produccion(@ModelAttribute("usuarioFiltro") UsuarioFiltro usuarioFiltro, @ModelAttribute("depositoFiltro") 
@@ -49,8 +51,8 @@ public class MovimientoControlador extends Controlador {
 		return model;
 	}
 	
-	@RequestMapping("movimientos")
-	public ModelAndView reportes() {
+	@RequestMapping(path="/movimientos")
+	public ModelAndView movimientos() {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		MovimientoFiltro m = new MovimientoFiltro();
 		m.setProductorId(Long.parseLong(usuario.getId()));

@@ -14,7 +14,7 @@
 
 <h1><spring:message code="gallineroNuevo"/></h1>
 
-<form:form action="gallinerosProcesarNuevoContable" method="post" commandName="gallinero">
+<form:form action="gallinerosProcesarNuevo" method="post" commandName="gallinero">
 	<form:input path="id" type="hidden" value="${gallinero.getId()}"/>
 	<table>
 		<tr>

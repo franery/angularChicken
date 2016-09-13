@@ -30,7 +30,7 @@ public class DepositosControlador extends Controlador {
 		return model;
 	}
 	
-	@RequestMapping(path="depositosNuevo")
+	@RequestMapping("depositosNuevo")
 	public ModelAndView depositosNuevo() {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);

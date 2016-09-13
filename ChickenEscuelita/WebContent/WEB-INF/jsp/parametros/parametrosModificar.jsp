@@ -7,13 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><spring:message code="parametroNuevo" /></title>
+<title><spring:message code="parametroModificar" /></title>
 
 </head>
 <body>
-	<h1><spring:message code="parametroNuevo" /></h1>
+	<h1><spring:message code="parametroModificar" /></h1>
 
-	<form:form id="formModificar" method="POST" action="parametrosModificar"	commandName="parametro">
+	<form:form id="formModificar" method="POST" action="parametrosProcesarModificar" commandName="parametro">
 		<form:input path="id" type="hidden" value="${parametro.getId()}"/>
 	
 		<table>

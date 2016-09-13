@@ -15,7 +15,7 @@
 	<h1>
 		<spring:message code="gallinero" />
 	</h1>
-	<form:form action="gallinerosNuevoContable" method="post"
+	<form:form action="gallinerosNuevo" method="post"
 		commandName="gallinero">
 		<input type="hidden" name="flag" value="1" />
 		<input type="submit" value=<spring:message code="nuevo"/> />
@@ -47,11 +47,11 @@
 						</c:when>
 					</c:choose>
 							<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
-					<td> <form:form id="formBorrar" action="gallinerosBorrarContable" method="post" commandName="gallinero">
+					<td> <form:form id="formBorrar" action="gallinerosBorrar" method="post" commandName="gallinero">
 							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
 							<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 						</form:form></td>
-					<td><form:form action="gallinerosModificarContable"
+					<td><form:form action="gallinerosModificar"
 							method="post" commandName="gallinero">
 							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
 							<form:input path="usuarioId" type="hidden"
