@@ -12,8 +12,7 @@
 </head>
 <body>
 
-<form:form action="proveedoresNuevoContable" method="post" commandName="proveedor">
-	<input type="hidden" name="flag" value="1"/>
+<form:form action="proveedoresNuevo" method="post" commandName="proveedor">
 	<input type="submit" value=<spring:message code="nuevo"/> />
 </form:form>
 
@@ -34,19 +33,18 @@
 				<td><c:out value="${proveedor.getMail()}"></c:out></td>
 				<td><c:out value="${proveedor.getTelefono()}"></c:out></td>
 				<td> 
-					<form:form id="formBorrar" action="proveedoresBorrarContable" method="post" commandName="proveedor">
+					<form:form id="formBorrar" action="proveedoresBorrar" method="post" commandName="proveedor">
 						<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
 						<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 					</form:form>
 				</td>
 				<td>
-					<form:form action="proveedoresModificarContable" method="post" commandName="proveedor">
+					<form:form action="proveedoresModificar" method="post" commandName="proveedor">
 						<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
 						<form:input path="nombre" type="hidden" value="${proveedor.getNombre()}"/>
 						<form:input path="direccion" type="hidden" value="${proveedor.getDireccion()}"/>
 						<form:input path="mail" type="hidden" value="${proveedor.getMail()}"/>
 						<form:input path="telefono" type="hidden" value="${proveedor.getTelefono()}"/>
-						<input type="hidden" name="flag" value="0"/>
 						<input type="submit" value=<spring:message code="modificar"/> />
 					</form:form>
 				</td>
@@ -55,7 +53,7 @@
 	</c:if>
 	<c:if test="${empty listaProveedores}">
 					<tr>
-						<td colspan="5"><spring:message code="accesoDenegado"/></td>
+						<td colspan="5"><spring:message code="noHayDatos"/></td>
 					</tr>
 				</c:if>
 </table>

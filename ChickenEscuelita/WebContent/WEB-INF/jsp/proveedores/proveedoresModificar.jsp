@@ -14,7 +14,7 @@
 
 <h1><spring:message code="proveedoresModificar"/></h1>
 
-<form:form id="formModificar" action="proveedoresProcesarModificarContable" method="post" commandName="proveedor">
+<form:form id="formModificar" action="proveedoresProcesarModificar" method="post" commandName="proveedor">
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
 	<form:input path="borrado" type="hidden" value="${proveedor.getBorrado()}"/>
 	<table>

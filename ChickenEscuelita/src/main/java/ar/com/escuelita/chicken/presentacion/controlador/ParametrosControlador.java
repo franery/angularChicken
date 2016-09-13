@@ -19,8 +19,8 @@ public class ParametrosControlador extends Controlador {
 	private IParametroServicio parametroServicio;
 		
 	private static final String PARAMETROS_VIEW = "parametros/parametros";
-	private static final String PARAMETRO_NUEVO_VIEW = "parametros/parametroNuevo";
-	private static final String PARAMETRO_MODIFICAR_VIEW = "parametros/parametroModificar";
+	private static final String PARAMETRO_NUEVO_VIEW = "parametros/parametrosNuevo";
+	private static final String PARAMETRO_MODIFICAR_VIEW = "parametros/parametrosModificar";
 	
 	@RequestMapping(path="/parametros")
 	public ModelAndView parametrosList() {
