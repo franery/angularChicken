@@ -24,6 +24,9 @@ public class PermisoMapeador extends Mapeador {
 		PermisoModel permisoModel = (PermisoModel) (vo != null ? vo : new PermisoModel());
 		permisoModel.setPermiso(permisoDTO.getPermiso());
 		permisoModel.setModulo(permisoDTO.getModulo());
+		if (permisoDTO.getId() != null && !permisoDTO.getId().isEmpty()) {
+			permisoModel.setId(Long.parseLong(permisoDTO.getId()));
+		}
 		return permisoModel;
 	}
 }

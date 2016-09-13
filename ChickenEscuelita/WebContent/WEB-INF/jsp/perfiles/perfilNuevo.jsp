@@ -21,6 +21,7 @@
 	</h1>
 
 	<form:form id="formCrear" method="POST" action="perfilesProcesarNuevo">
+	Nombre <input name="nombre" type="text"/>
 	<table>
 		<thead>
 			<tr>
@@ -28,8 +29,9 @@
 				<c:forEach items="${listaOperaciones}" var="operacion">
 					<th>${operacion.getName()}</th>
 				</c:forEach>
+			</tr>
 		</thead>
-
+		<c:set var="iterator" value="1"/>
 		<c:forEach items="${listaModulos}" var="modulo">
 			<tr>
 				<td>${modulo.getName()}</td>
@@ -38,7 +40,7 @@
 						<c:when test="${modulo.getName().equals('ventas') || modulo.getName().equals('movimientos')}">
         					<c:choose>
         				    	<c:when test="${operacion.getName().equals('Crear') || operacion.getName().equals('Listar')}">
-        				    		<td><input name="checkbox" type="checkbox" value="${modulo.getName()}${operacion.getName()}"></input></td>
+        				    		<td><input name="checkbox" type="checkbox" value="${iterator}"></input></td>
         				    	</c:when>
         				    	<c:otherwise>
         				    		<td></td>
@@ -48,7 +50,7 @@
 						<c:when test="${modulo.getName().equals('produccion')}">
         					<c:choose>
         				    	<c:when test="${operacion.getName().equals('Listar')}">
-        				    		<td><input name="checkbox" type="checkbox" value="${modulo.getName()}${operacion.getName()}"></input></td>
+        				    		<td><input name="checkbox" type="checkbox" value="${iterator}"></input></td>
         				    	</c:when>
         				    	<c:otherwise>
         				    		<td></td>
@@ -56,12 +58,15 @@
         					</c:choose>
 						</c:when>
 						<c:otherwise>
-       						<td><input name="checkbox" type="checkbox" value="${modulo.getName()}${operacion.getName()}"></input></td>
+       						<td><input name="checkbox" type="checkbox" value="${iterator}"></input></td>
 						</c:otherwise>
 					</c:choose>
+				<c:set var="iterator" value="${iterator+1}"/>
 				</c:forEach>
 			</tr>
+			
 		</c:forEach>
+		
 
 	</table>
 	<input id="stringConcatenado" name="permisos" type="hidden"/>

@@ -15,6 +15,7 @@ import ar.com.escuelita.chicken.base.enumerador.EnumPermiso;
 import ar.com.escuelita.chicken.negocio.servicios.IPerfilServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IPermisoServicio;
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
+import ar.com.escuelita.chicken.presentacion.dto.PermisoDTO;
 
 @Controller
 public class PerfilControlador extends Controlador {
@@ -70,9 +71,9 @@ public class PerfilControlador extends Controlador {
 	}
 	
 	@RequestMapping(path="/perfilesProcesarNuevo")
-	public ModelAndView perfilesProcesarNuevo(@RequestParam("permisos")String permisos) throws Exception {
-//		perfilServicio.crear(perfil);
-		System.out.println("Esto es... " + permisos);
+	public ModelAndView perfilesProcesarNuevo(@RequestParam("permisos")String permisos,
+			@RequestParam("nombre")String nombre) throws Exception {
+		perfilServicio.crear(permisos,nombre);
 		return new ModelAndView("redirect:/perfiles");
 	}
 

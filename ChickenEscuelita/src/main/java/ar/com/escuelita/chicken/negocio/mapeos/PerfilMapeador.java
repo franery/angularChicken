@@ -35,6 +35,9 @@ public class PerfilMapeador extends Mapeador {
 		
 		perfilModel.setNombre(perfilDTO.getNombre());
 		perfilModel.setListaPermisos((List<PermisoModel>)permisoMapeo.map(perfilDTO.getListaPermisos()));
+		if (perfilDTO.getId() != null && !perfilDTO.getId().isEmpty()) {
+			perfilModel.setId(Long.parseLong(perfilDTO.getId()));
+		}
 		return perfilModel;
 	}
 

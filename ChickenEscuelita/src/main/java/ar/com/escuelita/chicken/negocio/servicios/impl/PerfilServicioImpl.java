@@ -1,15 +1,19 @@
 package ar.com.escuelita.chicken.negocio.servicios.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.negocio.mapeos.PerfilMapeador;
 import ar.com.escuelita.chicken.negocio.servicios.IPerfilServicio;
+import ar.com.escuelita.chicken.negocio.servicios.IPermisoServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IPerfilDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.PerfilModel;
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
+import ar.com.escuelita.chicken.presentacion.dto.PermisoDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
 
 public class PerfilServicioImpl extends Servicio implements IPerfilServicio {
@@ -19,6 +23,9 @@ public class PerfilServicioImpl extends Servicio implements IPerfilServicio {
 	
 	@Autowired
 	IPerfilDAO perfilDAO;
+	
+	@Autowired
+	IPermisoServicio permisoServicio;
 	
 	@Override
 	public DTO buscar(long id) {
@@ -35,6 +42,20 @@ public class PerfilServicioImpl extends Servicio implements IPerfilServicio {
 	public void crear(DTO dto) {
 		PerfilModel p = (PerfilModel)perfilMapeador.map(dto,null);
 		perfilDAO.guardar(p);
+	}
+	
+	@Override
+	public void crear(String permisos, String nombre) {
+		String[] arrayPermisos = permisos.split(";");
+		PerfilDTO perfilDTO = new PerfilDTO();
+		perfilDTO.setNombre(nombre);
+		List<PermisoDTO> listaPermisos = new ArrayList<>();
+		for(String permiso : arrayPermisos) {
+			PermisoDTO permisoDTO = (PermisoDTO) permisoServicio.buscar(Long.parseLong(permiso));
+			listaPermisos.add(permisoDTO);
+		}
+		perfilDTO.setListaPermisos(listaPermisos);
+		crear(perfilDTO);
 	}
 
 	@Override
