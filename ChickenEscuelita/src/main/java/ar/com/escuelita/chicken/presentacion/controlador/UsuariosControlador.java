@@ -1,5 +1,6 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,13 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.negocio.servicios.IPerfilServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
+import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.validacion.UsuarioValidacion;
 
@@ -71,6 +74,7 @@ public class UsuariosControlador extends Controlador {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		UsuarioDTO usuarioNM = new UsuarioDTO();
+		usuarioNM.setListaPerfiles(new ArrayList<PerfilDTO>());
 		model.addObject("usuarioNM", usuarioNM);
 		model.addObject("perfiles",perfilServicio.listar());
 		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
@@ -91,12 +95,13 @@ public class UsuariosControlador extends Controlador {
 	
 	//procesar nuevo usuario
 	@RequestMapping(path="/usuariosProcesarNuevo")
-	public ModelAndView usuariosProcesarNuevo(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
+	public ModelAndView usuariosProcesarNuevo(@RequestParam("perfiles")String perfiles, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
 		if (result.hasErrors()) {
 				return nuevoUsuario();
 		}
-		usuarioServicio.crear(usuarioNM);
+
+		usuarioServicio.crear(usuarioNM,perfiles);
 		return new ModelAndView("redirect:/usuarios");
 	}
 

@@ -1,5 +1,6 @@
 package ar.com.escuelita.chicken.negocio.servicios.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -13,6 +14,7 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.excepciones.NegocioExcepcion;
 import ar.com.escuelita.chicken.base.excepciones.PersistenciaExcepcion;
 import ar.com.escuelita.chicken.negocio.mapeos.UsuarioMapeador;
+import ar.com.escuelita.chicken.negocio.servicios.IPerfilServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IGallineroDAO;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
@@ -20,6 +22,8 @@ import ar.com.escuelita.chicken.persistencia.modelo.GallineroModel;
 import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
+import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
+import ar.com.escuelita.chicken.presentacion.dto.PermisoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
@@ -35,6 +39,9 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	
 	@Autowired
 	IGallineroDAO gallineroDAO;
+	
+	@Autowired
+	IPerfilServicio perfilServicio;
 	
 	@Override
 	public DTO buscar(long id) {
@@ -110,5 +117,17 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 		return usuarioMapeador.map(usuarioDAO.listarProductores());
 	}
 
+	@Override
+	public void crear(DTO dto, String perfiles) throws NegocioExcepcion {
+		String[] arrayPerfiles = perfiles.split(";");
+		List<PerfilDTO> listaPerfiles = new ArrayList<>();
+		for(String perfil : arrayPerfiles) {
+			PerfilDTO perfilDTO = (PerfilDTO) perfilServicio.buscar(Long.parseLong(perfil));
+			listaPerfiles.add(perfilDTO);
+		}
+		((UsuarioDTO)dto).setListaPerfiles(listaPerfiles);
+
+		crear(dto);
+	}
 
 }

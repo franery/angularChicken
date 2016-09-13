@@ -35,11 +35,18 @@
 							<td><c:out value="${user.getNombreUsuario() }"></c:out></td>
 							<td><c:out value="${user.getNombre()}"></c:out></td>
 							<td><c:out value="${user.getApellido()}"></c:out></td>
+							<c:if test="${!empty user.getListaPerfiles()}">
 							<td>
-									<c:forEach items="${user.getListaPerfiles()}" var="perfil">
+								<c:forEach items="${user.getListaPerfiles()}" var="perfil">
+									<ul style="list-style: none;"><li>
 									<c:out value="${perfil.getNombre()}">"${perfil.getNombre()}"</c:out>
-									</c:forEach>							
+									</li></ul>
+								</c:forEach>							
 							</td>
+							</c:if>
+							<c:if test="${empty user.getListaPerfiles()}">
+									<td align="center"><spring:message code="sinPerfil"/></td>
+							</c:if>
 							<td>
 							<form:form id="formBorrar" action="usuariosBorrar" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
@@ -52,7 +59,7 @@
 								<form:input path="nombre" type="hidden" value="${user.getNombre()}"/>
 								<form:input path="apellido" type="hidden" value="${user.getApellido()}"/>
 								<form:input path="contrasenia" type="hidden" value="${user.getContrasenia()}"/>
-								<form:input path="listaPerfiles" type="hidden" value="${user.getListaPerfiles()}"/>
+<%-- 								<form:input path="listaPerfiles" type="hidden" value="${user.getListaPerfiles()}"/> --%>
 								<input type="submit" value=<spring:message code="modificar"/> />
 							</form:form>
 				</td>

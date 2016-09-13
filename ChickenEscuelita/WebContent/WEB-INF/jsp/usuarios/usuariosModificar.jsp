@@ -37,16 +37,23 @@
 				<td><spring:message code="contrasenia" /></td>
 				<td><form:input path="contrasenia" type="password" required="required"/></td>
 			</tr>
+			
 			<tr>
-				<td><spring:message code="perfil" /></td>
-				<td><form:select path="listaPerfiles" required="required">
-						<option value=""><spring:message code="seleccionar" /></option>
-						<c:forEach var="perfil" items="${perfiles}">
-							<option value="${perfil}">  ${perfil.getNombre()}  </option>
-						</c:forEach>
-					</form:select></td>
+				<td><spring:message code="perfil" />:</td>
+			
+			<c:forEach var="perfil" items="${perfiles}">
+				</td>
+					<td>
+			        	<input type="checkbox" name="perfilFeo" value="${perfil.getId()}"/>${perfil.getNombre()}
+	                </td>
+				</tr>
+				<td>
+			</c:forEach>
+				<td>
 			</tr>
+			
 			<tr>
+				<input id="stringConcatenado" name="perfiles" type="hidden"/>
 				<td colspan="4" style="text-align: center;">
 				<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> </td>
 			</tr>
@@ -76,6 +83,19 @@ $('#botonGuardar').on('click', function (e) {
     });
 });
 
+$('#botonGuardar').on('click', function (e) {
+	checkboxes = document.getElementsByName("perfilFeo"); 
+	var perfiles = "";
+	for (var i = 0; i < checkboxes.length; i++) {
+	    var checkbox = checkboxes[i];
+		if (checkbox.checked) {
+			perfiles += checkbox.value + ";";    
+		}
+	}
+	e.preventDefault();
+    document.getElementById("stringConcatenado").value = perfiles;
+    $('#formNuevo').submit();
+});
 </script>
 
 </body>

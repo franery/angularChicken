@@ -38,12 +38,12 @@
 								</c:forEach>
 							</td>
 							<td>
-							<form:form id="formBorrar" action="borrarPerfil" method="post" commandName="perfil">
+							<form:form id="formBorrar" action="perfilesBorrar" method="post" commandName="perfil">
 								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
 								<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
-							<form:form action="ModificarPerfil" method="post" commandName="perfil">
+							<form:form action="perfilesModificar" method="post" commandName="perfil">
 								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
 								<form:input path="nombre" type="hidden" value="${perfil.getNombre()}"/>
 								<input type="submit" value=<spring:message code="modificar"/> />

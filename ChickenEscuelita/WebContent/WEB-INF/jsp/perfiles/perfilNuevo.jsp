@@ -21,7 +21,7 @@
 	</h1>
 
 	<form:form id="formCrear" method="POST" action="perfilesProcesarNuevo">
-	Nombre <input name="nombre" type="text"/>
+	<spring:message code="nombre" /> <input name="nombre" type="text"/>
 	<table>
 		<thead>
 			<tr>
