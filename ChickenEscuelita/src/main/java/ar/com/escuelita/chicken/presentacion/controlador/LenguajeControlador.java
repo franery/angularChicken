@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 @Controller
-public class LenguajeController extends Controlador{
+public class LenguajeControlador extends Controlador{
 
 
 	@RequestMapping(value = "/cambioLenguaje")
