@@ -8,11 +8,11 @@ public enum EnumPermiso {
 	Borrar("Borrar"),
 	Exportar("Exportar");
 	
+	private String name;
+	
 	private EnumPermiso(String name){
 		this.name = name;
 	}
-	
-	private String name;
 	
 	public String getName() {
 		return name;
