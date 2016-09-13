@@ -25,6 +25,7 @@ public class PerfilServicioImpl extends Servicio implements IPerfilServicio {
 		return perfilMapeador.map(perfilDAO.get(id));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<DTO> listar() {
 		return perfilMapeador.map(perfilDAO.listar());

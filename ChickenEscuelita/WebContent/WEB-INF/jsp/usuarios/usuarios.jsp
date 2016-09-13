@@ -14,7 +14,7 @@
 <h1><spring:message code="usuarios"/></h1>
 
 		<!-- Nuevo Usuario -->
-		<form:form action="NuevoUsuario" method="post" commandName="usuarioNM">
+		<form:form action="usuariosNuevo" method="post" commandName="usuarioNM">
 				<input type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		
@@ -36,11 +36,9 @@
 							<td><c:out value="${user.getNombre()}"></c:out></td>
 							<td><c:out value="${user.getApellido()}"></c:out></td>
 							<td>
-							
-					<%-- 			<c:forEach items="${user.getListaPerfiles()}" var="perfil">
-									<c:out value="${perfil.getNombre()}"></c:out>
-								</c:forEach>							
-							 --%>
+									<c:forEach items="${user.getListaPerfiles()}" var="perfil">
+									<c:out value="${perfil.getNombre()}">"${perfil.getNombre()}"</c:out>
+									</c:forEach>							
 							</td>
 							<td>
 							<form:form id="formBorrar" action="borrarUsuario" method="post" commandName="usuarioNM">
@@ -48,13 +46,13 @@
 								<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
-							<form:form action="ModificarUsuario" method="post" commandName="usuarioNM">
+							<form:form action="usuariosModificar" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
 								<form:input path="nombreUsuario" type="hidden" value="${user.getNombreUsuario()}"/>
 								<form:input path="nombre" type="hidden" value="${user.getNombre()}"/>
 								<form:input path="apellido" type="hidden" value="${user.getApellido()}"/>
 								<form:input path="contrasenia" type="hidden" value="${user.getContrasenia()}"/>
-<%-- 								<form:input path="perfil" type="hidden" value="${user.getPerfil()}"/> --%>
+								<form:input path="listaPerfiles" type="hidden" value="${user.getListaPerfiles()}"/>
 								<input type="submit" value=<spring:message code="modificar"/> />
 							</form:form>
 				</td>
@@ -63,16 +61,11 @@
 				</c:if>
 				<c:if test="${empty listaUsuarios}">
 					<tr>
-						<td colspan="5">No hay datos disponibles por el momento</td>
+						<td colspan="5"><spring:message code="accesoDenegado"/></td>
 					</tr>
 				</c:if>
 			</tbody>
 		</table>
-		<div>
-			<!-- <a class="btn btn-default" href="Nuevo" role="button">Nueva
-				Mascota</a> -->
-		</div>
-
 	<c:set var="value">
 		<spring:message code="mensajeBorrar" />
 	</c:set>

@@ -53,6 +53,11 @@
 			</tr>
 		</c:forEach>
 	</c:if>
+	<c:if test="${empty listaProveedores}">
+					<tr>
+						<td colspan="5"><spring:message code="accesoDenegado"/></td>
+					</tr>
+				</c:if>
 </table>
 
 	<c:set var="value">

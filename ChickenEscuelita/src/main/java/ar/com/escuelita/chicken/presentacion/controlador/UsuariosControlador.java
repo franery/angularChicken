@@ -31,8 +31,8 @@ public class UsuariosControlador extends Controlador {
 	private IPerfilServicio perfilServicio;
 	
 	private static final String USUARIOS_VIEW = "usuarios/usuarios";
-	private static final String USUARIO_NUEVO_VIEW = "usuarios/usuarioNuevo";
-	private static final String USUARIO_MODIFICAR_VIEW = "usuarios/usuarioModificar";
+	private static final String USUARIO_NUEVO_VIEW = "usuarios/usuariosNuevo";
+	private static final String USUARIO_MODIFICAR_VIEW = "usuarios/usuariosModificar";
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
@@ -63,16 +63,11 @@ public class UsuariosControlador extends Controlador {
 	}
 	
 	@RequestMapping("/usuariosNuevo")
-	public ModelAndView nuevoUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioParam){
+	public ModelAndView nuevoUsuario(){
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		
 		model.addObject("usuarioActual", usuario);
-		UsuarioDTO usuarioNM;
-		if (usuarioParam != null) {
-			usuarioNM = usuarioParam;
-		} else {
-			usuarioNM = new UsuarioDTO();
-		}
+		UsuarioDTO usuarioNM = new UsuarioDTO();
 		model.addObject("usuarioNM", usuarioNM);
 		model.addObject("perfiles",perfilServicio.listar());
 		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
@@ -85,6 +80,7 @@ public class UsuariosControlador extends Controlador {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("usuarioNM", usuarioNM);
+		model.addObject("perfiles",perfilServicio.listar());
 		model.addObject("pageToLoad", USUARIO_MODIFICAR_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
@@ -95,7 +91,7 @@ public class UsuariosControlador extends Controlador {
 	public ModelAndView usuariosProcesarNuevo(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-				return nuevoUsuario(usuarioNM);
+				return nuevoUsuario();
 		}
 		usuarioServicio.crear(usuarioNM);
 		return new ModelAndView("redirect:/usuarios");
