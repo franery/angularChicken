@@ -37,13 +37,13 @@ public class PerfilControlador extends Controlador {
 		return model;
 	}
 	
-	@RequestMapping(path="/borrarPerfil")
+	@RequestMapping(path="/perfilesBorrar")
 	public ModelAndView borrarPerfil(@ModelAttribute("perfil") PerfilDTO perfil) {
 		perfilServicio.borrar(perfil);
 		return new ModelAndView("redirect:/perfiles");
 	}
 	
-	@RequestMapping("/nuevoPerfil")
+	@RequestMapping("/perfilesNuevo")
 	public ModelAndView nuevoPerfil(){
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);		
 		model.addObject("usuarioActual", usuario);
@@ -54,7 +54,7 @@ public class PerfilControlador extends Controlador {
 		return model;
 	}
 	
-	@RequestMapping(path="/modificarPerfil")
+	@RequestMapping(path="/perfilesModificar")
 	public ModelAndView modificarPerfil(@ModelAttribute("perfil") PerfilDTO perfil) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);

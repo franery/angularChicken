@@ -40,15 +40,15 @@
 
 		<security:intercept-url pattern="/ventas" access="hasAuthority('ventasListar')" />
 		<security:intercept-url pattern="/ventasNuevo" access="hasAuthority('ventasCrear')" />
-		<security:intercept-url pattern="/ventasModificar" access="hasAuthority('ventasModificar')" />
 
+		<security:intercept-url pattern="/perfiles" access="hasAuthority('perfilesListar')" />
+		<security:intercept-url pattern="/perfilesNuevo" access="hasAuthority('perfilesCrear')" />
+		<security:intercept-url pattern="/perfilesModificar" access="hasAuthority('perfilesModificar')" />
+		
 		<security:intercept-url pattern="/produccion" access="hasAuthority('produccionListar')" />
-		<security:intercept-url pattern="/produccionNuevo" access="hasAuthority('produccionCrear')" />
-		<security:intercept-url pattern="/produccionModificar" access="hasAuthority('produccionModificar')" />
 
 		<security:intercept-url pattern="/movimientos" access="hasAuthority('movimientosListar')" />
 		<security:intercept-url pattern="/movimientosNuevo" access="hasAuthority('movimientosCrear')" />
-		<security:intercept-url pattern="/movimientosModificar" access="hasAuthority('movimientosModificar')" />
 		
 		<security:intercept-url pattern="/principal" access="isAuthenticated()" />
 		
