@@ -1,45 +1,55 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
+import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
-import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.DepositoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.GallineroFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
+import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 
-@Controller
-public class ProductorControlador extends Controlador {
+public class MovimientoControlador extends Controlador {
 
+	@Autowired
+	private IDepositoServicio depositoServicio;
+	
+	@Autowired
+	private IUsuarioServicio usuarioServicio;
+	
+	@Autowired
+	private IMovimientoServicio movimientoServicio;
+	
+	@Autowired
+	private IGallineroServicio gallineroServicio;
+	
+	private static final String PRODUCCION_VIEW = "produccion/produccion";
 	private static final String REPORTES_VIEW = "productor/reportes";
 	private static final String NUEVO_MOVIMIENTO_VIEW = "productor/nuevoMovimiento";
 	
-	@Autowired
-	IMovimientoServicio movimientoServicio;
-	
-	@Autowired
-	IGallineroServicio gallineroServicio;
-	
-	@Autowired
-	IDepositoServicio depositoServicio;
-	
-	@RequestMapping(path="/principalProductor")
-	public ModelAndView inicioProductor() {
+	@RequestMapping(path="/produccion")
+	public ModelAndView produccion(@ModelAttribute("usuarioFiltro") UsuarioFiltro usuarioFiltro, @ModelAttribute("depositoFiltro") 
+	DepositoFiltro depositoFiltro) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
-		model.addObject("pageToLoad", VACIA_VIEW);
+		// Tabla Depositos | Stock Huevos
+		model.addObject("listaDepositos", depositoServicio.listar(depositoFiltro));
+		model.addObject("listaDepositosDropDown", depositoServicio.listar());
+		// Tabla Productores | Total Produccion
+		model.addObject("hashTotales", usuarioServicio.getTotalesProduccion(usuarioFiltro));
+		model.addObject("listaProductoresDropDown", usuarioServicio.listarProductores());
+		model.addObject("pageToLoad", PRODUCCION_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
-	@RequestMapping("reportes")
+	@RequestMapping("movimientos")
 	public ModelAndView reportes() {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		MovimientoFiltro m = new MovimientoFiltro();
@@ -52,7 +62,7 @@ public class ProductorControlador extends Controlador {
 		return model;
 	}
 	
-	@RequestMapping(path="reportesFiltro")
+	@RequestMapping(path="movimientosFiltro")
 	public ModelAndView reportesConFiltro(@ModelAttribute("filtro") MovimientoFiltro filtro) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
@@ -63,7 +73,7 @@ public class ProductorControlador extends Controlador {
 		return model;
 	}
 	
-	@RequestMapping("nuevoMovimiento")
+	@RequestMapping("movimientosNuevo")
 	public ModelAndView nuevoMovimiento() {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
@@ -77,12 +87,9 @@ public class ProductorControlador extends Controlador {
 		return model;
 	}
 	
-	@RequestMapping(path="crearNuevoMovimiento")
+	@RequestMapping(path="movimientosProcesarNuevo")
 	public ModelAndView crearNuevoMovimiento(@ModelAttribute("movimiento") MovimientoDTO movimientoDto) throws Exception {
-//		movimientoDto.setGallinero((GallineroDTO)gallineroServicio.buscar(movimientoDto.getGallinero().getId()));
-//		movimientoDto.setDeposito((DepositoDTO)depositoServicio.buscar(movimientoDto.getDeposito().getId()));
 		movimientoServicio.crear(movimientoDto);
 		return new ModelAndView("redirect:/reportes");
 	}
-	
 }
