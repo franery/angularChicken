@@ -9,51 +9,83 @@
 <head>
 <title><spring:message code="usuarioNuevo" /></title>
 <style>
-    .error 
-    {
-        color: #ff0000;
-        font-weight: bold;
-    }
-    </style>
+.error {
+	color: #ff0000;
+	font-weight: bold;
+}
+</style>
 </head>
 <body>
-	<h1><spring:message code="usuarioNuevo" /></h1>
+	<h1>
+		<spring:message code="usuarioNuevo" />
+	</h1>
 
-	<form:form method="POST" action="usuariosProcesarNuevo" commandName="usuarioNM">
-		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
-	
-		<table>
+	<%-- 	<form:form method="POST" action="usuariosProcesarNuevo" commandName="usuarioNM"> --%>
+	<%-- 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/> --%>
+	<form:form id="formCrear" method="POST" action="perfilesProcesarNuevo">
+	<table>
+		<thead>
 			<tr>
-				<td><spring:message code="nombreUsuario" /></td>
-				<td><form:input path="nombreUsuario" required="required"/></td>
-			</tr>
+				<th></th>
+				<c:forEach items="${listaOperaciones}" var="operacion">
+					<th>${operacion.getName()}</th>
+				</c:forEach>
+		</thead>
+
+		<c:forEach items="${listaModulos}" var="modulo">
 			<tr>
-				<td><spring:message code="nombre" /></td>
-				<td><form:input path="nombre" required="required"/></td>
-				<td><spring:message code="apellido" /></td>
-				<td><form:input path="apellido" required="required"/></td>
+				<td>${modulo.getName()}</td>
+				<c:forEach items="${listaOperaciones}" var="operacion">
+					<c:choose>
+						<c:when test="${modulo.getName().equals('ventas') || modulo.getName().equals('movimientos')}">
+        					<c:choose>
+        				    	<c:when test="${operacion.getName().equals('Crear') || operacion.getName().equals('Listar')}">
+        				    		<td><input name="checkbox" type="checkbox" value="${modulo.getName()}${operacion.getName()}"></input></td>
+        				    	</c:when>
+        				    	<c:otherwise>
+        				    		<td></td>
+        				    	</c:otherwise>    					
+        					</c:choose>
+						</c:when>
+						<c:when test="${modulo.getName().equals('produccion')}">
+        					<c:choose>
+        				    	<c:when test="${operacion.getName().equals('Listar')}">
+        				    		<td><input name="checkbox" type="checkbox" value="${modulo.getName()}${operacion.getName()}"></input></td>
+        				    	</c:when>
+        				    	<c:otherwise>
+        				    		<td></td>
+        				    	</c:otherwise>    					
+        					</c:choose>
+						</c:when>
+						<c:otherwise>
+       						<td><input name="checkbox" type="checkbox" value="${modulo.getName()}${operacion.getName()}"></input></td>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 			</tr>
-			<tr>
-				<td><spring:message code="contrasenia" /></td>
-				<td><form:input path="contrasenia" type="password" required="required"/></td>
-			</tr>
-			<tr>
-				<td><spring:message code="perfil" /></td>
-				<td><form:select path="perfil" required="required">
-						<option value=""><spring:message code="seleccionar" /></option>
-						<c:forEach var="perfil" items="${perfiles}">
-							<option value="${perfil}">  ${perfil.getName()}  </option>
-						</c:forEach>
-					</form:select></td>
-			</tr>
-			<tr>
-				<td colspan="4" style="text-align: center;">
-				<input type="submit" value="<spring:message code="guardar"/>" /> </td>
-			</tr>
-			<tr>
-				<td colspan="2"> <form:errors path="nombreUsuario" cssClass="error" /> </td> 
-			</tr>
-		</table>
+		</c:forEach>
+
+	</table>
+	<input id="stringConcatenado" name="permisos" type="hidden"/>
+	<input id="botonGuardar" type="submit" value="Crear"/>
 	</form:form>
+	
+	<script>
+	
+	$('#botonGuardar').on('click', function (e) {
+		checkboxes = document.getElementsByName("checkbox"); 
+		var permisos = "";
+		for (var i = 0; i < checkboxes.length; i++) {
+		    var checkbox = checkboxes[i];
+			if (checkbox.checked) {
+				permisos += checkbox.value + ";";    
+			}
+		}
+		e.preventDefault();
+	    document.getElementById("stringConcatenado").value = permisos;
+	    $('#formCrear').submit();
+	});
+	</script>
+	
 </body>
 </html>

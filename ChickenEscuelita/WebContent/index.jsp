@@ -1,1 +1,1 @@
-<%response.sendRedirect("inicio");%>
+	<%response.sendRedirect("inicio");%>
