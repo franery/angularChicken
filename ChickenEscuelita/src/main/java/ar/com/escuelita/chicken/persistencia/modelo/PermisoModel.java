@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
+import ar.com.escuelita.chicken.base.enumerador.EnumPermiso;
+
 @Entity
 @Table(name="Permiso")
 public class PermisoModel extends Modelo {
@@ -16,11 +19,11 @@ public class PermisoModel extends Modelo {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="permiso")
-	private String permiso;
+	private EnumPermiso permiso;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="modulo")
-	private String modulo;
+	private EnumModulo modulo;
 	
 	@ManyToMany(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
 	@JoinTable(name="PerfilPermiso",//bd
@@ -39,19 +42,19 @@ public class PermisoModel extends Modelo {
 		this.id = id;
 	}
 
-	public String getPermiso() {
+	public EnumPermiso getPermiso() {
 		return permiso;
 	}
 
-	public void setPermiso(String permiso) {
+	public void setPermiso(EnumPermiso permiso) {
 		this.permiso = permiso;
 	}
 
-	public String getModulo() {
+	public EnumModulo getModulo() {
 		return modulo;
 	}
 
-	public void setModulo(String modulo) {
+	public void setModulo(EnumModulo modulo) {
 		this.modulo = modulo;
 	}
 
