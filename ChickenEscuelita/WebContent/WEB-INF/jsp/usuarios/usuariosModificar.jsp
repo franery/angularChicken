@@ -53,6 +53,9 @@
 			<tr>
 				<td colspan="2"> <form:errors path="nombreUsuario" cssClass="error" /> </td> 
 			</tr>
+			<tr>
+				<td colspan="2"> <form:errors path="id" cssClass="error" /> </td> 
+			</tr>
 		</table>
 	</form:form>
 	

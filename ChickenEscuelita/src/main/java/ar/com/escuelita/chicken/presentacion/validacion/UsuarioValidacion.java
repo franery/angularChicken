@@ -12,6 +12,7 @@ public class UsuarioValidacion implements Validator {
 
 	@Autowired
 	IUsuarioValidacionServicio usuarioValidacionServicio;
+	
 	public UsuarioValidacion() {
 	}
 	
@@ -30,6 +31,11 @@ public class UsuarioValidacion implements Validator {
 		}
 		try {
 			usuarioValidacionServicio.validacionBorrarUsuarioRoot(Long.parseLong(usuario.getId()));
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("borrado", e.getMessage(),"Mesnaje default");
+		}
+		try {
+			usuarioValidacionServicio.validacionModificarUsuarioRoot(Long.parseLong(usuario.getId()), Long.parseLong(usuario.getId()));
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("id", e.getMessage(),"Mesnaje default");
 		}

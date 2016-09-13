@@ -79,7 +79,7 @@ public class UsuariosControlador extends Controlador {
 	}
 	
 	@RequestMapping(path="/usuariosModificar")
-	public ModelAndView ModificarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
+	public ModelAndView modificarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("usuarioNM", usuarioNM);
@@ -104,6 +104,9 @@ public class UsuariosControlador extends Controlador {
 	@RequestMapping(path="/usuariosProcesarModificar")
 	public ModelAndView usuariosProcesarModificar(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
+		if(result.hasErrors()) {
+			return modificarUsuario(usuarioNM);
+		}
 		usuarioServicio.modificar(usuarioNM);
 		return new ModelAndView("redirect:/usuarios");
 	}
