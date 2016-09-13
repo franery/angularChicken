@@ -47,9 +47,7 @@
 						</c:when>
 					</c:choose>
 							<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
-					<td><c:set var="mensajeConfirmacion" scope="request">
-							<spring:message code="mensajeConfirmacion"></spring:message>
-						</c:set> <form:form id="formBorrar" action="gallinerosBorrarContable" method="post" commandName="gallinero">
+					<td> <form:form id="formBorrar" action="gallinerosBorrarContable" method="post" commandName="gallinero">
 							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
 							<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 						</form:form></td>

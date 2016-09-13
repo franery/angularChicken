@@ -33,9 +33,7 @@
 				<td><c:out value="${proveedor.getDireccion()}"></c:out></td>
 				<td><c:out value="${proveedor.getMail()}"></c:out></td>
 				<td><c:out value="${proveedor.getTelefono()}"></c:out></td>
-				<td><c:set var="mensajeConfirmacion" scope="request">
-							<spring:message code="mensajeConfirmacion"></spring:message>
-					</c:set> 
+				<td> 
 					<form:form id="formBorrar" action="proveedoresBorrarContable" method="post" commandName="proveedor">
 						<form:input path="id" type="hidden" value="${proveedor.getId()}"/>
 						<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />

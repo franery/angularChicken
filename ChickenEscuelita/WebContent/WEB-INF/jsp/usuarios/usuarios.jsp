@@ -43,9 +43,6 @@
 							
 							</td>
 							<td>
-							<c:set var="mensajeConfirmacion" scope="request">
-								<spring:message code="mensajeConfirmacion"></spring:message>
-							</c:set>
 							<form:form id="formBorrar" action="borrarUsuario" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
 								<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />

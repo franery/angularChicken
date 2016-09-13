@@ -7,3 +7,15 @@
 		<beans:property name="authoritiesByUsernameQuery"
 			value="SELECT nombreUsuario as username, perfil as authority FROM Usuario WHERE username=?" />
 	</beans:bean>
+	
+	
+	
+	usuarios
+	depositos
+	proveedores
+	parametros
+	
+	crear
+	modificar
+	borrar
+	leer

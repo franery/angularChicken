@@ -40,9 +40,7 @@
 				<td><c:out value="${deposito.getNombre()}"></c:out></td>
 				<td><c:out value="${deposito.getStockHuevos()}"></c:out></td>
 				<td><c:out value="${deposito.getStockMaximo()}"></c:out></td>
-				<td><c:set var="mensajeConfirmacion" scope="request">
-						<spring:message code="mensajeConfirmacion"></spring:message>
-					</c:set> 
+				<td>
 					<form:form id="formBorrar" action="depositosBorrarContable" method="post" commandName="deposito">
 						<form:input path="id" type="hidden" value="${deposito.getId()}"/>
 						<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />

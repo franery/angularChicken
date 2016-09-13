@@ -31,11 +31,8 @@
 					<c:forEach items="${listaPerfiles}" var="perfil">
 						<tr>
 							<td><c:out value="${perfil.getNombre()}"></c:out></td>
-							<td><c:out value="${perfil.}"></c:out></td>
+							<td><c:out value="${perfil.getListaPermisos().toString()}"></c:out></td>
 							<td>
-							<c:set var="mensajeConfirmacion" scope="request">
-								<spring:message code="mensajeConfirmacion"></spring:message>
-							</c:set>
 							<form:form id="formBorrar" action="borrarPerfil" method="post" commandName="perfil">
 								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
 								<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
@@ -59,7 +56,7 @@
 		</table>
 
 	<c:set var="value">
-		<spring:message code="mensajeBorrar" />
+		<spring:message code="lenguaje" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
 
