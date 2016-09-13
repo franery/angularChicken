@@ -1,12 +1,16 @@
 package ar.com.escuelita.chicken.presentacion.dto;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
+import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
+import ar.com.escuelita.chicken.base.enumerador.EnumPermiso;
 
 public class PermisoDTO extends DTO {
 	
 	private String id;
 	
-	private String nombre;
+	private EnumPermiso permiso;
+	
+	private EnumModulo modulo;
 	
 	public String getId() {
 		return id;
@@ -16,11 +20,19 @@ public class PermisoDTO extends DTO {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public EnumPermiso getPermiso() {
+		return permiso;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setPermiso(EnumPermiso permiso) {
+		this.permiso = permiso;
+	}
+
+	public EnumModulo getModulo() {
+		return modulo;
+	}
+
+	public void setModulo(EnumModulo modulo) {
+		this.modulo = modulo;
 	}
 }

@@ -13,7 +13,8 @@ public class PermisoMapeador extends Mapeador {
 		PermisoModel permisoModel = (PermisoModel) vo;
 		PermisoDTO dto = new PermisoDTO();
 		dto.setId(String.valueOf(permisoModel.getId()));
-		dto.setNombre(permisoModel.getNombre());
+		dto.setPermiso(permisoModel.getPermiso());
+		dto.setModulo(permisoModel.getModulo());
 		return dto;
 	}
 
@@ -21,9 +22,8 @@ public class PermisoMapeador extends Mapeador {
 	public Modelo map(DTO dto, Modelo vo) {
 		PermisoDTO permisoDTO = (PermisoDTO) dto;	
 		PermisoModel permisoModel = (PermisoModel) (vo != null ? vo : new PermisoModel());
-
-		permisoModel.setNombre(permisoDTO.getNombre());
-		
+		permisoModel.setPermiso(permisoDTO.getPermiso());
+		permisoModel.setModulo(permisoDTO.getModulo());
 		return permisoModel;
 	}
 }

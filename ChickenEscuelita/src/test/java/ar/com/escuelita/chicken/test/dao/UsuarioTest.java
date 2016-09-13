@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
+import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
-import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
+import ar.com.escuelita.chicken.negocio.servicios.IPerfilServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.validacion.UsuarioValidacion;
@@ -26,6 +26,9 @@ public class UsuariosControlador extends Controlador {
 	
 	@Autowired
 	private UsuarioValidacion usuarioValidacion;
+	
+	@Autowired
+	private IPerfilServicio perfilServicio;
 	
 	private static final String USUARIOS_VIEW = "usuarios/usuarios";
 	private static final String USUARIO_NUEVO_VIEW = "usuarios/usuarioNuevo";
@@ -71,7 +74,7 @@ public class UsuariosControlador extends Controlador {
 			usuarioNM = new UsuarioDTO();
 		}
 		model.addObject("usuarioNM", usuarioNM);
-		model.addObject("perfiles",EnumPerfil.values());
+		model.addObject("perfiles",perfilServicio.listar());
 		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
