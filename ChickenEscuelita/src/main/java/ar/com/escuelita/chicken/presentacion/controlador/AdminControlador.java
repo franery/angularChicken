@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
-import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
+import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
 import ar.com.escuelita.chicken.negocio.servicios.IParametroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
@@ -92,7 +92,7 @@ public class AdminControlador extends Controlador{
 			usuarioNM = new UsuarioDTO();
 		}
 		model.addObject("usuarioNM", usuarioNM);
-		model.addObject("perfiles",EnumPerfil.values());
+		model.addObject("perfiles",EnumModulo.values());
 		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;

@@ -2,7 +2,6 @@ package ar.com.escuelita.chicken.persistencia.dao;
 
 import java.util.List;
 
-import ar.com.escuelita.chicken.base.excepciones.PersistenciaExcepcion;
 import ar.com.escuelita.chicken.persistencia.modelo.PermisoModel;
 
 public interface IPermisoDAO {

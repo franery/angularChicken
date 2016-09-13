@@ -1,7 +1,5 @@
 package ar.com.escuelita.chicken.presentacion.filtro;
 
-import ar.com.escuelita.chicken.base.enumerador.EnumPerfil;
-
 public class UsuarioFiltro extends Filtro{
 	
 	private long id;
@@ -9,7 +7,6 @@ public class UsuarioFiltro extends Filtro{
 	private String nombre;
 	private String apellido;
 	private String contrasenia;
-	private EnumPerfil perfil;
 		
 	public UsuarioFiltro(){
 	}
@@ -44,14 +41,6 @@ public class UsuarioFiltro extends Filtro{
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-
-	public EnumPerfil getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(EnumPerfil perfil) {
-		this.perfil = perfil;
 	}
 
 	public String getContrasenia() {

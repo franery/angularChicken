@@ -14,8 +14,13 @@ public class PermisoModel extends Modelo {
 	@Column(name="id")
 	private long id;
 	
-	@Column(name="nombre")
-	private String nombre;
+	@Enumerated(EnumType.STRING)
+	@Column(name="permiso")
+	private String permiso;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="modulo")
+	private String modulo;
 	
 	@ManyToMany(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
 	@JoinTable(name="PerfilPermiso",//bd
@@ -34,12 +39,20 @@ public class PermisoModel extends Modelo {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getPermiso() {
+		return permiso;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setPermiso(String permiso) {
+		this.permiso = permiso;
+	}
+
+	public String getModulo() {
+		return modulo;
+	}
+
+	public void setModulo(String modulo) {
+		this.modulo = modulo;
 	}
 
 	public List<PerfilModel> getListaPerfiles() {

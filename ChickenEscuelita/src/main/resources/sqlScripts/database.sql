@@ -11,7 +11,8 @@ create table Perfil (
 
 create table Permiso (
 	id bigint(10) primary key not null auto_increment,
-	nombre varchar(50) unique not null
+	permiso varchar(50) not null,
+	modulo varchar(50) not null
 );
 
 create table PerfilPermiso (
