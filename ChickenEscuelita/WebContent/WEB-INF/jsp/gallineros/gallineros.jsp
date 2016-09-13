@@ -15,6 +15,7 @@
 	<h1>
 		<spring:message code="gallinero" />
 	</h1>
+	
 	<form:form action="gallinerosNuevo" method="post"
 		commandName="gallinero">
 		<input type="hidden" name="flag" value="1" />

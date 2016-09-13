@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
+import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
+import ar.com.escuelita.chicken.base.enumerador.EnumPermiso;
 import ar.com.escuelita.chicken.negocio.servicios.IPerfilServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IPermisoServicio;
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
@@ -49,7 +52,9 @@ public class PerfilControlador extends Controlador {
 		model.addObject("usuarioActual", usuario);
 		PerfilDTO perfil = new PerfilDTO();
 		model.addObject("perfil", perfil);
-		model.addObject("listaPermisos",permisoServicio.listar());
+		model.addObject("listaPermisos",listaPermisos);
+		model.addObject("listaOperaciones",EnumPermiso.values());
+		model.addObject("listaModulos",EnumModulo.values());
 		model.addObject("pageToLoad", PERFILES_NUEVO_VIEW);
 		return model;
 	}
@@ -65,8 +70,9 @@ public class PerfilControlador extends Controlador {
 	}
 	
 	@RequestMapping(path="/perfilesProcesarNuevo")
-	public ModelAndView perfilesProcesarNuevo(@ModelAttribute("perfil") PerfilDTO perfil) throws Exception {
-		perfilServicio.crear(perfil);
+	public ModelAndView perfilesProcesarNuevo(@RequestParam("permisos")String permisos) throws Exception {
+//		perfilServicio.crear(perfil);
+		System.out.println("Esto es... " + permisos);
 		return new ModelAndView("redirect:/perfiles");
 	}
 

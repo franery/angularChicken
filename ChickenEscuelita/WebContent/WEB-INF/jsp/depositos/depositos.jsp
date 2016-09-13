@@ -11,7 +11,11 @@
 <title><spring:message code="depositos"/></title>
 </head>
 <body>
-
+	
+	<h1>
+		<spring:message code="depositos" />
+	</h1>
+	
 
 <form:form action="depositosNuevo" method="post" commandName="deposito">
 	<input type="submit" value=<spring:message code="nuevo"/> />

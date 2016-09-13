@@ -15,7 +15,7 @@
 		<!-- Tabla Depositos|Cant Huevos -->
 	<div>
 	<h2> <spring:message code="tablaDepositosStock"/></h2>
-	<form:form action="produccionContable" method="post" commandName="depositoFiltro">
+	<form:form action="produccion" method="post" commandName="depositoFiltro">
 	<form:select path="depositoId">
 		<form:option value="0"><spring:message code="seleccionar"/></form:option>
 		<c:forEach items="${listaDepositosDropDown}" var="deposito">
