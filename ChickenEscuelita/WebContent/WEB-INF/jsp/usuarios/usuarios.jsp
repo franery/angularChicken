@@ -37,10 +37,10 @@
 							<td><c:out value="${user.getApellido()}"></c:out></td>
 							<td>
 							
-								<c:forEach items="${user.getListaPerfiles()}" var="perfil">
+					<%-- 			<c:forEach items="${user.getListaPerfiles()}" var="perfil">
 									<c:out value="${perfil.getNombre()}"></c:out>
 								</c:forEach>							
-							
+							 --%>
 							</td>
 							<td>
 							<form:form id="formBorrar" action="borrarUsuario" method="post" commandName="usuarioNM">
@@ -54,7 +54,7 @@
 								<form:input path="nombre" type="hidden" value="${user.getNombre()}"/>
 								<form:input path="apellido" type="hidden" value="${user.getApellido()}"/>
 								<form:input path="contrasenia" type="hidden" value="${user.getContrasenia()}"/>
-								<form:input path="perfil" type="hidden" value="${user.getPerfil()}"/>
+<%-- 								<form:input path="perfil" type="hidden" value="${user.getPerfil()}"/> --%>
 								<input type="submit" value=<spring:message code="modificar"/> />
 							</form:form>
 				</td>

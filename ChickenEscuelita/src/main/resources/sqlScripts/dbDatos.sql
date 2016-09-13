@@ -2,7 +2,7 @@ insert into Perfil (nombre) values
 ('root');
 
 insert into Permiso (permiso, modulo) values
-('Listar', 'usuarios'),('Modificar', 'usuarios');
+('Listar', 'USUARIOS'),('Modificar', 'USUARIOS');
 
 insert into PerfilPermiso (idPerfil, idPermiso) values
 (1,1),(1,2);

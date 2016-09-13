@@ -39,7 +39,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 	public List<UsuarioModel> listarProductores(){
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<UsuarioModel> lista = session.createQuery("from UsuarioModel U where U.perfil=2 and U.borrado=false").list();
+		List<UsuarioModel> lista = session.createQuery("from UsuarioModel U where U.borrado=false").list();
 		session.close();
 		return lista;	}
 

@@ -2,17 +2,17 @@ package ar.com.escuelita.chicken.base.enumerador;
 
 public enum EnumPermiso {
 	
-	C("Crear"),
-	R("Listar"),
-	U("Modificar"),
-	D("Borrar"),
-	E("Exportar");
-	
-	private String name;
+	Crear("Crear"),
+	Listar("Listar"),
+	Modificar("Modificar"),
+	Borrar("Borrar"),
+	Exportar("Exportar");
 	
 	private EnumPermiso(String name){
 		this.name = name;
 	}
+	
+	private String name;
 	
 	public String getName() {
 		return name;
