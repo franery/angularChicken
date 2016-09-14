@@ -25,6 +25,7 @@ public class PermisoServicioImpl extends Servicio implements IPermisoServicio {
 		return permisoMapeador.map(permisoDAO.get(id));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<DTO> listar() {
 		return permisoMapeador.map(permisoDAO.listar());

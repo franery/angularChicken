@@ -43,22 +43,6 @@ public class PerfilServicioImpl extends Servicio implements IPerfilServicio {
 		PerfilModel p = (PerfilModel)perfilMapeador.map(dto,null);
 		perfilDAO.guardar(p);
 	}
-	
-	@Override
-	public void crear(String permisos, String nombre) {
-		String[] arrayPermisos = permisos.split(";");
-		PerfilDTO perfilDTO = new PerfilDTO();
-		perfilDTO.setNombre(nombre);
-		List<PermisoDTO> listaPermisos = new ArrayList<>();
-		for(String permiso : arrayPermisos) {
-//			PermisoDTO permisoDTO = (PermisoDTO) permisoServicio.buscar(Long.parseLong(permiso));
-			PermisoDTO permisoDTO = new PermisoDTO();
-			permisoDTO.setId(permiso);
-			listaPermisos.add(permisoDTO);
-		}
-		perfilDTO.setListaPermisos(listaPermisos);
-		crear(perfilDTO);
-	}
 
 	@Override
 	public void modificar(DTO dto) {
@@ -67,18 +51,15 @@ public class PerfilServicioImpl extends Servicio implements IPerfilServicio {
 		PerfilModel perfilModel = (PerfilModel)perfilMapeador.map(dto, model);
 		perfilDAO.modificar(perfilModel);
 	}
-
+	
 	@Override
 	public void borrar(DTO dto) {
 		perfilDAO.borrar(Long.parseLong(((PerfilDTO)dto).getId()));		
 	}
 
-	
-	
 	/**
 	 * GETTERS & SETTERS
 	 */
-
 	
 	public PerfilMapeador getPerfilMapeador() {
 		return perfilMapeador;

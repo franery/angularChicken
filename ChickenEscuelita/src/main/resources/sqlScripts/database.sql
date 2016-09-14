@@ -96,3 +96,5 @@ create table Parametro (
     valor varchar(50) not null,
     borrado boolean default false not null
 );
+
+/*alter table*/

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
-import ar.com.escuelita.chicken.base.enumerador.EnumPermiso;
+import ar.com.escuelita.chicken.base.enumerador.EnumOperacion;
 
 @Entity
 @Table(name="Permiso")
@@ -19,7 +19,7 @@ public class PermisoModel extends Modelo {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="permiso")
-	private EnumPermiso permiso;
+	private EnumOperacion operacion;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="modulo")
@@ -42,12 +42,12 @@ public class PermisoModel extends Modelo {
 		this.id = id;
 	}
 
-	public EnumPermiso getPermiso() {
-		return permiso;
+	public EnumOperacion getOperacion() {
+		return operacion;
 	}
 
-	public void setPermiso(EnumPermiso permiso) {
-		this.permiso = permiso;
+	public void setOperacion(EnumOperacion operacion) {
+		this.operacion = operacion;
 	}
 
 	public EnumModulo getModulo() {

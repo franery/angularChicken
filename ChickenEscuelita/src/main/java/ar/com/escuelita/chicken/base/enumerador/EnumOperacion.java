@@ -1,6 +1,6 @@
 package ar.com.escuelita.chicken.base.enumerador;
 
-public enum EnumPermiso {
+public enum EnumOperacion {
 	
 	Crear("Crear"),
 	Listar("Listar"),
@@ -10,7 +10,7 @@ public enum EnumPermiso {
 	
 	private String name;
 	
-	private EnumPermiso(String name){
+	private EnumOperacion(String name){
 		this.name = name;
 	}
 	

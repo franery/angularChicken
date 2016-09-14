@@ -34,7 +34,7 @@
 							<td>
 								<c:forEach items="${perfil.getListaPermisos() }" var="permiso">
 									<c:out value="${permiso.getModulo() }"></c:out>
-									<c:out value="${permiso.getPermiso() }"></c:out>								
+									<c:out value="${permiso.getOperacion() }"></c:out>								
 								</c:forEach>
 							</td>
 							<td>

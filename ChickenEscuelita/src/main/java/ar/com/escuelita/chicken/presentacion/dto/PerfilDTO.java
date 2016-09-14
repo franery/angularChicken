@@ -8,9 +8,8 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 public class PerfilDTO extends DTO {
 	
 	private String id;
-	
 	private String nombre;
-	
+		
 	private List<PermisoDTO> listaPermisos = new ArrayList<PermisoDTO>() ;
 
 	public String getId() {
