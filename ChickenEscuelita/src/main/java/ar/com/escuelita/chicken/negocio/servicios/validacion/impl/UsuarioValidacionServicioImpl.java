@@ -25,21 +25,15 @@ public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio
 	public void validacionNombreUsuario(String nombreUsuario, String usuarioId) throws ValidacionExcepcion {
 		List<DTO> listaUsuarios = (List<DTO>) usuarioServicio.listar();
 		for(DTO dto : listaUsuarios) {
-			if ((usuarioId != null && !usuarioId.isEmpty()) && ((UsuarioDTO)dto).getNombreUsuario().equals(nombreUsuario)) {
+			if (((UsuarioDTO)dto).getNombreUsuario().equals(nombreUsuario) && !((UsuarioDTO)dto).getId().equals(usuarioId)) {
 				throw new ValidacionExcepcion("mensajeErrorUsuario");
 			}
 		}
 	}
 	
-	public void validacionBorrarUsuarioRoot(String usuarioId) throws ValidacionExcepcion {
+	public void validacionUsuarioRoot(String usuarioId) throws ValidacionExcepcion {
 		if(String.valueOf(USUARIO_ROOT_ID).equals(usuarioId)) {
-			throw new ValidacionExcepcion("mensajeErrorBorrarUsuarioRoot");
-		}
-	}
-	
-	public void validacionModificarUsuarioRoot(String usuarioActualId, String usuarioId) throws ValidacionExcepcion {
-		if(String.valueOf(USUARIO_ROOT_ID).equals(usuarioId) && !String.valueOf(USUARIO_ROOT_ID).equals(usuarioActualId)) {
-			throw new ValidacionExcepcion("mensajeErrorModificarUsuarioRoot");
+			throw new ValidacionExcepcion("mensajeErrorUsuarioRoot");
 		}
 	}
 	
