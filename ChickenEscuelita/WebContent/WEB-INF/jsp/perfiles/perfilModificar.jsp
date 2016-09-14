@@ -74,7 +74,6 @@
 
 	</table>
 	<input id="stringConcatenado" name="permisos" type="hidden"/>
-	<form:input path="id" id="stringConcatenado" name="permisos" type="hidden"/>
 	<input id="botonGuardar" type="submit" value="Modificar"/>
 	</form:form>
 	<script>
@@ -84,7 +83,7 @@
 	    tablaPermisos.push(permiso);
 	</c:forEach>
 	for (var i = 0; i < tablaPermisos.length; i++) {
-	    document.getElementById(tablaPermisos[i]).checked = true;
+		document.getElementById(tablaPermisos[i]).checked = true;
 	}
 	$('#botonGuardar').on('click', function (e) {
 		e.preventDefault();
