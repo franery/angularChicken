@@ -130,12 +130,14 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	private UsuarioDTO agregarPerfiles(UsuarioDTO dto, String perfiles){
 		String[] arrayPerfiles = perfiles.split(";");
 		List<PerfilDTO> listaPerfiles = new ArrayList<>();
-		for(String perfil : arrayPerfiles) {
-			PerfilDTO perfilDTO = (PerfilDTO) (perfilServicio.buscar(Long.parseLong(perfil)));
-			listaPerfiles.add(perfilDTO);
+		if(!listaPerfiles.isEmpty()){	
+			for(String perfil : arrayPerfiles) {
+				PerfilDTO perfilDTO = (PerfilDTO) (perfilServicio.buscar(Long.parseLong(perfil)));
+				listaPerfiles.add(perfilDTO);
+			}
+			((UsuarioDTO)dto).setListaPerfiles(listaPerfiles);
 		}
-		((UsuarioDTO)dto).setListaPerfiles(listaPerfiles);
-		return dto;
+		return (UsuarioDTO)dto;
 		
 	}
 }
