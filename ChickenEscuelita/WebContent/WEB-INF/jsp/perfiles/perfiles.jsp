@@ -38,9 +38,9 @@
 								</c:forEach>
 							</td>
 							<td>
-							<form:form id="formBorrar" action="perfilesBorrar" method="post" commandName="perfil">
+							<form:form id="form${perfil.getId()}" action="perfilesBorrar" method="post" commandName="perfil">
 								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
-								<input id="botonBorrar" class="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
+								<input id="boton${perfil.getId()}" class="botonBorrar" type="button" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
 							<form:form action="perfilesModificar" method="post" commandName="perfil">
@@ -67,15 +67,17 @@
 
 <script>
 
-$('.botonBorrar').on('click', function (e) {
+<c:forEach items="${listaPerfiles}" var="perfil">
+$('#boton' + '${perfil.id}').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeBorrar").value;
     e.preventDefault();
     bootbox.confirm(mensaje, function (response) {        
         if(response) {
-            $('#formBorrar').submit();
+        	$('#form' + '${perfil.id}').submit();
         }
     });
 });
+</c:forEach>
 
 </script>
 

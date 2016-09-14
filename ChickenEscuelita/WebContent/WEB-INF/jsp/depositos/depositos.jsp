@@ -76,25 +76,17 @@
 
 <script>
 
-var listaDepositosId = new Array();
 <c:forEach items="${listaDepositos}" var="deposito">
-    var id = '${deposito.getId()}';
-    listaDepositosId.push(id);
+$('#boton' + '${deposito.id}').on('click', function (e) {
+	var mensaje = document.getElementById("mensajeBorrar").value;
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+        	$('#form' + '${deposito.id}').submit();
+        }
+    });
+});
 </c:forEach>
-
-for(var i = 0; i < listaDepositosId.length; i++) {
-	$('#boton' + listaDepositosId[i]).on('click', function (e) {
-		var mensaje = document.getElementById("mensajeBorrar").value;
-	    e.preventDefault();
-	    bootbox.confirm(mensaje, function (response) {        
-	        if(response) {
-	            var algo = $('#form' + listaDepositosId[i]);
-	        	$('#form' + listaDepositosId[i]).submit();
-	            alert("lo q sea" + algo);
-	        }
-	    });
-	});
-}
 
 </script>
 

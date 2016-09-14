@@ -35,10 +35,10 @@
 					<td><c:out value="${proveedor.getDireccion()}"></c:out></td>
 					<td><c:out value="${proveedor.getMail()}"></c:out></td>
 					<td><c:out value="${proveedor.getTelefono()}"></c:out></td>
-					<td><form:form id="formBorrar" action="proveedoresBorrar"
+					<td><form:form id="form${proveedor.getId()}" action="proveedoresBorrar"
 							method="post" commandName="proveedor">
 							<form:input path="id" type="hidden" value="${proveedor.getId()}" />
-							<input id="botonBorrar" class="botonBorrar" type="submit"
+							<input id="boton${proveedor.getId()}" class="botonBorrar" type="button"
 								value=<spring:message code="borrar"/> />
 						</form:form></td>
 					<td><form:form action="proveedoresModificar" method="post"
@@ -69,15 +69,17 @@
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
 <script>
 
-$('.botonBorrar').on('click', function(e) {
+<c:forEach items="${listaProveedores}" var="proveedor">
+$('#boton' + '${proveedor.id}').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeBorrar").value;
-	e.preventDefault();
-	bootbox.confirm(mensaje, function(response) {
-		if (response) {
-			$('#formBorrar').submit();
-		}
-	});
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+        	$('#form' + '${proveedor.id}').submit();
+        }
+    });
 });
+</c:forEach>
 
 </script>
 </body>

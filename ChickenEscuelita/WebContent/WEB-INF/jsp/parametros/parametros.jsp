@@ -32,11 +32,11 @@
 					<tr>
 						<td><c:out value="${parametroVar.getDescripcion() }"></c:out></td>
 						<td><c:out value="${parametroVar.getValor() }"></c:out></td>
-						<td><form:form id="formBorrar" action="parametrosBorrar"
+						<td><form:form id="form${parametroVar.getId()}" action="parametrosBorrar"
 								method="post" commandName="parametro">
 								<form:input path="id" type="hidden"
 									value="${parametroVar.getId() }" />
-								<input id="botonBorrar" class="botonBorrar" type="submit"
+								<input id="boton${parametroVar.getId()}" class="botonBorrar" type="button"
 									value=<spring:message code="borrar"/> />
 							</form:form></td>
 						<td><form:form action="parametrosModificar" method="post"
@@ -68,15 +68,17 @@
 	
 <script>
 
-$('.botonBorrar').on('click', function(e) {
+<c:forEach items="${listaParametros}" var="parametroVar">
+$('#boton' + '${parametroVar.id}').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeBorrar").value;
-	e.preventDefault();
-	bootbox.confirm(mensaje, function(response) {
-		if (response) {
-			$('#formBorrar').submit();
-		}
-	});
+    e.preventDefault();
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+        	$('#form' + '${parametroVar.id}').submit();
+        }
+    });
 });
+</c:forEach>
 
 </script>
 </body>

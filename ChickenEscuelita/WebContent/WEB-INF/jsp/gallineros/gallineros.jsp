@@ -48,9 +48,9 @@
 						</c:when>
 					</c:choose>
 							<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
-					<td> <form:form id="formBorrar" action="gallinerosBorrar" method="post" commandName="gallinero">
+					<td> <form:form id="form${gallinero.getId()}" action="gallinerosBorrar" method="post" commandName="gallinero">
 							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
-							<input id="botonBorrar" class="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
+							<input id="boton${gallinero.getId()}" class="botonBorrar" type="button" value=<spring:message code="borrar"/> />
 						</form:form></td>
 					<td><form:form action="gallinerosModificar"
 							method="post" commandName="gallinero">
@@ -77,15 +77,17 @@
 
 <script>
 
-$('.botonBorrar').on('click', function (e) {
+<c:forEach items="${listaGallineros}" var="gallinero">
+$('#boton' + '${gallinero.id}').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeBorrar").value;
     e.preventDefault();
     bootbox.confirm(mensaje, function (response) {        
         if(response) {
-            $('#formBorrar').submit();
+        	$('#form' + '${gallinero.id}').submit();
         }
     });
 });
+</c:forEach>
 
 </script>
 
