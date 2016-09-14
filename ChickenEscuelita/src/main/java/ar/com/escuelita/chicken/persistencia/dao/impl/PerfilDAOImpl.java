@@ -27,6 +27,14 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 		return e;
 	}
 
+	public List<PerfilModel> listar() {
+		Session session = sessionFactory.openSession();
+		@SuppressWarnings("unchecked")
+		List<PerfilModel> lista = session.createQuery("from PerfilModel").list();
+		session.close();
+		return lista;
+	}
+
 	@Transactional
 	public void guardar(PerfilModel perfilModel) {
 		Session s = sessionFactory.openSession();
@@ -53,14 +61,7 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 		s.getTransaction().commit();
 		s.close();
 	}
-
-	public List<PerfilModel> listar() {
-		Session session = sessionFactory.openSession();
-		@SuppressWarnings("unchecked")
-		List<PerfilModel> lista = session.createQuery("from PerfilModel").list();
-		session.close();
-		return lista;
-	}
+	
 	
 	@Override
 	public List<PerfilModel> listar(PerfilFiltro filtro) {
@@ -77,4 +78,3 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 	}
 	
 }
-

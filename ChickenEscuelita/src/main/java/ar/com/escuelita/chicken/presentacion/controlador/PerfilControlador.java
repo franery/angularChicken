@@ -116,6 +116,7 @@ public class PerfilControlador extends Controlador {
 		model.addObject("usuarioActual", usuario);
 		model.addObject("perfil", perfil);
 		model.addObject("listaPermisos",listaPermisos);
+		model.addObject("tablaPermisos", permisoServicio.listar());
 		model.addObject("tablaPermisosUsuario",((PerfilDTO)perfilServicio.buscar(Long.parseLong(perfil.getId()))).getListaPermisos());
 		model.addObject("listaOperaciones",EnumOperacion.values());
 		model.addObject("listaModulos",EnumModulo.values());

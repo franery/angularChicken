@@ -55,7 +55,7 @@
 			<tr>
 				<input id="stringConcatenado" name="perfiles" type="hidden"/>
 				<td colspan="4" style="text-align: center;">
-				<input id="botonGuardar" type="button" value="<spring:message code="guardar"/>" /> </td>
+				<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> </td>
 			</tr>
 			<tr>
 				<td colspan="2"> <form:errors path="nombreUsuario" cssClass="error" /> </td> 
