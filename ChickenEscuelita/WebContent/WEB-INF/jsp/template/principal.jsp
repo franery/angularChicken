@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${usuarioActual.getNombre() }</title>
+
+<title><spring:message code="nombreApp"/></title>
 
 </head>
 <body>

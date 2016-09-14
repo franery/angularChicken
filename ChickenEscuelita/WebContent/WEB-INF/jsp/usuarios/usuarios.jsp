@@ -8,25 +8,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><spring:message code="usuarios"/></title>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.dataTables.min.css">
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/dataTables.responsive.min.js"></script>
+
 </head>
 <body>
 
-
 <h1><spring:message code="usuarios"/></h1>
 
+<div id="tablita3">
 		<!-- Nuevo Usuario -->
 		<form:form action="usuariosNuevo" method="post" commandName="usuarioNM">
 				<input type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		
 		<!-- Tabla Usuarios -->
-		<table id="tablita">
+		<table id="tablita2" class="display order-column">
 			<thead>
 				<tr>
 					<th><spring:message code="nombreUsuario"/></th>
 					<th><spring:message code="nombre"/></th>
 					<th><spring:message code="apellido"/></th>
 					<th><spring:message code="perfiles"/></th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -78,8 +87,13 @@
 		<spring:message code="mensajeBorrar" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
+</div>
+<script type="text/javascript">
 
-<script>
+$(document).ready(function() {
+    $('#tablita2').DataTable();
+} );
+
 
 $('.botonBorrar').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeBorrar").value;
