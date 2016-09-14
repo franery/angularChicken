@@ -15,6 +15,7 @@ import ar.com.escuelita.chicken.persistencia.modelo.PerfilModel;
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
 import ar.com.escuelita.chicken.presentacion.dto.PermisoDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
+import ar.com.escuelita.chicken.presentacion.filtro.PerfilFiltro;
 
 public class PerfilServicioImpl extends Servicio implements IPerfilServicio {
 	
@@ -98,7 +99,7 @@ public class PerfilServicioImpl extends Servicio implements IPerfilServicio {
 
 	@Override
 	public Collection<DTO> listar(Filtro filtro) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return perfilMapeador.map(perfilDAO.listar((PerfilFiltro)filtro));
 	}
 }
