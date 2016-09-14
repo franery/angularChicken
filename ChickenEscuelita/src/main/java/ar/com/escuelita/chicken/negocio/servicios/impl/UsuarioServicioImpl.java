@@ -119,15 +119,23 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 
 	@Override
 	public void crear(DTO dto, String perfiles) throws NegocioExcepcion {
+		crear(agregarPerfiles((UsuarioDTO)dto,perfiles));
+	}
+
+	@Override
+	public void modificar(UsuarioDTO usuarioNM, String perfiles) throws NegocioExcepcion {
+		modificar(agregarPerfiles(usuarioNM, perfiles));
+	}
+
+	private UsuarioDTO agregarPerfiles(UsuarioDTO dto, String perfiles){
 		String[] arrayPerfiles = perfiles.split(";");
 		List<PerfilDTO> listaPerfiles = new ArrayList<>();
 		for(String perfil : arrayPerfiles) {
-			PerfilDTO perfilDTO = (PerfilDTO) perfilServicio.buscar(Long.parseLong(perfil));
+			PerfilDTO perfilDTO = (PerfilDTO) (perfilServicio.buscar(Long.parseLong(perfil)));
 			listaPerfiles.add(perfilDTO);
 		}
 		((UsuarioDTO)dto).setListaPerfiles(listaPerfiles);
-
-		crear(dto);
+		return dto;
+		
 	}
-
 }

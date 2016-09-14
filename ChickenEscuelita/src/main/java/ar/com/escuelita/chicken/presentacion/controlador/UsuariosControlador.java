@@ -70,7 +70,7 @@ public class UsuariosControlador extends Controlador {
 	}
 	
 	@RequestMapping("/usuariosNuevo")
-	public ModelAndView nuevoUsuario(){
+	public ModelAndView usuariosNuevo(){
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		UsuarioDTO usuarioNM = new UsuarioDTO();
@@ -83,7 +83,7 @@ public class UsuariosControlador extends Controlador {
 	}
 	
 	@RequestMapping(path="/usuariosModificar")
-	public ModelAndView modificarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
+	public ModelAndView usuariosModificar(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("usuarioNM", usuarioNM);
@@ -98,7 +98,7 @@ public class UsuariosControlador extends Controlador {
 	public ModelAndView usuariosProcesarNuevo(@RequestParam("perfiles")String perfiles, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-				return nuevoUsuario();
+				return usuariosNuevo();
 		}
 
 		usuarioServicio.crear(usuarioNM,perfiles);
@@ -107,12 +107,12 @@ public class UsuariosControlador extends Controlador {
 
 	//procesar modificar usuario
 	@RequestMapping(path="/usuariosProcesarModificar")
-	public ModelAndView usuariosProcesarModificar(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
+	public ModelAndView usuariosProcesarModificar(@RequestParam("perfiles")String perfiles, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
 		if(result.hasErrors()) {
-			return modificarUsuario(usuarioNM);
+			return usuariosModificar(usuarioNM);
 		}
-		usuarioServicio.modificar(usuarioNM);
+		usuarioServicio.modificar(usuarioNM,perfiles);
 		return new ModelAndView("redirect:/usuarios");
 	}
 	
