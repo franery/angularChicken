@@ -4,12 +4,10 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/navbar.css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.dataTables.min.css" />
 
 
-<jsp:include page="importacion.jsp"></jsp:include>
 <body>
-
+<div>
 	<ul class="ul">
 		<li class="liLeft" >${Title}</li>
 		<li class="liRightHov"><a class="sup" href="<%=request.getContextPath()%>/logout">
@@ -27,6 +25,7 @@
 				<input type="submit" class="langg" value=<spring:message code="cambiar"/> />
 		</form:form></li>
 	</ul>
+</div>
  <%-- 			 Current Locale : ${pageContext.response.locale }
  			 
  --%> <br>

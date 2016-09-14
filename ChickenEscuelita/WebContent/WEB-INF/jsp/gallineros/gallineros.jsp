@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title><spring:message code="gallinero" /></title>
 </head>
 <body>
@@ -22,7 +23,7 @@
 		<input type="submit" value=<spring:message code="nuevo"/> />
 	</form:form>
 
-	<table id="tablita">
+		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th><spring:message code="nombre" /></th>
@@ -74,7 +75,6 @@
 		<spring:message code="mensajeBorrar" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
-
 <script>
 
 <c:forEach items="${listaGallineros}" var="gallinero">

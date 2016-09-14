@@ -6,28 +6,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title><spring:message code="usuarios"/></title>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.dataTables.min.css">
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.12.3.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/dataTables.responsive.min.js"></script>
 
 </head>
 <body>
 
 <h1><spring:message code="usuarios"/></h1>
 
-<div id="tablita3">
+<div>
 		<!-- Nuevo Usuario -->
 		<form:form action="usuariosNuevo" method="post" commandName="usuarioNM">
 				<input type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		
 		<!-- Tabla Usuarios -->
-		<table id="tablita2" class="display order-column">
+		<table id="tablita" class="display order-column responsive" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th><spring:message code="nombreUsuario"/></th>
@@ -55,7 +49,8 @@
 							</td>
 							</c:if>
 							<c:if test="${empty user.getListaPerfiles()}">
-									<td align="center"><spring:message code="sinPerfil"/></td>
+									<td><ul style="list-style: none;"><li><spring:message code="sinPerfil"/></td>
+																		</li></ul>
 							</c:if>
 							<td>
 							<form:form id="form${user.getId()}" action="usuariosBorrar" method="post" commandName="usuarioNM">
@@ -89,10 +84,6 @@
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
 </div>
 <script type="text/javascript">
-
-$(document).ready(function() {
-    $('#tablita2').DataTable();
-} );
 
 
 <c:forEach items="${listaUsuarios}" var="user">

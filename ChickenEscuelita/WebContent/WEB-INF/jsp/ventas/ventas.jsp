@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title><spring:message code="ventas"/></title>
 </head>
 <body>
@@ -17,7 +18,7 @@
 </form:form>
 
 <form:form action="ventas" method="post" commandName="filtro">
-	<table id="tablita">
+		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th><spring:message code="filtros"/></th>
@@ -50,7 +51,7 @@
 	<input type="submit" value=<spring:message code="filtrar"/>>
 </form:form>
 
-<table id="tablita">
+		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
 	<thead>
 		<tr>
 			<th><spring:message code="proveedor"/></th>

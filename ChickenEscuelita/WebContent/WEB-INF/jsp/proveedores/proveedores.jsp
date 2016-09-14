@@ -8,7 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title><spring:message code="proveedor" /></title>
+
 </head>
 <body>
 
@@ -19,13 +21,19 @@
 		<input type="submit" value=<spring:message code="nuevo"/> />
 	</form:form>
 
-	<table id="tablita">
+
+
+		
+		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th><spring:message code="nombre" /></th>
 				<th><spring:message code="direccion" /></th>
 				<th><spring:message code="mail" /></th>
 				<th><spring:message code="telefono" /></th>
+				<th></th>
+				<th></th>
+				
 			</tr>
 		</thead>
 		<c:if test="${!empty listaProveedores}">

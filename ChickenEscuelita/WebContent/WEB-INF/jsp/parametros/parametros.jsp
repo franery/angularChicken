@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title><spring:message code="parametros" text="Parametros" /></title>
 
 </head>
@@ -19,11 +20,13 @@
 	</form:form>
 
 	<!-- Tabla Parametros -->
-	<table id="tablita">
+		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th><spring:message code="descripcion" /></th>
 				<th><spring:message code="valor" /></th>
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -65,7 +68,7 @@
 		<spring:message code="mensajeBorrar" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
-	
+
 <script>
 
 <c:forEach items="${listaParametros}" var="parametroVar">

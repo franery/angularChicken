@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title><spring:message code="nombreApp"/></title>
+<jsp:include page="../template/importacion.jsp"></jsp:include>
 
 </head>
 <body>
@@ -28,5 +29,11 @@
 		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
 	</div>
 
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#tablita').DataTable();
+} );
+</script>
 </body>
 </html>

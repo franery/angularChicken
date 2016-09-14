@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title><spring:message code="produccion"/></title>
 </head>
 <body>
@@ -28,7 +29,7 @@
 	
  
 		<!-- <table id="" class="display" cellspacing="0" width="100%"> -->
-		<table id="tablita"> 
+		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th><spring:message code="deposito" text="Deposito"/></th>
@@ -47,6 +48,8 @@
 				<c:if test="${empty listaDepositos}">
 					<tr>
 						<td colspan="5"><spring:message code="noHayDatos"/></td>
+						<td></td>
+<!-- 						TODO no funca datatable -->
 					</tr>
 				</c:if>
 			</tbody>
@@ -74,7 +77,7 @@
 	
 	<input type="submit" value=<spring:message code="filtrar"/> />
 </form:form>
-		<table id="tablita">
+		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th><spring:message code="nombre"/></th>
