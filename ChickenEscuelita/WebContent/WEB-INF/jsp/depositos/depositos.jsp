@@ -45,9 +45,9 @@
 				<td><c:out value="${deposito.getStockHuevos()}"></c:out></td>
 				<td><c:out value="${deposito.getStockMaximo()}"></c:out></td>
 				<td>
-					<form:form id="formBorrar" action="depositosBorrar" method="post" commandName="deposito">
+					<form:form id="form${deposito.getId()}" action="depositosBorrar" method="post" commandName="deposito">
 						<form:input path="id" type="hidden" value="${deposito.getId()}"/>
-						<input id="botonBorrar" class="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
+						<input id="boton${deposito.getId()}" type="button" value=<spring:message code="borrar"/> />
 					</form:form>
 				</td>
 				<td>
@@ -76,16 +76,25 @@
 
 <script>
 
+var listaDepositosId = new Array();
+<c:forEach items="${listaDepositos}" var="deposito">
+    var id = '${deposito.getId()}';
+    listaDepositosId.push(id);
+</c:forEach>
 
-$('.botonBorrar').on('click', function (e) {
-	var mensaje = document.getElementById("mensajeBorrar").value;
-    e.preventDefault();
-    bootbox.confirm(mensaje, function (response) {        
-        if(response) {
-            $('#formBorrar').submit();
-        }
-    });
-});
+for(var i = 0; i < listaDepositosId.length; i++) {
+	$('#boton' + listaDepositosId[i]).on('click', function (e) {
+		var mensaje = document.getElementById("mensajeBorrar").value;
+	    e.preventDefault();
+	    bootbox.confirm(mensaje, function (response) {        
+	        if(response) {
+	            var algo = $('#form' + listaDepositosId[i]);
+	        	$('#form' + listaDepositosId[i]).submit();
+	            alert("lo q sea" + algo);
+	        }
+	    });
+	});
+}
 
 </script>
 
