@@ -58,9 +58,9 @@
 									<td align="center"><spring:message code="sinPerfil"/></td>
 							</c:if>
 							<td>
-							<form:form id="formBorrar" action="usuariosBorrar" method="post" commandName="usuarioNM">
+							<form:form id="form${user.getId()}" action="usuariosBorrar" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
-								<input id="botonBorrar" class="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
+								<input id="boton${user.getId()}" class="botonBorrar" type="button" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
 							<form:form action="usuariosModificar" method="post" commandName="usuarioNM">
@@ -95,15 +95,17 @@ $(document).ready(function() {
 } );
 
 
-$('.botonBorrar').on('click', function (e) {
+<c:forEach items="${listaUsuarios}" var="user">
+$('#boton' + '${user.id}').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeBorrar").value;
     e.preventDefault();
     bootbox.confirm(mensaje, function (response) {        
         if(response) {
-            $('#formBorrar').submit();
+        	$('#form' + '${user.id}').submit();
         }
     });
 });
+</c:forEach>
 
 </script>
 
