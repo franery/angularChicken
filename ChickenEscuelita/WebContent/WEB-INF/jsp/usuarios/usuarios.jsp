@@ -50,7 +50,7 @@
 							<td>
 							<form:form id="formBorrar" action="usuariosBorrar" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
-								<input id="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
+								<input id="botonBorrar" class="botonBorrar" type="submit" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
 							<form:form action="usuariosModificar" method="post" commandName="usuarioNM">
@@ -80,7 +80,7 @@
 
 <script>
 
-$('#botonBorrar').on('click', function (e) {
+$('.botonBorrar').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeBorrar").value;
     e.preventDefault();
     bootbox.confirm(mensaje, function (response) {        
