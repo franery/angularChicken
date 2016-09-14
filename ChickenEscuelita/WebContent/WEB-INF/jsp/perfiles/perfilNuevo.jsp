@@ -43,7 +43,7 @@
         				    		<td><input name="checkbox" type="checkbox" value="${iterator}"></input></td>
         				    	</c:when>
         				    	<c:otherwise>
-        				    		<td></td>
+        				    		<td><input type="checkbox" disabled/></td>
         				    	</c:otherwise>    					
         					</c:choose>
 						</c:when>
@@ -53,7 +53,7 @@
         				    		<td><input name="checkbox" type="checkbox" value="${iterator}"></input></td>
         				    	</c:when>
         				    	<c:otherwise>
-        				    		<td></td>
+        				    		<td><input type="checkbox" disabled/></td>
         				    	</c:otherwise>    					
         					</c:choose>
 						</c:when>

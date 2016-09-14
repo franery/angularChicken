@@ -65,7 +65,9 @@ public class PerfilControlador extends Controlador {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("perfil", perfil);
-		model.addObject("listaPermisos",permisoServicio.listar());
+		model.addObject("listaPermisos",listaPermisos);
+		model.addObject("listaOperaciones",EnumPermiso.values());
+		model.addObject("listaModulos",EnumModulo.values());
 		model.addObject("pageToLoad", PERFILES_MODIFICAR_VIEW);
 		return model;
 	}

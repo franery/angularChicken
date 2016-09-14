@@ -19,55 +19,85 @@
 <body>
 	<h1><spring:message code="perfilModificar" /></h1>
 
-	<form:form method="POST" id="formModificar" action="perfilesProcesarModificar" commandName="perfil">
-		<form:input path="id" type="hidden" value="${perfil.getId()}"/>
-	
-		<table>
+	<form:form id="formModificar" method="POST" action="perfilesProcesarModificar">
+	<spring:message code="nombre" /> <input name="nombre" type="text"/>
+	<table>
+		<thead>
 			<tr>
-				<td><spring:message code="nombre" /></td>
-				<td><form:input path="nombre" required="required"/></td>
+				<th></th>
+				<c:forEach items="${listaOperaciones}" var="operacion">
+					<th>${operacion.getName()}</th>
+				</c:forEach>
 			</tr>
+		</thead>
+		<c:set var="iterator" value="1"/>
+		<c:forEach items="${listaModulos}" var="modulo">
 			<tr>
-				<td><spring:message code="contrasenia" /></td>
-				<td><form:input path="contrasenia" type="password" required="required"/></td>
+				<td>${modulo.getName()}</td>
+				<c:forEach items="${listaOperaciones}" var="operacion">
+					<c:choose>
+						<c:when test="${modulo.getName().equals('ventas') || modulo.getName().equals('movimientos')}">
+        					<c:choose>
+        				    	<c:when test="${operacion.getName().equals('Crear') || operacion.getName().equals('Listar')}">
+        				    		<td><input name="checkbox" type="checkbox" value="${iterator}" id="${iterator}"></input></td>
+        				    	</c:when>
+        				    	<c:otherwise>
+        				    		<td><input type="checkbox" disabled/></td>
+        				    	</c:otherwise>    					
+        					</c:choose>
+						</c:when>
+						<c:when test="${modulo.getName().equals('produccion')}">
+        					<c:choose>
+        				    	<c:when test="${operacion.getName().equals('Listar')}">
+        				    		<td><input name="checkbox" type="checkbox" value="${iterator} id="${iterator}""></input></td>
+        				    	</c:when>
+        				    	<c:otherwise>
+        				    		<td><input type="checkbox" disabled/></td>
+        				    	</c:otherwise>    					
+        					</c:choose>
+						</c:when>
+						<c:otherwise>
+       						<td><input name="checkbox" type="checkbox" value="${iterator} id="${iterator}""></input></td>
+						</c:otherwise>
+					</c:choose>
+				<c:set var="iterator" value="${iterator+1}"/>
+				</c:forEach>
 			</tr>
-			<tr>
-				<td><spring:message code="perfil" /></td>
-				<td><form:select path="perfil" required="required">
-						<option value=""><spring:message code="seleccionar" /></option>
-						<c:forEach var="perfil" items="${perfiles}">
-							<option value="${perfil}">  ${perfil.getName()}  </option>
-						</c:forEach>
-					</form:select></td>
-			</tr>
-			<tr>
-				<td colspan="4" style="text-align: center;">
-				<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> </td>
-			</tr>
-			<tr>
-				<td colspan="2"> <form:errors path="nombreUsuario" cssClass="error" /> </td> 
-			</tr>
-		</table>
+			
+		</c:forEach>
+		
+
+	</table>
+	<input id="stringConcatenado" name="permisos" type="hidden"/>
+	<input id="botonGuardar" type="submit" value="Crear"/>
 	</form:form>
+	<p id="demo"/>
+	<script>
+	var tablaPermisos = new Array();
+	<c:forEach items="${tablaPermisos}" var="permiso">
+	    var permiso = new Object();
+	    permiso.id = '${permiso.id}';
+	    tablaPermisos.push(people);
+	</c:forEach>
+	var text = "";
+	for (var i = 0; i < tablaPermisos.length; i++) {
+	    text += tablaPermisos[i] + "<br>";
+	}
+	document.getElementById("demo").innerHTML = text;
+	$('#botonGuardar').on('click', function (e) {
+		checkboxes = document.getElementsByName("checkbox"); 
+		var permisos = "";
+		for (var i = 0; i < checkboxes.length; i++) {
+		    var checkbox = checkboxes[i];
+			if (checkbox.checked) {
+				permisos += checkbox.value + ";";    
+			}
+		}
+		e.preventDefault();
+	    document.getElementById("stringConcatenado").value = permisos;
+	    $('#formModificar').submit();
+	});
+	</script>
 	
-	<c:set var="value">
-		<spring:message code="mensajeModificar" />
-	</c:set>
-	<input id="mensajeModificar" type="hidden" value="${value}" />
-	
-<script>
-
-$('#botonGuardar').on('click', function (e) {
-	var mensaje = document.getElementById("mensajeModificar").value;
-    e.preventDefault();
-    bootbox.confirm(mensaje, function (response) {        
-        if(response) {
-            $('#formModificar').submit();
-        }
-    });
-});
-
-</script>
-
 </body>
 </html>
