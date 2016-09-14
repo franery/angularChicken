@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.negocio.servicios.IPerfilServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.PerfilFiltro;
 import ar.com.escuelita.chicken.presentacion.validacion.UsuarioValidacion;
 
 @Controller
@@ -70,24 +72,25 @@ public class UsuariosControlador extends Controlador {
 	}
 	
 	@RequestMapping("/usuariosNuevo")
-	public ModelAndView nuevoUsuario(){
+	public ModelAndView usuariosNuevo(){
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		UsuarioDTO usuarioNM = new UsuarioDTO();
 		usuarioNM.setListaPerfiles(new ArrayList<PerfilDTO>());
 		model.addObject("usuarioNM", usuarioNM);
-		model.addObject("perfiles",perfilServicio.listar());
+		
+		model.addObject("perfiles",perfilServicio.listar(new PerfilFiltro(Constantes.USUARIO_ROOT_ID)));
 		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
 	@RequestMapping(path="/usuariosModificar")
-	public ModelAndView modificarUsuario(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
+	public ModelAndView usuariosModificar(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("usuarioNM", usuarioNM);
-		model.addObject("perfiles",perfilServicio.listar());
+		model.addObject("perfiles",perfilServicio.listar(new PerfilFiltro(Constantes.USUARIO_ROOT_ID)));
 		model.addObject("pageToLoad", USUARIO_MODIFICAR_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
@@ -98,7 +101,7 @@ public class UsuariosControlador extends Controlador {
 	public ModelAndView usuariosProcesarNuevo(@RequestParam("perfiles")String perfiles, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-				return nuevoUsuario();
+				return usuariosNuevo();
 		}
 
 		usuarioServicio.crear(usuarioNM,perfiles);
@@ -107,12 +110,12 @@ public class UsuariosControlador extends Controlador {
 
 	//procesar modificar usuario
 	@RequestMapping(path="/usuariosProcesarModificar")
-	public ModelAndView usuariosProcesarModificar(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
+	public ModelAndView usuariosProcesarModificar(@RequestParam("perfiles")String perfiles, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
 		if(result.hasErrors()) {
-			return modificarUsuario(usuarioNM);
+			return usuariosModificar(usuarioNM);
 		}
-		usuarioServicio.modificar(usuarioNM);
+		usuarioServicio.modificar(usuarioNM,perfiles);
 		return new ModelAndView("redirect:/usuarios");
 	}
 	

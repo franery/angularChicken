@@ -16,4 +16,6 @@ public interface IUsuarioServicio extends IServicio {
 	
 	void crear(DTO dto, String perfiles) throws NegocioExcepcion;
 
+	void modificar(UsuarioDTO usuarioNM, String perfiles) throws NegocioExcepcion;
+
 }

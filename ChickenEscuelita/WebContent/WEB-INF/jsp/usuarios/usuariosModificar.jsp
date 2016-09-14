@@ -76,15 +76,8 @@
 $('#botonGuardar').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeModificar").value;
     e.preventDefault();
-    bootbox.confirm(mensaje, function (response) {        
-        if(response) {
-            $('#formModificar').submit();
-        }
-    });
-});
-
-$('#botonGuardar').on('click', function (e) {
-	checkboxes = document.getElementsByName("perfilFeo"); 
+    
+    checkboxes = document.getElementsByName("perfilFeo"); 
 	var perfiles = "";
 	for (var i = 0; i < checkboxes.length; i++) {
 	    var checkbox = checkboxes[i];
@@ -94,7 +87,13 @@ $('#botonGuardar').on('click', function (e) {
 	}
 	e.preventDefault();
     document.getElementById("stringConcatenado").value = perfiles;
-    $('#formNuevo').submit();
+    
+    
+    bootbox.confirm(mensaje, function (response) {        
+        if(response) {
+            $('#formModificar').submit();
+        }
+    });
 });
 </script>
 

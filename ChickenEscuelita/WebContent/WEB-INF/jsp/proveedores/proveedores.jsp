@@ -38,7 +38,7 @@
 					<td><form:form id="formBorrar" action="proveedoresBorrar"
 							method="post" commandName="proveedor">
 							<form:input path="id" type="hidden" value="${proveedor.getId()}" />
-							<input id="botonBorrar" type="submit"
+							<input id="botonBorrar" class="botonBorrar" type="submit"
 								value=<spring:message code="borrar"/> />
 						</form:form></td>
 					<td><form:form action="proveedoresModificar" method="post"
@@ -67,16 +67,18 @@
 		<spring:message code="mensajeBorrar" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
-	<script>
-		$('#botonBorrar').on('click', function(e) {
-			var mensaje = document.getElementById("mensajeBorrar").value;
-			e.preventDefault();
-			bootbox.confirm(mensaje, function(response) {
-				if (response) {
-					$('#formBorrar').submit();
-				}
-			});
-		});
-	</script>
+<script>
+
+$('.botonBorrar').on('click', function(e) {
+	var mensaje = document.getElementById("mensajeBorrar").value;
+	e.preventDefault();
+	bootbox.confirm(mensaje, function(response) {
+		if (response) {
+			$('#formBorrar').submit();
+		}
+	});
+});
+
+</script>
 </body>
 </html>

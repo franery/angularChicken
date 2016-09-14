@@ -1,5 +1,6 @@
 package ar.com.escuelita.chicken.persistencia.dao.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -8,7 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IPerfilDAO;
+import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
+import ar.com.escuelita.chicken.persistencia.modelo.Modelo;
+import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.PerfilModel;
+import ar.com.escuelita.chicken.persistencia.modelo.VentaModel;
+import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
+import ar.com.escuelita.chicken.presentacion.filtro.PerfilFiltro;
 
 public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 
@@ -54,4 +61,20 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 		s.getTransaction().commit();
 		s.close();
 	}
+	
+	
+	@Override
+	public List<PerfilModel> listar(PerfilFiltro filtro) {
+
+	QueryParametrosUtil qp = new QueryParametrosUtil();
+	
+	String query = "select perfil from PerfilModel as perfil where perfil.id!=" + filtro.getPerfilId();
+	
+	qp.setSql(query);
+	
+	List<PerfilModel> lista = (List<PerfilModel>) buscarUsandoQueryConParametros(qp);
+
+	return lista;
+	}
+	
 }
