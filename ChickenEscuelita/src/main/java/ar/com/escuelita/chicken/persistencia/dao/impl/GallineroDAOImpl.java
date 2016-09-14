@@ -77,7 +77,7 @@ public class GallineroDAOImpl extends DAO implements IGallineroDAO {
 	private QueryParametrosUtil generarConsulta(String query, GallineroFiltro filtro){
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 		
-		String str = " where u.borrado=false ";
+		String str = " where g.borrado=false ";
 		
 		/*   ID PRODUCTOR   */
 		if (filtro.getUsuarioId() != -1) {

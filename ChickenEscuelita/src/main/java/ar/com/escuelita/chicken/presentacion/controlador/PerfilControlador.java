@@ -4,6 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +19,7 @@ import ar.com.escuelita.chicken.base.enumerador.EnumPermiso;
 import ar.com.escuelita.chicken.negocio.servicios.IPerfilServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IPermisoServicio;
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
-import ar.com.escuelita.chicken.presentacion.dto.PermisoDTO;
+import ar.com.escuelita.chicken.presentacion.validacion.PerfilValidacion;
 
 @Controller
 public class PerfilControlador extends Controlador {
@@ -27,6 +31,16 @@ public class PerfilControlador extends Controlador {
 	@Autowired IPerfilServicio perfilServicio;
 
 	@Autowired IPermisoServicio permisoServicio;
+	
+	@Autowired
+	private PerfilValidacion perfilValidacion;
+	
+	@InitBinder
+    protected void initBinder(WebDataBinder binder) throws Exception {
+		if (binder.getTarget() instanceof PerfilDTO){
+		binder.setValidator(perfilValidacion);
+		}
+    }
 	
 	@RequestMapping(path="/perfiles")
 	public ModelAndView perfiles() {
@@ -42,7 +56,11 @@ public class PerfilControlador extends Controlador {
 	}
 	
 	@RequestMapping(path="/perfilesBorrar")
-	public ModelAndView borrarPerfil(@ModelAttribute("perfil") PerfilDTO perfil) {
+	public ModelAndView borrarPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil,
+			BindingResult result) throws Exception {
+		if(result.hasErrors()) {
+			return perfiles();
+		}
 		perfilServicio.borrar(perfil);
 		return new ModelAndView("redirect:/perfiles");
 	}
@@ -80,7 +98,11 @@ public class PerfilControlador extends Controlador {
 	}
 
 	@RequestMapping(path="/perfilesProcesarModificar")
-	public ModelAndView perfilesProcesarModificar(@ModelAttribute("perfil") PerfilDTO perfil) throws Exception {
+	public ModelAndView perfilesProcesarModificar(@ModelAttribute("perfil") @Validated PerfilDTO perfil,
+			BindingResult result) throws Exception {
+		if(result.hasErrors()) {
+			return modificarPerfil(perfil);
+		}
 		perfilServicio.modificar(perfil);
 		return new ModelAndView("redirect:/perfiles");
 	}

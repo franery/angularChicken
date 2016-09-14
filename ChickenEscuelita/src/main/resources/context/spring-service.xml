@@ -62,6 +62,7 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+
 	<!-- DAOs -->
 	<bean id="usuarioDAO"
 		class="ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl" />
@@ -81,6 +82,7 @@
 		class="ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl" />
 	<bean id="permisoDAO"
 		class="ar.com.escuelita.chicken.persistencia.dao.impl.PermisoDAOImpl" />
+
 
 	<!-- Services -->
 	<bean id="usuarioServicio"
@@ -103,12 +105,16 @@
 		class="ar.com.escuelita.chicken.negocio.servicios.impl.PermisoServicioImpl" />
 		
 		
+	<!-- Validaciones -->
 	<bean name="usuarioValidacionServicio"
 		class="ar.com.escuelita.chicken.negocio.servicios.validacion.impl.UsuarioValidacionServicioImpl" />
-
 	<bean name="usuarioValidacion"
 		class="ar.com.escuelita.chicken.presentacion.validacion.UsuarioValidacion">
-		<!-- <property name="usuarioValidacionServicio" ref="usuarioValidacionServicio"/> -->
+	</bean>
+	<bean name="perfilValidacionServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.validacion.impl.PerfilValidacionServicioImpl" />
+	<bean name="perfilValidacion"
+		class="ar.com.escuelita.chicken.presentacion.validacion.PerfilValidacion">
 	</bean>
 
 
