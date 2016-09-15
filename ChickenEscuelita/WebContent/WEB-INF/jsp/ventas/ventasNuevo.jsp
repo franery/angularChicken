@@ -41,8 +41,13 @@
 			<td><form:label path="precio"><spring:message code="precio"/>:</form:label></td>
 			<td><form:input path="precio" required="required"/></td>
 		</tr>
+		<tr>
+			<td><input type="submit" value=<spring:message code="guardar"/> /></td>
+		</tr>
+		<tr>
+			<td colspan="2"> <form:errors path="cantidad" cssClass="error" /> </td> 
+		</tr>
 	</table>
-	<input type="submit" value=<spring:message code="guardar"/> />
 </form:form>
 
 </body>

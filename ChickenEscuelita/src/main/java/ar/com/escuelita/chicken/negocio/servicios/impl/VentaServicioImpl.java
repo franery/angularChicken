@@ -39,12 +39,18 @@ public class VentaServicioImpl extends Servicio implements IVentaServicio {
 	@Override
 	public void crear(DTO dto) {
 		ventaDAO.guardar((VentaModel)ventaMapeador.map(dto, null));
-		DepositoModel nuevoDeposito = new DepositoModel();
+		long cantidadVenta = ((VentaDTO)dto).getCantidad();
 		for(DepositoModel deposito : depositoDAO.listar()) {
-			if(deposito.getStockHuevos() >= ((VentaDTO)dto).getCantidad()) {
-				nuevoDeposito = deposito;
-				nuevoDeposito.setStockHuevos(nuevoDeposito.getStockHuevos() - ((VentaDTO)dto).getCantidad());
-				depositoDAO.modificar(nuevoDeposito);
+			if(deposito.getStockHuevos() <= cantidadVenta) {
+				cantidadVenta -= deposito.getStockHuevos();
+				deposito.setStockHuevos(0);
+			}
+			else {
+				deposito.setStockHuevos(deposito.getStockHuevos()-cantidadVenta);
+				cantidadVenta = 0;
+			}
+			depositoDAO.modificar(deposito);
+			if(cantidadVenta == 0) {
 				break;
 			}
 		}
