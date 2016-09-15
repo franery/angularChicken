@@ -8,13 +8,13 @@ public enum EnumOperacion {
 	Borrar("Borrar"),
 	Exportar("Exportar");
 	
-	private String name;
+	private String nombre;
 	
-	private EnumOperacion(String name){
-		this.name = name;
+	private EnumOperacion(String nombre){
+		this.nombre = nombre;
 	}
 	
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 }

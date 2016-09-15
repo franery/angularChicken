@@ -12,13 +12,13 @@ public enum EnumModulo {
 	PERFILES("perfiles"),
 	PRODUCCION("produccion");
 	
-	private String name;
+	private String nombre;
 	
-	private EnumModulo(String name){
-		this.name = name;
+	private EnumModulo(String nombre){
+		this.nombre = nombre;
 	}
 	
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 }

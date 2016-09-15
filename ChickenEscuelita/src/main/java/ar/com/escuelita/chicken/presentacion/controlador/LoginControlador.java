@@ -64,49 +64,49 @@ public class LoginControlador extends Controlador{
 		List<String> listaPermisos = new ArrayList<String>();
 		for(PerfilDTO perfil : usuario.getListaPerfiles()) {
 			for(PermisoDTO permiso : perfil.getListaPermisos()) {
-				if(permiso.getModulo().getName().equals(EnumModulo.USUARIOS.getName())) {
-					if(!listaPermisos.contains(EnumModulo.USUARIOS.getName())) {
-						listaPermisos.add(EnumModulo.USUARIOS.getName());
+				if(permiso.getModulo().getNombre().equals(EnumModulo.USUARIOS.getNombre())) {
+					if(!listaPermisos.contains(EnumModulo.USUARIOS.getNombre())) {
+						listaPermisos.add(EnumModulo.USUARIOS.getNombre());
 					}
 				}
-				if(permiso.getModulo().getName().equals(EnumModulo.PARAMETROS.getName())) {
-					if(!listaPermisos.contains(EnumModulo.PARAMETROS.getName())) {
-						listaPermisos.add(EnumModulo.PARAMETROS.getName());
+				if(permiso.getModulo().getNombre().equals(EnumModulo.PARAMETROS.getNombre())) {
+					if(!listaPermisos.contains(EnumModulo.PARAMETROS.getNombre())) {
+						listaPermisos.add(EnumModulo.PARAMETROS.getNombre());
 					}
 				}
-				if(permiso.getModulo().getName().equals(EnumModulo.PROVEEDORES.getName())) {
-					if(!listaPermisos.contains(EnumModulo.PROVEEDORES.getName())) {
-						listaPermisos.add(EnumModulo.PROVEEDORES.getName());
+				if(permiso.getModulo().getNombre().equals(EnumModulo.PROVEEDORES.getNombre())) {
+					if(!listaPermisos.contains(EnumModulo.PROVEEDORES.getNombre())) {
+						listaPermisos.add(EnumModulo.PROVEEDORES.getNombre());
 					}
 				}
-				if(permiso.getModulo().getName().equals(EnumModulo.DEPOSITOS.getName())) {
-					if(!listaPermisos.contains(EnumModulo.DEPOSITOS.getName())) {
-						listaPermisos.add(EnumModulo.DEPOSITOS.getName());
+				if(permiso.getModulo().getNombre().equals(EnumModulo.DEPOSITOS.getNombre())) {
+					if(!listaPermisos.contains(EnumModulo.DEPOSITOS.getNombre())) {
+						listaPermisos.add(EnumModulo.DEPOSITOS.getNombre());
 					}
 				}
-				if(permiso.getModulo().getName().equals(EnumModulo.GALLINEROS.getName())) {
-					if(!listaPermisos.contains(EnumModulo.GALLINEROS.getName())) {
-						listaPermisos.add(EnumModulo.GALLINEROS.getName());
+				if(permiso.getModulo().getNombre().equals(EnumModulo.GALLINEROS.getNombre())) {
+					if(!listaPermisos.contains(EnumModulo.GALLINEROS.getNombre())) {
+						listaPermisos.add(EnumModulo.GALLINEROS.getNombre());
 					}
 				}
-				if(permiso.getModulo().getName().equals(EnumModulo.VENTAS.getName())) {
-					if(!listaPermisos.contains(EnumModulo.VENTAS.getName())) {
-						listaPermisos.add(EnumModulo.VENTAS.getName());
+				if(permiso.getModulo().getNombre().equals(EnumModulo.VENTAS.getNombre())) {
+					if(!listaPermisos.contains(EnumModulo.VENTAS.getNombre())) {
+						listaPermisos.add(EnumModulo.VENTAS.getNombre());
 					}
 				}
-				if(permiso.getModulo().getName().equals(EnumModulo.MOVIMIENTOS.getName())) {
-					if(!listaPermisos.contains(EnumModulo.MOVIMIENTOS.getName())) {
-						listaPermisos.add(EnumModulo.MOVIMIENTOS.getName());
+				if(permiso.getModulo().getNombre().equals(EnumModulo.MOVIMIENTOS.getNombre())) {
+					if(!listaPermisos.contains(EnumModulo.MOVIMIENTOS.getNombre())) {
+						listaPermisos.add(EnumModulo.MOVIMIENTOS.getNombre());
 					}
 				}
-				if(permiso.getModulo().getName().equals(EnumModulo.PERFILES.getName())) {
-					if(!listaPermisos.contains(EnumModulo.PERFILES.getName())) {
-						listaPermisos.add(EnumModulo.PERFILES.getName());
+				if(permiso.getModulo().getNombre().equals(EnumModulo.PERFILES.getNombre())) {
+					if(!listaPermisos.contains(EnumModulo.PERFILES.getNombre())) {
+						listaPermisos.add(EnumModulo.PERFILES.getNombre());
 					}
 				}
-				if(permiso.getModulo().getName().equals(EnumModulo.PRODUCCION.getName())) {
-					if(!listaPermisos.contains(EnumModulo.PRODUCCION.getName())) {
-						listaPermisos.add(EnumModulo.PRODUCCION.getName());
+				if(permiso.getModulo().getNombre().equals(EnumModulo.PRODUCCION.getNombre())) {
+					if(!listaPermisos.contains(EnumModulo.PRODUCCION.getNombre())) {
+						listaPermisos.add(EnumModulo.PRODUCCION.getNombre());
 					}
 				}
 			}

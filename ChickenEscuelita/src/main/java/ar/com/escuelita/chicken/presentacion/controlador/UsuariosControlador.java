@@ -74,10 +74,12 @@ public class UsuariosControlador extends Controlador {
 	}
 	
 	@RequestMapping("/usuariosNuevo")
-	public ModelAndView usuariosNuevo(){
+	public ModelAndView usuariosNuevo(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM){
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
-		UsuarioDTO usuarioNM = new UsuarioDTO();
+		if (usuarioNM == null) {
+			usuarioNM = new UsuarioDTO();
+		}
 		usuarioNM.setListaPerfiles(new ArrayList<PerfilDTO>());
 		model.addObject("usuarioNM", usuarioNM);
 		
@@ -103,7 +105,7 @@ public class UsuariosControlador extends Controlador {
 	public ModelAndView usuariosProcesarNuevo(HttpServletRequest request, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			return usuariosNuevo();
+			return usuariosNuevo(usuarioNM);
 		}
 		List<PerfilDTO> listaNuevaPerfiles = obtenerListaPerfiles(request);
 		usuarioNM.setListaPerfiles(listaNuevaPerfiles);

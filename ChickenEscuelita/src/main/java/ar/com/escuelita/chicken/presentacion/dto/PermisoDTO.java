@@ -17,7 +17,7 @@ public class PermisoDTO extends DTO {
 	 */
 	public String getNombreOperacion() {
 		if (this.operacion != null) {
-			return this.operacion.getName();
+			return this.operacion.getNombre();
 		}
 		return "";
 	}
