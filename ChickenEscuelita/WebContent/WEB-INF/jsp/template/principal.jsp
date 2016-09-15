@@ -34,6 +34,20 @@ body { padding-top: 70px; }
 	</div>
 
 
+<!--  Otra forma de separar en dos la pantalla sin la class alineacion y pantalla
+<div class="container">
+<div class="row">
+  <div class="col-sm-2">
+	<div >
+		<jsp:include page="../template/menu.jsp"></jsp:include>
+	</div>
+</div>
+	<div class="col-sm-10">
+		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
+	</div>
+</div>
+</div>
+ -->
 <script type="text/javascript">
 $(document).ready(function() {
     $('#tablita').DataTable();

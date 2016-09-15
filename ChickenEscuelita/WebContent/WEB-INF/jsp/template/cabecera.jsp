@@ -14,8 +14,11 @@
 			<div class="navbar-header">
 				<%-- ${Title} --%>
 				<a class="navbar-brand" href=""><spring:message code="nombreApp" /></a>
-				     <button type = "button" class = "navbar-toggle" 
- 			        data-toggle = "collapse" data-target = "#example-navbar-collapse">
+				     <button type = "button" class = "navbar-toggle" data-toggle="collapse" data-target = "#example-navbar-collapse">
+					      <span class="sr-only">Toggle navigation</span>
+					      <span class="icon-bar"></span>
+					      <span class="icon-bar"></span>
+					      <span class="icon-bar"></span>
 					</button>
 			</div>
 
