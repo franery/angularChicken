@@ -46,10 +46,10 @@
 						<c:when test="${((modulo.nombre == 'ventas' || modulo.nombre == 'movimientos') &&
 								(operacion.nombre != 'Crear' && operacion.nombre != 'Listar')) || 
 								(modulo.nombre == 'produccion' && operacion.nombre != 'Listar')}">
-							<td><input id="${idPermiso}" name="${idPermiso}" type="checkbox"  disabled/></td>		
+							<td><input name="${idPermiso}" id="${modulo.nombre} ${operacion.nombre}" type="checkbox"  disabled/></td>		
 						</c:when>
 						<c:otherwise>
-							<td><input id="${idPermiso}" name="${idPermiso}" type="checkbox"/></td>					
+							<td><input name="${idPermiso}" id="${modulo.nombre} ${operacion.nombre}" type="checkbox"/></td>					
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -61,8 +61,18 @@
 	</form:form>
 	
 	<script>
+	
 	$('#botonGuardar').on('click', function (e) {
 		e.preventDefault();
+		<c:forEach items="${tablaPermisos}" var="permiso">
+			var checkbox = document.getElementsByName('${permiso.id}')[0];
+			var permisoNombre = checkbox.id;
+			var modulo = permisoNombre.split(" ")[0];
+			var operacion = permisoNombre.split(" ")[1];
+			if (checkbox.checked && operacion != 'Listar') {
+				document.getElementById(modulo + " Listar").checked = true;
+			}
+		</c:forEach>
 	    $('#formCrear').submit();
 	});
 	</script>

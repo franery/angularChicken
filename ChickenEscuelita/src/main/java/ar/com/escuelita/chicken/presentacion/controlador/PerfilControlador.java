@@ -96,7 +96,8 @@ public class PerfilControlador extends Controlador {
 		for (DTO dto: listaPermisos) {
 			PermisoDTO permisoDto = (PermisoDTO) dto; 
 			String id = (String) request.getParameter(permisoDto.getId());
-			if (id!= null && !id.isEmpty()) {
+			if (id != null && !id.isEmpty()) {
+				System.out.println("ID:" + id);
 				listaNuevaPermisos.add(permisoDto);
 			}
 		}
