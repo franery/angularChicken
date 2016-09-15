@@ -15,7 +15,7 @@
 
 	<c:set var="Title" value="LogIn" scope="request" />
 	<c:set var="Nombre" value="" scope="request" />
-	<jsp:include page="../template/navbarLogin.jsp"></jsp:include>
+	<jsp:include page="../template/cabeceraLogin.jsp"></jsp:include>
 
 	<table align="center">
 		<form:form action ="${pageContext.request.contextPath}/login" method="POST">

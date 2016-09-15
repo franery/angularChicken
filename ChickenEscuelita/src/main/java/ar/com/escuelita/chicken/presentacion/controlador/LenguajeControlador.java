@@ -16,11 +16,9 @@ public class LenguajeControlador extends Controlador{
 
 
 	@RequestMapping(value = "/cambioLenguaje")
-	public ModelAndView changeLang(@RequestParam("urlRequest") String  urlRequest, @RequestParam("languageRequest") String languageRequest, HttpServletRequest request, HttpServletResponse response) {
-		if (languageRequest != "") { 
-			LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-			localeResolver.setLocale(request, response, StringUtils.parseLocaleString(languageRequest)); 
-		}
+	public ModelAndView changeLang(@RequestParam("urlRequest") String  urlRequest, HttpServletRequest request, HttpServletResponse response) {
+		LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
+		localeResolver.setLocale(request, response, StringUtils.parseLocaleString(request.getParameter("lenguajeElegido"))); 
 		String[] spliteado = urlRequest.split("/");
 		String str = spliteado[spliteado.length - 1];
 		return new ModelAndView("redirect:/"+str);

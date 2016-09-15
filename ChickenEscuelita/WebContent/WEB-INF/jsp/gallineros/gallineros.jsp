@@ -28,7 +28,7 @@
 			<tr>
 				<th><spring:message code="nombre" /></th>
 				<th><spring:message code="nombreUsuario" /></th>
-				<th><spring:message code="stock" /></th>
+				<th><spring:message code="stockGallinas" /></th>
 				<th></th>
 				<th></th>
 			</tr>

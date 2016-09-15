@@ -19,7 +19,7 @@
 	<!-- NavBar -->
 	<c:set var="Title" scope="request" value="${usuarioActual.getListaPerfiles().get(0).getNombre()}"/>
 	<c:set var="Nombre" value="${usuarioActual.getNombre() }"	scope="request" />
-	<jsp:include page="../template/navbar.jsp"></jsp:include>
+	<jsp:include page="../template/cabecera.jsp"></jsp:include>
 
 	<div class="alineacion">
 		<!-- Menu -->
