@@ -14,21 +14,21 @@
 
 <!-- Menu General -->
 	
-	<div>
+<%-- 	<div>
 		<c:forEach items="${listaPermisos}" var="permiso">
 			<!-- link -->
 			<form:form action="${permiso}" method="post" >
 				<input class="menu" type="submit" value=<spring:message code="${permiso}"/> />
 			</form:form>
 		</c:forEach>
-	</div> 
+	</div>  --%>
 
 
 
 
 	<!-- Menu con bootstrap, responsive. Comentado por ahora, porque no esta 100% -->
-<%-- 	 <div class="sidebar-nav">
-      <div class="navbar navbar-default" role="navigation">
+	 <div class="sidebar-nav">
+      <div class="navbar navbar-default navbar-center" role="navigation">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -51,7 +51,7 @@
         </div>
    </div>
   </div>
-   --%>
+
 
 
 

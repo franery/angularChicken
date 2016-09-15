@@ -11,47 +11,41 @@
 <jsp:include page="../template/importacion.jsp"></jsp:include>
 
 <style type="text/css">
-body { padding-top: 70px; }
+body {
+	padding-top: 70px;
+}
 </style>
 
-<title><spring:message code="nombreApp"/></title>
+<title><spring:message code="nombreApp" /></title>
 
 </head>
 <body>
 
 
 	<!-- NavBar -->
-<%-- 	<c:set var="Title" scope="request" value="${usuarioActual.getListaPerfiles().get(0).getNombre()}"/> --%>
-	<c:set var="Nombre" value="${usuarioActual.getNombre() }"	scope="request" />
+	<%-- 	<c:set var="Title" scope="request" value="${usuarioActual.getListaPerfiles().get(0).getNombre()}"/> --%>
+	<c:set var="Nombre" value="${usuarioActual.getNombre() }"
+		scope="request" />
 	<jsp:include page="../template/cabecera.jsp"></jsp:include>
 
-	<div class="alineacion">
-		<!-- Menu -->
-		<jsp:include page="../template/menu.jsp"></jsp:include>
-	</div>
-	<div class="pantalla">
-		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div>
+					<jsp:include page="../template/menu.jsp"></jsp:include>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
+			</div>
+		</div>
 	</div>
 
-
-<!--  Otra forma de separar en dos la pantalla sin la class alineacion y pantalla
-<div class="container">
-<div class="row">
-  <div class="col-sm-2">
-	<div >
-		<jsp:include page="../template/menu.jsp"></jsp:include>
-	</div>
-</div>
-	<div class="col-sm-10">
-		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
-	</div>
-</div>
-</div>
- -->
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#tablita').DataTable();
-} );
-</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#tablita').DataTable();
+		});
+	</script>
 </body>
 </html>
