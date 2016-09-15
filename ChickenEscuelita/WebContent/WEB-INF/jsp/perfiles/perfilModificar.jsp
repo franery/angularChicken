@@ -55,6 +55,9 @@
 				</c:forEach>
 			</tr>
 		</c:forEach>
+			<tr>
+				<td colspan="4"> <form:errors path="nombre" cssClass="error" /> </td> 
+			</tr>
 	</table>
 	<input id="botonGuardar" type="submit" value="Modificar"/>
 	</form:form>

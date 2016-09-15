@@ -14,8 +14,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
@@ -64,17 +64,17 @@ public class PerfilControlador extends Controlador {
 	public ModelAndView borrarPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil,
 			BindingResult result) throws Exception {
 		if(result.hasErrors()) {
-			return perfiles();
+			return new ModelAndView("redirect:/perfiles");
 		}
 		perfilServicio.borrar(perfil);
 		return new ModelAndView("redirect:/perfiles");
 	}
 
 	@RequestMapping("/perfilesNuevo")
-	public ModelAndView nuevoPerfil(){
+	public ModelAndView nuevoPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil, BindingResult result){
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);		
 		model.addObject("usuarioActual", usuario);
-		model.addObject("perfil", new PerfilDTO());
+		model.addObject("perfil", perfil);
 		model.addObject("listaPermisos",listaPermisos);
 		model.addObject("tablaPermisos", permisoServicio.listar());
 		model.addObject("listaOperaciones",EnumOperacion.values());
@@ -84,18 +84,20 @@ public class PerfilControlador extends Controlador {
 	}
 
 	@RequestMapping(path="/perfilesProcesarNuevo")
-	public ModelAndView perfilesProcesarNuevo(HttpServletRequest request) throws Exception {
-
-		String nombre = (String) request.getParameter("nombre");
-		PerfilDTO perfilNuevo = new PerfilDTO();
-		setPermisos(request, perfilNuevo);
-		perfilNuevo.setNombre(nombre);
-		perfilServicio.crear(perfilNuevo);
+	public ModelAndView perfilesProcesarNuevo(@ModelAttribute("perfil") @Validated PerfilDTO perfil,
+			BindingResult result,HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
+		if(result.hasErrors()) {
+			ModelAndView model = new ModelAndView("redirect:/perfilesNuevo");
+			redirectAttributes.addFlashAttribute("perfil", perfil);
+			return model;
+		}
+		setPermisos(request, perfil);
+		perfilServicio.crear(perfil);
 		return new ModelAndView("redirect:/perfiles");
 	}
 
 	@RequestMapping(path="/perfilesModificar")
-	public ModelAndView modificarPerfil(@ModelAttribute("perfil") PerfilDTO perfil) {
+	public ModelAndView modificarPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil, BindingResult result) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("perfil", perfil);
@@ -110,9 +112,11 @@ public class PerfilControlador extends Controlador {
 
 	@RequestMapping(path="/perfilesProcesarModificar")
 	public ModelAndView perfilesProcesarModificar(@ModelAttribute("perfil") @Validated PerfilDTO perfil,
-			HttpServletRequest request,BindingResult result) throws Exception {
+			BindingResult result,HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
 		if(result.hasErrors()) {
-			return modificarPerfil(perfil);
+			ModelAndView model = new ModelAndView("redirect:/perfilesModificar");
+			redirectAttributes.addFlashAttribute("perfil", perfil);
+			return model;
 		}
 		setPermisos(request,perfil);
 		perfilServicio.modificar(perfil);

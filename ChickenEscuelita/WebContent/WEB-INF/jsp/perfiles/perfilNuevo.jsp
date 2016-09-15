@@ -20,8 +20,8 @@
 		<spring:message code="perfilNuevo" />
 	</h1>
 
-	<form:form id="formCrear" method="POST" action="perfilesProcesarNuevo">
-	<spring:message code="nombre" /> <input name="nombre" type="text"/>
+	<form:form id="formCrear" method="POST" action="perfilesProcesarNuevo" commandName="perfil">
+	<spring:message code="nombre" /> <form:input path="nombre" name="nombre" type="text" value="${perfil.getNombre()}"/>
 	<table>
 		<thead>
 			<tr>
@@ -54,8 +54,11 @@
 					</c:choose>
 				</c:forEach>
 			</tr>
-		</c:forEach>
 
+		</c:forEach>
+			<tr>
+				<td colspan="4"> <form:errors path="nombre" cssClass="error" /> </td> 
+			</tr>
 	</table>
 	<input id="botonGuardar" type="button" value="Crear"/>
 	</form:form>

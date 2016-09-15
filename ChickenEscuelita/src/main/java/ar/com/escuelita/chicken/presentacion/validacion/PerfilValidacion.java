@@ -30,5 +30,10 @@ public class PerfilValidacion implements Validator {
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("id", e.getMessage(),"Mesnaje default");
 		}
+		try {
+			perfilValidacionServicio.validacionNombreUnico(perfil.getNombre(),perfil.getId());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
+		}
 	}
 }

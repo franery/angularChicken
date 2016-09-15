@@ -5,4 +5,6 @@ import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 public interface IPerfilValidacionServicio {
 	
 	void validacionPerfilRoot(String perfilId) throws ValidacionExcepcion;
+
+	void validacionNombreUnico(String nombre, String id) throws ValidacionExcepcion;
 }
