@@ -1,11 +1,8 @@
 package ar.com.escuelita.chicken.negocio.servicios.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +16,9 @@ import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IGallineroDAO;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.GallineroModel;
-import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.UsuarioModel;
-import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
-import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
-import ar.com.escuelita.chicken.presentacion.dto.PermisoDTO;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
-import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 
 public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
@@ -115,28 +107,5 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	@Override
 	public Collection<DTO> listarProductores() {
 		return usuarioMapeador.map(usuarioDAO.listarProductores());
-	}
-
-	@Override
-	public void crear(DTO dto, String perfiles) throws NegocioExcepcion {
-		crear(agregarPerfiles((UsuarioDTO)dto,perfiles));
-	}
-
-	@Override
-	public void modificar(UsuarioDTO usuarioNM, String perfiles) throws NegocioExcepcion {
-		modificar(agregarPerfiles(usuarioNM, perfiles));
-	}
-
-	private UsuarioDTO agregarPerfiles(UsuarioDTO dto, String perfiles){
-		String[] arrayPerfiles = perfiles.split(";");    
-		List<PerfilDTO> listaPerfiles = new ArrayList<>();
-		for(String perfil : arrayPerfiles) {
-			PerfilDTO perfilDTO = (PerfilDTO) (perfilServicio.buscar(Long.parseLong(perfil)));
-			listaPerfiles.add(perfilDTO);
-		}
-  
-		((UsuarioDTO)dto).setListaPerfiles(listaPerfiles);
-		return dto;
-		
 	}
 }

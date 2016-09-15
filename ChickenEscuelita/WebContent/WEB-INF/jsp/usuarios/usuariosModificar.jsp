@@ -44,7 +44,8 @@
 			<c:forEach var="perfil" items="${perfiles}">
 				</td>
 					<td>
-			        	<input type="checkbox" name="perfilFeo" value="${perfil.getId()}"/>${perfil.getNombre()}
+			        	
+			        	<input type="checkbox" id="${perfil.getId()}" name="${perfil.getId()}" value="${perfil.getId()}"/>${perfil.getNombre()}
 	                </td>
 				</tr>
 				<td>
@@ -53,7 +54,6 @@
 			</tr>
 			
 			<tr>
-				<input id="stringConcatenado" name="perfiles" type="hidden"/>
 				<td colspan="4" style="text-align: center;">
 				<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> </td>
 			</tr>
@@ -74,27 +74,10 @@
 <script>
 
 $('#botonGuardar').on('click', function (e) {
-	var mensaje = document.getElementById("mensajeModificar").value;
-    e.preventDefault();
-    
-    checkboxes = document.getElementsByName("perfilFeo"); 
-	var perfiles = "";
-	for (var i = 0; i < checkboxes.length; i++) {
-	    var checkbox = checkboxes[i];
-		if (checkbox.checked) {
-			perfiles += checkbox.value + ";";    
-		}
-	}
-	e.preventDefault();
-    document.getElementById("stringConcatenado").value = perfiles;
-    
-    
-    bootbox.confirm(mensaje, function (response) {        
-        if(response) {
-            $('#formModificar').submit();
-        }
-    });
-});
+	$('#botonGuardar').on('click', function (e) {
+		e.preventDefault();
+	    $('#formModificar').submit();
+	});
 </script>
 
 </body>

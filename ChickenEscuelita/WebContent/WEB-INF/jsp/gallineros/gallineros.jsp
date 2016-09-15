@@ -29,6 +29,8 @@
 				<th><spring:message code="nombre" /></th>
 				<th><spring:message code="nombreUsuario" /></th>
 				<th><spring:message code="stock" /></th>
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<c:if test="${!empty listaGallineros}">

@@ -14,7 +14,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.constantes.Constantes;
@@ -106,6 +105,28 @@ public class UsuariosControlador extends Controlador {
 		if (result.hasErrors()) {
 			return usuariosNuevo();
 		}
+		List<PerfilDTO> listaNuevaPerfiles = obtenerListaPerfiles(request);
+		usuarioNM.setListaPerfiles(listaNuevaPerfiles);
+		usuarioServicio.crear(usuarioNM);
+		return new ModelAndView("redirect:/usuarios");
+	}
+
+
+
+	//procesar modificar usuario
+	@RequestMapping(path="/usuariosProcesarModificar")
+	public ModelAndView usuariosProcesarModificar(HttpServletRequest request, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
+			BindingResult result) throws Exception {
+		if(result.hasErrors()) {
+			return usuariosModificar(usuarioNM);
+		}
+		List<PerfilDTO> listaNuevaPerfiles = obtenerListaPerfiles(request);
+		usuarioNM.setListaPerfiles(listaNuevaPerfiles);
+		usuarioServicio.modificar(usuarioNM);
+		return new ModelAndView("redirect:/usuarios");
+	}
+	
+	private List<PerfilDTO> obtenerListaPerfiles(HttpServletRequest request) {
 		List<PerfilDTO> listaNuevaPerfiles = new ArrayList<>();
 		Collection<DTO> listaPerfiles = perfilServicio.listar();
 		for (DTO dto : listaPerfiles) {
@@ -115,20 +136,6 @@ public class UsuariosControlador extends Controlador {
 				listaNuevaPerfiles.add(perfilDTO);
 			}
 		}
-		usuarioNM.setListaPerfiles(listaNuevaPerfiles);
-		usuarioServicio.crear(usuarioNM);
-		return new ModelAndView("redirect:/usuarios");
-	}
-
-	//procesar modificar usuario
-	@RequestMapping(path="/usuariosProcesarModificar")
-	public ModelAndView usuariosProcesarModificar(@RequestParam("perfiles")String perfiles, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
-			BindingResult result) throws Exception {
-		if(result.hasErrors()) {
-			return usuariosModificar(usuarioNM);
-		}
-		usuarioServicio.modificar(usuarioNM,perfiles);
-		return new ModelAndView("redirect:/usuarios");
-	}
-	
+		return listaNuevaPerfiles;
+	}	
 }
