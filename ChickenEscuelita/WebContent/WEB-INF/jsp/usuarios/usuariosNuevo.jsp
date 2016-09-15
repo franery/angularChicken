@@ -43,7 +43,7 @@
 			<c:forEach var="perfil" items="${perfiles}">
 				</td>
 					<td>
-			        	<input type="checkbox" name="perfilFeo" value="${perfil.getId()}"/>${perfil.getNombre()}
+			        	<input type="checkbox" id="${perfil.getId()}" name="${perfil.getId()}" value="${perfil.getId()}"/>${perfil.getNombre()}
 	                </td>
 				</tr>
 				<td>
@@ -52,7 +52,6 @@
 			</tr>
 			
 			<tr>
-				<input id="stringConcatenado" name="perfiles" type="hidden"/>
 				<td colspan="4" style="text-align: center;">
 				<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> </td>
 			</tr>
@@ -61,24 +60,11 @@
 			</tr>
 		</table>
 	</form:form>
-	
-	
 	<script>
-	
 	$('#botonGuardar').on('click', function (e) {
-		checkboxes = document.getElementsByName("perfilFeo"); 
-		var perfiles = "";
-		for (var i = 0; i < checkboxes.length; i++) {
-		    var checkbox = checkboxes[i];
-			if (checkbox.checked) {
-				perfiles += checkbox.value + ";";    
-			}
-		}
 		e.preventDefault();
-	    document.getElementById("stringConcatenado").value = perfiles;
 	    $('#formNuevo').submit();
 	});
 	</script>
-	
 </body>
 </html>

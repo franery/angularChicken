@@ -1,7 +1,10 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -98,13 +101,22 @@ public class UsuariosControlador extends Controlador {
 	
 	//procesar nuevo usuario
 	@RequestMapping(path="/usuariosProcesarNuevo")
-	public ModelAndView usuariosProcesarNuevo(@RequestParam("perfiles")String perfiles, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
+	public ModelAndView usuariosProcesarNuevo(HttpServletRequest request, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-				return usuariosNuevo();
+			return usuariosNuevo();
 		}
-
-		usuarioServicio.crear(usuarioNM,perfiles);
+		List<PerfilDTO> listaNuevaPerfiles = new ArrayList<>();
+		Collection<DTO> listaPerfiles = perfilServicio.listar();
+		for (DTO dto : listaPerfiles) {
+			PerfilDTO perfilDTO = (PerfilDTO) dto;
+			String id = (String) request.getParameter(perfilDTO.getId());
+			if (id != null && !id.isEmpty()) {
+				listaNuevaPerfiles.add(perfilDTO);
+			}
+		}
+		usuarioNM.setListaPerfiles(listaNuevaPerfiles);
+		usuarioServicio.crear(usuarioNM);
 		return new ModelAndView("redirect:/usuarios");
 	}
 
