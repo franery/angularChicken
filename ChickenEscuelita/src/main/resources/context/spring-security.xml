@@ -18,37 +18,43 @@
 	<security:http pattern="/inicio" security="none"/>
 	
 	<security:http>
-		<security:intercept-url pattern="/usuarios" access="hasAuthority('usuariosListar')" />
-		<security:intercept-url pattern="/usuariosNuevo" access="hasAuthority('usuariosCrear')" />
-		<security:intercept-url pattern="/usuariosModificar" access="hasAuthority('usuariosModificar')" />
+		<security:intercept-url pattern="/usuarios" access="hasAuthority('usuarios_listar')" />
+		<security:intercept-url pattern="/usuariosNuevo" access="hasAuthority('usuarios_crear')" />
+		<security:intercept-url pattern="/usuariosModificar" access="hasAuthority('usuarios_modificar')" />
+		<security:intercept-url pattern="/usuariosBorrar" access="hasAuthority('usuarios_borrar')" />
 
-		<security:intercept-url pattern="/parametros" access="hasAuthority('parametrosListar')" />
-		<security:intercept-url pattern="/parametrosNuevo" access="hasAuthority('parametrosCrear')" />
-		<security:intercept-url pattern="/parametrosModificar" access="hasAuthority('parametrosModificar')" />
+		<security:intercept-url pattern="/parametros" access="hasAuthority('parametros_listar')" />
+		<security:intercept-url pattern="/parametrosNuevo" access="hasAuthority('parametros_crear')" />
+		<security:intercept-url pattern="/parametrosModificar" access="hasAuthority('parametros_modificar')" />
+		<security:intercept-url pattern="/parametrosBorrar" access="hasAuthority('parametros_borrar')" />
 
-		<security:intercept-url pattern="/depositos" access="hasAuthority('depositosListar')" />
-		<security:intercept-url pattern="/depositosNuevo" access="hasAuthority('depositosCrear')" />
-		<security:intercept-url pattern="/depositosModificar" access="hasAuthority('depositosModificar')" />
+		<security:intercept-url pattern="/depositos" access="hasAuthority('depositos_listar')" />
+		<security:intercept-url pattern="/depositosNuevo" access="hasAuthority('depositos_crear')" />
+		<security:intercept-url pattern="/depositosModificar" access="hasAuthority('depositos_modificar')" />
+		<security:intercept-url pattern="/depositosBorrar" access="hasAuthority('depositos_borrar')" />
 		
-		<security:intercept-url pattern="/gallineros" access="hasAuthority('gallinerosListar')" />
-		<security:intercept-url pattern="/gallinerosNuevo" access="hasAuthority('gallinerosCrear')" />
-		<security:intercept-url pattern="/gallinerosModificar" access="hasAuthority('gallinerosModificar')" />
+		<security:intercept-url pattern="/gallineros" access="hasAuthority('gallineros_listar')" />
+		<security:intercept-url pattern="/gallinerosNuevo" access="hasAuthority('gallineros_crear')" />
+		<security:intercept-url pattern="/gallinerosModificar" access="hasAuthority('gallineros_modificar')" />
+		<security:intercept-url pattern="/gallinerosBorrar" access="hasAuthority('gallineros_borrar')" />
 		
-		<security:intercept-url pattern="/proveedores" access="hasAuthority('proveedoresListar')" />
-		<security:intercept-url pattern="/proveedoresNuevo" access="hasAuthority('proveedoresCrear')" />
-		<security:intercept-url pattern="/proveedoresModificar" access="hasAuthority('proveedoresModificar')" />
+		<security:intercept-url pattern="/proveedores" access="hasAuthority('proveedores_listar')" />
+		<security:intercept-url pattern="/proveedoresNuevo" access="hasAuthority('proveedores_crear')" />
+		<security:intercept-url pattern="/proveedoresModificar" access="hasAuthority('proveedores_modificar')" />
+		<security:intercept-url pattern="/proveedoresBorrar" access="hasAuthority('proveedores_borrar')" />
 
-		<security:intercept-url pattern="/ventas" access="hasAuthority('ventasListar')" />
-		<security:intercept-url pattern="/ventasNuevo" access="hasAuthority('ventasCrear')" />
+		<security:intercept-url pattern="/ventas" access="hasAuthority('ventas_listar')" />
+		<security:intercept-url pattern="/ventasNuevo" access="hasAuthority('ventas_crear')" />
 
-		<security:intercept-url pattern="/perfiles" access="hasAuthority('perfilesListar')" />
-		<security:intercept-url pattern="/perfilesNuevo" access="hasAuthority('perfilesCrear')" />
-		<security:intercept-url pattern="/perfilesModificar" access="hasAuthority('perfilesModificar')" />
+		<security:intercept-url pattern="/perfiles" access="hasAuthority('perfiles_listar')" />
+		<security:intercept-url pattern="/perfilesNuevo" access="hasAuthority('perfiles_crear')" />
+		<security:intercept-url pattern="/perfilesModificar" access="hasAuthority('perfiles_modificar')" />
+		<security:intercept-url pattern="/perfilesBorrar" access="hasAuthority('perfiles_borrar')" />
 		
-		<security:intercept-url pattern="/produccion" access="hasAuthority('produccionListar')" />
+		<security:intercept-url pattern="/produccion" access="hasAuthority('produccion_listar')" />
 
-		<security:intercept-url pattern="/movimientos" access="hasAuthority('movimientosListar')" />
-		<security:intercept-url pattern="/movimientosNuevo" access="hasAuthority('movimientosCrear')" />
+		<security:intercept-url pattern="/movimientos" access="hasAuthority('movimientos_listar')" />
+		<security:intercept-url pattern="/movimientosNuevo" access="hasAuthority('movimientos_crear')" />
 		
 		<security:intercept-url pattern="/principal" access="isAuthenticated()" />
 		
@@ -68,7 +74,7 @@
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="dataSource" role-prefix=""
 				users-by-username-query="SELECT nombreUsuario as username, contrasenia as password,true as enabled FROM Usuario WHERE borrado=false AND nombreUsuario=?"
-				authorities-by-username-query="SELECT u.nombreUsuario as username, concat(LOWER(p.modulo),p.permiso) as authority FROM Usuario u join PerfilUsuario pu on u.id = pu.idUsuario join PerfilPermiso pp on pu.idPerfil = pp.idPerfil join Permiso p on p.id = pp.idPermiso WHERE nombreUsuario=?"/>
+				authorities-by-username-query="SELECT u.nombreUsuario as username, concat(concat(LOWER(p.modulo),'_'),LOWER(p.permiso)) as authority FROM Usuario u join PerfilUsuario pu on u.id = pu.idUsuario join PerfilPermiso pp on pu.idPerfil = pp.idPerfil join Permiso p on p.id = pp.idPermiso WHERE nombreUsuario=?"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
