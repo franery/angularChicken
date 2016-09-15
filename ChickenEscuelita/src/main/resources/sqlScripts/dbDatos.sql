@@ -2,15 +2,15 @@ insert into Perfil (nombre) values
 ('root');
 
 insert into Permiso (permiso, modulo) values
-('Crear', 'USUARIOS'),('Listar', 'USUARIOS'),('Modificar', 'USUARIOS'),('Borrar', 'USUARIOS'),('Exportar', 'USUARIOS'),
-('Crear', 'PROVEEDORES'),('Listar', 'PROVEEDORES'),('Modificar', 'PROVEEDORES'),('Borrar', 'PROVEEDORES'),('Exportar', 'PROVEEDORES'),
-('Crear', 'PARAMETROS'),('Listar', 'PARAMETROS'),('Modificar', 'PARAMETROS'),('Borrar', 'PARAMETROS'),('Exportar', 'PARAMETROS'),
-('Crear', 'VENTAS'),('Listar', 'VENTAS'),('Modificar', 'VENTAS'),('Borrar', 'VENTAS'),('Exportar', 'VENTAS'),
-('Crear', 'MOVIMIENTOS'),('Listar', 'MOVIMIENTOS'),('Modificar', 'MOVIMIENTOS'),('Borrar', 'MOVIMIENTOS'),('Exportar', 'MOVIMIENTOS'),
-('Crear', 'GALLINEROS'),('Listar', 'GALLINEROS'),('Modificar', 'GALLINEROS'),('Borrar', 'GALLINEROS'),('Exportar', 'GALLINEROS'),
-('Crear', 'DEPOSITOS'),('Listar', 'DEPOSITOS'),('Modificar', 'DEPOSITOS'),('Borrar', 'DEPOSITOS'),('Exportar', 'DEPOSITOS'),
-('Crear', 'PERFILES'),('Listar', 'PERFILES'),('Modificar', 'PERFILES'),('Borrar', 'PERFILES'),('Exportar', 'PERFILES'),
-('Crear', 'PRODUCCION'),('Listar', 'PRODUCCION'),('Modificar', 'PRODUCCION'),('Borrar', 'PRODUCCION'),('Exportar', 'PRODUCCION');
+('CREAR', 'USUARIOS'),('LISTAR', 'USUARIOS'),('MODIFICAR', 'USUARIOS'),('BORRAR', 'USUARIOS'),('EXPORTAR', 'USUARIOS'),
+('CREAR', 'PROVEEDORES'),('LISTAR', 'PROVEEDORES'),('MODIFICAR', 'PROVEEDORES'),('BORRAR', 'PROVEEDORES'),('EXPORTAR', 'PROVEEDORES'),
+('CREAR', 'PARAMETROS'),('LISTAR', 'PARAMETROS'),('MODIFICAR', 'PARAMETROS'),('BORRAR', 'PARAMETROS'),('EXPORTAR', 'PARAMETROS'),
+('CREAR', 'VENTAS'),('LISTAR', 'VENTAS'),('MODIFICAR', 'VENTAS'),('Borrar', 'VENTAS'),('Exportar', 'VENTAS'),
+('CREAR', 'MOVIMIENTOS'),('LISTAR', 'MOVIMIENTOS'),('MODIFICAR', 'MOVIMIENTOS'),('BORRAR', 'MOVIMIENTOS'),('EXPORTAR', 'MOVIMIENTOS'),
+('CREAR', 'GALLINEROS'),('LISTAR', 'GALLINEROS'),('MODIFICAR', 'GALLINEROS'),('BORRAR', 'GALLINEROS'),('EXPORTAR', 'GALLINEROS'),
+('CREAR', 'DEPOSITOS'),('LISTAR', 'DEPOSITOS'),('MODIFICAR', 'DEPOSITOS'),('BORRAR', 'DEPOSITOS'),('EXPORTAR', 'DEPOSITOS'),
+('CREAR', 'PERFILES'),('LISTAR', 'PERFILES'),('MODIFICAR', 'PERFILES'),('BORRAR', 'PERFILES'),('EXPORTAR', 'PERFILES'),
+('CREAR', 'PRODUCCION'),('LISTAR', 'PRODUCCION'),('MODIFICAR', 'PRODUCCION'),('BORRAR', 'PRODUCCION'),('EXPORTAR', 'PRODUCCION');
 
 insert into PerfilPermiso (idPerfil, idPermiso) values
 (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(1,13),(1,14),(1,15),(1,16),(1,17),

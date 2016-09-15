@@ -2,11 +2,11 @@ package ar.com.escuelita.chicken.base.enumerador;
 
 public enum EnumOperacion {
 	
-	Crear("Crear"),
-	Listar("Listar"),
-	Modificar("Modificar"),
-	Borrar("Borrar"),
-	Exportar("Exportar");
+	CREAR("Crear"),
+	LISTAR("Listar"),
+	MODIFICAR("Modificar"),
+	BORRAR("Borrar"),
+	EXPORTAR("Exportar");
 	
 	private String nombre;
 	
