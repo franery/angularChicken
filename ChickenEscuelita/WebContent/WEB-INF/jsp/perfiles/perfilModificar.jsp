@@ -27,53 +27,35 @@
 			<tr>
 				<th></th>
 				<c:forEach items="${listaOperaciones}" var="operacion">
-					<th>${operacion.getName()}</th>
+					<th>${operacion.getNombre()}</th>
 				</c:forEach>
 			</tr>
 		</thead>
 	
 		<c:forEach items="${listaModulos}" var="modulo">
 			<tr>
-				<td>${modulo.getName()}</td>
+				<td>${modulo.getNombre()}</td>
 				<c:forEach items="${listaOperaciones}" var="operacion">
 					<c:forEach items="${tablaPermisos}" var="permiso">
-						<c:if test="${permiso.getNombreModulo().equalsIgnoreCase(modulo.getName()) 
-										&& permiso.getNombreOperacion().equalsIgnoreCase(operacion.getName())}">
+						<c:if test="${permiso.getNombreModulo().equalsIgnoreCase(modulo.getNombre()) 
+										&& permiso.getNombreOperacion().equalsIgnoreCase(operacion.getNombre())}">
 							<c:set var="idPermiso" value="${permiso.getId()}"/>
 						</c:if>					
 					</c:forEach>				
-				
 					<c:choose>
-						<c:when test="${modulo.getName().equals('ventas') || modulo.getName().equals('movimientos')}">
-        					<c:choose>
-        				    	<c:when test="${operacion.getName().equals('Crear') || operacion.getName().equals('Listar')}">
-        				    		 <td><input id="${idPermiso}" name="${idPermiso}" type="checkbox" /></td>
-        				    	</c:when>
-        				    	<c:otherwise>
-        				    		<td><input id="${idPermiso}" name="${idPermiso}" type="checkbox"  disabled/></td>
-        				    	</c:otherwise>    					
-        					</c:choose>
-						</c:when>
-						<c:when test="${modulo.getName().equals('produccion')}">
-        					<c:choose>
-        				    	<c:when test="${operacion.getName().equals('Listar')}">
-        				    		 <td><input id="${idPermiso}" name="${idPermiso}" type="checkbox" /></td>
-        				    	</c:when>
-        				    	<c:otherwise>
-        				    		<td><input id="${idPermiso}" name="${idPermiso}" type="checkbox"  disabled/></td>
-        				    	</c:otherwise>    					
-        					</c:choose>
+						<c:when test="${((modulo.nombre == 'ventas' || modulo.nombre == 'movimientos') &&
+								(operacion.nombre != 'Crear' && operacion.nombre != 'Listar')) || 
+								(modulo.nombre == 'produccion' && operacion.nombre != 'Listar')}">
+							<td><input name="${idPermiso}" id="${modulo.nombre} ${operacion.nombre}" type="checkbox"  disabled/></td>		
 						</c:when>
 						<c:otherwise>
-       						<td><input id="${idPermiso}" name="${idPermiso}" type="checkbox"/></td>
+							<td><input name="${idPermiso}" id="${modulo.nombre} ${operacion.nombre}" type="checkbox"/></td>					
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 			</tr>
 		</c:forEach>
-
 	</table>
-	<input id="stringConcatenado" name="permisos" type="hidden"/>
 	<input id="botonGuardar" type="submit" value="Modificar"/>
 	</form:form>
 	<script>
@@ -83,10 +65,19 @@
 	    tablaPermisos.push(permiso);
 	</c:forEach>
 	for (var i = 0; i < tablaPermisos.length; i++) {
-		document.getElementById(tablaPermisos[i]).checked = true;
+		document.getElementsByName(tablaPermisos[i])[0].checked = true;
 	}
 	$('#botonGuardar').on('click', function (e) {
 		e.preventDefault();
+		<c:forEach items="${tablaPermisos}" var="permiso">
+			var checkbox = document.getElementsByName('${permiso.id}')[0];
+			var permisoNombre = checkbox.id;
+			var modulo = permisoNombre.split(" ")[0];
+			var operacion = permisoNombre.split(" ")[1];
+			if (checkbox.checked && operacion != 'Listar') {
+				document.getElementById(modulo + " Listar").checked = true;
+			}
+		</c:forEach>
 	    $('#formModificar').submit();
 	});
 	</script>

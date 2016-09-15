@@ -28,25 +28,25 @@ import ar.com.escuelita.chicken.presentacion.validacion.PerfilValidacion;
 
 @Controller
 public class PerfilControlador extends Controlador {
-	
+
 	private static final String PERFILES_VIEW = "perfiles/perfiles";
 	private static final String PERFILES_NUEVO_VIEW = "perfiles/perfilNuevo";
 	private static final String PERFILES_MODIFICAR_VIEW = "perfiles/perfilModificar";
-	
+
 	@Autowired IPerfilServicio perfilServicio;
 
 	@Autowired IPermisoServicio permisoServicio;
-	
+
 	@Autowired
 	private PerfilValidacion perfilValidacion;
-	
+
 	@InitBinder
-    protected void initBinder(WebDataBinder binder) throws Exception {
+	protected void initBinder(WebDataBinder binder) throws Exception {
 		if (binder.getTarget() instanceof PerfilDTO){
-		binder.setValidator(perfilValidacion);
+			binder.setValidator(perfilValidacion);
 		}
-    }
-	
+	}
+
 	@RequestMapping(path="/perfiles")
 	public ModelAndView perfiles() {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
@@ -59,7 +59,7 @@ public class PerfilControlador extends Controlador {
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
-	
+
 	@RequestMapping(path="/perfilesBorrar")
 	public ModelAndView borrarPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil,
 			BindingResult result) throws Exception {
@@ -69,48 +69,31 @@ public class PerfilControlador extends Controlador {
 		perfilServicio.borrar(perfil);
 		return new ModelAndView("redirect:/perfiles");
 	}
-	
+
 	@RequestMapping("/perfilesNuevo")
 	public ModelAndView nuevoPerfil(){
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);		
 		model.addObject("usuarioActual", usuario);
-		PerfilDTO perfil = new PerfilDTO();
-		model.addObject("perfil", perfil);
+		model.addObject("perfil", new PerfilDTO());
 		model.addObject("listaPermisos",listaPermisos);
-		
-		Collection<DTO> listaPermisos = permisoServicio.listar();
-		model.addObject("tablaPermisos", listaPermisos);
+		model.addObject("tablaPermisos", permisoServicio.listar());
 		model.addObject("listaOperaciones",EnumOperacion.values());
 		model.addObject("listaModulos",EnumModulo.values());
 		model.addObject("pageToLoad", PERFILES_NUEVO_VIEW);
 		return model;
 	}
-	
+
 	@RequestMapping(path="/perfilesProcesarNuevo")
 	public ModelAndView perfilesProcesarNuevo(HttpServletRequest request) throws Exception {
-		
+
 		String nombre = (String) request.getParameter("nombre");
-		List<PermisoDTO> listaNuevaPermisos = new ArrayList<>();
-		
-		Collection<DTO> listaPermisos = permisoServicio.listar();
-		for (DTO dto: listaPermisos) {
-			PermisoDTO permisoDto = (PermisoDTO) dto; 
-			String id = (String) request.getParameter(permisoDto.getId());
-			if (id != null && !id.isEmpty()) {
-				System.out.println("ID:" + id);
-				listaNuevaPermisos.add(permisoDto);
-			}
-		}
 		PerfilDTO perfilNuevo = new PerfilDTO();
-		perfilNuevo.setListaPermisos(listaNuevaPermisos);
+		setPermisos(request, perfilNuevo);
 		perfilNuevo.setNombre(nombre);
 		perfilServicio.crear(perfilNuevo);
 		return new ModelAndView("redirect:/perfiles");
 	}
-	
-	
-	
-	
+
 	@RequestMapping(path="/perfilesModificar")
 	public ModelAndView modificarPerfil(@ModelAttribute("perfil") PerfilDTO perfil) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
@@ -121,9 +104,6 @@ public class PerfilControlador extends Controlador {
 		model.addObject("tablaPermisosUsuario",((PerfilDTO)perfilServicio.buscar(Long.parseLong(perfil.getId()))).getListaPermisos());
 		model.addObject("listaOperaciones",EnumOperacion.values());
 		model.addObject("listaModulos",EnumModulo.values());
-		
-		
-		
 		model.addObject("pageToLoad", PERFILES_MODIFICAR_VIEW);
 		return model;
 	}
@@ -134,10 +114,16 @@ public class PerfilControlador extends Controlador {
 		if(result.hasErrors()) {
 			return modificarPerfil(perfil);
 		}
+		setPermisos(request,perfil);
+		perfilServicio.modificar(perfil);
+		return new ModelAndView("redirect:/perfiles");
+	}
+
+	private void setPermisos(HttpServletRequest request,PerfilDTO perfil) {
 		List<PermisoDTO> listaNuevaPermisos = new ArrayList<>();
-		
+
 		Collection<DTO> listaPermisos = permisoServicio.listar();
-		for (DTO dto: listaPermisos) {
+		for (DTO dto : listaPermisos) {
 			PermisoDTO permisoDto = (PermisoDTO) dto; 
 			String id = (String) request.getParameter(permisoDto.getId());
 			if (id!= null && !id.isEmpty()) {
@@ -145,7 +131,5 @@ public class PerfilControlador extends Controlador {
 			}
 		}
 		perfil.setListaPermisos(listaNuevaPermisos);
-		perfilServicio.modificar(perfil);
-		return new ModelAndView("redirect:/perfiles");
 	}
 }

@@ -64,7 +64,7 @@
 		</table>
 
 	<c:set var="value">
-		<spring:message code="lenguaje" />
+		<spring:message code="mensajeBorrar" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
 <script>
