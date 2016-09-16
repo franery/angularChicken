@@ -1,4 +1,4 @@
-package ar.com.escuelita.chicken.presentacion.controlador.rest;
+package ar.com.escuelita.chicken.presentacion.rest;
 
 import java.util.HashMap;
 import java.util.List;
