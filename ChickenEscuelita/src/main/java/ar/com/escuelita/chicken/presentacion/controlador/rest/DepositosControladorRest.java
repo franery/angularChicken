@@ -1,5 +1,6 @@
 package ar.com.escuelita.chicken.presentacion.controlador.rest;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,9 @@ public class DepositosControladorRest extends Controlador{
 	}
 	
 	@RequestMapping("/depositosJson")
-	public List<DTO> depositosJson() {
-		return (List<DTO>)depositoServicio.listar();
+	public HashMap<String, List<DTO>> depositosJson() {
+		HashMap<String, List<DTO>> r = new HashMap<String, List<DTO>>();
+		r.put("data", (List<DTO>)depositoServicio.listar());
+		return r;
 	}
 }
