@@ -24,7 +24,7 @@ public class DepositosControlador extends Controlador {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito",new DepositoDTO());
-		model.addObject("listaDepositos",depositoServicio.listar());
+		//model.addObject("listaDepositos",depositoServicio.listar());
 		model.addObject("pageToLoad", DEPOSITOS_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;

@@ -26,7 +26,6 @@
         </thead>
     </table>
 
-
 <script>
 
 $(document).ready(function(){
