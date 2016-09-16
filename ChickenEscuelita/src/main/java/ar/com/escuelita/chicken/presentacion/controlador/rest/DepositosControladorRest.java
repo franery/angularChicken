@@ -15,7 +15,8 @@ import ar.com.escuelita.chicken.presentacion.controlador.Controlador;
 @RestController
 public class DepositosControladorRest extends Controlador{
 	
-	private static final String DEPOSITOS_JSON_VIEW = "depositos/depositosJson"; 
+	private static final String DEPOSITOS_JSON_VIEW = "depositos/depositosJson";
+	private static final String DATA = "data";
 	
 	@Autowired
 	private IDepositoServicio depositoServicio;
@@ -29,8 +30,8 @@ public class DepositosControladorRest extends Controlador{
 	
 	@RequestMapping("/depositosJson")
 	public HashMap<String, List<DTO>> depositosJson() {
-		HashMap<String, List<DTO>> r = new HashMap<String, List<DTO>>();
-		r.put("data", (List<DTO>)depositoServicio.listar());
-		return r;
+		HashMap<String, List<DTO>> depositosJson = new HashMap<String, List<DTO>>();
+		depositosJson.put(DATA, (List<DTO>)depositoServicio.listar());
+		return depositosJson;
 	}
 }

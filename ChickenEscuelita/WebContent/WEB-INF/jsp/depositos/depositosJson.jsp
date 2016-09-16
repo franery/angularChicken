@@ -17,9 +17,11 @@
 <table id="tablita" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Stock Huevos</th>
-                <th>Stock Maximo</th>
+                <th><spring:message code="nombre"/></th>
+				<th><spring:message code="stock"/></th>
+				<th><spring:message code="stockMax"/></th>
+				<th></th>
+				<th></th>
             </tr>
         </thead>
     </table>
@@ -27,39 +29,15 @@
 
 <script>
 
-var editor;
-
 $(document).ready(function(){
-	/*
-	editor = new $.fn.dataTable.Editor( {
-        //ajax: "depositosJson",
-        table: "#tablita",
-        fields: [ {
-                label: "Nombre:",
-                name: "nombre"
-            }, {
-                label: "Stock Huevos:",
-                name: "stockHuevos"
-            }, {
-                label: "Stock Maximo:",
-                name: "stockMaximo"
-            }
-        ]
-    } );
-	*/
-	//$.getJSON('depositosJson', function(data) {
-	 
-	    $('#tablita').DataTable( {
-	        //dom: "Bfrtip",
-	        ajax: "depositosJson",
-	        columns: [
-	            { data: "nombre" },
-	            { data: "stockHuevos" },
-	            { data: "stockMaximo" }
-	        ]
-	    } );
-		
-	//});
+	$('#tablita').DataTable( {
+		ajax: "depositosJson",
+	    columns: [
+	              { data: "nombre" },
+	              { data: "stockHuevos" },
+	              { data: "stockMaximo" }
+	              ]
+	});
 });
 
 </script>

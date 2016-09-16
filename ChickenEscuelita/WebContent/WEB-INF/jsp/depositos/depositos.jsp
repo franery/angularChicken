@@ -29,7 +29,7 @@
 			<th><spring:message code="stock"/></th>
 			<th><spring:message code="stockMax"/></th>
 			<th></th>
-				<th></th>
+			<th></th>
 		</tr>
 	</thead>
 	<c:if test="${!empty listaDepositos}">
@@ -72,7 +72,7 @@
 			</c:if>
 </table>
 <form:form id="formJsonVista" action="depositosJsonVista" method="post" commandName="deposito">
-	<input id="botonJson" type="button" value=<spring:message code="nuevo"/> />
+	<input id="botonJson" type="button" value="EjemploJson"/>
 </form:form>
 	<c:set var="value">
 		<spring:message code="mensajeBorrar" />
