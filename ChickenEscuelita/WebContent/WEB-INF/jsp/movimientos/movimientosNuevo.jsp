@@ -54,6 +54,9 @@
 						<spring:message code="fecha"/>:</form:label></td>
 				<td><form:input path="fecha" type="date" required="required"/></td>
 			</tr>
+			<tr>
+				<td colspan="2"> <form:errors path="cantidad" cssClass="error" /> </td> 
+			</tr>
 		</table>
 		<input type="submit" value=<spring:message code="guardar"/> />
 
