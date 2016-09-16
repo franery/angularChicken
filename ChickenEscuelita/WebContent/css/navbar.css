@@ -1,19 +1,19 @@
 html,body {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-    }
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
 
-html{
+html {
 	height: 100%;
 	width: 100%;
 }
 
-body{
+body {
 	height: 100%;
 	width: 100%;
 }
@@ -25,7 +25,7 @@ ul.ul {
 	overflow: hidden;
 	background-color: #4CAF50;
 	top: 0;
-	width:inherit;
+	width: inherit;
 }
 
 li.liLeft {
@@ -37,7 +37,7 @@ li.liLeft {
 	float: left;
 }
 
-li.liRight{
+li.liRight {
 	display: block;
 	color: white;
 	text-align: center;
@@ -46,24 +46,24 @@ li.liRight{
 	float: right;
 }
 
-li.liRightHov{
+li.liRightHov {
 	display: block;
 	color: white;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
 	float: right;
-    cursor: pointer;
+	cursor: pointer;
 }
 
-a.sup{
+a.sup {
 	display: block;
 	color: white;
 	text-align: center;
 	text-decoration: none;
 }
 
-li.liRightHov:HOVER{
+li.liRightHov:HOVER {
 	background-color: #45a049;
 }
 
@@ -81,68 +81,73 @@ div.alineacion {
 	width: 20%;
 }
 
-div.pantalla{
+div.pantalla {
 	float: right;
 	height: 100%;
 	width: 78%;
 }
 
 #tablita {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
 }
 
-#tablita td, #tablita th {
-    border: 1px solid #ddd;
-    padding: 8px;
+#tablita td,#tablita th {
+	border: 1px solid #ddd;
+	padding: 8px;
 }
 
-#tablita tr:nth-child(even){background-color: #f2f2f2;}
+#tablita tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
 
-#tablita tr:hover {background-color: #ddd;}
+#tablita tr:hover {
+	background-color: #ddd;
+}
 
 .depositoRojo {
-	background-color:#FF0000;
+	background-color: #FF0000;
 }
 
 #tablita th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #4CAF50;
+	color: white;
 }
 
 input[type=submit].langg {
-    width: 50%;
-    background-color: #4CAF50;
-    color: white;
-/*     padding: 10px 20px;
- */    margin: 0px 0;
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
+	width: 50%;
+	background-color: #4CAF50;
+	color: white;
+	/*     padding: 10px 20px;
+ */
+	margin: 0px 0;
+	border: none;
+	border-radius: 0;
+	cursor: pointer;
 }
 
 input[type=submit].langg:hover {
-    background-color: #45a049;
+	background-color: #45a049;
 }
 
 a.langg {
-    width: 50%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 0px 0;
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
-    text-decoration: none;
+	width: 50%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 0px 0;
+	border: none;
+	border-radius: 0;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 a.langg:hover {
-    background-color: #45a049;
+	background-color: #45a049;
 }
 
 select.backVerde {
@@ -150,8 +155,18 @@ select.backVerde {
 }
 
 submit.backVerde {
-    background-color: #4CAF50;
+	background-color: #4CAF50;
 }
 
-.black-background {background-color:#000000;}
-.white {color:#ffffff;}
+.black-background {
+	background-color: #000000;
+}
+
+.white {
+	color: #ffffff;
+}
+
+.error {
+	color: #ff0000;
+	font-weight: bold;
+}

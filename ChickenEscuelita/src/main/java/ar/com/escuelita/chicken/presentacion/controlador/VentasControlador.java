@@ -56,7 +56,7 @@ public class VentasControlador extends Controlador {
     }
 	
 	@RequestMapping(path="/ventasNuevo")
-	public ModelAndView ventasNuevo() {
+	public ModelAndView ventasNuevo(@ModelAttribute("venta") VentaDTO venta) {
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
 		model.addObject("listaProveedores", listaProveedores);
@@ -71,7 +71,7 @@ public class VentasControlador extends Controlador {
 	public ModelAndView ventasProcesarNuevo(@ModelAttribute("venta") @Validated VentaDTO venta,
 			BindingResult result) throws Exception {
 		if(result.hasErrors()) {
-			return ventasNuevo();
+			return ventasNuevo(venta);
 		}
 		ventaServicio.crear(venta);
 		ModelAndView model =  new ModelAndView("redirect:/ventas");

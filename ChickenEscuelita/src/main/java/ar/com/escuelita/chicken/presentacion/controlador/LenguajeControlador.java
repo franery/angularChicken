@@ -21,6 +21,8 @@ public class LenguajeControlador extends Controlador{
 		localeResolver.setLocale(request, response, StringUtils.parseLocaleString(request.getParameter("lenguajeElegido"))); 
 		String[] spliteado = urlRequest.split("/");
 		String str = spliteado[spliteado.length - 1];
+		str = str.replace("Procesar", "");
+		str = str.replace("Borrar", "");
 		return new ModelAndView("redirect:/"+str);
 	}
 }

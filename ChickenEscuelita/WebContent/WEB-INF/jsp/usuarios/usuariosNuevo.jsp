@@ -8,13 +8,6 @@
 <html>
 <head>
 <title><spring:message code="usuarioNuevo" /></title>
-<style>
-    .error 
-    {
-        color: #ff0000;
-        font-weight: bold;
-    }
-    </style>
 </head>
 <body>
 	<h1><spring:message code="usuarioNuevo" /></h1>
