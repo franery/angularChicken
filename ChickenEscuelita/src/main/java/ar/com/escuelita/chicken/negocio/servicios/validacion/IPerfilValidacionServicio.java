@@ -7,4 +7,6 @@ public interface IPerfilValidacionServicio {
 	void validacionPerfilRoot(String perfilId) throws ValidacionExcepcion;
 
 	void validacionNombreUnico(String nombre, String id) throws ValidacionExcepcion;
+
+	void validacionNombreNoVacio(String nombre) throws ValidacionExcepcion;
 }

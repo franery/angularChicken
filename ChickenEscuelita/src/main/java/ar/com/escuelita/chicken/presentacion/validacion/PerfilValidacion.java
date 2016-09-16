@@ -2,6 +2,7 @@ package ar.com.escuelita.chicken.presentacion.validacion;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
@@ -35,5 +36,12 @@ public class PerfilValidacion implements Validator {
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
 		}
+//		try {
+//			perfilValidacionServicio.validacionNombreNoVacio(perfil.getNombre());
+//		} catch (ValidacionExcepcion e) {
+//			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
+//		}
+		
+//		ValidationUtils.rejectIfEmpty(errores, perfil.getNombre(), "mensaje error");
 	}
 }

@@ -19,6 +19,7 @@ public class PerfilValidacionServicioImpl implements IPerfilValidacionServicio {
 		
 	}
 	
+	@Override
 	public void validacionPerfilRoot(String perfilId) throws ValidacionExcepcion {
 		if(String.valueOf(PERFIL_ROOT_ID).equals(perfilId)) {
 			throw new ValidacionExcepcion("mensajeErrorPerfilRoot");
@@ -32,6 +33,13 @@ public class PerfilValidacionServicioImpl implements IPerfilValidacionServicio {
 			if (perfilDTO.getNombre().equals(nombre) && !perfilDTO.getId().equals(id)) {
 				throw new ValidacionExcepcion("mensajeErrorPerfil");
 			}
+		}
+	}
+	
+	@Override
+	public void validacionNombreNoVacio(String nombre) throws ValidacionExcepcion {
+		if (nombre == null || nombre.isEmpty()) {
+			throw new ValidacionExcepcion("mensajeErrorNombreVacio");
 		}
 	}
 }
