@@ -17,7 +17,7 @@
 		<input type="submit" value=<spring:message code="nuevo"/> />
 	</form:form>
 
-	<form:form action="movimientosFiltro" method="POST" commandName="filtro">
+	<form:form action="movimientosFiltro" method="POST" commandName="filtro" onclick="filtrar()">
 		<table>
 			<tr>
 				<td> <form:label path="fechaDesde"><spring:message code="fechaDesde"/></form:label> </td>
@@ -38,34 +38,59 @@
 			<tr> <td> <input type="submit" value=<spring:message code="filtrar"/> /> </td> </tr>
 		</table>
 	</form:form>
-	<div class="paraTabla">
-		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
-			<thead class="fija">
-				<tr class="fija">
-					<th class="fija"><spring:message code="fecha"/></th>
-					<th class="fija"><spring:message code="cantidad"/></th>
-					<th class="fija"><spring:message code="gallinero"/></th>
-					<th class="fija"><spring:message code="deposito"/></th>
-				</tr>
-			</thead>
-			<tbody class="fija">
-				<c:if test="${!empty listaMovimientos}">
-					<c:forEach items="${listaMovimientos}" var="movimiento">
-						<tr class="fija">
-							<td class="filterable-cell fija"><c:out
-									value="${movimiento.fecha}"></c:out></td>
-							<td class="filterable-cell fija"><c:out
-									value="${movimiento.cantidad}"></c:out></td>
-							<td class="filterable-cell fija"><c:out
-									value="${movimiento.getGallineroNombre()}"></c:out></td>
-							<td class="filterable-cell fija"><c:out
-									value="${movimiento.getDepositoNombre()}"></c:out></td>
-						</tr>
-					</c:forEach>
-				</c:if>
-			</tbody>
+	
+	<table id="tablita" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th><spring:message code="fecha"/></th>
+				<th><spring:message code="cantidad"/></th>
+				<th><spring:message code="gallinero"/></th>
+				<th><spring:message code="deposito"/></th>
+            </tr>
+        </thead>
+    </table>
+	
+<!-- 	<div class="paraTabla"> -->
+<!-- 		<table id="tablita" class="display order-column" cellspacing="0" width="100%"> -->
+<!-- 			<thead class="fija"> -->
+<!-- 				<tr class="fija"> -->
+<%-- 					<th class="fija"><spring:message code="fecha"/></th> --%>
+<%-- 					<th class="fija"><spring:message code="cantidad"/></th> --%>
+<%-- 					<th class="fija"><spring:message code="gallinero"/></th> --%>
+<%-- 					<th class="fija"><spring:message code="deposito"/></th> --%>
+<!-- 				</tr> -->
+<!-- 			</thead> -->
+<!-- 			<tbody class="fija"> -->
+<%-- 				<c:if test="${!empty listaMovimientos}"> --%>
+<%-- 					<c:forEach items="${listaMovimientos}" var="movimiento"> --%>
+<!-- 						<tr class="fija"> -->
+<%-- 							<td class="filterable-cell fija"><c:out --%>
+<%-- 									value="${movimiento.fecha}"></c:out></td> --%>
+<%-- 							<td class="filterable-cell fija"><c:out --%>
+<%-- 									value="${movimiento.cantidad}"></c:out></td> --%>
+<%-- 							<td class="filterable-cell fija"><c:out --%>
+<%-- 									value="${movimiento.getGallineroNombre()}"></c:out></td> --%>
+<%-- 							<td class="filterable-cell fija"><c:out --%>
+<%-- 									value="${movimiento.getDepositoNombre()}"></c:out></td> --%>
+<!-- 						</tr> -->
+<%-- 					</c:forEach> --%>
+<%-- 				</c:if> --%>
+<!-- 			</tbody> -->
 
-		</table>
-	</div>
+<!-- 		</table> -->
+<!-- 	</div> -->
+<script>
+$(document).ready(function(){
+	$('#tablita').DataTable( {
+		ajax: "movimientosJson",
+	    columns: [
+	              { data: "fecha" },
+	              { data: "cantidad" },
+	              { data: "gallinero.nombre" },
+	              { data: "deposito.nombre" }
+	              ]
+	});
+});
+</script>
 </body>
 </html>
