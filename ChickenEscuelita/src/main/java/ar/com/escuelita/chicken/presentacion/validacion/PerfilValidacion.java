@@ -36,12 +36,10 @@ public class PerfilValidacion implements Validator {
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
 		}
-//		try {
-//			perfilValidacionServicio.validacionNombreNoVacio(perfil.getNombre());
-//		} catch (ValidacionExcepcion e) {
-//			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
-//		}
-		
-//		ValidationUtils.rejectIfEmpty(errores, perfil.getNombre(), "mensaje error");
+		try {
+			perfilValidacionServicio.validacionNombreNoVacio(perfil.getNombre());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
+		}
 	}
 }
