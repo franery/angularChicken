@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-	<h1><spring:message code="perfilModificar" /></h1>
+	<h1 class="page-header"><spring:message code="perfilModificar" /></h1>
 
 	<form:form id="formModificar" method="POST" action="perfilesProcesarModificar" commandName="perfil">
 	<form:input path="id" type="hidden" value="${perfil.getId()}"/>

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h1><spring:message code="usuarios"/></h1>
+<h1 class="page-header"><spring:message code="usuarios"/></h1>
 
 <div>
 		<!-- Nuevo Usuario -->

@@ -11,7 +11,7 @@
 
 </head>
 <body>
-	<h1><spring:message code="parametroModificar" /></h1>
+	<h1 class="page-header"><spring:message code="parametroModificar" /></h1>
 
 	<form:form id="formModificar" method="POST" action="parametrosProcesarModificar" commandName="parametro">
 		<form:input path="id" type="hidden" value="${parametro.getId()}"/>

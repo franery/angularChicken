@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<h1>
+	<h1 class="page-header">
 		<spring:message code="gallinero" />
 	</h1>
 	

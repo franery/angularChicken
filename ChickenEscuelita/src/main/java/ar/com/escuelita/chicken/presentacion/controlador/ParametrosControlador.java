@@ -41,6 +41,16 @@ public class ParametrosControlador extends Controlador {
 		return new ModelAndView("redirect:/parametros");
 	}
 	
+	@RequestMapping(path="/parametrosModificar")
+	public ModelAndView modificarParametro(@ModelAttribute("parametro") ParametroDTO parametro) {
+		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		model.addObject("usuarioActual", usuario);
+		model.addObject("parametro", parametro);
+		model.addObject("pageToLoad", PARAMETRO_MODIFICAR_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
+		return model;
+	}
+	
 	@RequestMapping("/parametrosNuevo")
 	public ModelAndView nuevoParametro( ){
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
@@ -48,17 +58,6 @@ public class ParametrosControlador extends Controlador {
 		ParametroDTO parametro = new ParametroDTO();
 		model.addObject("parametro", parametro);
 		model.addObject("pageToLoad", PARAMETRO_NUEVO_VIEW);
-		model.addObject("listaPermisos", listaPermisos);
-		return model;
-	}
-	
-	
-	@RequestMapping(path="/parametrosModificar")
-	public ModelAndView modificarParametro(@ModelAttribute("parametro") ParametroDTO parametro) {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
-		model.addObject("usuarioActual", usuario);
-		model.addObject("parametro", parametro);
-		model.addObject("pageToLoad", PARAMETRO_MODIFICAR_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h1><spring:message code="venta"/></h1>
+<h1 class="page-header"><spring:message code="venta"/></h1>
 
 <form:form action="ventasProcesarNuevo" method="post" commandName="venta">
 	<form:input path="id" type="hidden" value="${venta.getId()}"/>
