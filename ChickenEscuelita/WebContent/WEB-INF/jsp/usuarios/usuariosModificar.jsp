@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-	<h1><spring:message code="usuarioModificar" /></h1>
+	<h1 class="page-header"><spring:message code="usuarioModificar" /></h1>
 
 	<form:form method="POST" id="formModificar" action="usuariosProcesarModificar" commandName="usuarioNM">
 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>

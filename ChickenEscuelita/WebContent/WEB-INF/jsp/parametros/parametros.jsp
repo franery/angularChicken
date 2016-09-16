@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<h1><spring:message code="parametros"/></h1>
+<h1 class="page-header" align="center"><spring:message code="parametros"/></h1>
 
 	<!-- Nuevo Parametro -->
 	<form:form action="parametrosNuevo" method="post"

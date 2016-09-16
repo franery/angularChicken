@@ -12,7 +12,7 @@
 <title><spring:message code="ventas"/></title>
 </head>
 <body>
-<h1><spring:message code="ventas"/></h1>
+<h1 class="page-header"><spring:message code="ventas"/></h1>
 <form:form action="ventasNuevo" method="post" commandName="venta">
 	<input type="submit" value=<spring:message code="nuevo"/> />
 </form:form>

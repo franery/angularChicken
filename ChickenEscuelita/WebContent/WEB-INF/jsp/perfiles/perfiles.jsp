@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h1><spring:message code="perfiles"/></h1>
+<h1 class="page-header"><spring:message code="perfiles"/></h1>
 
 		<!-- Nuevo Perfil -->
 		<form:form action="perfilesNuevo" method="post" commandName="perfil">

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h1><spring:message code="gallinerosModificar"/></h1>
+<h1 class="page-header"><spring:message code="gallinerosModificar"/></h1>
 
 <form:form id="formModificar" action="gallinerosProcesarModificar" method="post" commandName="gallinero">
 	<form:input path="id" type="hidden" value="${gallinero.getId()}"/>

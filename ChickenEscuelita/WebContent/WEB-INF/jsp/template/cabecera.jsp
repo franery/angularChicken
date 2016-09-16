@@ -5,9 +5,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
+<head>
+<style type="text/css">
+
+.container-fluid > .navbar-nav.navbar-right:last-child,
+.container-fluid > .navbar-collapse > .navbar-nav.navbar-right:last-child{
+    margin-right: 10px;
+}
+
+</style>
+
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/navbar.css" />
-
+</head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">

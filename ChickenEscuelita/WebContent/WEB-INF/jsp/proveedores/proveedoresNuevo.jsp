@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h1><spring:message code="proveedoresNuevo"/></h1>
+<h1 class="page-header"><spring:message code="proveedoresNuevo"/></h1>
 
 <form:form action="proveedoresProcesarNuevo" method="post" commandName="proveedor">
 	<form:input path="id" type="hidden" value="${proveedor.getId()}"/>

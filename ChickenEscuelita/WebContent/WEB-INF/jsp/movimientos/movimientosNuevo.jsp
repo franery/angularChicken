@@ -11,7 +11,7 @@
 <title><spring:message code="movimientosNuevo"/></title>
 </head>
 <body>
-<h1><spring:message code="movimientosNuevo"/></h1>
+<h1  class="page-header"><spring:message code="movimientosNuevo"/></h1>
 
 	<form:form action="movimientosProcesarNuevo" method="POST"
 		commandName="movimiento">

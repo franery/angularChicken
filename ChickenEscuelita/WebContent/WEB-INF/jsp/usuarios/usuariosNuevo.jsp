@@ -10,7 +10,7 @@
 <title><spring:message code="usuarioNuevo" /></title>
 </head>
 <body>
-	<h1><spring:message code="usuarioNuevo" /></h1>
+	<h1  class="page-header"><spring:message code="usuarioNuevo" /></h1>
 
 	<form:form method="POST"  id="formNuevo" action="usuariosProcesarNuevo" commandName="usuarioNM">
 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>

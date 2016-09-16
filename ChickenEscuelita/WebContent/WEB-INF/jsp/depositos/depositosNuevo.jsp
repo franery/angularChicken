@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h1><spring:message code="depositoNuevo"/></h1>
+<h1 class="page-header"><spring:message code="depositoNuevo"/></h1>
 
 <form:form action="depositosProcesarNuevo" method="post" commandName="deposito">
 	<form:input path="id" type="hidden" value="${deposito.getId()}"/>
