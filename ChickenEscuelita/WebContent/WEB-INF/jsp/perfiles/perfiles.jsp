@@ -43,6 +43,7 @@
 							<td>
 							<form:form id="form${perfil.getId()}" action="perfilesBorrar" method="post" commandName="perfil">
 								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
+								<form:input path="nombre" type="hidden" value="${perfil.getNombre() }"/>
 								<input id="boton${perfil.getId()}" class="botonBorrar" type="button" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
