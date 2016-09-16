@@ -8,6 +8,10 @@
 
 <html>
 <head>
+<jsp:include page="../template/importacion.jsp"></jsp:include>
+<link href="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/signin.css" >
+<script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
 <title>Login</title>
 </head>
 
@@ -17,20 +21,39 @@
 	<c:set var="Nombre" value="" scope="request" />
 	<jsp:include page="../template/cabeceraLogin.jsp"></jsp:include>
 
-	<table align="center">
-		<form:form action ="${pageContext.request.contextPath}/login" method="POST">
-		<tr>
-			<td> <spring:message code="usuario"/>: </td>
-			<td> <input type ="text" id="username" name="username" /> </td>
-		</tr>
-		<tr>
-			<td><spring:message code="contrasenia"/>: </td>
-			<td> <input type ="password" id="password" name="password" /> </td>
-		</tr>
-		<tr>	
-			<td align="center" colspan="2"><input type="submit" value=<spring:message code="ingresar" /> /></td>
-		</tr>
-		</form:form>
-	</table>
+	<div class="container">
+    
+		<form:form action ="${pageContext.request.contextPath}/login" method="POST" class="form-signin">
+			<div class="form-group label-floating">
+		    	<label class="control-label" for="username"><spring:message code="usuario"/></label>
+		 		<input class="form-control" id="username" name="username" type="text">
+	  		</div>
+	 		<div class="form-group label-floating">
+		    	<label class="control-label" for="password"><spring:message code="contrasenia"/></label>
+		  		<input class="form-control" id="password" name ="password" type="password">
+	  		</div>
+			
+			<button class="btn btn-lg btn-raised black-background white btn-block"  type="submit"><spring:message code="ingresar" /></button>
+			
+     	</form:form>
+
+	
+    </div> 
+
+<!-- 	<table align="center"> -->
+<%-- 		<form:form action ="${pageContext.request.contextPath}/login" method="POST"> --%>
+<!-- 		<tr> -->
+<%-- 			<td> <spring:message code="usuario"/>: </td> --%>
+<!-- 			<td> <input type ="text" id="username" name="username" /> </td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<%-- 			<td><spring:message code="contrasenia"/>: </td> --%>
+<!-- 			<td> <input type ="password" id="password" name="password" /> </td> -->
+<!-- 		</tr> -->
+<!-- 		<tr>	 -->
+<!-- 			<td align="center" colspan="2"><input type="submit" value=<spring:message code="ingresar" /> /></td> -->
+<!-- 		</tr> -->
+<%-- 		</form:form> --%>
+<!-- 	</table> -->
 </body>
 </html>
