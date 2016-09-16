@@ -71,11 +71,16 @@
 				</tr>
 			</c:if>
 </table>
-
+<form:form id="formJsonVista" action="depositosJsonVista" method="post" commandName="deposito">
+	<input id="botonJson" type="button" value=<spring:message code="nuevo"/> />
+</form:form>
 	<c:set var="value">
 		<spring:message code="mensajeBorrar" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
+
+<table id="json">
+</table>
 
 <script>
 
@@ -90,6 +95,11 @@ $('#boton' + '${deposito.id}').on('click', function (e) {
     });
 });
 </c:forEach>
+
+$('#botonJson').on('click', function (e) {
+    e.preventDefault();
+    $('#formJsonVista').submit();
+});
 
 </script>
 
