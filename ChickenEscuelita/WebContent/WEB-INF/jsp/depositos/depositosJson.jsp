@@ -8,15 +8,58 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<jsp:include page="../template/importacion.jsp"></jsp:include>
+
 <title>DepositosJson</title>
 </head>
 <body>
 
+<table id="tablita" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Stock Huevos</th>
+                <th>Stock Maximo</th>
+            </tr>
+        </thead>
+    </table>
 
-<script type="text/javascript">
 
-$.getJSON('depositosJson', function(data) {
-	alert(data);
+<script>
+
+var editor;
+
+$(document).ready(function(){
+	/*
+	editor = new $.fn.dataTable.Editor( {
+        //ajax: "depositosJson",
+        table: "#tablita",
+        fields: [ {
+                label: "Nombre:",
+                name: "nombre"
+            }, {
+                label: "Stock Huevos:",
+                name: "stockHuevos"
+            }, {
+                label: "Stock Maximo:",
+                name: "stockMaximo"
+            }
+        ]
+    } );
+	*/
+	//$.getJSON('depositosJson', function(data) {
+	 
+	    $('#tablita').DataTable( {
+	        //dom: "Bfrtip",
+	        ajax: "depositosJson",
+	        columns: [
+	            { data: "nombre" },
+	            { data: "stockHuevos" },
+	            { data: "stockMaximo" }
+	        ]
+	    } );
+		
+	//});
 });
 
 </script>
