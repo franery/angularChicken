@@ -18,10 +18,6 @@
 	</h1>
 
 	<button id="nuevo"><spring:message code="nuevo"/></button>
-	
-<%-- 	<form:form action="depositosNuevo" method="post" commandName="deposito"> --%>
-<!-- 		<input type="submit" value=<spring:message code="nuevo"/> /> -->
-<%-- 	</form:form> --%>
 
 	<table id="tablita" class="display order-column" cellspacing="0"
 		width="100%">
