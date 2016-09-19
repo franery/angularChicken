@@ -122,68 +122,82 @@ $(document).ready(function(){
 
 
 	$('#tablita tbody').on( 'click', '#modificar', function () {
+		
 		var data = table.row( this.closest("tr") ).data();
-		bootbox.dialog({
-	        title: "${depositoModificar}",
-	        message: '<div class="row">  ' +
-	            '<div class="col-md-12"> ' +
-	            '<form class="form-horizontal"> ' +
+		var arrayHidden = [];
+		var arrayShown = [];	
+		var idHidden = {nombre:"id", valor: data["id"]};
+		var borradoHidden = {nombre:"borrado", valor: data["borrado"]};
+		var stockHuevosHidden = {nombre:"stockHuevos", valor: data["stockHuevos"]};
+		arrayHidden.push(idHidden);
+		arrayHidden.push(borradoHidden);
+		arrayHidden.push(stockHuevosHidden);
+		var nombreShown = {nombre:"nombre", mensaje:'${nombre}', valor: data["nombre"]};
+		var stockMaximoShown = {nombre:"stockMaximo", mensaje:'${stockMaximo}', valor: data["stockMaximo"]};
+		arrayShown.push(nombreShown);
+		arrayShown.push(stockMaximoShown);
+		formularioModificar(arrayHidden,arrayShown);
+// 		bootbox.dialog({
+// 	        title: "${depositoModificar}",
+// 	        message: '<div class="row">  ' +
+// 	            '<div class="col-md-12"> ' +
+// 	            '<form class="form-horizontal"> ' +
 	    
-	            '<input id="id" name="id" type="hidden" value='+data["id"]+' class="form-control input-md"> ' +
-	            '<input id="borrado" name="borrado" type="hidden" value='+data["borrado"]+' class="form-control input-md"> ' +
-	            '<input id="stockHuevos" name="stockHuevos" type="hidden" value='+data["stockHuevos"]+' class="form-control input-md"> ' +
+// 	            '<input id="id" name="id" type="hidden" value='+data["id"]+' class="form-control input-md"> ' +
+// 	            '<input id="borrado" name="borrado" type="hidden" value='+data["borrado"]+' class="form-control input-md"> ' +
+// 	            '<input id="stockHuevos" name="stockHuevos" type="hidden" value='+data["stockHuevos"]+' class="form-control input-md"> ' +
 	
-	            '<div class="form-group"> ' +
-	            '<label class="col-md-5 control-label" for="nombre">${nombre}</label> ' +
-	            '<div class="col-md-5"> ' +
-	            '<input id="nombre" name="nombre" type="text" value="'+data["nombre"]+'" class="form-control input-md"> ' +
-	            '</div> ' +
+// 	            '<div class="form-group"> ' +
+// 	            '<label class="col-md-5 control-label" for="nombre">${nombre}</label> ' +
+// 	            '<div class="col-md-5"> ' +
+// 	            '<input id="nombre" name="nombre" type="text" value="'+data["nombre"]+'" class="form-control input-md"> ' +
+// 	            '</div> ' +
 	            
-	            '<div class="form-group"> ' +
-	            '<label class="col-md-5 control-label" for="stockMaximo">${stockMaximo}</label> ' +
-	            '<div class="col-md-5"> ' +
-	            '<input id="stockMaximo" name="stockMaximo" type="text" value="'+data["stockMaximo"]+'" class="form-control input-md"> ' +
-	            '</div> ' +
+// 	            '<div class="form-group"> ' +
+// 	            '<label class="col-md-5 control-label" for="stockMaximo">${stockMaximo}</label> ' +
+// 	            '<div class="col-md-5"> ' +
+// 	            '<input id="stockMaximo" name="stockMaximo" type="text" value="'+data["stockMaximo"]+'" class="form-control input-md"> ' +
+// 	            '</div> ' +
 	            
-	            '</form> </div>  </div>',
-	        buttons: {
-	            success: {
-	                label: "Save",
-	                className: "btn-success",
-	                callback: function (e) {
-		                var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
-	        				 	"stockMaximo": $('#stockMaximo').val(), "borrado": $('#borrado').val()};
-	    	    		var mensaje = document.getElementById("mensajeModificar").value;
-	        		    e.preventDefault();
-	        		    bootbox.confirm(mensaje, function (response) {        
-		        	        if(response) {
-		        				table =  $('#tablita').DataTable( {
-		        					ajax: {
-		        						url: "depositosModificarJson",
-		        						type: "POST",
-		        						data: function(){
-		        							return JSON.stringify(json);
-		        						},
-		        						dataType: "json",
-		        						contentType: "application/json",
-		        						processData:false
-		        					},
-		        					bDestroy: true,
-		        					serverside: true,
-		        					columns: [
-		        				              { data: "nombre" },
-		        				              { data: "stockHuevos" },
-		        				              { data: "stockMaximo" },
-		        				              {defaultContent:'<button id="borrar">${borrar}</button>'},
-		        				              {defaultContent:'<button id="modificar">${modificar}</button>'}
-		        				              ]
-					        	});
-					        }
-				        }); 
-			        }
-	   	        }
-			}
-		});
+// 	            '</form> </div>  </div>',
+// 	        buttons: {
+// 	            success: {
+// 	                label: "Save",
+// 	                className: "btn-success",
+// 	                callback: function (e) {
+// 		                var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
+// 	        				 	"stockMaximo": $('#stockMaximo').val(), "borrado": $('#borrado').val()};
+// 	    	    		var mensaje = document.getElementById("mensajeModificar").value;
+// 	        		    e.preventDefault();
+// 	        		    bootbox.confirm(mensaje, function (response) {        
+// 		        	        if(response) {
+// 		        				table =  $('#tablita').DataTable( {
+// 		        					ajax: {
+// 		        						url: "depositosModificarJson",
+// 		        						type: "POST",
+// 		        						data: function(){
+// 		        							return JSON.stringify(json);
+// 		        						},
+// 		        						dataType: "json",
+// 		        						contentType: "application/json",
+// 		        						processData:false
+// 		        					},
+// 		        					bDestroy: true,
+// 		        					serverside: true,
+// 		        					columns: [
+// 		        				              { data: "nombre" },
+// 		        				              { data: "stockHuevos" },
+// 		        				              { data: "stockMaximo" },
+// 		        				              {defaultContent:'<button id="borrar">${borrar}</button>'},
+// 		        				              {defaultContent:'<button id="modificar">${modificar}</button>'}
+// 		        				              ]
+// 					        	});
+// 					        }
+// 				        }); 
+// 			        }
+// 	   	        }
+// 			}
+// 		});
 	});	
 });	 
 </script>
