@@ -17,25 +17,26 @@
 		<input type="submit" value=<spring:message code="nuevo"/> />
 	</form:form>
 
-	<form:form action="movimientosFiltro" method="POST" commandName="filtro" onclick="filtrar()">
+<%-- 	<form:form action="movimientosFiltro" method="POST" commandName="filtro" onclick="filtrar()"> --%>
+		<form:form method="POST" commandName="filtro">
 		<table>
 			<tr>
 				<td> <form:label path="fechaDesde"><spring:message code="fechaDesde"/></form:label> </td>
-				<td> <form:input path="fechaDesde" type="date" /> </td>
+				<td> <form:input id="fechaDesde" path="fechaDesde" type="date" /> </td>
 			</tr>
 			<tr>
 				<td> <form:label path="fechaHasta"><spring:message code="fechaHasta"/></form:label> </td>
-				<td> <form:input path="fechaHasta" type="date" /> </td>
+				<td> <form:input id="fechaHasta" path="fechaHasta" type="date" /> </td>
 			</tr>
 			<tr> 
 				<td> <form:label path="cantidadDesde"><spring:message code="cantidadDesde"/></form:label> </td>
-				<td> <form:input path="cantidadDesde" type="text" /> </td>
+				<td> <form:input id="cantidadDesde" path="cantidadDesde" type="text" /> </td>
 			</tr>
 			<tr> 
 				<td> <form:label path="cantidadHasta"><spring:message code="cantidadHasta"/></form:label> </td>
-				<td> <form:input path="cantidadHasta" type="text" /> </td>
+				<td> <form:input id="cantidadHasta" path="cantidadHasta" type="text" /> </td>
 			</tr>
-			<tr> <td> <input type="submit" value=<spring:message code="filtrar"/> /> </td> </tr>
+			<tr> <td> <input type="button" onclick="filtrar()" value=<spring:message code="filtrar"/> /> </td> </tr>
 		</table>
 	</form:form>
 	
@@ -49,48 +50,51 @@
             </tr>
         </thead>
     </table>
-	
-<!-- 	<div class="paraTabla"> -->
-<!-- 		<table id="tablita" class="display order-column" cellspacing="0" width="100%"> -->
-<!-- 			<thead class="fija"> -->
-<!-- 				<tr class="fija"> -->
-<%-- 					<th class="fija"><spring:message code="fecha"/></th> --%>
-<%-- 					<th class="fija"><spring:message code="cantidad"/></th> --%>
-<%-- 					<th class="fija"><spring:message code="gallinero"/></th> --%>
-<%-- 					<th class="fija"><spring:message code="deposito"/></th> --%>
-<!-- 				</tr> -->
-<!-- 			</thead> -->
-<!-- 			<tbody class="fija"> -->
-<%-- 				<c:if test="${!empty listaMovimientos}"> --%>
-<%-- 					<c:forEach items="${listaMovimientos}" var="movimiento"> --%>
-<!-- 						<tr class="fija"> -->
-<%-- 							<td class="filterable-cell fija"><c:out --%>
-<%-- 									value="${movimiento.fecha}"></c:out></td> --%>
-<%-- 							<td class="filterable-cell fija"><c:out --%>
-<%-- 									value="${movimiento.cantidad}"></c:out></td> --%>
-<%-- 							<td class="filterable-cell fija"><c:out --%>
-<%-- 									value="${movimiento.getGallineroNombre()}"></c:out></td> --%>
-<%-- 							<td class="filterable-cell fija"><c:out --%>
-<%-- 									value="${movimiento.getDepositoNombre()}"></c:out></td> --%>
-<!-- 						</tr> -->
-<%-- 					</c:forEach> --%>
-<%-- 				</c:if> --%>
-<!-- 			</tbody> -->
 
-<!-- 		</table> -->
-<!-- 	</div> -->
 <script>
 $(document).ready(function(){
+	listar();
+});
+
+function listar() {
 	$('#tablita').DataTable( {
 		ajax: "movimientosJson",
 	    columns: [
 	              { data: "fecha" },
 	              { data: "cantidad" },
-	              { data: "gallinero.nombre" },
-	              { data: "deposito.nombre" }
+	              { data: "gallineroNombre" },
+	              { data: "depositoNombre" }
 	              ]
 	});
-});
+}
+
+function filtrar() {
+	var fechaDesde = $('#fechaDesde').val();
+    var fechaHasta = $('#fechaHasta').val();
+    var cantidadDesde = $('#cantidadDesde').val();
+    var cantidadHasta= $('#cantidadHasta').val();
+    var json = { "fechaDesde" : fechaDesde, "fechaHasta" : fechaHasta, "cantidadDesde": cantidadDesde, "cantidadHasta": cantidadHasta};
+	$('#tablita').DataTable( {
+		ajax: {
+			url: "filtrando",
+			type: "POST",
+			data: function() {
+				return JSON.stringify(json);
+			},
+			dataType: "json",
+			contentType: "application/json",
+			processData:false
+		},
+		bDestroy: true,
+		serverside: true,
+		columns: [
+	              { data: "fecha" },
+	              { data: "cantidad" },
+	              { data: "gallineroNombre" },
+	              { data: "depositoNombre" }
+	              ]
+	});
+}
 </script>
 </body>
 </html>
