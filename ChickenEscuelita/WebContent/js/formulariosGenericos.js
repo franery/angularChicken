@@ -16,6 +16,7 @@ function crearMensajeModificar(arrayHidden,arrayShown) {
         	'</div> ';
 	}
 	message += '</form> </div>  </div>';
+	return message;
 }
 
 
