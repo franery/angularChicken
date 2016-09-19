@@ -17,10 +17,11 @@
 		<spring:message code="depositos" />
 	</h1>
 
-
-	<form:form action="depositosNuevo" method="post" commandName="deposito">
-		<input type="submit" value=<spring:message code="nuevo"/> />
-	</form:form>
+	<button id="nuevo"><spring:message code="nuevo"/></button>
+	
+<%-- 	<form:form action="depositosNuevo" method="post" commandName="deposito"> --%>
+<!-- 		<input type="submit" value=<spring:message code="nuevo"/> /> -->
+<%-- 	</form:form> --%>
 
 	<table id="tablita" class="display order-column" cellspacing="0"
 		width="100%">
@@ -55,12 +56,20 @@
 		<spring:message code="modificar" />
 	</c:set>
 	
+	<c:set var="depositoNuevo">
+		<spring:message code="depositoNuevo" />
+	</c:set>
+	
 	<c:set var="depositoModificar">
 		<spring:message code="depositoModificar" />
 	</c:set>
 	
 	<c:set var="nombre">
 		<spring:message code="nombre" />
+	</c:set>
+	
+	<c:set var="stockHuevos">
+		<spring:message code="stock" />
 	</c:set>
 
 	<c:set var="stockMaximo">
@@ -84,6 +93,72 @@ $(document).ready(function(){
 	    paging:true,
 	    pageLength:5,
 	    ordering:true
+	});
+	
+	
+	$('#nuevo').on('click', function (e) {
+		e.preventDefault();
+		bootbox.dialog({
+	        title: "${depositoNuevo}",
+	        message: '<div class="row">  ' +
+	            '<div class="col-md-12"> ' +
+	            '<form class="form-horizontal"> ' +
+	    
+	            '<input id="id" name="id" type="hidden" class="form-control input-md"> ' +
+	            '<input id="borrado" name="borrado" type="hidden" class="form-control input-md"> ' +
+	
+	            '<div class="form-group"> ' +
+	            '<label class="col-md-5 control-label" for="nombre">${nombre}</label> ' +
+	            '<div class="col-md-5"> ' +
+	            '<input id="nombre" name="nombre" type="text" class="form-control input-md"> ' +
+	            '</div> ' +
+	            
+	            '<div class="form-group"> ' +
+	            '<label class="col-md-5 control-label" for="stockHuevos">${stockHuevos}</label> ' +
+	            '<div class="col-md-5"> ' +
+	            '<input id="stockHuevos" name="stockHuevos" type="text" class="form-control input-md"> ' +
+	            '</div> ' +
+	            
+	            '<div class="form-group"> ' +
+	            '<label class="col-md-5 control-label" for="stockMaximo">${stockMaximo}</label> ' +
+	            '<div class="col-md-5"> ' +
+	            '<input id="stockMaximo" name="stockMaximo" type="text" class="form-control input-md"> ' +
+	            '</div> ' +
+	            
+	            '</form> </div>  </div>',
+	        buttons: {
+	            success: {
+	                label: "Save",
+	                className: "btn-success",
+	                callback: function (e) {
+		                var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
+	        				 	"stockMaximo": $('#stockMaximo').val(), "borrado": $('#borrado').val()};
+	        		    e.preventDefault();
+		        				table =  $('#tablita').DataTable( {
+		        					ajax: {
+		        						url: "depositosNuevoJson",
+		        						type: "POST",
+		        						data: function(){
+		        							return JSON.stringify(json);
+		        						},
+		        						dataType: "json",
+		        						contentType: "application/json",
+		        						processData:false
+		        					},
+		        					bDestroy: true,
+		        					serverside: true,
+		        					columns: [
+		        				              { data: "nombre" },
+		        				              { data: "stockHuevos" },
+		        				              { data: "stockMaximo" },
+		        				              {defaultContent:'<button id="borrar">${borrar}</button>'},
+		        				              {defaultContent:'<button id="modificar">${modificar}</button>'}
+		        				              ]
+					        	});
+			        }
+	   	        }
+			}
+		});
 	});
 	
 	
@@ -185,7 +260,8 @@ $(document).ready(function(){
 			}
 		});
 	});	
-});	 
+});
+
 </script>
 </body>
 </html>

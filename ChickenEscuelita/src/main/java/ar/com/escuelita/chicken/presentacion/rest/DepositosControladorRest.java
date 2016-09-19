@@ -30,6 +30,14 @@ public class DepositosControladorRest{
 		return depositosJson;
 	}
 	
+	@RequestMapping(path="/depositosNuevoJson")
+	public HashMap<String, List<DTO>> depositosNuevoJson(@RequestBody DepositoDTO deposito) throws NegocioExcepcion {
+		depositoServicio.crear(deposito);
+		HashMap<String, List<DTO>> depositosJson = new HashMap<String, List<DTO>>();
+		depositosJson.put(DATA, (List<DTO>)depositoServicio.listar());
+		return depositosJson;
+	}
+	
 	@RequestMapping(path="/depositosBorrarJson")
 	public HashMap<String, List<DTO>> depositosBorrarJson(@RequestBody DepositoDTO deposito) {
 		depositoServicio.borrar(deposito);
