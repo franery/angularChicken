@@ -91,7 +91,62 @@
 
 	<%--  		 Current Locale : ${pageContext.response.locale } --%>
 
+<!-- 
+<div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand topNavBar-Title" style="color:#ffffff !important" href="/">Accenture Portal</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="cursor: pointer;">
+                    <a class="navbar-brand topNavBar-UserName" style="color:#ffffff !important" ng-click="goToLink(user.URL)" ap-track="click:['InnerMe','Click','Name']">Petit de Meurville, R.</a>
+                </li>
+                <li style="cursor: pointer;">
+                    <div>
+                        <a class="navbar-brand topNavBar-Picture" ng-click="goToLink(user.URL)" ap-track="click:['InnerMe','Click','Image']">
+                            <img ap-profile-picture="" class="img-circle center-block">
+                        </a>
+                    </div>
+                </li>
+                <li dropdown="" class="">
+                    <a id="navbarPreferences" class="navbar-brand glyphicon glyphicon-cog dropdown-toggle" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+                    </a>
+                    <ul id="preferencesTab" class="dropdown-menu" role="menu">
+                        <li><a ng-click="openTutorial()">TUTORIAL</a></li>
+                        <li role="separator" class="divider" id="lineDivider"></li>
+                        <li><a ng-click="goToLink('https://support.accenture.com/applications/AccenturePortalSupport/Pages/DefaultGlobal.aspx?rd=3&amp;HP=1')">HELP</a></li>
+                        <li role="separator" class="divider" id="lineDivider"></li>
+                        <li ng-controller="PreferencesCtrl"><a ng-click="OpenModal()">PREFERENCES</a></li>
+                        <li role="separator" class="divider" id="lineDivider"></li>
+                        <li><a ng-click="logOff()">LOG OUT</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="navbar-brand glyphicon glyphicon-bell"></a>
+                </li>
+            </ul>
+        </div>
+        
+        
+         -->
+         
+         
+         <!-- <br>
+        <br><br>	
+        <div class="nav-center">
+                    <ul class="nav nav-tabs links-title">
+                        <li ng-show="topLinks &amp;&amp; topLinks.SubCategories" ng-mouseover="selectCategory('TopLinks')"><a class="links-title" data-toggle="tab" ng-class="{'category-active': isCategorySelected('TopLinks')}">Quick Links</a></li>
 
+                        ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
+                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">Sell &amp; Deliver</a></li>end ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
+                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">Career &amp; Benefits</a></li>end ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
+                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">Corporate Services</a></li>end ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
+                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">About Accenture</a></li>end ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
+                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">Stay Connected</a></li>end ngRepeat: n in navLinks
+
+                        <li ng-show="azLinks &amp;&amp; azLinks.SubCategories"><a class="links-divider" data-toggle="tab">|</a></li>
+                        <li ng-show="azLinks &amp;&amp; azLinks.SubCategories" ng-mouseover="selectCategory('AtoZ','A')"><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected('AtoZ')}">A to Z</a></li>
+                    </ul>
+                </div> -->
 
 
 	<br>

@@ -15,7 +15,7 @@
 <body>
 
 <table id="tablita" class="display" cellspacing="0" width="100%">
-        <thead>
+        <thead class=depo_name>
             <tr>
                 <th><spring:message code="nombre"/></th>
 				<th><spring:message code="stock"/></th>
@@ -31,11 +31,26 @@
 $(document).ready(function(){
 	$('#tablita').DataTable( {
 		ajax: "depositosJson",
-	    columns: [
-	              { data: "nombre" },
-	              { data: "stockHuevos" },
-	              { data: "stockMaximo" }
-	              ]
+
+	    "aoColumnDefs":[{
+	                  "nombre":"nombre"
+	                , "aTargets": [ "nombre" ]
+	            },{
+	                  "aTargets": [ 1 ]
+	                , "bSortable": false
+	                , "mRender": function ( url, type, full )  {
+	                    return  '<a href="'+url+'">' + url + '</a>';
+	                }
+	            },{
+	                  "aTargets":[ 3 ]
+	                , "sType": "date"
+	                , "mRender": function(date, type, full) {
+	                    return (full[2] == "Blog") 
+	                              ? new Date(date).toDateString()
+	                              : "N/A" ;
+	                }  
+	            }]
+	              
 	});
 });
 

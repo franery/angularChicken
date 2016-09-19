@@ -26,7 +26,6 @@
 
 
 
-	<!-- Menu con bootstrap, responsive. Comentado por ahora, porque no esta 100% -->
 	 <div class="sidebar-nav">
       <div class="navbar navbar-default navbar-center" role="navigation">
         <div class="navbar-header">
