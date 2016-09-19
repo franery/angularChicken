@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
+import ar.com.escuelita.chicken.base.excepciones.NegocioExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
 
@@ -35,4 +36,13 @@ public class DepositosControladorRest{
 		HashMap<String, List<DTO>> depositosJson = new HashMap<String, List<DTO>>();
 		depositosJson.put(DATA, (List<DTO>)depositoServicio.listar());
 		return depositosJson;
-	}}
+	}
+	
+	@RequestMapping(path="/depositosModificarJson")
+	public HashMap<String, List<DTO>> depositosModificarJson(@RequestBody DepositoDTO deposito) throws NegocioExcepcion {
+		depositoServicio.modificar(deposito);
+		HashMap<String, List<DTO>> depositosJson = new HashMap<String, List<DTO>>();
+		depositosJson.put(DATA, (List<DTO>)depositoServicio.listar());
+		return depositosJson;
+	}
+}
