@@ -128,7 +128,7 @@ $(document).ready(function(){
     						success: function(resp) {
     							cerrarForm(false);
     						},
-    						errors: function(resp) {
+    						error: function(resp) {
     							cerrarForm(true);
     						}
 		        		});
