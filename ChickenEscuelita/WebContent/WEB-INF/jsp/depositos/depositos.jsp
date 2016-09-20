@@ -127,6 +127,9 @@ $(document).ready(function(){
     						},
     						success: function(resp) {
     							cerrarForm(false);
+    						},
+    						errors: function(resp) {
+    							cerrarForm(true);
     						}
 		        		});
 		        		return flagCerrarForm;
