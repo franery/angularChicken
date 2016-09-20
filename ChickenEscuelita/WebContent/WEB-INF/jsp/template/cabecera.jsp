@@ -14,11 +14,16 @@ body {
 .container-fluid > .navbar-collapse > .navbar-nav.navbar-right:last-child{
     margin-right: 10px;
 }
+@media (min-width: 768px) { 
+    .twoRow .navbar-collapse {
+        
+    }
+}
 </style> 
 </head>
 <body>
 
-<div id="navbar1" class="navbar navbar-inverse navbar-fixed-top" role="navigation">	
+<div class="navbar navbar-inverse navbar-fixed-top twoRow" role="navigation">	
 	<div class=container-fluid>
 		<div class="navbar-header">
  			<a class="navbar-brand" href="#"><spring:message code="nombreApp" /></a>
@@ -27,7 +32,7 @@ body {
 		</div>       
 		<div class="collapse navbar-collapse" id="example-navbar-collapse">
 			<div>
-				<ul class="nav navbar-nav navbar-right navbar-brand">
+				<ul class="nav navbar-nav navbar-right">
 				<li><a href="<%=request.getContextPath()%>/logout"> <spring:message	code="logout" /></a></li>
 				<li>
 					<!-- Eleccion Idioma -->
@@ -37,10 +42,10 @@ body {
 							<input type="hidden" name="lenguajeElegido" id="lenguajeElegido" value="en">
 							<c:choose>
 								<c:when test="${idioma.equals('English')}">
-									<input class="navbar-btn img-circle center-block" type="image" height="26" src="http://bazaar.eprints.org/224/1/static/images/flags/us.png" alt="EN" disabled />
+									<input class="navbar-btn img-circle center-block" type="image" height="30" src="http://bazaar.eprints.org/224/1/static/images/flags/us.png" alt="EN" disabled />
 								</c:when>
 								<c:otherwise>
-									<input class="navbar-btn img-circle center-block" type="image" height="26" src="http://bazaar.eprints.org/224/1/static/images/flags/us.png" alt="EN" onclick="cambiarLenguaje1();" />
+									<input class="navbar-btn img-circle center-block" type="image" height="30" src="http://bazaar.eprints.org/224/1/static/images/flags/us.png" alt="EN" onclick="cambiarLenguaje1();" />
 								</c:otherwise>
 							</c:choose>
 						</form:form>
@@ -53,12 +58,12 @@ body {
 								value="es">
 							<c:choose>
 								<c:when test="${idioma.equals('Spanish')}">
-									<input class="navbar-btn img-circle center-block" type="image" height="26"
+									<input class="navbar-btn img-circle center-block" type="image" height="30"
 										src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
 										alt="ES" disabled />
 								</c:when>
 								<c:otherwise>
-									<input class="navbar-btn img-circle center-block" type="image" height="26"
+									<input class="navbar-btn img-circle center-block" type="image" height="30"
 										src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
 										alt="ES" onclick="cambiarLenguaje2();" />
 								</c:otherwise>
@@ -70,17 +75,13 @@ body {
 		</div>
 	</div>
 </div>
-<div class="navbar navbar-inverse navbar-static-top" role="navigation">	
+<div class="navbar navbar-inverse navbar-static-top" id="navbar2" role="navigation">	
 	<div  class="container-fluid no-radius">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar2-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 		</div>
-		<div class="collapse navbar-collapse">
+		<div class="collapse navbar-collapse" id="navbar2-navbar-collapse">
 			<ul class="nav navbar-nav">
 				<c:forEach items="${listaPermisos}" var="permiso">
 				<li><a href="${permiso}"><spring:message code="${permiso}"/></a></li>
