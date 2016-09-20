@@ -6,155 +6,101 @@
 
 <html>
 <head>
-<style type="text/css">
-
+ <style type="text/css">
+body {
+  padding-top: 50px;
+}
 .container-fluid > .navbar-nav.navbar-right:last-child,
 .container-fluid > .navbar-collapse > .navbar-nav.navbar-right:last-child{
     margin-right: 10px;
 }
-
-</style>
-
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/navbar.css" />
+@media (min-width: 768px) { 
+    .twoRow .navbar-collapse {
+        
+    }
+}
+</style> 
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<%-- ${Title} --%>
-				<a class="navbar-brand" href=""><spring:message code="nombreApp" /></a>
-				     <button type = "button" class = "navbar-toggle" data-toggle="collapse" data-target = "#example-navbar-collapse">
-					      <span class="sr-only">Toggle navigation</span>
-					      <span class="icon-bar"></span>
-					      <span class="icon-bar"></span>
-					      <span class="icon-bar"></span>
-					</button>
-			</div>
 
-			<div class="collapse navbar-collapse" id="example-navbar-collapse">
+<div class="navbar navbar-inverse navbar-fixed-top twoRow" role="navigation">	
+	<div class=container-fluid>
+		<div class="navbar-header">
+ 			<a class="navbar-brand" href="#"><spring:message code="nombreApp" /></a>
+     		<button type = "button" class = "navbar-toggle" data-toggle="collapse" data-target = "#example-navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+		</div>       
+		<div class="collapse navbar-collapse" id="example-navbar-collapse">
+			<div>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<%=request.getContextPath()%>/logout"> <spring:message
-								code="logout" />
-					</a> <%-- ${Nombre} --%></li>
-					<li>
-						<!-- Eleccion Idioma -->
-						<div>
-							<c:set var="idioma" scope="session"
-								value="${pageContext.response.locale.displayName}" />
-							<form:form class="navbar-form navbar-right" id="butonLang1"
-								onsubmit="myFunction()" method="POST" action="cambioLenguaje">
-								<input type="hidden" name="urlRequest" id="urlRequest">
-								<input type="hidden" name="lenguajeElegido" id="lenguajeElegido"
-									value="en">
-								<c:choose>
-									<c:when test="${idioma.equals('English')}">
-										<input class="navbar-btn" type="image"
-											src="http://bazaar.eprints.org/224/1/static/images/flags/us.png"
-											alt="EN" disabled />
-									</c:when>
-									<c:otherwise>
-										<input class="navbar-btn" type="image"
-											src="http://bazaar.eprints.org/224/1/static/images/flags/us.png"
-											alt="EN" onclick="cambiarLenguaje1();" />
-									</c:otherwise>
-								</c:choose>
-							</form:form>
-						</div>
+				<li><a href="<%=request.getContextPath()%>/logout"> <spring:message	code="logout" /></a></li>
+				<li>
+					<!-- Eleccion Idioma -->
+					<c:set var="idioma" scope="session" value="${pageContext.response.locale.displayName}" />
+						<form:form id="butonLang1" onsubmit="myFunction()" method="POST" action="cambioLenguaje">
+							<input type="hidden" name="urlRequest" id="urlRequest">
+							<input type="hidden" name="lenguajeElegido" id="lenguajeElegido" value="en">
+							<c:choose>
+								<c:when test="${idioma.equals('English')}">
+									<input class="navbar-btn img-circle center-block" type="image" height="30" src="http://bazaar.eprints.org/224/1/static/images/flags/us.png" alt="EN" disabled />
+								</c:when>
+								<c:otherwise>
+									<input class="navbar-btn img-circle center-block" type="image" height="30" src="http://bazaar.eprints.org/224/1/static/images/flags/us.png" alt="EN" onclick="cambiarLenguaje1();" />
+								</c:otherwise>
+							</c:choose>
+						</form:form>
 					</li>
 					<li>
-						<div>
-							<form:form class="navbar-form navbar-right" id="butonLang2"
-								onsubmit="myFunction2()" method="POST" action="cambioLenguaje">
-								<input type="hidden" name="urlRequest" id="urlRequest2">
-								<input type="hidden" name="lenguajeElegido" id="lenguajeElegido"
-									value="es">
-								<c:choose>
-									<c:when test="${idioma.equals('Spanish')}">
-										<input class="navbar-btn" type="image"
-											src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
-											alt="ES" disabled />
-									</c:when>
-									<c:otherwise>
-										<input class="navbar-btn" type="image"
-											src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
-											alt="ES" onclick="cambiarLenguaje2();" />
-									</c:otherwise>
-								</c:choose>
-							</form:form>
-						</div>
+						<form:form id="butonLang2"
+							onsubmit="myFunction2()" method="POST" action="cambioLenguaje">
+							<input type="hidden" name="urlRequest" id="urlRequest2">
+							<input type="hidden" name="lenguajeElegido" id="lenguajeElegido"
+								value="es">
+							<c:choose>
+								<c:when test="${idioma.equals('Spanish')}">
+									<input class="navbar-btn img-circle center-block" type="image" height="30"
+										src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
+										alt="ES" disabled />
+								</c:when>
+								<c:otherwise>
+									<input class="navbar-btn img-circle center-block" type="image" height="30"
+										src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
+										alt="ES" onclick="cambiarLenguaje2();" />
+								</c:otherwise>
+							</c:choose>
+						</form:form>
 					</li>
 				</ul>
 			</div>
 		</div>
-	</nav>
+	</div>
+</div>
+<div class="navbar navbar-inverse navbar-static-top" id="navbar2" role="navigation">	
+	<div  class="container-fluid no-radius">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar2-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar2-navbar-collapse">
+			<ul class="nav navbar-nav">
+				<c:forEach items="${listaPermisos}" var="permiso">
+				<li><a href="${permiso}"><spring:message code="${permiso}"/></a></li>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+</div>
+<%-- 	 		 Current Locale : ${pageContext.response.locale } --%>
+<br>
+<br>
 
-	<%--  		 Current Locale : ${pageContext.response.locale } --%>
-
-<!-- 
-<div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a class="navbar-brand topNavBar-Title" style="color:#ffffff !important" href="/">Accenture Portal</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li style="cursor: pointer;">
-                    <a class="navbar-brand topNavBar-UserName" style="color:#ffffff !important" ng-click="goToLink(user.URL)" ap-track="click:['InnerMe','Click','Name']">Petit de Meurville, R.</a>
-                </li>
-                <li style="cursor: pointer;">
-                    <div>
-                        <a class="navbar-brand topNavBar-Picture" ng-click="goToLink(user.URL)" ap-track="click:['InnerMe','Click','Image']">
-                            <img ap-profile-picture="" class="img-circle center-block">
-                        </a>
-                    </div>
-                </li>
-                <li dropdown="" class="">
-                    <a id="navbarPreferences" class="navbar-brand glyphicon glyphicon-cog dropdown-toggle" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
-                    </a>
-                    <ul id="preferencesTab" class="dropdown-menu" role="menu">
-                        <li><a ng-click="openTutorial()">TUTORIAL</a></li>
-                        <li role="separator" class="divider" id="lineDivider"></li>
-                        <li><a ng-click="goToLink('https://support.accenture.com/applications/AccenturePortalSupport/Pages/DefaultGlobal.aspx?rd=3&amp;HP=1')">HELP</a></li>
-                        <li role="separator" class="divider" id="lineDivider"></li>
-                        <li ng-controller="PreferencesCtrl"><a ng-click="OpenModal()">PREFERENCES</a></li>
-                        <li role="separator" class="divider" id="lineDivider"></li>
-                        <li><a ng-click="logOff()">LOG OUT</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="navbar-brand glyphicon glyphicon-bell"></a>
-                </li>
-            </ul>
-        </div>
-        
-        
-         -->
-         
-         
-         <!-- <br>
-        <br><br>	
-        <div class="nav-center">
-                    <ul class="nav nav-tabs links-title">
-                        <li ng-show="topLinks &amp;&amp; topLinks.SubCategories" ng-mouseover="selectCategory('TopLinks')"><a class="links-title" data-toggle="tab" ng-class="{'category-active': isCategorySelected('TopLinks')}">Quick Links</a></li>
-
-                        ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
-                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">Sell &amp; Deliver</a></li>end ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
-                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">Career &amp; Benefits</a></li>end ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
-                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">Corporate Services</a></li>end ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
-                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">About Accenture</a></li>end ngRepeat: n in navLinks<li ng-repeat-start="n in navLinks"><a class="links-divider" data-toggle="tab">|</a></li>
-                        <li ng-mouseover="selectCategory(n.Id, n.SubCategories[0].Id)" ng-repeat-end=""><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected(n.Id)}">Stay Connected</a></li>end ngRepeat: n in navLinks
-
-                        <li ng-show="azLinks &amp;&amp; azLinks.SubCategories"><a class="links-divider" data-toggle="tab">|</a></li>
-                        <li ng-show="azLinks &amp;&amp; azLinks.SubCategories" ng-mouseover="selectCategory('AtoZ','A')"><a class="links-title nav-links" data-toggle="tab" ng-class="{'category-active': isCategorySelected('AtoZ')}">A to Z</a></li>
-                    </ul>
-                </div> -->
-
-
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<script>
+<script>
+$(function(){
+    $('#navbar1 .navbar .navbar-collapse').on('show.bs.collapse', function(e) {
+        $('#navbar1 .navbar .navbar-collapse').not(this).collapse('hide');
+    });
+});
+	
 function myFunction() {
     var x = document.URL;
 	document.getElementById("urlRequest").value = x;

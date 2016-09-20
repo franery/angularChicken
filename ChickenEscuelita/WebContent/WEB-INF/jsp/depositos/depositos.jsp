@@ -43,7 +43,7 @@
 		<spring:message code="mensajeModificar" />
 	</c:set>
 	<input id="mensajeModificar" type="hidden" value="${value2}" />
-	
+
 	<c:set var="borrar">
 		<spring:message code="borrar" />
 	</c:set>
@@ -51,23 +51,23 @@
 	<c:set var="modificar">
 		<spring:message code="modificar" />
 	</c:set>
-	
+
 	<c:set var="guardar">
 		<spring:message code="guardar" />
 	</c:set>
-	
+
 	<c:set var="depositoNuevo">
 		<spring:message code="depositoNuevo" />
 	</c:set>
-	
+
 	<c:set var="depositoModificar">
 		<spring:message code="depositoModificar" />
 	</c:set>
-	
+
 	<c:set var="nombre">
 		<spring:message code="nombre" />
 	</c:set>
-	
+
 	<c:set var="stockHuevos">
 		<spring:message code="stock" />
 	</c:set>
@@ -75,7 +75,7 @@
 	<c:set var="stockMaximo">
 		<spring:message code="stockMaximo" />
 	</c:set>
-	
+
 <script>
 var flagCerrarForm = true;
 
@@ -96,13 +96,11 @@ $(document).ready(function(){
 	    ordering:true
 	});
 	
-	
 	$('#nuevo').on('click', function (e) {
-		e.preventDefault();
 		var arrayHidden = [];
 		var arrayShown = [];
-		var nombreShown = {nombre: "nombre", mensaje: "${nombre}", valor: ""};
-		var stockMaximoShown = {nombre: "stockMaximo", mensaje: "${stockMaximo}", valor: ""};
+		var nombreShown = {nombre : "nombre", mensaje : "${nombre}", valor : ""};
+		var stockMaximoShown = {nombre : "stockMaximo", mensaje : "${stockMaximo}", valor : ""};
 		arrayShown.push(nombreShown);
 		arrayShown.push(stockMaximoShown);
 		bootbox.dialog({
@@ -115,8 +113,6 @@ $(document).ready(function(){
 	                callback: function (e) {
 	                	var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
 	        				 	"stockMaximo": $('#stockMaximo').val(), "borrado": $('#borrado').val()};
-// 	        		    e.preventDefault();
-						
 		        		$.ajax({
 		        			url: "depositosNuevoJson",
     						type: "POST",
@@ -146,78 +142,102 @@ $(document).ready(function(){
 		flagCerrarForm = bool;
 	}
 	
-	$('#tablita tbody').on( 'click', '#borrar', function (e) {
-		var data = table.row( this.closest("tr") ).data();
-		var json = { "id" :  data["id"], "nombre" :  data["nombre"], "stockHuevos":  data["stockHuevos"],
-				 	"stockMaximo": data["stockMaximo"], "borrado": data["borrado"]};
+	$('#tablita tbody').on('click', '#borrar', function (e) {
+		var data = table.row(this.closest("tr")).data();
+		var json = {
+			"id" : data["id"],
+			"nombre" : data["nombre"],
+			"stockHuevos" : data["stockHuevos"],
+			"stockMaximo" : data["stockMaximo"],
+			"borrado" : data["borrado"]
+		};
 		var mensaje = document.getElementById("mensajeBorrar").value;
-	    e.preventDefault();
-	    bootbox.confirm(mensaje, function (response) {        
-	        if(response) {
-	        	$.ajax({
-	        		url: "depositosBorrarJson",
-					type: "DELETE",
-					data: JSON.stringify(json),
-					dataType: "json",
-					contentType: "application/json",
-					processData:false,
-					complete: function() {
+		e.preventDefault();
+		bootbox.confirm(mensaje, function (response) {
+			if (response) {
+				$.ajax({
+					url : "depositosBorrarJson",
+					type : "DELETE",
+					data : JSON.stringify(json),
+					dataType : "json",
+					contentType : "application/json",
+					processData : false,
+					complete : function () {
 						table.ajax.reload();
 					}
-	        	});
-       		}
-		}); 
-	});	 
-
-	$('#tablita tbody').on( 'click', '#modificar', function () {
-		
-		var data = table.row( this.closest("tr") ).data();
+				});
+			}
+		});
+	});
+	$('#tablita tbody').on('click', '#modificar', function () {
+		var data = table.row(this.closest("tr")).data();
 		var arrayHidden = [];
-		var arrayShown = [];	
-		var idHidden = {nombre:"id", valor: data["id"]};
-		var borradoHidden = {nombre: "borrado", valor: data["borrado"]};
-		var stockHuevosHidden = {nombre: "stockHuevos", valor: data["stockHuevos"]};
+		var arrayShown = [];
+		var idHidden = {
+			nombre : "id",
+			valor : data["id"]
+		};
+		var borradoHidden = {
+			nombre : "borrado",
+			valor : data["borrado"]
+		};
+		var stockHuevosHidden = {
+			nombre : "stockHuevos",
+			valor : data["stockHuevos"]
+		};
 		arrayHidden.push(idHidden);
 		arrayHidden.push(borradoHidden);
 		arrayHidden.push(stockHuevosHidden);
-		var nombreShown = {nombre: "nombre", mensaje: "${nombre}", valor: data["nombre"]};
-		var stockMaximoShown = {nombre: "stockMaximo", mensaje: "${stockMaximo}", valor: data["stockMaximo"]};
+		var nombreShown = {
+			nombre : "nombre",
+			mensaje : "${nombre}",
+			valor : data["nombre"]
+		};
+		var stockMaximoShown = {
+			nombre : "stockMaximo",
+			mensaje : "${stockMaximo}",
+			valor : data["stockMaximo"]
+		};
 		arrayShown.push(nombreShown);
 		arrayShown.push(stockMaximoShown);
 		bootbox.dialog({
-	        title: "${depositoModificar}",
-	        message: formularioModificar(arrayHidden,arrayShown),
-	        buttons: {
-	            success: {
-	                label: "${guardar}",
-	                className: "btn-success",
-	                callback: function (e) {
-		                var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
-	        				 	"stockMaximo": $('#stockMaximo').val(), "borrado": $('#borrado').val()};
-	    	    		var mensaje = document.getElementById("mensajeModificar").value;
-	        		    e.preventDefault();
-	        		    bootbox.confirm(mensaje, function (response) {        
-		        	        if(response) {
-		        	        	$.ajax( {
-		        	        		url: "depositosModificarJson",
-	        						type: "POST",
-	        						data: JSON.stringify(json),
-	        						dataType: "json",
-	        						contentType: "application/json",
-	        						processData:false,
-	        						complete: function() {
-	        							table.ajax.reload();
- 	        						}
-		        	        	});
-					        }
-				        }); 
-			        }
-	   	        }
+			title : "${depositoModificar}",
+			message : formularioModificar(arrayHidden, arrayShown),
+			buttons : {
+				success : {
+					label : "${guardar}",
+					className : "btn-success",
+					callback : function (e) {
+						var json = {
+							"id" : $('#id').val(),
+							"nombre" : $('#nombre').val(),
+							"stockHuevos" : $('#stockHuevos').val(),
+							"stockMaximo" : $('#stockMaximo').val(),
+							"borrado" : $('#borrado').val()
+						};
+						var mensaje = document.getElementById("mensajeModificar").value;
+						e.preventDefault();
+						bootbox.confirm(mensaje, function (response) {
+							if (response) {
+								$.ajax({
+									url : "depositosModificarJson",
+									type : "POST",
+									data : JSON.stringify(json),
+									dataType : "json",
+									contentType : "application/json",
+									processData : false,
+									complete : function () {
+										table.ajax.reload();
+									}
+								});
+							}
+						});
+					}
+				}
 			}
 		});
-	});	
+	});
 });
-
 </script>
 </body>
 </html>

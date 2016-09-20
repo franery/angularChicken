@@ -20,27 +20,17 @@ body {
 
 </head>
 <body>
+<!-- NavBar -->
+<%-- 	<c:set var="Title" scope="request" value="${usuarioActual.getListaPerfiles().get(0).getNombre()}"/> --%>
+<c:set var="Nombre" value="${usuarioActual.getNombre() }"
+	scope="request" />
+<jsp:include page="../template/cabecera.jsp"></jsp:include>
 
-
-	<!-- NavBar -->
-	<%-- 	<c:set var="Title" scope="request" value="${usuarioActual.getListaPerfiles().get(0).getNombre()}"/> --%>
-	<c:set var="Nombre" value="${usuarioActual.getNombre() }"
-		scope="request" />
-	<jsp:include page="../template/cabecera.jsp"></jsp:include>
-
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-3">
-				<div>
-					<jsp:include page="../template/menu.jsp"></jsp:include>
-				</div>
-			</div>
-			<div class="col-sm-9">
-				<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
-			</div>
-		</div>
+<div class="container">
+	<div class="text-center">
+		<jsp:include page="../${pageToLoad}.jsp"></jsp:include>
 	</div>
+</div>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
