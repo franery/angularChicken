@@ -25,6 +25,7 @@ public class DepositosControladorRest{
 	
 	@RequestMapping("/depositosJson")
 	public HashMap<String, List<DTO>> depositosJson() {
+		System.out.println("Listar");
 		HashMap<String, List<DTO>> depositosJson = new HashMap<String, List<DTO>>();
 		depositosJson.put(DATA, (List<DTO>)depositoServicio.listar());
 		return depositosJson;
@@ -47,10 +48,7 @@ public class DepositosControladorRest{
 	}
 	
 	@RequestMapping(path="/depositosModificarJson")
-	public HashMap<String, List<DTO>> depositosModificarJson(@RequestBody DepositoDTO deposito) throws NegocioExcepcion {
+	public void depositosModificarJson(@RequestBody DepositoDTO deposito) throws NegocioExcepcion {
 		depositoServicio.modificar(deposito);
-		HashMap<String, List<DTO>> depositosJson = new HashMap<String, List<DTO>>();
-		depositosJson.put(DATA, (List<DTO>)depositoServicio.listar());
-		return depositosJson;
 	}
 }

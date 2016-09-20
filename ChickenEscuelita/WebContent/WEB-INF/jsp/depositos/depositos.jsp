@@ -92,6 +92,7 @@ $(document).ready(function(){
 	    select:true,
 	    paging:true,
 	    pageLength:5,
+	    serverside: true,
 	    ordering:true
 	});
 	
@@ -225,27 +226,39 @@ $(document).ready(function(){
 	        		    e.preventDefault();
 	        		    bootbox.confirm(mensaje, function (response) {        
 		        	        if(response) {
-		        				table =  $('#tablita').DataTable( {
-		        					ajax: {
-		        						url: "depositosModificarJson",
-		        						type: "POST",
-		        						data: function(){
-		        							return JSON.stringify(json);
-		        						},
-		        						dataType: "json",
-		        						contentType: "application/json",
-		        						processData:false
-		        					},
-		        					bDestroy: true,
-		        					serverside: true,
-		        					columns: [
-		        				              { data: "nombre" },
-		        				              { data: "stockHuevos" },
-		        				              { data: "stockMaximo" },
-		        				              {defaultContent:'<button id="borrar">${borrar}</button>'},
-		        				              {defaultContent:'<button id="modificar">${modificar}</button>'}
-		        				              ]
-					        	});
+		        	        	$.ajax( {
+		        	        		url: "depositosModificarJson",
+	        						type: "POST",
+	        						data: JSON.stringify(json),
+	        						dataType: "json",
+	        						contentType: "application/json",
+	        						processData:false,
+	        						complete: function() {
+	        							table.ajax.reload();
+ 	        						}
+		        	        	});
+		        	        	
+// 		        				table =  $('#tablita').DataTable( {
+// 		        					ajax: {
+// 		        						url: "depositosModificarJson",
+// 		        						type: "POST",
+// 		        						data: function(){
+// 		        							return JSON.stringify(json);
+// 		        						},
+// 		        						dataType: "json",
+// 		        						contentType: "application/json",
+// 		        						processData:false
+// 		        					},
+// 		        					bDestroy: true,
+// 		        					serverside: true,
+// 		        					columns: [
+// 		        				              { data: "nombre" },
+// 		        				              { data: "stockHuevos" },
+// 		        				              { data: "stockMaximo" },
+// 		        				              {defaultContent:'<button id="borrar">${borrar}</button>'},
+// 		        				              {defaultContent:'<button id="modificar">${modificar}</button>'}
+// 		        				              ]
+// 					        	});
 					        }
 				        }); 
 			        }
