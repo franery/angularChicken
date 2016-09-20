@@ -125,10 +125,10 @@ $(document).ready(function(){
     							table.ajax.reload();
     						},
     						success: function(resp) {
-    							cerrarForm(false);
+    							cerrarForm(true);
     						},
     						error: function(data) {
-    							cerrarForm(true);
+    							cerrarForm(false);
     						}
 		        		});
 		        		return flagCerrarForm;
