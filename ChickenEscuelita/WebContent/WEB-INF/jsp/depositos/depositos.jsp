@@ -52,6 +52,10 @@
 		<spring:message code="modificar" />
 	</c:set>
 	
+	<c:set var="guardar">
+		<spring:message code="guardar" />
+	</c:set>
+	
 	<c:set var="depositoNuevo">
 		<spring:message code="depositoNuevo" />
 	</c:set>
@@ -94,37 +98,18 @@ $(document).ready(function(){
 	
 	$('#nuevo').on('click', function (e) {
 		e.preventDefault();
+		var arrayHidden = [];
+		var arrayShown = [];
+		var nombreShown = {nombre: "nombre", mensaje: "${nombre}", valor: ""};
+		var stockMaximoShown = {nombre: "stockMaximo", mensaje: "${stockMaximo}", valor: ""};
+		arrayShown.push(nombreShown);
+		arrayShown.push(stockMaximoShown);
 		bootbox.dialog({
 	        title: "${depositoNuevo}",
-	        message: '<div class="row">  ' +
-	            '<div class="col-md-12"> ' +
-	            '<form class="form-horizontal"> ' +
-	    
-	            '<input id="id" name="id" type="hidden" class="form-control input-md"> ' +
-	            '<input id="borrado" name="borrado" type="hidden" class="form-control input-md"> ' +
-	
-	            '<div class="form-group"> ' +
-	            '<label class="col-md-5 control-label" for="nombre">${nombre}</label> ' +
-	            '<div class="col-md-5"> ' +
-	            '<input id="nombre" name="nombre" type="text" class="form-control input-md"> ' +
-	            '</div> ' +
-	            
-	            '<div class="form-group"> ' +
-	            '<label class="col-md-5 control-label" for="stockHuevos">${stockHuevos}</label> ' +
-	            '<div class="col-md-5"> ' +
-	            '<input id="stockHuevos" name="stockHuevos" type="text" class="form-control input-md"> ' +
-	            '</div> ' +
-	            
-	            '<div class="form-group"> ' +
-	            '<label class="col-md-5 control-label" for="stockMaximo">${stockMaximo}</label> ' +
-	            '<div class="col-md-5"> ' +
-	            '<input id="stockMaximo" name="stockMaximo" type="text" class="form-control input-md"> ' +
-	            '</div> ' +
-	            
-	            '</form> </div>  </div>',
+	        message: formularioModificar(arrayHidden,arrayShown),
 	        buttons: {
 	            success: {
-	                label: "Save",
+	                label: "${guardar}",
 	                className: "btn-success",
 	                callback: function (e) {
 		                var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
@@ -198,13 +183,13 @@ $(document).ready(function(){
 		var arrayHidden = [];
 		var arrayShown = [];	
 		var idHidden = {nombre:"id", valor: data["id"]};
-		var borradoHidden = {nombre:"borrado", valor: data["borrado"]};
-		var stockHuevosHidden = {nombre:"stockHuevos", valor: data["stockHuevos"]};
+		var borradoHidden = {nombre: "borrado", valor: data["borrado"]};
+		var stockHuevosHidden = {nombre: "stockHuevos", valor: data["stockHuevos"]};
 		arrayHidden.push(idHidden);
 		arrayHidden.push(borradoHidden);
 		arrayHidden.push(stockHuevosHidden);
-		var nombreShown = {nombre:"nombre", mensaje:'${nombre}', valor: data["nombre"]};
-		var stockMaximoShown = {nombre:"stockMaximo", mensaje:'${stockMaximo}', valor: data["stockMaximo"]};
+		var nombreShown = {nombre: "nombre", mensaje: "${nombre}", valor: data["nombre"]};
+		var stockMaximoShown = {nombre: "stockMaximo", mensaje: "${stockMaximo}", valor: data["stockMaximo"]};
 		arrayShown.push(nombreShown);
 		arrayShown.push(stockMaximoShown);
 		bootbox.dialog({
@@ -212,7 +197,7 @@ $(document).ready(function(){
 	        message: formularioModificar(arrayHidden,arrayShown),
 	        buttons: {
 	            success: {
-	                label: "Save",
+	                label: "${guardar}",
 	                className: "btn-success",
 	                callback: function (e) {
 		                var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
