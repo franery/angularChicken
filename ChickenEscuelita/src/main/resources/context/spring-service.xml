@@ -126,6 +126,11 @@
 	<bean name="movimientoValidacion"
 		class="ar.com.escuelita.chicken.presentacion.validacion.MovimientoValidacion">
 	</bean>
+	<bean name="depositoValidacionServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.validacion.impl.DepositoValidacionServicioImpl" />
+	<bean name="depositoValidacion"
+		class="ar.com.escuelita.chicken.presentacion.validacion.DepositoValidacion">
+	</bean>
 
 	<!-- Mapeadores -->
 

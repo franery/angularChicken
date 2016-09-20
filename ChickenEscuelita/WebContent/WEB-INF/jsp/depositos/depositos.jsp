@@ -124,6 +124,12 @@ $(document).ready(function(){
     						processData:false,
     						complete: function() {
     							table.ajax.reload();
+    						},
+    						success: function(resp) {
+    							alert("SUCCESS" + resp);
+    						},
+    						error: function(resp) {
+    							alert("ERROR" + resp);
     						}
 		        		});
 			        }

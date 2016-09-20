@@ -2,12 +2,15 @@ package ar.com.escuelita.chicken.presentacion.controlador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
+import ar.com.escuelita.chicken.presentacion.validacion.DepositoValidacion;
 
 @Controller
 public class DepositosControlador extends Controlador {
@@ -15,9 +18,19 @@ public class DepositosControlador extends Controlador {
 	@Autowired
 	private IDepositoServicio depositoServicio;
 	
+	@Autowired
+	private DepositoValidacion depositoValidacion;
+	
 	private static final String DEPOSITOS_VIEW = "depositos/depositos";
 	private static final String DEPOSITOS_NUEVO_VIEW = "depositos/depositosNuevo";
 	private static final String DEPOSITOS_MODIFICAR_VIEW = "depositos/depositosModificar";
+	
+	@InitBinder
+    protected void initBinder(WebDataBinder binder) throws Exception {
+		if (binder.getTarget() instanceof DepositoDTO){
+		binder.setValidator(depositoValidacion);
+		}
+    }
 	
 	@RequestMapping(path="/depositos")
 	public ModelAndView depositos() {
