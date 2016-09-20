@@ -77,6 +77,7 @@
 	</c:set>
 	
 <script>
+var flagCerrarForm = true;
 
 $(document).ready(function(){
 
@@ -91,7 +92,7 @@ $(document).ready(function(){
 	        ],
 	    select:true,
 	    paging:true,
-	    pageLength:5,
+	    pageLength:50,
 	    ordering:true
 	});
 	
@@ -112,9 +113,10 @@ $(document).ready(function(){
 	                label: "${guardar}",
 	                className: "btn-success",
 	                callback: function (e) {
-		                var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
+	                	var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
 	        				 	"stockMaximo": $('#stockMaximo').val(), "borrado": $('#borrado').val()};
-	        		    e.preventDefault();
+// 	        		    e.preventDefault();
+						
 		        		$.ajax({
 		        			url: "depositosNuevoJson",
     						type: "POST",
@@ -122,22 +124,27 @@ $(document).ready(function(){
     						dataType: "json",
     						contentType: "application/json",
     						processData:false,
+    						async: false,
     						complete: function() {
     							table.ajax.reload();
     						},
     						success: function(resp) {
-    							alert("SUCCESS" + resp);
+    							cerrarForm(false);
     						},
-    						error: function(resp) {
-    							alert("ERROR" + resp);
+    						error: function(data) {
+    							cerrarForm(true);
     						}
 		        		});
+		        		return flagCerrarForm;
 			        }
 	   	        }
 			}
 		});
 	});
 	
+	function cerrarForm(bool) {
+		flagCerrarForm = bool;
+	}
 	
 	$('#tablita tbody').on( 'click', '#borrar', function (e) {
 		var data = table.row( this.closest("tr") ).data();
