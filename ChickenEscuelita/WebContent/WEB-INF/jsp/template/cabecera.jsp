@@ -14,19 +14,14 @@ body {
 .container-fluid > .navbar-collapse > .navbar-nav.navbar-right:last-child{
     margin-right: 10px;
 }
-@media (min-width: 768px) { 
-    .twoRow .navbar-collapse {
-        
-    }
-}
 </style> 
 </head>
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top twoRow" role="navigation">	
-	<div class=container-fluid>
+	<div class=container>
 		<div class="navbar-header">
- 			<a class="navbar-brand" href="#"><spring:message code="nombreApp" /></a>
+ 			<a class="navbar-brand" href="ingresar"><spring:message code="nombreApp" /></a>
      		<button type = "button" class = "navbar-toggle" data-toggle="collapse" data-target = "#example-navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 		</div>       
@@ -82,11 +77,13 @@ body {
 			</button>
 		</div>
 		<div class="collapse navbar-collapse" id="navbar2-navbar-collapse">
-			<ul class="nav navbar-nav">
-				<c:forEach items="${listaPermisos}" var="permiso">
-				<li><a href="${permiso}"><spring:message code="${permiso}"/></a></li>
-				</c:forEach>
-			</ul>
+			<div class="container">
+				<ul class="nav navbar-nav">
+					<c:forEach items="${listaPermisos}" var="permiso">
+					<li><a href="${permiso}"><spring:message code="${permiso}"/></a></li>
+					</c:forEach>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
@@ -95,12 +92,6 @@ body {
 <br>
 
 <script>
-$(function(){
-    $('#navbar1 .navbar .navbar-collapse').on('show.bs.collapse', function(e) {
-        $('#navbar1 .navbar .navbar-collapse').not(this).collapse('hide');
-    });
-});
-	
 function myFunction() {
     var x = document.URL;
 	document.getElementById("urlRequest").value = x;

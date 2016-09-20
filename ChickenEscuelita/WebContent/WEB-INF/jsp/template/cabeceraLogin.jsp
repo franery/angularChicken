@@ -15,6 +15,10 @@ select.backVerde {
 submit.backVerde {
 	background-color: #4CAF50;
 }
+.container-fluid > .navbar-nav.navbar-right:last-child,
+.container-fluid > .navbar-collapse > .navbar-nav.navbar-right:last-child{
+    margin-right: 10px;
+}
 </style></head>
 
 <body>
