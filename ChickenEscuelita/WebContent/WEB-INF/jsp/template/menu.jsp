@@ -14,18 +14,6 @@
 
 <!-- Menu General -->
 	
-<%-- 	<div>
-		<c:forEach items="${listaPermisos}" var="permiso">
-			<!-- link -->
-			<form:form action="${permiso}" method="post" >
-				<input class="menu" type="submit" value=<spring:message code="${permiso}"/> />
-			</form:form>
-		</c:forEach>
-	</div>  --%>
-
-
-
-
 	 <div class="sidebar-nav">
       <div class="navbar navbar-default navbar-center" role="navigation">
         <div class="navbar-header">
@@ -39,12 +27,12 @@
         </div>
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><c:forEach items="${listaPermisos}" var="permiso">
-						<!-- link -->
-						<form:form action="${permiso}" method="post" >
-							<li><input class="menu" type="submit" value=<spring:message code="${permiso}"/> /></li>
-						</form:form>
-					</c:forEach>
+	            <li class="active"><c:forEach items="${listaPermisos}" var="permiso">
+							<!-- link -->
+							<form:form action="${permiso}" method="post" >
+								<li><input class="menu" type="submit" value=<spring:message code="${permiso}"/> /></li>
+							</form:form>
+						</c:forEach>
 					</li>
           </ul>
         </div>
