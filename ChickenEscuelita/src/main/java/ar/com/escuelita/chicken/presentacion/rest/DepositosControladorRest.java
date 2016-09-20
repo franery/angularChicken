@@ -45,16 +45,11 @@ public class DepositosControladorRest{
 	@RequestMapping(path="/depositosNuevoJson")
 	public Object depositosNuevoJson(@RequestBody @Validated DepositoDTO deposito,
 			BindingResult result) throws NegocioExcepcion {
-		HashMap<String, Boolean> hash = new HashMap<>();
-		if(!result.hasErrors()) {
-			hash.put("success", true);
-			depositoServicio.crear(deposito);
-			return hash;
+		if(result.hasErrors()) {
+			return result.getAllErrors();
 		}
-		else {
-			return result;
-		}
-		//return hash;
+		depositoServicio.crear(deposito);
+		return null;
 	}
 	
 	@RequestMapping(path="/depositosBorrarJson")

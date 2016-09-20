@@ -77,6 +77,7 @@
 	</c:set>
 
 <script>
+
 var flagCerrarForm = true;
 
 $(document).ready(function(){
@@ -125,9 +126,6 @@ $(document).ready(function(){
     							table.ajax.reload();
     						},
     						success: function(resp) {
-    							cerrarForm(true);
-    						},
-    						error: function(data) {
     							cerrarForm(false);
     						}
 		        		});
@@ -238,6 +236,7 @@ $(document).ready(function(){
 		});
 	});
 });
+
 </script>
 </body>
 </html>
