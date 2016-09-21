@@ -29,5 +29,10 @@ public class ParametroValidacion implements Validator {
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("descripcion", e.getMessage(),"Mesnaje default");
 		}
+		try {
+			parametroValidacionServicio.validacionNombreNoVacio(parametro.getDescripcion());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("descripcion", e.getMessage(),"Mesnaje default");
+		}
 	}
 }

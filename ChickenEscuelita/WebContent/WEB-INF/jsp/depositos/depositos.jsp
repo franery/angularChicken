@@ -30,7 +30,7 @@
 				<th></th>
 			</tr>
 		</thead>
-		<tbody class="bod">
+		<tbody>
 		</tbody>
 	</table>
 	
@@ -41,7 +41,12 @@
 		<form:input id="stockMaximo" path="stockMaximo" type="hidden"/>
 		<form:input id="borrado" path="borrado" type="hidden"/>
 	</form:form>
-
+	
+	<c:set var="value">
+		<spring:message code="mensajeBorrar" />
+	</c:set>
+	<input id="mensajeBorrar" type="hidden" value="${value}" />
+	
 	<c:set var="borrar">
 		<spring:message code="borrar" />
 	</c:set>

@@ -23,9 +23,15 @@ public class ParametroValidacionServicioImpl implements IParametroValidacionServ
 	public void validacionDescripcionParametro(String descripcionParametro, String parametroId) throws ValidacionExcepcion {
 		List<DTO> listaParametros = (List<DTO>) parametroServicio.listar();
 		for(DTO dto : listaParametros) {
-			if (((ParametroDTO)dto).getDescripcion().equals(descripcionParametro) ) {
+			if (((ParametroDTO)dto).getDescripcion().equals(descripcionParametro) && !((ParametroDTO)dto).getId().equals(parametroId)) {
 				throw new ValidacionExcepcion("mensajeErrorParametro");
 			}
+		}
+	}
+	
+	public void validacionNombreNoVacio(String descripcion) throws ValidacionExcepcion {
+		if (descripcion == null || descripcion.isEmpty()) {
+			throw new ValidacionExcepcion("mensajeErrorNombreVacio");
 		}
 	}
 }

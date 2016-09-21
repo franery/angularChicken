@@ -129,11 +129,15 @@
 	<bean name="depositoValidacion"
 		class="ar.com.escuelita.chicken.presentacion.validacion.DepositoValidacion">
 	</bean>
-	
 	<bean name="gallineroValidacionServicio"
 		class="ar.com.escuelita.chicken.negocio.servicios.validacion.impl.GallineroValidacionServicioImpl" />
 	<bean name="gallineroValidacion"
 		class="ar.com.escuelita.chicken.presentacion.validacion.GallineroValidacion">
+	</bean>
+	<bean name="parametroValidacionServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.validacion.impl.ParametroValidacionServicioImpl" />
+	<bean name="parametroValidacion"
+		class="ar.com.escuelita.chicken.presentacion.validacion.ParametroValidacion">
 	</bean>
 
 	<!-- Mapeadores -->

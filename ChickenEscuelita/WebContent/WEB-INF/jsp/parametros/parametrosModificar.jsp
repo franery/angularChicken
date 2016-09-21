@@ -13,38 +13,72 @@
 <body>
 	<h1 class="page-header"><spring:message code="parametroModificar" /></h1>
 
-	<form:form id="formModificar" method="POST" action="parametrosProcesarModificar" commandName="parametro">
-		<form:input path="id" type="hidden" value="${parametro.getId()}"/>
+<form:form id="formModificar" method="post" commandName="parametro">
+	<form:input id="id" path="id" type="hidden" value="${parametro.getId()}"/>
+	<table>
+		<tr>
+			<td><form:label path="descripcion"><spring:message code="descripcion" text="descripcion"/>:</form:label></td>
+			<td><form:input id="descripcion" path="descripcion" value="${parametro.getDescripcion()}" required="required"/></td>
+		</tr>
+		<tr>
+			<td><form:label path="valor"><spring:message code="valor" text="valor"/>:</form:label></td>
+			<td><form:input id="valor" path="valor" value="${parametro.getValor()}" /></td>
+		</tr>
+	</table>
+	<input id="botonGuardar" type="button" value=<spring:message code="guardar"/> />
+</form:form>
 	
-		<table>
-			<tr>
-				<td><spring:message code="descripcion" /></td>
-				<td><form:input path="descripcion" required="required"/></td>
-			</tr>
-			<tr>
-				<td><spring:message code="valor" /></td>
-				<td><form:input path="valor" required="required"/></td>
-			</tr>
-			<tr>
-				<td colspan="4" style="text-align: center;">
-				<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> </td>
-			</tr>
-		</table>
-	</form:form>
-	
-	<c:set var="value">
+<c:set var="value">
 		<spring:message code="mensajeModificar" />
 	</c:set>
-	<input id="mensajeModificar" type="hidden" value="${value}" />
+
+<input id="mensajeModificar" type="hidden" value="${value}" />
+	
+<c:set var="mensajeErrorParametro">
+	<spring:message code="mensajeErrorParametro" />
+</c:set>
+
+<c:set var="mensajeErrorNombreVacio">
+	<spring:message code="mensajeErrorNombreVacio" />
+</c:set>
+
+<p id="errores"></p>
 	
 <script>
+
+var mensajesError = {
+		mensajeErrorParametro: "${mensajeErrorParametro}",
+		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}"
+	};
 
 $('#botonGuardar').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeModificar").value;
     e.preventDefault();
     bootbox.confirm(mensaje, function (response) {        
         if(response) {
-            $('#formModificar').submit();
+        	var json = {
+        			"id" : document.getElementById("id").value,
+        			"descripcion" : document.getElementById("descripcion").value,
+        			"valor" : document.getElementById("valor").value
+        		};
+        	$.ajax({
+        		url : "parametrosModificarJson",
+        		type : "POST",
+        		data : JSON.stringify(json),
+        		dataType : "json",
+        		contentType : "application/json",
+        		processData : false,
+        		success: function(errores){
+        			var mensaje = "";
+        			for(var i = 0; i < errores.length; i++) {
+        				mensaje += mensajesError[errores[i].code] + "<br>";
+        			}
+        			document.getElementById("errores").innerHTML = mensaje;
+        		},
+        		error: function(){
+        			window.location = "parametros";
+        		}
+        	});
         }
     });
 });
