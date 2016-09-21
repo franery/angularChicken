@@ -12,24 +12,43 @@
 <body>
 	<h1  class="page-header"><spring:message code="usuarioNuevo" /></h1>
 
-	<form:form method="POST"  id="formNuevo" action="usuariosProcesarNuevo" commandName="usuarioNM">
-		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
+	<form:form class="form-horizontal maxwid" method="POST"  id="formNuevo" action="usuariosProcesarNuevo" commandName="usuarioNM">
+		<form:input class="form-control" path="id" type="hidden" value="${usuarioNM.getId()}"/>
 		<div class="form-group">
-					<spring:message code="nombreUsuario" />
-					<form:input path="nombreUsuario" required="required"/>
-					<spring:message code="nombre" />
-					<form:input path="nombre" required="required"/>
-					<spring:message code="apellido" />
-					<form:input path="apellido" required="required"/>
-					<spring:message code="contrasenia" />
-					<form:input path="contrasenia" type="password" required="required"/>
-					<spring:message code="perfil" />:
-				
+			<form:label class="control-label col-sm-2" path="nombreUsuario"><spring:message code="nombreUsuario" />:</form:label>
+			<div class="col-sm-10">
+				<form:input class="form-control" path="nombreUsuario" required="required"/>
+			</div>
+		</div>
+		<div class="form-group">			
+			<form:label class="control-label col-sm-2" path="nombre"><spring:message code="nombre" />:</form:label>
+				<div class="col-sm-10">
+					<form:input class="form-control" path="nombre" required="required"/>
+				</div>
+			</div>
+			<div class="form-group">		
+			<form:label class="control-label col-sm-2" path="apellido"><spring:message code="apellido" />:</form:label>
+				<div class="col-sm-10">
+					<form:input class="form-control" path="apellido" required="required"/>
+				</div>
+			</div>
+			<div class="form-group">
+			<form:label class="control-label col-sm-2" path="nombreUsuario"><spring:message code="contrasenia" />:</form:label>
+				<div class="col-sm-10">
+					<form:input class="form-control" path="contrasenia" type="password" required="required"/>
+				</div>
+			</div>
+			<div class="form-group">
+			<form:label class="control-label col-sm-2" path="nombreUsuario"><spring:message code="perfil" />:</form:label>
 				<c:forEach var="perfil" items="${perfiles}">
 				        	<input type="checkbox" id="${perfil.getId()}" name="${perfil.getId()}" value="${perfil.getId()}"/>${perfil.getNombre()}
 				</c:forEach>
-					<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> 
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+					<input class="btn btn-default" id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> 
 					<form:errors path="nombreUsuario" cssClass="error" />  
+				</div>
+			</div>
 		</div>
 	</form:form>
 	<script>

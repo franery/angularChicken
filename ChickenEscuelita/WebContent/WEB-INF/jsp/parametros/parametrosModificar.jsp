@@ -13,7 +13,7 @@
 <body>
 	<h1 class="page-header"><spring:message code="parametroModificar" /></h1>
 
-<form:form  class="form-horizontal maxwid" id="formModificar" method="post" commandName="parametro">
+<form:form class="form-horizontal maxwid" id="formModificar" method="post" commandName="parametro">
 	<form:input id="id" path="id" type="hidden" value="${parametro.getId()}"/>
 	<div class="form-group">
 		<form:label class="control-label col-sm-2" path="descripcion"><spring:message code="descripcion" text="descripcion"/>:</form:label>

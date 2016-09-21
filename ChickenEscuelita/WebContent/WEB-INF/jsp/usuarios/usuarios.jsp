@@ -17,7 +17,7 @@
 <div>
 		<!-- Nuevo Usuario -->
 		<form:form action="usuariosNuevo" method="post" commandName="usuarioNM">
-				<input type="submit" value=<spring:message code="nuevo"/> />
+				<input class="btn btn-success" type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		
 		<!-- Tabla Usuarios -->
