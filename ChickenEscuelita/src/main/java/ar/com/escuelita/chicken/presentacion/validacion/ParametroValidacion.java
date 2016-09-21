@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.validacion.IParametroValidacionServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
@@ -23,6 +24,7 @@ public class ParametroValidacion implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errores) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ParametroValidacion.class, "validate");
 		ParametroDTO parametro = (ParametroDTO) target;
 		try {
 			parametroValidacionServicio.validacionDescripcionParametro(parametro.getDescripcion(), parametro.getId());

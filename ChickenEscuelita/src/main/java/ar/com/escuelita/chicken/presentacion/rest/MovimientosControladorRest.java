@@ -33,13 +33,15 @@ public class MovimientosControladorRest extends Controlador{
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "initBinder");
 		if (binder.getTarget() instanceof MovimientoDTO){
 		binder.setValidator(movimientoValidacion);
 		}
     }
 	
 	@RequestMapping(path="/movimientosJson")
-	public HashMap<String, Collection<DTO>> movimientos() {
+	public HashMap<String, Collection<DTO>> movimientosJson() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "movimientosJson");
 		MovimientoFiltro m = new MovimientoFiltro();
 		m.setProductorId(Long.parseLong(usuario.getId()));
 		HashMap<String, Collection<DTO>> movimientosJson = new HashMap<String, Collection<DTO>>();
@@ -48,8 +50,9 @@ public class MovimientosControladorRest extends Controlador{
 	}
 	
 	@RequestMapping(path="/movimientosNuevoJson")
-	public Object depositosNuevoJson(@RequestBody @Validated MovimientoDTO movimiento,
+	public Object movimientosNuevoJson(@RequestBody @Validated MovimientoDTO movimiento,
 			BindingResult result) throws NegocioExcepcion {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "movimientosNuevoJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
@@ -59,6 +62,7 @@ public class MovimientosControladorRest extends Controlador{
 	
 	@RequestMapping("filtrando")
 	public @ResponseBody HashMap<String, Collection<DTO>> filtrar(@RequestBody MovimientoFiltro filtro) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "filtrar");
 		filtro.setProductorId(Long.parseLong(usuario.getId()));
 		HashMap<String, Collection<DTO>> movimientosJson = new HashMap<String, Collection<DTO>>();
 		movimientosJson.put(Constantes.DATA, movimientoServicio.listar(filtro));

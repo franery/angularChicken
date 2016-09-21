@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.validacion.IPerfilValidacionServicio;
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
@@ -24,6 +25,7 @@ public class PerfilValidacion implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errores) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilValidacion.class, "validate");
 		PerfilDTO perfil = (PerfilDTO) target;
 		try {
 			perfilValidacionServicio.validacionPerfilRoot(perfil.getId());
@@ -40,6 +42,5 @@ public class PerfilValidacion implements Validator {
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
 		}
-//		ValidationUtils.rejectIfEmpty(errores, perfil.getNombre(), "mensaje error");
 	}
 }

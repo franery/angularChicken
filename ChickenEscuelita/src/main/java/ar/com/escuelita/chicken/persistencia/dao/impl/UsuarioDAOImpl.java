@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.excepciones.PersistenciaExcepcion;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
@@ -19,6 +20,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 
 	@Transactional
 	public UsuarioModel get(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "get");
 		Session s = sessionFactory.openSession();
 		UsuarioModel e = s.get(UsuarioModel.class, id);
 		s.close();
@@ -26,6 +28,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 	}
 
 	public List<UsuarioModel> listar() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "listar");
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
 		List<UsuarioModel> lista = session.createQuery("from UsuarioModel where borrado=false").list();
@@ -34,6 +37,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 	}
 
 	public List<UsuarioModel> listarProductores(){
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "listarProductores");
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
 		List<UsuarioModel> lista = session.createQuery("from UsuarioModel U where U.borrado=false").list();
@@ -43,6 +47,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 
 	@Transactional
 	public void guardar(UsuarioModel usuarioModel) throws PersistenciaExcepcion {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "guardar");
 		try {
 			Session s = sessionFactory.openSession();
 			Transaction tx = s.beginTransaction();
@@ -56,6 +61,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 
 	@Transactional
 	public void modificar(UsuarioModel usuarioModel) throws PersistenciaExcepcion {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "modificar");
 		try {
 			Session s = sessionFactory.openSession();
 
@@ -70,6 +76,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 
 	@Transactional
 	public void borrar(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "borrar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		UsuarioModel model = s.get(UsuarioModel.class, id);
@@ -82,6 +89,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 
 	@Override
 	public HashMap<UsuarioModel, Long> getProduccionTotal(UsuarioFiltro usuarioFiltro) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "getProduccionTotal");
 
 		String query = "SELECT usuario, SUM(mov.cantidad) FROM MovimientoModel as mov"
 				+ " join mov.gallinero as g"
@@ -107,6 +115,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 
 	@Override
 	public List<UsuarioModel> listar(UsuarioFiltro usuarioFiltro) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "listar");
 		String query = "select usuario from UsuarioModel as usuario" ;
 		
 		QueryParametrosUtil qp = generarConsulta(query, usuarioFiltro);
@@ -115,6 +124,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 	}
 	
 	private QueryParametrosUtil generarConsulta(String query, UsuarioFiltro filtro){
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "generarConsulta");
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 
 		String str = " where usuario.borrado=false ";

@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IPermisoDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.PermisoModel;
@@ -14,6 +15,7 @@ public class PermisoDAOImpl extends DAO implements IPermisoDAO {
 
 	@Transactional
 	public PermisoModel get(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PermisoDAOImpl.class, "get");
 		Session s = sessionFactory.openSession();
 		PermisoModel e = s.get(PermisoModel.class, id);
 		s.close();
@@ -21,6 +23,7 @@ public class PermisoDAOImpl extends DAO implements IPermisoDAO {
 	}
 
 	public List<PermisoModel> listar() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PermisoDAOImpl.class, "listar");
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
 		List<PermisoModel> lista = session.createQuery("from PermisoModel").list();
@@ -30,6 +33,7 @@ public class PermisoDAOImpl extends DAO implements IPermisoDAO {
 
 	@Transactional
 	public void guardar(PermisoModel permisoModel) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PermisoDAOImpl.class, "guardar");
 		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.save(permisoModel);
@@ -39,6 +43,7 @@ public class PermisoDAOImpl extends DAO implements IPermisoDAO {
 
 	@Transactional
 	public void modificar(PermisoModel permisoModel) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PermisoDAOImpl.class, "modificar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		s.update(permisoModel);
@@ -48,6 +53,7 @@ public class PermisoDAOImpl extends DAO implements IPermisoDAO {
 
 	@Transactional
 	public void borrar(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PermisoDAOImpl.class, "borrar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		s.delete(s.get(PermisoModel.class,id));

@@ -30,6 +30,7 @@ public class GallinerosControladorRest {
 		
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControladorRest.class, "initBinder");
 		if (binder.getTarget() instanceof GallineroDTO){
 			binder.setValidator(gallineroValidacion);
 		}
@@ -37,6 +38,7 @@ public class GallinerosControladorRest {
 	
 	@RequestMapping("/gallinerosJson")
 	public HashMap<String, List<DTO>> gallinerosJson() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControladorRest.class, "gallinerosJson");
 		HashMap<String, List<DTO>> gallinerosJson = new HashMap<String, List<DTO>>();
 		gallinerosJson.put(Constantes.DATA, (List<DTO>)gallineroServicio.listar());
 		return gallinerosJson;
@@ -45,6 +47,7 @@ public class GallinerosControladorRest {
 	@RequestMapping(path="/gallinerosNuevoJson")
 	public Object gallinerosNuevoJson(@RequestBody @Validated GallineroDTO gallinero,
 			BindingResult result) throws NegocioExcepcion {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControladorRest.class, "gallinerosNuevoJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
@@ -55,6 +58,7 @@ public class GallinerosControladorRest {
 	@RequestMapping(path="/gallinerosBorrarJson")
 	public void gallinerosBorrarJson(@RequestBody @Validated GallineroDTO gallinero,
 			BindingResult result) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControladorRest.class, "gallinerosBorrarJson");
 		if(!result.hasErrors()) {
 			gallineroServicio.borrar(gallinero);
 		}
@@ -63,6 +67,7 @@ public class GallinerosControladorRest {
 	@RequestMapping(path="/gallinerosModificarJson")
 	public Object gallinerosModificarJson(@RequestBody @Validated GallineroDTO gallinero,
 			BindingResult result) throws NegocioExcepcion {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControladorRest.class, "gallinerosModificarJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}

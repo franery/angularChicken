@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IPerfilDAO;
 import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
@@ -16,6 +17,7 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 
 	@Transactional
 	public PerfilModel get(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilDAOImpl.class, "get");
 		Session s = sessionFactory.openSession();
 		PerfilModel e = s.get(PerfilModel.class, id);
 		s.close();
@@ -23,6 +25,7 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 	}
 
 	public List<PerfilModel> listar() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilDAOImpl.class, "listar");
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
 		List<PerfilModel> lista = session.createQuery("from PerfilModel").list();
@@ -32,6 +35,7 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 
 	@Transactional
 	public void guardar(PerfilModel perfilModel) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilDAOImpl.class, "guardar");
 		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.save(perfilModel);
@@ -41,6 +45,7 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 
 	@Transactional
 	public void modificar(PerfilModel perfilModel) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilDAOImpl.class, "modificar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		s.update(perfilModel);
@@ -50,6 +55,7 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 
 	@Transactional
 	public void borrar(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilDAOImpl.class, "borrar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		s.delete(s.get(PerfilModel.class,id));
@@ -60,6 +66,7 @@ public class PerfilDAOImpl extends DAO implements IPerfilDAO {
 	
 	@Override
 	public List<PerfilModel> listar(PerfilFiltro filtro) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilDAOImpl.class, "listar");
 
 	QueryParametrosUtil qp = new QueryParametrosUtil();
 	

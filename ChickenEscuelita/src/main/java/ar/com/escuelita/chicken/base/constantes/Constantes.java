@@ -35,5 +35,6 @@ public class Constantes {
 	public static final long PERFIL_ROOT_ID = 1;
 	public static final long STOCK_MINIMO = 0;
 	public static final String DATA = "data";
-	public static final Logger CHICKEN_LOG = LoggerFactory.getLogger("LogMaster");
+	public static final String LOG_MASTER = "LogMaster";
+	public static final Logger CHICKEN_LOG = LoggerFactory.getLogger(LOG_MASTER);
 }

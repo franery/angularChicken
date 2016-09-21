@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IVentaDAO;
 import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
@@ -16,6 +17,7 @@ public class VentaDAOImpl extends DAO implements IVentaDAO {
 
 	@Transactional
 	public VentaModel get(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentaDAOImpl.class, "get");
 		Session s = sessionFactory.openSession();
 		VentaModel e = s.get(VentaModel.class, id);
 		s.close();
@@ -23,6 +25,7 @@ public class VentaDAOImpl extends DAO implements IVentaDAO {
 	}
 
 	public List<VentaModel> listar() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentaDAOImpl.class, "listar");
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
 		List<VentaModel> lista = session.createQuery("from VentaModel where borrado=false").list();
@@ -31,6 +34,7 @@ public class VentaDAOImpl extends DAO implements IVentaDAO {
 	}
 	
 	public List<VentaModel> listar(VentaFiltro filtro) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentaDAOImpl.class, "listar");
 		String query = "select venta from VentaModel as venta" 
 				+ " join venta.proveedor as proveedor";
 		
@@ -41,6 +45,7 @@ public class VentaDAOImpl extends DAO implements IVentaDAO {
 
 	@Transactional
 	public void guardar(VentaModel ventaModel) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentaDAOImpl.class, "guardar");
 		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.save(ventaModel);
@@ -51,6 +56,7 @@ public class VentaDAOImpl extends DAO implements IVentaDAO {
 
 	@Transactional
 	public void modificar(VentaModel ventaModel) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentaDAOImpl.class, "modificar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		s.update(ventaModel);
@@ -60,6 +66,7 @@ public class VentaDAOImpl extends DAO implements IVentaDAO {
 
 	@Transactional
 	public void borrar(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentaDAOImpl.class, "borrar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		VentaModel model = s.get(VentaModel.class, id);
@@ -71,6 +78,7 @@ public class VentaDAOImpl extends DAO implements IVentaDAO {
 	}
 	
 	private QueryParametrosUtil generarConsulta(String query, VentaFiltro filtro){
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentaDAOImpl.class, "generarConsulta");
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 		
 		String str = " where venta.borrado=false ";

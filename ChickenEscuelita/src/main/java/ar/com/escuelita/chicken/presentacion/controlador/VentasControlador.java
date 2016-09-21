@@ -32,8 +32,17 @@ public class VentasControlador extends Controlador {
 	@Autowired
 	private VentaValidacion ventaValidacion;
 	
+	@InitBinder
+    protected void initBinder(WebDataBinder binder) throws Exception {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentasControlador.class, "initBinder");
+		if (binder.getTarget() instanceof VentaDTO){
+		binder.setValidator(ventaValidacion);
+		}
+    }
+	
 	@RequestMapping(path="/ventas")
 	public ModelAndView ventas(@ModelAttribute("filtro") VentaFiltro filtro) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentasControlador.class, "ventas");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		List<DTO> listaVentas = (List<DTO>) ventaServicio.listar(filtro);
 		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
@@ -46,15 +55,9 @@ public class VentasControlador extends Controlador {
 		return model;
 	}
 	
-	@InitBinder
-    protected void initBinder(WebDataBinder binder) throws Exception {
-		if (binder.getTarget() instanceof VentaDTO){
-		binder.setValidator(ventaValidacion);
-		}
-    }
-	
 	@RequestMapping(path="/ventasNuevo")
 	public ModelAndView ventasNuevo(@ModelAttribute("venta") VentaDTO venta) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentasControlador.class, "ventasNuevo");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		List<DTO> listaProveedores = (List<DTO>) proveedorServicio.listar();
 		model.addObject("listaProveedores", listaProveedores);
@@ -68,6 +71,7 @@ public class VentasControlador extends Controlador {
 	@RequestMapping(path="/ventasProcesarNuevo")
 	public ModelAndView ventasProcesarNuevo(@ModelAttribute("venta") @Validated VentaDTO venta,
 			BindingResult result) throws Exception {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentasControlador.class, "ventasProcesarNuevo");
 		if(result.hasErrors()) {
 			return ventasNuevo(venta);
 		}

@@ -28,10 +28,7 @@ public class LoginControlador extends Controlador{
 
 	@RequestMapping("/inicio")
 	public ModelAndView login() {
-    	
-		String name = "login";
-		Constantes.CHICKEN_LOG.error("This is {} {}", name, name);
-    	
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "login");
 		ModelAndView model = new ModelAndView(Constantes.LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);
@@ -40,6 +37,7 @@ public class LoginControlador extends Controlador{
 	
 	@RequestMapping("/403")
 	public ModelAndView accesoDenegado() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "accesoDenegdo");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", "login/403");
@@ -47,6 +45,7 @@ public class LoginControlador extends Controlador{
 	}
 	@RequestMapping(path="/ingresar")
 	public ModelAndView loginVerificacion() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "loginVerificacion");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UsuarioDTO usuarioDto = null;
 		UsuarioFiltro filtro = new UsuarioFiltro();
@@ -64,6 +63,7 @@ public class LoginControlador extends Controlador{
 	}
 	
 	private List<String> obtenerPermisos() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "obtenerPermisos");
 		List<String> listaPermisos = new ArrayList<String>();
 		for(PerfilDTO perfil : usuario.getListaPerfiles()) {
 			for(PermisoDTO permiso : perfil.getListaPermisos()) {

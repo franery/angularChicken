@@ -30,6 +30,7 @@ public class DepositosControladorRest{
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", DepositosControladorRest.class, "initBinder");
 		if (binder.getTarget() instanceof DepositoDTO){
 		binder.setValidator(depositoValidacion);
 		}
@@ -37,6 +38,7 @@ public class DepositosControladorRest{
 	
 	@RequestMapping("/depositosJson")
 	public HashMap<String, List<DTO>> depositosJson() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", DepositosControladorRest.class, "depositosJson");
 		HashMap<String, List<DTO>> depositosJson = new HashMap<String, List<DTO>>();
 		depositosJson.put(Constantes.DATA, (List<DTO>)depositoServicio.listar());
 		return depositosJson;
@@ -45,6 +47,7 @@ public class DepositosControladorRest{
 	@RequestMapping(path="/depositosNuevoJson")
 	public Object depositosNuevoJson(@RequestBody @Validated DepositoDTO deposito,
 			BindingResult result) throws NegocioExcepcion {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", DepositosControladorRest.class, "depositosNuevoJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
@@ -55,6 +58,7 @@ public class DepositosControladorRest{
 	@RequestMapping(path="/depositosBorrarJson")
 	public void depositosBorrarJson(@RequestBody @Validated DepositoDTO deposito,
 			BindingResult result) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", DepositosControladorRest.class, "depositosBorrarJson");
 		if(!result.hasErrors()) {
 			depositoServicio.borrar(deposito);
 		}
@@ -63,6 +67,7 @@ public class DepositosControladorRest{
 	@RequestMapping(path="/depositosModificarJson")
 	public Object depositosModificarJson(@RequestBody @Validated DepositoDTO deposito,
 			BindingResult result) throws NegocioExcepcion {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", DepositosControladorRest.class, "depositosModificarJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}

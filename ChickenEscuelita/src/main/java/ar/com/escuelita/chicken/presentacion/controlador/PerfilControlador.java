@@ -39,6 +39,7 @@ public class PerfilControlador extends Controlador {
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) throws Exception {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilControlador.class, "initBinder");
 		if (binder.getTarget() instanceof PerfilDTO){
 			binder.setValidator(perfilValidacion);
 		}
@@ -46,6 +47,7 @@ public class PerfilControlador extends Controlador {
 
 	@RequestMapping(path="/perfiles")
 	public ModelAndView perfiles() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilControlador.class, "perfiles");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		List<DTO> listaPerfiles = (List<DTO>)perfilServicio.listar();
 		model.addObject("listaPerfiles",listaPerfiles);
@@ -60,6 +62,7 @@ public class PerfilControlador extends Controlador {
 	@RequestMapping(path="/perfilesBorrar")
 	public ModelAndView borrarPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil,
 			BindingResult result) throws Exception {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilControlador.class, "perfilesBorrar");
 		if(result.hasErrors()) {
 			return new ModelAndView("redirect:/perfiles");
 		}
@@ -69,6 +72,7 @@ public class PerfilControlador extends Controlador {
 
 	@RequestMapping("/perfilesNuevo")
 	public ModelAndView nuevoPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil, BindingResult result){
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilControlador.class, "nuevoPerfil");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);		
 		model.addObject("usuarioActual", usuario);
 		model.addObject("perfil", perfil);
@@ -83,6 +87,7 @@ public class PerfilControlador extends Controlador {
 	@RequestMapping(path="/perfilesProcesarNuevo")
 	public ModelAndView perfilesProcesarNuevo(@ModelAttribute("perfil") @Validated PerfilDTO perfil,
 			BindingResult result,HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilControlador.class, "perfilesProcesarNuevo");
 		if(result.hasErrors()) {
 			ModelAndView model = new ModelAndView("redirect:/perfilesNuevo");
 			redirectAttributes.addFlashAttribute("perfil", perfil);
@@ -95,6 +100,7 @@ public class PerfilControlador extends Controlador {
 
 	@RequestMapping(path="/perfilesModificar")
 	public ModelAndView modificarPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil, BindingResult result) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilControlador.class, "modificarPerfil");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("perfil", perfil);
@@ -110,6 +116,7 @@ public class PerfilControlador extends Controlador {
 	@RequestMapping(path="/perfilesProcesarModificar")
 	public ModelAndView perfilesProcesarModificar(@ModelAttribute("perfil") @Validated PerfilDTO perfil,
 			BindingResult result,HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilControlador.class, "perfilesProcesarModificar");
 		if(result.hasErrors()) {
 			ModelAndView model = new ModelAndView("redirect:/perfilesModificar");
 			redirectAttributes.addFlashAttribute("perfil", perfil);
@@ -121,8 +128,8 @@ public class PerfilControlador extends Controlador {
 	}
 
 	private void setPermisos(HttpServletRequest request,PerfilDTO perfil) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilControlador.class, "setPermisos");
 		List<PermisoDTO> listaNuevaPermisos = new ArrayList<>();
-
 		Collection<DTO> listaPermisos = permisoServicio.listar();
 		for (DTO dto : listaPermisos) {
 			PermisoDTO permisoDto = (PermisoDTO) dto; 
