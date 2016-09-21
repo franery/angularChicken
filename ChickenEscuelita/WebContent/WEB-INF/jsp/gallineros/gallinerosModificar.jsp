@@ -42,12 +42,38 @@
 	<input id="botonGuardar" type="button" value=<spring:message code="guardar"/> />
 </form:form>
 	
-	<c:set var="value">
-		<spring:message code="mensajeModificar" />
-	</c:set>
-	<input id="mensajeModificar" type="hidden" value="${value}" />
+<c:set var="value">
+	<spring:message code="mensajeModificar" />
+</c:set>
+<input id="mensajeModificar" type="hidden" value="${value}" />
+	
+<p id="errores"></p>
+
+<c:set var="mensajeErrorNombreVacio">
+	<spring:message code="mensajeErrorNombreVacio" />
+</c:set>
+
+<c:set var="mensajeErrorNombreUnico">
+	<spring:message code="mensajeErrorNombreUnico" />
+</c:set>
+
+<c:set var="mensajeErrorStockMinimo">
+	<spring:message code="mensajeErrorStockMinimo" />
+</c:set>
+
+<c:set var="mensajeErrorUsuarioInvalido">
+	<spring:message code="mensajeErrorUsuarioInvalido" />
+</c:set>
+	
 	
 <script>
+
+var mensajesError = {
+		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",
+		mensajeErrorNombreUnico: "${mensajeErrorNombreUnico}",
+		mensajeErrorStockMinimo: "${mensajeErrorStockMinimo}",
+		mensajeErrorUsuarioInvalido: "${mensajeErrorUsuarioInvalido}",
+};
 
 $('#botonGuardar').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeModificar").value;

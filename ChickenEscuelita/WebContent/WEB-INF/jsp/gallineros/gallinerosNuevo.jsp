@@ -45,9 +45,29 @@
 
 <p id="errores"></p>
 
+<c:set var="mensajeErrorNombreVacio">
+	<spring:message code="mensajeErrorNombreVacio" />
+</c:set>
+
+<c:set var="mensajeErrorNombreUnico">
+	<spring:message code="mensajeErrorNombreUnico" />
+</c:set>
+
+<c:set var="mensajeErrorStockMinimo">
+	<spring:message code="mensajeErrorStockMinimo" />
+</c:set>
+
+<c:set var="mensajeErrorUsuarioInvalido">
+	<spring:message code="mensajeErrorUsuarioInvalido" />
+</c:set>
+
 <script>
 
 var mensajesError = {
+		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",
+		mensajeErrorNombreUnico: "${mensajeErrorNombreUnico}",
+		mensajeErrorStockMinimo: "${mensajeErrorStockMinimo}",
+		mensajeErrorUsuarioInvalido: "${mensajeErrorUsuarioInvalido}",
 };
 
 $('#botonNuevo').on('click', function (e) {
