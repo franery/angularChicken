@@ -26,9 +26,13 @@ public class LoginControlador extends Controlador{
 	private IUsuarioServicio usuarioServicio;
 	
 	private static final String LOGIN_VIEW = "login/login";
-	
+
 	@RequestMapping("/inicio")
 	public ModelAndView login() {
+    	
+		String name = "login";
+		chickenLog.error("This is {}", name);
+    	
 		ModelAndView model = new ModelAndView(LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);

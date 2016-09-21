@@ -24,6 +24,10 @@ public class ParametrosControlador extends Controlador {
 	
 	@RequestMapping(path="/parametros")
 	public ModelAndView parametrosList() {
+		
+		String name = "parametros";
+		chickenLog.error("This is {}", name);
+
 		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
 		ParametroDTO parametro = new ParametroDTO();
 		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();

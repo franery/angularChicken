@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+
+    <appender 
+        name="STDOUT" 
+        class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender 
+        name="FILE" 
+        class="ch.qos.logback.core.FileAppender">
+        <file>C:/Users/r.petit.de.meurville/git/chicken/ChickenEscuelita/src/main/resources/logs/chicken.log</file>
+        <append>true</append>
+        <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%-4r %-5level %logger{35}: %msg%n</pattern>
+        </encoder>
+    </appender>
+
+	<!-- ESPECIFICAR AQUI EL NIVEL DE LOGUEO (TRACE-DEBUG-INFO-WARN-ERROR) QUE SE ESCRIBE AL ARCHIVO LOG -->
+    <root level="ERROR">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE"/>
+    </root>
+    
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>logFile.%d{yyyy-MM-dd}.log</FileNamePattern>
+        </rollingPolicy>
+
+</configuration>
