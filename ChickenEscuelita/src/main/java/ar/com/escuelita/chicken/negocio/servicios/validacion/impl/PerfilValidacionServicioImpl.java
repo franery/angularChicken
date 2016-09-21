@@ -2,6 +2,7 @@ package ar.com.escuelita.chicken.negocio.servicios.validacion.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IPerfilServicio;
@@ -9,8 +10,6 @@ import ar.com.escuelita.chicken.negocio.servicios.validacion.IPerfilValidacionSe
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
 
 public class PerfilValidacionServicioImpl implements IPerfilValidacionServicio {
-	
-	public static long PERFIL_ROOT_ID = 1;
 	
 	@Autowired
 	IPerfilServicio perfilServicio;
@@ -21,7 +20,7 @@ public class PerfilValidacionServicioImpl implements IPerfilValidacionServicio {
 	
 	@Override
 	public void validacionPerfilRoot(String perfilId) throws ValidacionExcepcion {
-		if(String.valueOf(PERFIL_ROOT_ID).equals(perfilId)) {
+		if(String.valueOf(Constantes.PERFIL_ROOT_ID).equals(perfilId)) {
 			throw new ValidacionExcepcion("mensajeErrorPerfilRoot");
 		}
 	}

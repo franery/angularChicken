@@ -2,6 +2,7 @@ package ar.com.escuelita.chicken.negocio.servicios.validacion.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
@@ -10,8 +11,6 @@ import ar.com.escuelita.chicken.negocio.servicios.validacion.IGallineroValidacio
 import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
 
 public class GallineroValidacionServicioImpl implements IGallineroValidacionServicio {
-
-	public static long STOCK_MINIMO = 0;
 	
 	@Autowired
 	private IGallineroServicio gallineroServicio;
@@ -38,7 +37,7 @@ public class GallineroValidacionServicioImpl implements IGallineroValidacionServ
 
 	@Override
 	public void validacionStockSuperiorMinimo(long stock) throws ValidacionExcepcion {
-		if(stock <= STOCK_MINIMO) {
+		if(stock <= Constantes.STOCK_MINIMO) {
 			throw new ValidacionExcepcion("mensajeErrorStockMinimo");
 		}
 	}

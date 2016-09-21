@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
@@ -19,28 +20,24 @@ public class GallinerosControlador extends Controlador {
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
 	
-	private static final String GALLINEROS_VIEW = "gallineros/gallineros";
-	private static final String GALLINEROS_NUEVO_VIEW = "gallineros/gallinerosNuevo";
-	private static final String GALLINEROS_MODIFICAR_VIEW = "gallineros/gallinerosModificar";
-	
 	@RequestMapping(path="/gallineros")
 	public ModelAndView gallineros() {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("gallinero",new GallineroDTO());
 		model.addObject("listaGallineros",gallineroServicio.listar());
-		model.addObject("pageToLoad", GALLINEROS_VIEW);
+		model.addObject("pageToLoad", Constantes.GALLINEROS_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 
 	@RequestMapping(path="/gallinerosNuevo")
 	public ModelAndView gallinerosNuevo() {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
 		model.addObject("gallinero", new GallineroDTO());
-		model.addObject("pageToLoad", GALLINEROS_NUEVO_VIEW);
+		model.addObject("pageToLoad", Constantes.GALLINEROS_NUEVO_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
@@ -48,11 +45,11 @@ public class GallinerosControlador extends Controlador {
 
 	@RequestMapping(path="/gallinerosModificar")
 	public ModelAndView gallinerosModificar(@ModelAttribute("gallinero") GallineroDTO gallinero) {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
 		model.addObject("gallinero", gallinero);
-		model.addObject("pageToLoad", GALLINEROS_MODIFICAR_VIEW);
+		model.addObject("pageToLoad", Constantes.GALLINEROS_MODIFICAR_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}

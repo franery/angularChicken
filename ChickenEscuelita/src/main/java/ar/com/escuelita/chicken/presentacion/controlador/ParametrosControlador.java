@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.negocio.servicios.IParametroServicio;
 import ar.com.escuelita.chicken.presentacion.dto.ParametroDTO;
@@ -17,24 +18,20 @@ public class ParametrosControlador extends Controlador {
 	
 	@Autowired
 	private IParametroServicio parametroServicio;
-		
-	private static final String PARAMETROS_VIEW = "parametros/parametros";
-	private static final String PARAMETRO_NUEVO_VIEW = "parametros/parametrosNuevo";
-	private static final String PARAMETRO_MODIFICAR_VIEW = "parametros/parametrosModificar";
 	
 	@RequestMapping(path="/parametros")
 	public ModelAndView parametrosList() {
 		
 		String name = "parametros";
-		chickenLog.error("This is {}", name);
+		Constantes.CHICKEN_LOG.error("This is {}", name);
 
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		ParametroDTO parametro = new ParametroDTO();
 		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
 		model.addObject("listaParametros",listaParametros);
 		model.addObject("parametro", parametro);
 		model.addObject("usuarioActual", usuario);
-		model.addObject("pageToLoad", PARAMETROS_VIEW);
+		model.addObject("pageToLoad", Constantes.PARAMETROS_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
@@ -47,21 +44,21 @@ public class ParametrosControlador extends Controlador {
 	
 	@RequestMapping(path="/parametrosModificar")
 	public ModelAndView modificarParametro(@ModelAttribute("parametro") ParametroDTO parametro) {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("parametro", parametro);
-		model.addObject("pageToLoad", PARAMETRO_MODIFICAR_VIEW);
+		model.addObject("pageToLoad", Constantes.PARAMETRO_MODIFICAR_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
 	@RequestMapping("/parametrosNuevo")
 	public ModelAndView nuevoParametro( ){
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		ParametroDTO parametro = new ParametroDTO();
 		model.addObject("parametro", parametro);
-		model.addObject("pageToLoad", PARAMETRO_NUEVO_VIEW);
+		model.addObject("pageToLoad", Constantes.PARAMETRO_NUEVO_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}

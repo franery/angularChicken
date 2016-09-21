@@ -1,8 +1,6 @@
 package ar.com.escuelita.chicken.negocio.servicios.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,7 +11,6 @@ import ar.com.escuelita.chicken.negocio.servicios.IPermisoServicio;
 import ar.com.escuelita.chicken.persistencia.dao.IPerfilDAO;
 import ar.com.escuelita.chicken.persistencia.modelo.PerfilModel;
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
-import ar.com.escuelita.chicken.presentacion.dto.PermisoDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.Filtro;
 import ar.com.escuelita.chicken.presentacion.filtro.PerfilFiltro;
 

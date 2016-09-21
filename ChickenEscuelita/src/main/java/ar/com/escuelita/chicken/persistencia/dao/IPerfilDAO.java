@@ -1,6 +1,5 @@
 package ar.com.escuelita.chicken.persistencia.dao;
 
-import java.util.Collection;
 import java.util.List;
 
 import ar.com.escuelita.chicken.persistencia.modelo.PerfilModel;

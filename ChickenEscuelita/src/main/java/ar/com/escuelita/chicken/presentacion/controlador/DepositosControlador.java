@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
 import ar.com.escuelita.chicken.presentacion.validacion.DepositoValidacion;
@@ -21,10 +22,6 @@ public class DepositosControlador extends Controlador {
 	@Autowired
 	private DepositoValidacion depositoValidacion;
 	
-	private static final String DEPOSITOS_VIEW = "depositos/depositos";
-	private static final String DEPOSITOS_NUEVO_VIEW = "depositos/depositosNuevo";
-	private static final String DEPOSITOS_MODIFICAR_VIEW = "depositos/depositosModificar";
-	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
 		if (binder.getTarget() instanceof DepositoDTO){
@@ -34,30 +31,30 @@ public class DepositosControlador extends Controlador {
 	
 	@RequestMapping(path="/depositos")
 	public ModelAndView depositos() {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito",new DepositoDTO());
-		model.addObject("pageToLoad", DEPOSITOS_VIEW);
+		model.addObject("pageToLoad", Constantes.DEPOSITOS_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
 	@RequestMapping("depositosNuevo")
 	public ModelAndView depositosNuevo() {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito", new DepositoDTO());
-		model.addObject("pageToLoad", DEPOSITOS_NUEVO_VIEW);
+		model.addObject("pageToLoad", Constantes.DEPOSITOS_NUEVO_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
 	@RequestMapping(path="/depositosModificar")
 	public ModelAndView depositosModificar(@ModelAttribute("deposito") DepositoDTO deposito) {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito", deposito);
-		model.addObject("pageToLoad", DEPOSITOS_MODIFICAR_VIEW);
+		model.addObject("pageToLoad", Constantes.DEPOSITOS_MODIFICAR_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}

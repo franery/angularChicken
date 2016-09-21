@@ -37,10 +37,6 @@ public class UsuariosControlador extends Controlador {
 	@Autowired
 	private IPerfilServicio perfilServicio;
 	
-	private static final String USUARIOS_VIEW = "usuarios/usuarios";
-	private static final String USUARIO_NUEVO_VIEW = "usuarios/usuariosNuevo";
-	private static final String USUARIO_MODIFICAR_VIEW = "usuarios/usuariosModificar";
-	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
 		if (binder.getTarget() instanceof UsuarioDTO){
@@ -50,7 +46,7 @@ public class UsuariosControlador extends Controlador {
 	
 	@RequestMapping(path="/usuarios")
 	public ModelAndView usuarios() {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		
 		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
 		model.addObject("listaUsuarios",listaUsuarios);
@@ -58,7 +54,7 @@ public class UsuariosControlador extends Controlador {
 		UsuarioDTO usuarioNM = new UsuarioDTO();
 		model.addObject("usuarioNM", usuarioNM);		
 		model.addObject("usuarioActual", usuario);
-		model.addObject("pageToLoad", USUARIOS_VIEW);
+		model.addObject("pageToLoad", Constantes.USUARIOS_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
@@ -75,7 +71,7 @@ public class UsuariosControlador extends Controlador {
 	
 	@RequestMapping("/usuariosNuevo")
 	public ModelAndView usuariosNuevo(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM){
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		if (usuarioNM == null) {
 			usuarioNM = new UsuarioDTO();
@@ -84,18 +80,18 @@ public class UsuariosControlador extends Controlador {
 		model.addObject("usuarioNM", usuarioNM);
 		
 		model.addObject("perfiles",perfilServicio.listar(new PerfilFiltro(Constantes.USUARIO_ROOT_ID)));
-		model.addObject("pageToLoad", USUARIO_NUEVO_VIEW);
+		model.addObject("pageToLoad", Constantes.USUARIO_NUEVO_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
 	
 	@RequestMapping(path="/usuariosModificar")
 	public ModelAndView usuariosModificar(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("usuarioNM", usuarioNM);
 		model.addObject("perfiles",perfilServicio.listar(new PerfilFiltro(Constantes.USUARIO_ROOT_ID)));
-		model.addObject("pageToLoad", USUARIO_MODIFICAR_VIEW);
+		model.addObject("pageToLoad", Constantes.USUARIO_MODIFICAR_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}

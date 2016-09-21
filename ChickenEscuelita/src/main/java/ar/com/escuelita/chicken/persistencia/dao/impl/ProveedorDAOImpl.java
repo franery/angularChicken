@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IProveedorDAO;
-import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.ProveedorModel;
 
 public class ProveedorDAOImpl extends DAO implements IProveedorDAO {

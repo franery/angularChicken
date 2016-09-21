@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
 import ar.com.escuelita.chicken.base.enumerador.EnumOperacion;
@@ -28,10 +29,6 @@ import ar.com.escuelita.chicken.presentacion.validacion.PerfilValidacion;
 
 @Controller
 public class PerfilControlador extends Controlador {
-
-	private static final String PERFILES_VIEW = "perfiles/perfiles";
-	private static final String PERFILES_NUEVO_VIEW = "perfiles/perfilNuevo";
-	private static final String PERFILES_MODIFICAR_VIEW = "perfiles/perfilModificar";
 
 	@Autowired IPerfilServicio perfilServicio;
 
@@ -49,13 +46,13 @@ public class PerfilControlador extends Controlador {
 
 	@RequestMapping(path="/perfiles")
 	public ModelAndView perfiles() {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		List<DTO> listaPerfiles = (List<DTO>)perfilServicio.listar();
 		model.addObject("listaPerfiles",listaPerfiles);
 		PerfilDTO perfil = new PerfilDTO();
 		model.addObject("perfil", perfil);
 		model.addObject("usuarioActual", usuario);
-		model.addObject("pageToLoad", PERFILES_VIEW);
+		model.addObject("pageToLoad", Constantes.PERFILES_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;
 	}
@@ -72,14 +69,14 @@ public class PerfilControlador extends Controlador {
 
 	@RequestMapping("/perfilesNuevo")
 	public ModelAndView nuevoPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil, BindingResult result){
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);		
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);		
 		model.addObject("usuarioActual", usuario);
 		model.addObject("perfil", perfil);
 		model.addObject("listaPermisos",listaPermisos);
 		model.addObject("tablaPermisos", permisoServicio.listar());
 		model.addObject("listaOperaciones",EnumOperacion.values());
 		model.addObject("listaModulos",EnumModulo.values());
-		model.addObject("pageToLoad", PERFILES_NUEVO_VIEW);
+		model.addObject("pageToLoad", Constantes.PERFILES_NUEVO_VIEW);
 		return model;
 	}
 
@@ -98,7 +95,7 @@ public class PerfilControlador extends Controlador {
 
 	@RequestMapping(path="/perfilesModificar")
 	public ModelAndView modificarPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil, BindingResult result) {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("perfil", perfil);
 		model.addObject("listaPermisos",listaPermisos);
@@ -106,7 +103,7 @@ public class PerfilControlador extends Controlador {
 		model.addObject("tablaPermisosUsuario",((PerfilDTO)perfilServicio.buscar(Long.parseLong(perfil.getId()))).getListaPermisos());
 		model.addObject("listaOperaciones",EnumOperacion.values());
 		model.addObject("listaModulos",EnumModulo.values());
-		model.addObject("pageToLoad", PERFILES_MODIFICAR_VIEW);
+		model.addObject("pageToLoad", Constantes.PERFILES_MODIFICAR_VIEW);
 		return model;
 	}
 

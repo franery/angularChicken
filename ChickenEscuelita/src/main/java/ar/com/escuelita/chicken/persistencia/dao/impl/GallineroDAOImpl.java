@@ -9,11 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IGallineroDAO;
 import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
-import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.GallineroModel;
-import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.presentacion.filtro.GallineroFiltro;
-import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 
 public class GallineroDAOImpl extends DAO implements IGallineroDAO {
 	

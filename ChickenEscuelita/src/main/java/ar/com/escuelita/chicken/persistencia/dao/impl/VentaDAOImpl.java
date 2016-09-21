@@ -9,10 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IVentaDAO;
 import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
-import ar.com.escuelita.chicken.persistencia.modelo.DepositoModel;
-import ar.com.escuelita.chicken.persistencia.modelo.MovimientoModel;
 import ar.com.escuelita.chicken.persistencia.modelo.VentaModel;
-import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.VentaFiltro;
 
 public class VentaDAOImpl extends DAO implements IVentaDAO {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
@@ -11,8 +12,6 @@ import ar.com.escuelita.chicken.negocio.servicios.validacion.IUsuarioValidacionS
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 
 public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio {
-	
-	public static long USUARIO_ROOT_ID = 1;
 	
 	@Autowired 
 	private IUsuarioServicio usuarioServicio;
@@ -32,7 +31,7 @@ public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio
 	}
 	
 	public void validacionUsuarioRoot(String usuarioId) throws ValidacionExcepcion {
-		if(String.valueOf(USUARIO_ROOT_ID).equals(usuarioId)) {
+		if(String.valueOf(Constantes.USUARIO_ROOT_ID).equals(usuarioId)) {
 			throw new ValidacionExcepcion("mensajeErrorUsuarioRoot");
 		}
 	}

@@ -2,6 +2,7 @@ package ar.com.escuelita.chicken.negocio.servicios.validacion.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
@@ -9,8 +10,6 @@ import ar.com.escuelita.chicken.negocio.servicios.validacion.IDepositoValidacion
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
 
 public class DepositoValidacionServicioImpl implements IDepositoValidacionServicio{
-	
-	public static long STOCK_MINIMO = 0;
 	
 	@Autowired
 	private IDepositoServicio depositoServicio;
@@ -31,7 +30,7 @@ public class DepositoValidacionServicioImpl implements IDepositoValidacionServic
 	}
 	
 	public void validacionStockMaximoSuperiorMinimo(long stockMaximo) throws ValidacionExcepcion {
-		if(stockMaximo <= STOCK_MINIMO) {
+		if(stockMaximo <= Constantes.STOCK_MINIMO) {
 			throw new ValidacionExcepcion("mensajeErrorStockMinimo");
 		}
 	}

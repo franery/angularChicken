@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
@@ -24,16 +25,14 @@ public class LoginControlador extends Controlador{
 	
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
-	
-	private static final String LOGIN_VIEW = "login/login";
 
 	@RequestMapping("/inicio")
 	public ModelAndView login() {
     	
 		String name = "login";
-		chickenLog.error("This is {} {}", name, name);
+		Constantes.CHICKEN_LOG.error("This is {} {}", name, name);
     	
-		ModelAndView model = new ModelAndView(LOGIN_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);
 		return model;
@@ -41,7 +40,7 @@ public class LoginControlador extends Controlador{
 	
 	@RequestMapping("/403")
 	public ModelAndView accesoDenegado() {
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", "login/403");
 		return model;
@@ -57,10 +56,10 @@ public class LoginControlador extends Controlador{
 		}
 		setUsuario(usuarioDto);
 		setListaPermisos(obtenerPermisos());
-		ModelAndView model = new ModelAndView(PRINCIPAL_VIEW);
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual",usuario);
 		model.addObject("listaPermisos", listaPermisos);
-		model.addObject("pageToLoad",VACIA_VIEW);
+		model.addObject("pageToLoad",Constantes.VACIA_VIEW);
 		return model;
 	}
 	

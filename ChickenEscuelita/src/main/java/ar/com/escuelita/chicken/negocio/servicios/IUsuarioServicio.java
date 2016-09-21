@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashMap;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
-import ar.com.escuelita.chicken.base.excepciones.NegocioExcepcion;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 
