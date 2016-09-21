@@ -33,6 +33,14 @@
 		<tbody class="bod">
 		</tbody>
 	</table>
+	
+	<form:form id="formModificar" action="depositosModificar" method="post" commandName="deposito">
+		<form:input id="id" path="id" type="hidden"/>
+		<form:input id="nombre" path="nombre" type="hidden"/>
+		<form:input id="stockHuevos" path="stockHuevos" type="hidden"/>
+		<form:input id="stockMaximo" path="stockMaximo" type="hidden"/>
+		<form:input id="borrado" path="borrado" type="hidden"/>
+	</form:form>
 
 	<c:set var="value">
 		<spring:message code="mensajeBorrar" />
@@ -78,8 +86,6 @@
 
 <script>
 
-var flagCerrarForm = true;
-
 $(document).ready(function(){
 
 	var table = $('#tablita').DataTable( {
@@ -97,51 +103,11 @@ $(document).ready(function(){
 	    ordering:true
 	});
 	
+	
 	$('#nuevo').on('click', function (e) {
-		var arrayHidden = [];
-		var arrayShown = [];
-		var nombreShown = {nombre : "nombre", mensaje : "${nombre}", valor : ""};
-		var stockMaximoShown = {nombre : "stockMaximo", mensaje : "${stockMaximo}", valor : ""};
-		arrayShown.push(nombreShown);
-		arrayShown.push(stockMaximoShown);
-		bootbox.dialog({
-	        title: "${depositoNuevo}",
-	        message: formularioModificar(arrayHidden,arrayShown),
-	        buttons: {
-	            success: {
-	                label: "${guardar}",
-	                className: "btn-success",
-	                callback: function (e) {
-	                	var json = { "id" : $('#id').val(), "nombre" :  $('#nombre').val(), "stockHuevos":  $('#stockHuevos').val(),
-	        				 	"stockMaximo": $('#stockMaximo').val(), "borrado": $('#borrado').val()};
-		        		$.ajax({
-		        			url: "depositosNuevoJson",
-    						type: "POST",
-    						data: JSON.stringify(json),
-    						dataType: "json",
-    						contentType: "application/json",
-    						processData:false,
-    						async: false,
-    						complete: function() {
-    							table.ajax.reload();
-    						},
-    						success: function(resp) {
-    							cerrarForm(false);
-    						},
-    						error: function(resp) {
-    							cerrarForm(true);
-    						}
-		        		});
-		        		return flagCerrarForm;
-			        }
-	   	        }
-			}
-		});
+		window.location = "depositosNuevo";
 	});
 	
-	function cerrarForm(bool) {
-		flagCerrarForm = bool;
-	}
 	
 	$('#tablita tbody').on('click', '#borrar', function (e) {
 		var data = table.row(this.closest("tr")).data();
@@ -170,73 +136,17 @@ $(document).ready(function(){
 			}
 		});
 	});
-	$('#tablita tbody').on('click', '#modificar', function () {
+	
+	
+	$('#tablita tbody').on('click', '#modificar', function (e) {
 		var data = table.row(this.closest("tr")).data();
-		var arrayHidden = [];
-		var arrayShown = [];
-		var idHidden = {
-			nombre : "id",
-			valor : data["id"]
-		};
-		var borradoHidden = {
-			nombre : "borrado",
-			valor : data["borrado"]
-		};
-		var stockHuevosHidden = {
-			nombre : "stockHuevos",
-			valor : data["stockHuevos"]
-		};
-		arrayHidden.push(idHidden);
-		arrayHidden.push(borradoHidden);
-		arrayHidden.push(stockHuevosHidden);
-		var nombreShown = {
-			nombre : "nombre",
-			mensaje : "${nombre}",
-			valor : data["nombre"]
-		};
-		var stockMaximoShown = {
-			nombre : "stockMaximo",
-			mensaje : "${stockMaximo}",
-			valor : data["stockMaximo"]
-		};
-		arrayShown.push(nombreShown);
-		arrayShown.push(stockMaximoShown);
-		bootbox.dialog({
-			title : "${depositoModificar}",
-			message : formularioModificar(arrayHidden, arrayShown),
-			buttons : {
-				success : {
-					label : "${guardar}",
-					className : "btn-success",
-					callback : function (e) {
-						var json = {
-							"id" : $('#id').val(),
-							"nombre" : $('#nombre').val(),
-							"stockHuevos" : $('#stockHuevos').val(),
-							"stockMaximo" : $('#stockMaximo').val(),
-							"borrado" : $('#borrado').val()
-						};
-						var mensaje = document.getElementById("mensajeModificar").value;
-						e.preventDefault();
-						bootbox.confirm(mensaje, function (response) {
-							if (response) {
-								$.ajax({
-									url : "depositosModificarJson",
-									type : "POST",
-									data : JSON.stringify(json),
-									dataType : "json",
-									contentType : "application/json",
-									processData : false,
-									complete : function () {
-										table.ajax.reload();
-									}
-								});
-							}
-						});
-					}
-				}
-			}
-		});
+		e.preventDefault();
+		document.getElementById("id").value = data["id"];
+		document.getElementById("nombre").value = data["nombre"];
+		document.getElementById("stockHuevos").value = data["stockHuevos"];
+		document.getElementById("stockMaximo").value = data["stockMaximo"];
+		document.getElementById("borrado").value = data["borrado"];
+		document.getElementById("formModificar").submit();
 	});
 });
 
