@@ -25,7 +25,7 @@
 			<td><form:input id="stockMaximo" path="stockMaximo" value="${deposito.getStockMaximo()}" required="required"/></td>
 		</tr>
 	</table>
-	<input id="nuevo" type="button" value=<spring:message code="guardar"/> />
+	<input id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
 </form:form>
 
 <c:set var="mensajeErrorNombreVacio">
@@ -44,7 +44,7 @@
 	<spring:message code="mensajeErrorStockMaximoMenorActual" />
 </c:set>
 
-<p id="probando" style="color: RED"></p>
+<p id="errores"></p>
 
 <script>
 
@@ -55,7 +55,7 @@ var mensajesError = {
 	mensajeErrorStockMaximoMenorActual: "${mensajeErrorStockMaximoMenorActual}",
 };
 
-$('#nuevo').on('click', function (e) {
+$('#botonNuevo').on('click', function (e) {
 	e.preventDefault();
 	var json = {
 			"nombre" : document.getElementById("nombre").value,
@@ -73,7 +73,7 @@ $('#nuevo').on('click', function (e) {
 			for(var i = 0; i < errores.length; i++) {
 				mensaje += mensajesError[errores[i].code] + "<br>";
 			}
-			document.getElementById("probando").innerHTML = mensaje;
+			document.getElementById("errores").innerHTML = mensaje;
 		},
 		error: function(){
 			window.location = "depositos";

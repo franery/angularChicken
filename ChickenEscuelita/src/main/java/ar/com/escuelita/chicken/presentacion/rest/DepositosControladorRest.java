@@ -61,10 +61,12 @@ public class DepositosControladorRest{
 	}
 	
 	@RequestMapping(path="/depositosModificarJson")
-	public void depositosModificarJson(@RequestBody @Validated DepositoDTO deposito,
+	public Object depositosModificarJson(@RequestBody @Validated DepositoDTO deposito,
 			BindingResult result) throws NegocioExcepcion {
-		if(!result.hasErrors()) {
-			depositoServicio.modificar(deposito);
+		if(result.hasErrors()) {
+			return result.getAllErrors();
 		}
+		depositoServicio.modificar(deposito);
+		return null;
 	}
 }
