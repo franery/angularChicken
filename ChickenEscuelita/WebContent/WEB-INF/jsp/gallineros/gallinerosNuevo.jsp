@@ -14,33 +14,38 @@
 
 <h1 class="page-header"><spring:message code="gallineroNuevo"/></h1>
 
-<form:form action="gallinerosProcesarNuevo" method="post" commandName="gallinero">
+<form:form class="form-horizontal maxwid" action="gallinerosProcesarNuevo" method="post" commandName="gallinero">
 	<form:input path="id" type="hidden" value="${gallinero.getId()}"/>
-	<table>
-		<tr>
-			<td><form:label path="nombre"><spring:message code="nombre"/>:</form:label></td>
-			<td><form:input id="nombre" path="nombre" value="${gallinero.getNombre()}" required="required"/></td>
-		</tr>
-		<tr>
-			<td><form:label path="usuarioId"><spring:message code="usuario"/>:</form:label></td>
-			<td>
-				<form:select id="usuarioId" path="usuarioId" required="required">
-					<form:option value=""><spring:message code="seleccionar" /></form:option>
-						<c:forEach items="${listaUsuarios}" var="usuario">
-							<form:option value="${usuario.getId()}">
-								<c:out value="${usuario.getNombre()}"></c:out>
-							</form:option>
-						</c:forEach>
-				</form:select>
-			</td>
-		</tr>
-		<tr>
-			<td><form:label path="stockGallinas"><spring:message code="stock"/>:</form:label></td>
-			<td><form:input id="stockGallinas" path="stockGallinas"  value="${gallinero.getStockGallinas()}" required="required" /></td>
-		</tr>
-		
-	</table>
-	<input id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="nombre"><spring:message code="nombre"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="nombre" path="nombre" value="${gallinero.getNombre()}" required="required"/>
+		</div>	
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="usuarioId"><spring:message code="usuario"/>:</form:label>
+		<div class="col-sm-10">
+			<form:select class="form-control" style="width:auto;" id="usuarioId" path="usuarioId" required="required">
+				<form:option value=""><spring:message code="seleccionar" /></form:option>
+					<c:forEach items="${listaUsuarios}" var="usuario">
+						<form:option value="${usuario.getId()}">
+							<c:out value="${usuario.getNombre()}"></c:out>
+						</form:option>
+					</c:forEach>
+			</form:select>
+		</div>				
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="stockGallinas"><spring:message code="stock"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control"  id="stockGallinas" path="stockGallinas"  value="${gallinero.getStockGallinas()}" required="required" />
+		</div>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+			<input class="btn btn-default" id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
+		</div>
+	</div>
 </form:form>
 
 <p id="errores"></p>

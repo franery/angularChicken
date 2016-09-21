@@ -1,23 +1,114 @@
-48076 ERROR a.c.e.c.p.c.LoginControlador: This is login
-59927 ERROR a.c.e.c.p.c.LoginControlador: This is parametros
-17763 ERROR a.c.e.c.p.c.LoginControlador: This is login login
-18017 ERROR a.c.e.c.p.c.LoginControlador: This is login login
-18518 ERROR a.c.e.c.p.c.LoginControlador: This is login login
-18677 ERROR a.c.e.c.p.c.LoginControlador: This is login login
-[2016-09-21 11:39:50,746][http-bio-8080-exec-9]    []            [a.c.e.c.presentacion.controlador.LoginControlador] This is login login
-[2016-09-21 11:39:59,499][http-bio-8080-exec-7]    []            [a.c.e.c.presentacion.controlador.LoginControlador] This is parametros
-[2016-09-21 11:40:01,654][http-bio-8080-exec-2]    []            [a.c.e.c.presentacion.controlador.LoginControlador] This is login login
-[2016-09-21 11:52:23,202][http-bio-8080-exec-3]   [a.c.e.c.presentacion.controlador.LoginControlador] This is login login
-[2016-09-21 11:52:27,755][http-bio-8080-exec-10]  [a.c.e.c.presentacion.controlador.LoginControlador] This is parametros
-[2016-09-21 11:54:01,086][http-bio-8080-exec-9]    This is login login
-[2016-09-21 11:55:30,386][http-bio-8080-exec-9]    []            This is login login
-[2016-09-21 11:55:35,518][http-bio-8080-exec-10]   []            This is parametros
-[2016-09-21 11:57:12,308][http-bio-8080-exec-4]    [a.c.e.c.presentacion.controlador.LoginControlador]This is login login
-[2016-09-21 11:57:21,814][http-bio-8080-exec-5]    [a.c.e.c.presentacion.controlador.LoginControlador]This is parametros
-[2016-09-21 11:57:24,633][http-bio-8080-exec-8]    [a.c.e.c.presentacion.controlador.LoginControlador]This is parametros
-[2016-09-21 11:58:26,906]                          [a.c.e.c.presentacion.controlador.LoginControlador]This is parametros
-[2016-09-21 11:58:41,739]                          [a.c.e.c.presentacion.controlador.LoginControlador]This is login login
-[2016-09-21 11:58:50,461]                          [a.c.e.c.presentacion.controlador.LoginControlador]This is parametros
-[2016-09-21 11:59:55,389][ar.com.escuelita.chicken.presentacion.controlador.LoginControlador]This is parametros
-[2016-09-21 11:59:59,828][ar.com.escuelita.chicken.presentacion.controlador.LoginControlador]This is parametros
-[2016-09-21 12:01:21,452]     [a.c.e.c.p.c.LoginControlador]This is parametros
+[2016-09-21 12:13:47,227]     [a.c.e.c.p.c.LoginControlador]This is login login
+[2016-09-21 12:13:58,060]     [a.c.e.c.p.c.LoginControlador]This is parametros
+[2016-09-21 12:14:24,245]     [a.c.e.c.p.c.LoginControlador]This is parametros
+[2016-09-21 14:52:55,901]     [a.c.e.c.p.c.LoginControlador]This is login login
+[2016-09-21 15:03:29,780]     [a.c.e.c.p.c.LoginControlador]This is login login
+[2016-09-21 15:03:36,748]     [o.s.w.s.t.f.InputTag]Neither BindingResult nor plain target object for bean name 'deposito' available as request attribute
+java.lang.IllegalStateException: Neither BindingResult nor plain target object for bean name 'deposito' available as request attribute
+	at org.springframework.web.servlet.support.BindStatus.<init>(BindStatus.java:144)
+	at org.springframework.web.servlet.tags.form.AbstractDataBoundFormElementTag.getBindStatus(AbstractDataBoundFormElementTag.java:168)
+	at org.springframework.web.servlet.tags.form.AbstractDataBoundFormElementTag.getPropertyPath(AbstractDataBoundFormElementTag.java:188)
+	at org.springframework.web.servlet.tags.form.AbstractDataBoundFormElementTag.getName(AbstractDataBoundFormElementTag.java:154)
+	at org.springframework.web.servlet.tags.form.AbstractDataBoundFormElementTag.writeDefaultAttributes(AbstractDataBoundFormElementTag.java:117)
+	at org.springframework.web.servlet.tags.form.AbstractHtmlElementTag.writeDefaultAttributes(AbstractHtmlElementTag.java:422)
+	at org.springframework.web.servlet.tags.form.InputTag.writeTagContent(InputTag.java:142)
+	at org.springframework.web.servlet.tags.form.AbstractFormTag.doStartTagInternal(AbstractFormTag.java:84)
+	at org.springframework.web.servlet.tags.RequestContextAwareTag.doStartTag(RequestContextAwareTag.java:80)
+	at org.apache.jsp.WEB_002dINF.jsp.depositos.depositos_jsp._jspx_meth_form_005finput_005f0(depositos_jsp.java:478)
+	at org.apache.jsp.WEB_002dINF.jsp.depositos.depositos_jsp._jspx_meth_form_005fform_005f0(depositos_jsp.java:422)
+	at org.apache.jsp.WEB_002dINF.jsp.depositos.depositos_jsp._jspService(depositos_jsp.java:129)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:432)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:390)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:334)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:749)
+	at org.apache.catalina.core.ApplicationDispatcher.doInclude(ApplicationDispatcher.java:605)
+	at org.apache.catalina.core.ApplicationDispatcher.include(ApplicationDispatcher.java:544)
+	at org.apache.jasper.runtime.JspRuntimeLibrary.include(JspRuntimeLibrary.java:954)
+	at org.apache.jsp.WEB_002dINF.jsp.template.principal_jsp._jspService(principal_jsp.java:107)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:432)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:390)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:334)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:749)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:487)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:412)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:339)
+	at org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:168)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1244)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1027)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:971)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:316)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:114)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:122)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:169)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:48)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:205)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:64)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:53)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:213)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:176)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1041)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:603)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:312)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+[2016-09-21 15:14:55,682]     [LogMaster]This is login login
+[2016-09-21 16:42:17,001]     [LogMaster]This is parametros
+[2016-09-21 16:42:23,144]     [LogMaster]This is parametros
+[2016-09-21 16:42:41,254]     [LogMaster]This is parametros
+[2016-09-21 16:45:07,514]     [LogMaster]This is parametros

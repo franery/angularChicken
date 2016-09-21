@@ -14,20 +14,26 @@
 
 <h1 class="page-header"><spring:message code="depositoModificar"/></h1>
 
-<form:form id="formModificar" method="post" commandName="deposito">
+<form:form class="form-horizontal maxwid" id="formModificar" method="post" commandName="deposito">
 	<form:input id="id" path="id" type="hidden" value="${deposito.getId()}"/>
 	<form:input id="stockHuevos" path="stockHuevos" type="hidden" value="${deposito.getStockHuevos()}"/>
-	<table>
-		<tr>
-			<td><form:label path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label></td>
-			<td><form:input id="nombre" path="nombre" value="${deposito.getNombre()}" required="required"/></td>
-		</tr>
-		<tr>
-			<td><form:label path="stockMaximo"><spring:message code="stockMaximo" text="Stock Maximo"/>:</form:label></td>
-			<td><form:input id="stockMaximo" path="stockMaximo" value="${deposito.getStockMaximo()}" /></td>
-		</tr>
-	</table>
-	<input id="botonGuardar" type="button" value=<spring:message code="guardar"/> />
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="nombre" path="nombre" value="${deposito.getNombre()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="stockMaximo"><spring:message code="stockMaximo" text="Stock Maximo"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="stockMaximo" path="stockMaximo" value="${deposito.getStockMaximo()}" />
+		</div>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+			<input class="btn btn-default" id="botonGuardar" type="button" value=<spring:message code="guardar"/> />
+		</div>
+	</div>
 </form:form>
 	
 <c:set var="value">

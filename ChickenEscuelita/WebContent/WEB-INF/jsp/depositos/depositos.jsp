@@ -17,7 +17,7 @@
 		<spring:message code="depositos" />
 	</h1>
 
-	<button id="nuevo"><spring:message code="nuevo"/></button>
+	<button class="btn btn-default" id="nuevo"><spring:message code="nuevo"/></button>
 
 	<table id="tablita" class="display order-column" cellspacing="0"
 		width="100%">

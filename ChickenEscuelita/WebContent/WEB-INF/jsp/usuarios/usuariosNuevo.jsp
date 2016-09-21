@@ -14,44 +14,23 @@
 
 	<form:form method="POST"  id="formNuevo" action="usuariosProcesarNuevo" commandName="usuarioNM">
 		<form:input path="id" type="hidden" value="${usuarioNM.getId()}"/>
-	
-		<table>
-			<tr>
-				<td><spring:message code="nombreUsuario" /></td>
-				<td><form:input path="nombreUsuario" required="required"/></td>
-			</tr>
-			<tr>
-				<td><spring:message code="nombre" /></td>
-				<td><form:input path="nombre" required="required"/></td>
-				<td><spring:message code="apellido" /></td>
-				<td><form:input path="apellido" required="required"/></td>
-			</tr>
-			<tr>
-				<td><spring:message code="contrasenia" /></td>
-				<td><form:input path="contrasenia" type="password" required="required"/></td>
-			</tr>
-			<tr>
-				<td><spring:message code="perfil" />:</td>
-			
-			<c:forEach var="perfil" items="${perfiles}">
-				</td>
-					<td>
-			        	<input type="checkbox" id="${perfil.getId()}" name="${perfil.getId()}" value="${perfil.getId()}"/>${perfil.getNombre()}
-	                </td>
-				</tr>
-				<td>
-			</c:forEach>
-				<td>
-			</tr>
-			
-			<tr>
-				<td colspan="4" style="text-align: center;">
-				<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> </td>
-			</tr>
-			<tr>
-				<td colspan="2"> <form:errors path="nombreUsuario" cssClass="error" /> </td> 
-			</tr>
-		</table>
+		<div class="form-group">
+					<spring:message code="nombreUsuario" />
+					<form:input path="nombreUsuario" required="required"/>
+					<spring:message code="nombre" />
+					<form:input path="nombre" required="required"/>
+					<spring:message code="apellido" />
+					<form:input path="apellido" required="required"/>
+					<spring:message code="contrasenia" />
+					<form:input path="contrasenia" type="password" required="required"/>
+					<spring:message code="perfil" />:
+				
+				<c:forEach var="perfil" items="${perfiles}">
+				        	<input type="checkbox" id="${perfil.getId()}" name="${perfil.getId()}" value="${perfil.getId()}"/>${perfil.getNombre()}
+				</c:forEach>
+					<input id="botonGuardar" type="submit" value="<spring:message code="guardar"/>" /> 
+					<form:errors path="nombreUsuario" cssClass="error" />  
+		</div>
 	</form:form>
 	<script>
 	$('#botonGuardar').on('click', function (e) {

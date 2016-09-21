@@ -13,18 +13,24 @@
 <body>
 	<h1 class="page-header"><spring:message code="parametroNuevo" /></h1>
 
-<form:form method="post" commandName="parametro">
-	<table>
-		<tr>
-			<td><form:label path="descripcion"><spring:message code="descripcion" text="descripcion"/>:</form:label></td>
-			<td><form:input id="descripcion" path="descripcion" value="${parametro.getDescripcion()}" required="required"/></td>
-		</tr>
-		<tr>
-			<td><form:label path="valor"><spring:message code="valor" text="valor"/>:</form:label></td>
-			<td><form:input id="valor" path="valor" value="${parametro.getValor()}" required="required"/></td>
-		</tr>
-	</table>
-	<input id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
+<form:form  class="form-horizontal maxwid" method="post" commandName="parametro">
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="descripcion"><spring:message code="descripcion" text="descripcion"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="descripcion" path="descripcion" value="${parametro.getDescripcion()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="valor"><spring:message code="valor" text="valor"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="valor" path="valor" value="${parametro.getValor()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+			<input class="btn btn-default" id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
+		</div>
+	</div>
 </form:form>
 
 <c:set var="mensajeErrorParametro">

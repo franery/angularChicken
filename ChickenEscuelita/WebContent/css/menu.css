@@ -17,6 +17,11 @@ input[type=submit].menu:hover {
     background-color: #45a049;
 }
 
+.maxwid {
+  max-width: 600px;
+  margin: auto;
+}
+
 a.menu {
     width: 100%;
     background-color: #4CAF50;

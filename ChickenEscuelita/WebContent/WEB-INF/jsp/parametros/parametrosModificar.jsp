@@ -13,19 +13,25 @@
 <body>
 	<h1 class="page-header"><spring:message code="parametroModificar" /></h1>
 
-<form:form id="formModificar" method="post" commandName="parametro">
+<form:form  class="form-horizontal maxwid" id="formModificar" method="post" commandName="parametro">
 	<form:input id="id" path="id" type="hidden" value="${parametro.getId()}"/>
-	<table>
-		<tr>
-			<td><form:label path="descripcion"><spring:message code="descripcion" text="descripcion"/>:</form:label></td>
-			<td><form:input id="descripcion" path="descripcion" value="${parametro.getDescripcion()}" required="required"/></td>
-		</tr>
-		<tr>
-			<td><form:label path="valor"><spring:message code="valor" text="valor"/>:</form:label></td>
-			<td><form:input id="valor" path="valor" value="${parametro.getValor()}" /></td>
-		</tr>
-	</table>
-	<input id="botonGuardar" type="button" value=<spring:message code="guardar"/> />
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="descripcion"><spring:message code="descripcion" text="descripcion"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="descripcion" path="descripcion" value="${parametro.getDescripcion()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="valor"><spring:message code="valor" text="valor"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="valor" path="valor" value="${parametro.getValor()}" />
+		</div>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+			<input class="btn btn-default" id="botonGuardar" type="button" value=<spring:message code="guardar"/> />
+		</div>
+	</div>
 </form:form>
 	
 <c:set var="value">

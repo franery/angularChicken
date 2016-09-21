@@ -14,18 +14,24 @@
 
 <h1 class="page-header"><spring:message code="depositoNuevo"/></h1>
 
-<form:form method="post" commandName="deposito">
-	<table>
-		<tr>
-			<td><form:label path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label></td>
-			<td><form:input id="nombre" path="nombre" value="${deposito.getNombre()}" required="required"/></td>
-		</tr>
-		<tr>
-			<td><form:label path="stockMaximo"><spring:message code="stockMaximo" text="Stock Maximo"/>:</form:label></td>
-			<td><form:input id="stockMaximo" path="stockMaximo" value="${deposito.getStockMaximo()}" required="required"/></td>
-		</tr>
-	</table>
-	<input id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
+<form:form class="form-horizontal maxwid" method="post" commandName="deposito">
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="nombre"><spring:message code="nombre" text="Nombre"/>:</form:label>
+	    <div class="col-sm-10">
+			<form:input class="form-control" id="nombre" path="nombre" value="${deposito.getNombre()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="stockMaximo"><spring:message code="stockMaximo" text="Stock Maximo"/>:</form:label>
+	    <div class="col-sm-10">
+			<form:input class="form-control" id="stockMaximo" path="stockMaximo" value="${deposito.getStockMaximo()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+			<input id="botonNuevo" class="btn btn-default" type="button" value=<spring:message code="guardar"/> />
+		</div>
+	</div>
 </form:form>
 
 <c:set var="mensajeErrorNombreVacio">
