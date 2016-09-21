@@ -12,14 +12,10 @@
 <title><spring:message code="gallineros" /></title>
 </head>
 <body>
-
-	
-	<h1>
+	<h1 class="page-header">
 		<spring:message code="gallineros" />
 	</h1>
-
-	<button id="nuevo"><spring:message code="nuevo"/></button>
-
+	<button class="btn btn-success" id="nuevo"><spring:message code="nuevo"/></button>
 	<table id="tablita" class="display order-column" cellspacing="0"
 		width="100%">
 		<thead>
@@ -68,8 +64,8 @@ $(document).ready(function(){
 	        {data: "nombre" },
 	        {data: "usuarioNombre" },
 	        {data: "stockGallinas" },
-	        {defaultContent:'<button id="borrar">${borrar}</button>'},
-	        {defaultContent:'<button id="modificar">${modificar}</button>'}
+	        {defaultContent:'<button class="btn btn-danger" id="borrar">${borrar}</button>'},
+	        {defaultContent:'<button class="btn btn-warning" id="modificar">${modificar}</button>'}
 	        ],
 	    select:true,
 	    paging:true,

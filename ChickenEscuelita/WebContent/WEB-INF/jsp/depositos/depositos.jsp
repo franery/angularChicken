@@ -13,11 +13,11 @@
 </head>
 <body>
 
-	<h1>
+	<h1 class="page-header">
 		<spring:message code="depositos" />
 	</h1>
 
-	<button class="btn btn-default" id="nuevo"><spring:message code="nuevo"/></button>
+	<button class="btn btn-success" id="nuevo"><spring:message code="nuevo"/></button>
 
 	<table id="tablita" class="display order-column" cellspacing="0"
 		width="100%">
@@ -65,8 +65,8 @@ $(document).ready(function(){
 	        {data: "nombre" },
 	        {data: "stockHuevos" },
 	        {data: "stockMaximo" },
-	        {defaultContent:'<button id="borrar">${borrar}</button>'},
-	        {defaultContent:'<button id="modificar">${modificar}</button>'}
+	        {defaultContent:'<button class="btn btn-danger" id="borrar">${borrar}</button>'},
+	        {defaultContent:'<button class="btn btn-warning" id="modificar">${modificar}</button>'}
 	        ],
 	    select:true,
 	    paging:true,
