@@ -21,10 +21,7 @@ public class ParametrosControlador extends Controlador {
 	
 	@RequestMapping(path="/parametros")
 	public ModelAndView parametrosList() {
-		
-		String name = "parametros";
-		Constantes.CHICKEN_LOG.error("This is {}", name);
-
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ParametrosControlador.class, "parametrosList");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		ParametroDTO parametro = new ParametroDTO();
 		List<DTO> listaParametros = (List<DTO>)parametroServicio.listar();
@@ -44,6 +41,7 @@ public class ParametrosControlador extends Controlador {
 	
 	@RequestMapping(path="/parametrosModificar")
 	public ModelAndView modificarParametro(@ModelAttribute("parametro") ParametroDTO parametro) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ParametrosControlador.class, "modificarParametro");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("parametro", parametro);
@@ -54,6 +52,7 @@ public class ParametrosControlador extends Controlador {
 	
 	@RequestMapping("/parametrosNuevo")
 	public ModelAndView nuevoParametro( ){
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ParametrosControlador.class, "nuevoParametro");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		ParametroDTO parametro = new ParametroDTO();

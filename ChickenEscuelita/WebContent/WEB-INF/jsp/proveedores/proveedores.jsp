@@ -16,15 +16,10 @@
 
 <h1 class="page-header"><spring:message code="proveedores"/></h1>
 
-	<form:form action="proveedoresNuevo" method="post"
-		commandName="proveedor">
-		<input type="submit" value=<spring:message code="nuevo"/> />
-	</form:form>
-
-
-
-		
-		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
+	<button id="nuevo"><spring:message code="nuevo"/></button>
+	
+	<table id="tablita" class="display order-column" cellspacing="0"
+		width="100%">
 		<thead>
 			<tr>
 				<th><spring:message code="nombre" /></th>
@@ -33,61 +28,101 @@
 				<th><spring:message code="telefono" /></th>
 				<th></th>
 				<th></th>
-				
 			</tr>
 		</thead>
-		<c:if test="${!empty listaProveedores}">
-			<c:forEach items="${listaProveedores}" var="proveedor">
-				<tr>
-					<td><c:out value="${proveedor.getNombre()}"></c:out></td>
-					<td><c:out value="${proveedor.getDireccion()}"></c:out></td>
-					<td><c:out value="${proveedor.getMail()}"></c:out></td>
-					<td><c:out value="${proveedor.getTelefono()}"></c:out></td>
-					<td><form:form id="form${proveedor.getId()}" action="proveedoresBorrar"
-							method="post" commandName="proveedor">
-							<form:input path="id" type="hidden" value="${proveedor.getId()}" />
-							<input id="boton${proveedor.getId()}" class="botonBorrar" type="button"
-								value=<spring:message code="borrar"/> />
-						</form:form></td>
-					<td><form:form action="proveedoresModificar" method="post"
-							commandName="proveedor">
-							<form:input path="id" type="hidden" value="${proveedor.getId()}" />
-							<form:input path="nombre" type="hidden"
-								value="${proveedor.getNombre()}" />
-							<form:input path="direccion" type="hidden"
-								value="${proveedor.getDireccion()}" />
-							<form:input path="mail" type="hidden"
-								value="${proveedor.getMail()}" />
-							<form:input path="telefono" type="hidden"
-								value="${proveedor.getTelefono()}" />
-							<input type="submit" value=<spring:message code="modificar"/> />
-						</form:form></td>
-				</tr>
-			</c:forEach>
-		</c:if>
-		<c:if test="${empty listaProveedores}">
-			<tr>
-				<td colspan="5"><spring:message code="noHayDatos" /></td>
-			</tr>
-		</c:if>
+		<tbody>
+		</tbody>
 	</table>
+	
+	<form:form id="formModificar" action="proveedoresModificar" method="post" commandName="proveedor">
+		<form:input id="id" path="id" type="hidden"/>
+		<form:input id="nombre" path="nombre" type="hidden"/>
+		<form:input id="direccion" path="direccion" type="hidden"/>
+		<form:input id="mail" path="mail" type="hidden"/>
+		<form:input id="telefono" path="telefono" type="hidden"/>
+		<form:input id="borrado" path="borrado" type="hidden"/>
+	</form:form>
+	
 	<c:set var="value">
 		<spring:message code="mensajeBorrar" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
+	
+	<c:set var="borrar">
+		<spring:message code="borrar" />
+	</c:set>
+
+	<c:set var="modificar">
+		<spring:message code="modificar" />
+	</c:set>
 <script>
 
-<c:forEach items="${listaProveedores}" var="proveedor">
-$('#boton' + '${proveedor.id}').on('click', function (e) {
-	var mensaje = document.getElementById("mensajeBorrar").value;
-    e.preventDefault();
-    bootbox.confirm(mensaje, function (response) {        
-        if(response) {
-        	$('#form' + '${proveedor.id}').submit();
-        }
-    });
+$(document).ready(function(){
+
+	var table = $('#tablita').DataTable( {
+		ajax: "proveedoresJson",
+	    columns: [
+	        {data: "nombre" },
+	        {data: "direccion" },
+	        {data: "mail" },
+	        {data: "telefono" },
+	        {defaultContent:'<button id="borrar">${borrar}</button>'},
+	        {defaultContent:'<button id="modificar">${modificar}</button>'}
+	        ],
+	    select:true,
+	    paging:true,
+	    pageLength:50,
+	    ordering:true
+	});
+	
+	
+	$('#nuevo').on('click', function (e) {
+		window.location = "proveedoresNuevo";
+	});
+	
+	
+	$('#tablita tbody').on('click', '#borrar', function (e) {
+		var data = table.row(this.closest("tr")).data();
+		var json = {
+			"id" : data["id"],
+			"nombre" : data["nombre"],
+			"direccion" : data["direccion"],
+			"mail" : data["mail"],
+			"telefono" : data["telefono"],
+			"borrado" : data["borrado"]
+		};
+		var mensaje = document.getElementById("mensajeBorrar").value;
+		e.preventDefault();
+		bootbox.confirm(mensaje, function (response) {
+			if (response) {
+				$.ajax({
+					url : "proveedoresBorrarJson",
+					type : "DELETE",
+					data : JSON.stringify(json),
+					dataType : "json",
+					contentType : "application/json",
+					processData : false,
+					complete : function () {
+						table.ajax.reload();
+					}
+				});
+			}
+		});
+	});
+	
+	
+	$('#tablita tbody').on('click', '#modificar', function (e) {
+		var data = table.row(this.closest("tr")).data();
+		e.preventDefault();
+		document.getElementById("id").value = data["id"];
+		document.getElementById("nombre").value = data["nombre"];
+		document.getElementById("direccion").value = data["direccion"];
+		document.getElementById("mail").value = data["mail"];
+		document.getElementById("telefono").value = data["telefono"];
+		document.getElementById("borrado").value = data["borrado"];
+		document.getElementById("formModificar").submit();
+	});
 });
-</c:forEach>
 
 </script>
 </body>

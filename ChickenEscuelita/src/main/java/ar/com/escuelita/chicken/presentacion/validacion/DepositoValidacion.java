@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.validacion.IDepositoValidacionServicio;
 import ar.com.escuelita.chicken.presentacion.dto.DepositoDTO;
@@ -22,6 +23,7 @@ public class DepositoValidacion implements Validator{
 	}
 	
 	public void validate(Object target, Errors errores) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", DepositoValidacion.class, "validate");
 		DepositoDTO deposito = (DepositoDTO) target;
 		try {
 			depositoValidacionServicio.validacionNombreNoVacio(deposito.getNombre());
@@ -32,6 +34,12 @@ public class DepositoValidacion implements Validator{
 			depositoValidacionServicio.validacionNombreUnico(deposito.getNombre(), deposito.getId());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
+		}
+		try {
+			depositoValidacionServicio.validacionStockMaximoNumero(deposito.getStockMaximo());;
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("stockMaximo", e.getMessage(),"Mesnaje default");
+			return;
 		}
 		try {
 			depositoValidacionServicio.validacionStockMaximoSuperiorMinimo(deposito.getStockMaximo());

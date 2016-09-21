@@ -15,8 +15,8 @@ public class DepositoMapeador extends Mapeador {
 		
 		dto.setId(String.valueOf(depositoModel.getId()));
 		dto.setNombre(depositoModel.getNombre());
-		dto.setStockHuevos(depositoModel.getStockHuevos());
-		dto.setStockMaximo(depositoModel.getStockMaximo());
+		dto.setStockHuevos(String.valueOf(depositoModel.getStockHuevos()));
+		dto.setStockMaximo(String.valueOf(depositoModel.getStockMaximo()));
 		dto.setBorrado(String.valueOf(depositoModel.isBorrado()));
 		
 		return dto;
@@ -28,8 +28,10 @@ public class DepositoMapeador extends Mapeador {
 		DepositoModel depositoModel = (DepositoModel) (vo != null ? vo : new DepositoModel());
 		
 		depositoModel.setNombre(depositoDTO.getNombre());
-		depositoModel.setStockHuevos(depositoDTO.getStockHuevos());
-		depositoModel.setStockMaximo(depositoDTO.getStockMaximo());
+		if(depositoDTO.getStockHuevos() != null) {
+			depositoModel.setStockHuevos(Long.parseLong(depositoDTO.getStockHuevos()));
+		}
+		depositoModel.setStockMaximo(Long.parseLong(depositoDTO.getStockMaximo()));
 		depositoModel.setBorrado(Boolean.parseBoolean(depositoDTO.getBorrado()));
 		
 		return depositoModel;

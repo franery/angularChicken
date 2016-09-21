@@ -66,6 +66,10 @@
 	<spring:message code="mensajeErrorUsuarioInvalido" />
 </c:set>
 
+<c:set var="mensajeErrorStockGallinasNumero">
+	<spring:message code="mensajeErrorStockGallinasNumero" />
+</c:set>
+
 <script>
 
 var mensajesError = {
@@ -73,6 +77,7 @@ var mensajesError = {
 		mensajeErrorNombreUnico: "${mensajeErrorNombreUnico}",
 		mensajeErrorStockMinimo: "${mensajeErrorStockMinimo}",
 		mensajeErrorUsuarioInvalido: "${mensajeErrorUsuarioInvalido}",
+		mensajeErrorStockGallinasNumero: "${mensajeErrorStockGallinasNumero}",
 };
 
 $('#botonNuevo').on('click', function (e) {

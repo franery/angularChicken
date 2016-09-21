@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.validacion.IGallineroValidacionServicio;
 import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
@@ -21,6 +22,7 @@ public class GallineroValidacion implements Validator {
 	}
 	
 	public void validate(Object target, Errors errores) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallineroValidacion.class, "validate");
 		GallineroDTO gallinero= (GallineroDTO) target;
 		try {
 			gallineroValidacionServicio.validacionNombreUnico(gallinero.getNombre(), gallinero.getId());

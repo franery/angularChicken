@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IMovimientoDAO;
 import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
@@ -16,6 +17,7 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 	
 	@Transactional
 	public MovimientoModel get(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "get");
 		Session s = sessionFactory.openSession();
 		MovimientoModel e = s.get(MovimientoModel.class, id);
 		s.close();
@@ -23,6 +25,7 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 	}
 
 	public List<MovimientoModel> listar() {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "listar");
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
 		List<MovimientoModel> lista = session.createQuery("from MovimientoModel where borrado=false").list();
@@ -32,6 +35,7 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 
 	@Transactional
 	public void guardar(MovimientoModel movimientoModel) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "guardar");
 		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.save(movimientoModel);
@@ -42,6 +46,7 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 
 	@Transactional
 	public void modificar(MovimientoModel movimientoModel) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "modificar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		s.update(movimientoModel);
@@ -51,6 +56,7 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 
 	@Transactional
 	public void borrar(long id) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "borrar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		MovimientoModel model = s.get(MovimientoModel.class, id);
@@ -63,6 +69,7 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 	
 	@Override
 	public List<MovimientoModel> listar(MovimientoFiltro movimientoFiltro) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "listar");
 		String query = "select mov from MovimientoModel as mov" 
 				+ " join mov.gallinero as g"
 				+ " join g.usuario as u";
@@ -73,6 +80,7 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 	}
 	
 	private QueryParametrosUtil generarConsulta(String query, MovimientoFiltro filtro){
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "generarConsulta");
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 		
 		String str = " where mov.borrado=false ";

@@ -11,12 +11,15 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
+
 @Controller
 public class LenguajeControlador extends Controlador{
 
 
 	@RequestMapping(value = "/cambioLenguaje")
 	public ModelAndView changeLang(@RequestParam("urlRequest") String  urlRequest, HttpServletRequest request, HttpServletResponse response) {
+		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", LenguajeControlador.class, "changeLang");
 		LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
 		localeResolver.setLocale(request, response, StringUtils.parseLocaleString(request.getParameter("lenguajeElegido"))); 
 		String[] spliteado = urlRequest.split("/");

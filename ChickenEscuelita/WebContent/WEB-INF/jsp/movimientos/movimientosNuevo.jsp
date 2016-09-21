@@ -13,13 +13,12 @@
 <body>
 <h1  class="page-header"><spring:message code="movimientosNuevo"/></h1>
 
-	<form:form action="movimientosProcesarNuevo" method="POST"
-		commandName="movimiento">
+	<form:form id="formNuevo" method="POST" commandName="movimiento">
 		<table>
 			<tr>
 				<td><form:label path="gallineroId">
 						<spring:message code="gallinero"/>:</form:label></td>
-				<td><form:select path="gallineroId" required="required">
+				<td><form:select id="gallineroId" path="gallineroId" required="required">
 						<form:option value="">
 							<spring:message code="seleccioneGallinero"/>
 						</form:option>
@@ -33,7 +32,7 @@
 			<tr>
 				<td><form:label path="depositoId">
 						<spring:message code="deposito"/>:</form:label></td>
-				<td><form:select path="depositoId" required="required">
+				<td><form:select id="depositoId" path="depositoId" required="required">
 						<form:option value="">
 							<spring:message code="seleccioneDeposito"/>
 						</form:option>
@@ -47,20 +46,70 @@
 			<tr>
 				<td><form:label path="cantidad">
 						<spring:message code="cantidad"/>:</form:label></td>
-				<td><form:input path="cantidad" required="required"/></td>
+				<td><form:input id="cantidad" path="cantidad" required="required"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="fecha">
 						<spring:message code="fecha"/>:</form:label></td>
-				<td><form:input path="fecha" type="date" required="required"/></td>
+				<td><form:input id="fecha" path="fecha" type="date" required="required"/></td>
 			</tr>
-			 <tr> <td> <input type="submit" value=<spring:message code="guardar"/> /> </td> </tr> 
-			<tr>
-				<td colspan="4"> <form:errors path="cantidad" cssClass="error" /> </td> 
-			</tr>
+			 <tr>
+			 	<td> <input id="botonNuevo" type="button" value=<spring:message code="guardar"/> /> </td>
+			 </tr> 
 		</table>
-		
-
 	</form:form>
+
+<c:set var="mensajeErrorMovimientoDeposito">
+	<spring:message code="mensajeErrorMovimientoDeposito" />
+</c:set>
+
+<c:set var="mensajeErrorGallineroId">
+	<spring:message code="mensajeErrorGallineroId" />
+</c:set>
+
+<c:set var="mensajeErrorDepositoId">
+	<spring:message code="mensajeErrorDepositoId" />
+</c:set>
+
+<p id="errores"></p>
+
+<script>
+
+var mensajesError = {
+		mensajeErrorMovimientoDeposito: "${mensajeErrorMovimientoDeposito}",
+		mensajeErrorGallineroId: "${mensajeErrorGallineroId}",
+		mensajeErrorDepositoId: "${mensajeErrorDepositoId}"
+	};
+
+	$('#botonNuevo').on('click', function (e) {
+		e.preventDefault();
+		var json = {
+				"gallineroId" : document.getElementById("gallineroId").value,
+				"depositoId" : document.getElementById("depositoId").value,
+				"cantidad" : document.getElementById("cantidad").value,
+				"fecha" : document.getElementById("fecha").value
+			};
+		$.ajax({
+			url : "movimientosNuevoJson",
+			type : "POST",
+			data : JSON.stringify(json),
+			dataType : "json",
+			contentType : "application/json",
+			processData : false,
+			success: function(errores){
+				var mensaje = "";
+				for(var i = 0; i < errores.length; i++) {
+					mensaje += mensajesError[errores[i].code] + "<br>";
+				}
+				document.getElementById("errores").innerHTML = mensaje;
+			},
+			error: function(){
+				window.location = "movimientos";
+			}
+		});
+	});
+
+</script>
+
 </body>
 </html>
