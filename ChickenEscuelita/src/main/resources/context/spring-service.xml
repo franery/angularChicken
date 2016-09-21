@@ -139,6 +139,11 @@
 	<bean name="parametroValidacion"
 		class="ar.com.escuelita.chicken.presentacion.validacion.ParametroValidacion">
 	</bean>
+	<bean name="proveedorValidacionServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.validacion.impl.ProveedorValidacionServicioImpl" />
+	<bean name="proveedorValidacion"
+		class="ar.com.escuelita.chicken.presentacion.validacion.ProveedorValidacion">
+	</bean>
 
 	<!-- Mapeadores -->
 
