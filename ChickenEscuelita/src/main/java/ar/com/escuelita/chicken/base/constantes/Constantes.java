@@ -3,8 +3,6 @@ package ar.com.escuelita.chicken.base.constantes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ar.com.escuelita.chicken.presentacion.controlador.LoginControlador;
-
 public class Constantes {
 	
 	public static final String PRINCIPAL_VIEW = "template/principal";
@@ -37,5 +35,5 @@ public class Constantes {
 	public static final long PERFIL_ROOT_ID = 1;
 	public static final long STOCK_MINIMO = 0;
 	public static final String DATA = "data";
-	public static final Logger CHICKEN_LOG = LoggerFactory.getLogger(LoginControlador.class);
+	public static final Logger CHICKEN_LOG = LoggerFactory.getLogger("LogMaster");
 }
