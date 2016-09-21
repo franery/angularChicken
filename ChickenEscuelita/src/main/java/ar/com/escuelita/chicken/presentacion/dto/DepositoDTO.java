@@ -8,9 +8,9 @@ public class DepositoDTO extends DTO {
 	
 	private String nombre;
 	
-	private long stockHuevos;
+	private String stockHuevos;
 	
-	private long stockMaximo;
+	private String stockMaximo;
 	
 	private String borrado;
 	
@@ -30,19 +30,19 @@ public class DepositoDTO extends DTO {
 		this.nombre = nombre;
 	}
 
-	public long getStockHuevos() {
+	public String getStockHuevos() {
 		return stockHuevos;
 	}
 
-	public void setStockHuevos(long stockHuevos) {
+	public void setStockHuevos(String stockHuevos) {
 		this.stockHuevos = stockHuevos;
 	}
 
-	public long getStockMaximo() {
+	public String getStockMaximo() {
 		return stockMaximo;
 	}
 
-	public void setStockMaximo(long stockMaximo) {
+	public void setStockMaximo(String stockMaximo) {
 		this.stockMaximo = stockMaximo;
 	}
 

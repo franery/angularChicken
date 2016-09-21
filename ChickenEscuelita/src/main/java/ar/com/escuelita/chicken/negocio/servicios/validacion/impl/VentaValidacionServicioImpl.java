@@ -20,7 +20,7 @@ public class VentaValidacionServicioImpl implements IVentaValidacionServicio{
 	public void validacionCantidad(long cantidad) throws ValidacionExcepcion {
 		long cantidadTotalDepositos = 0;
 		for(DTO deposito : depositoServicio.listar()) {
-			cantidadTotalDepositos += ((DepositoDTO)deposito).getStockHuevos();
+			cantidadTotalDepositos += Long.parseLong(((DepositoDTO)deposito).getStockHuevos());
 		}
 		if(cantidadTotalDepositos < cantidad) {
 			throw new ValidacionExcepcion("mensajeErrorVentaCantidad");

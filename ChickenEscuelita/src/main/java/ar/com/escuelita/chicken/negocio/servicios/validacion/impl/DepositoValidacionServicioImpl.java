@@ -29,15 +29,25 @@ public class DepositoValidacionServicioImpl implements IDepositoValidacionServic
 		}
 	}
 	
-	public void validacionStockMaximoSuperiorMinimo(long stockMaximo) throws ValidacionExcepcion {
-		if(stockMaximo <= Constantes.STOCK_MINIMO) {
+	public void validacionStockMaximoSuperiorMinimo(String stockMaximo) throws ValidacionExcepcion {
+		if(Long.parseLong(stockMaximo) <= Constantes.STOCK_MINIMO) {
 			throw new ValidacionExcepcion("mensajeErrorStockMinimo");
 		}
 	}
 	
-	public void validacionStockMaximoMayorActual(long stockMaximo, long stockActual) throws ValidacionExcepcion {
-		if(stockMaximo < stockActual) {
+	public void validacionStockMaximoMayorActual(String stockMaximo, String stockActual) throws ValidacionExcepcion {
+		if(stockActual != null && Long.parseLong(stockMaximo) < Long.parseLong(stockActual)) {
 			throw new ValidacionExcepcion("mensajeErrorStockMaximoMenorActual");
+		}
+	}
+
+	@Override
+	public void validacionStockMaximoNumero(String stockMaximo)
+			throws ValidacionExcepcion {
+		try {
+			Long.parseLong(stockMaximo);
+		} catch (NumberFormatException e) {
+			throw new ValidacionExcepcion("mensajeErrorStockMaximoNumero");
 		}
 	}
 }

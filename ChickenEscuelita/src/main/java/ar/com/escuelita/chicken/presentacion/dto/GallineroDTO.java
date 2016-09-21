@@ -12,7 +12,7 @@ public class GallineroDTO extends DTO {
 	
 	private String usuarioNombre;	
 	
-	private long stockGallinas;
+	private String stockGallinas;
 	
 	private String borrado;
 
@@ -40,11 +40,11 @@ public class GallineroDTO extends DTO {
 		this.usuarioId = usuarioId;
 	}
 
-	public long getStockGallinas() {
+	public String getStockGallinas() {
 		return stockGallinas;
 	}
 
-	public void setStockGallinas(long stockGallinas) {
+	public void setStockGallinas(String stockGallinas) {
 		this.stockGallinas = stockGallinas;
 	}
 

@@ -36,8 +36,14 @@ public class GallineroValidacionServicioImpl implements IGallineroValidacionServ
 	}
 
 	@Override
-	public void validacionStockSuperiorMinimo(long stock) throws ValidacionExcepcion {
-		if(stock <= Constantes.STOCK_MINIMO) {
+	public void validacionStockSuperiorMinimo(String stock) throws ValidacionExcepcion {
+		long numeroStock;
+		try {
+			numeroStock = Long.parseLong(stock);
+		} catch (NumberFormatException e) {
+			throw new ValidacionExcepcion("mensajeErrorStockGallinasNumero");
+		}
+		if(numeroStock <= Constantes.STOCK_MINIMO) {
 			throw new ValidacionExcepcion("mensajeErrorStockMinimo");
 		}
 	}

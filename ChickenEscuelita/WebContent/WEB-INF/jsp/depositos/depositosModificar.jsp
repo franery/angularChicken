@@ -52,6 +52,10 @@
 	<spring:message code="mensajeErrorStockMaximoMenorActual" />
 </c:set>
 
+<c:set var="mensajeErrorStockMaximoNumero">
+	<spring:message code="mensajeErrorStockMaximoNumero" />
+</c:set>
+
 <p id="errores"></p>
 	
 <script>
@@ -61,6 +65,7 @@ var mensajesError = {
 		mensajeErrorNombreUnico: "${mensajeErrorNombreUnico}",
 		mensajeErrorStockMinimo: "${mensajeErrorStockMinimo}",
 		mensajeErrorStockMaximoMenorActual: "${mensajeErrorStockMaximoMenorActual}",
+		mensajeErrorStockMaximoNumero: "${mensajeErrorStockMaximoNumero}",
 	};
 
 $('#botonGuardar').on('click', function (e) {

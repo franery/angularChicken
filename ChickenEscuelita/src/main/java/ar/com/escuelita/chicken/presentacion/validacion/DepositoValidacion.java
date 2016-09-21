@@ -34,6 +34,12 @@ public class DepositoValidacion implements Validator{
 			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
 		}
 		try {
+			depositoValidacionServicio.validacionStockMaximoNumero(deposito.getStockMaximo());;
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("stockMaximo", e.getMessage(),"Mesnaje default");
+			return;
+		}
+		try {
 			depositoValidacionServicio.validacionStockMaximoSuperiorMinimo(deposito.getStockMaximo());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("stockMaximo", e.getMessage(),"Mesnaje default");

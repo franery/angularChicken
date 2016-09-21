@@ -15,7 +15,9 @@ public class MovimientoValidacionServicioImpl implements IMovimientoValidacionSe
 	public void validacionStockDeposito(String depositoId, long cantidad) throws ValidacionExcepcion {
 		if(depositoId != null && !depositoId.equals("")) {
 			DepositoDTO depositoDto = (DepositoDTO) depositoServicio.buscar(Long.parseLong(depositoId));
-			if ((depositoDto.getStockMaximo() - depositoDto.getStockHuevos()) < cantidad) {
+			long stockMaximo = Long.parseLong(depositoDto.getStockMaximo());
+			long stockHuevos = Long.parseLong(depositoDto.getStockHuevos());
+			if (stockMaximo - stockHuevos < cantidad) {
 				throw new ValidacionExcepcion("mensajeErrorMovimientoDeposito");
 			}
 		}

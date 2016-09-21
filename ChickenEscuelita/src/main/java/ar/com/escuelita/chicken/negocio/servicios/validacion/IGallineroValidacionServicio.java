@@ -6,7 +6,7 @@ public interface IGallineroValidacionServicio {
 
 	void validacionNombreUnico(String nombre, String id) throws ValidacionExcepcion;
 	void validacionNombreNoVacio(String nombre) throws ValidacionExcepcion;
-	void validacionStockSuperiorMinimo(long stockMaximo) throws ValidacionExcepcion;
+	void validacionStockSuperiorMinimo(String stockMaximo) throws ValidacionExcepcion;
 	void validacionUsuarioExiste(String usuarioId) throws ValidacionExcepcion;
 	
 }
