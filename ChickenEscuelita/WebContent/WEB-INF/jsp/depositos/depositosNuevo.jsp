@@ -44,25 +44,19 @@
 	<spring:message code="mensajeErrorStockMaximoMenorActual" />
 </c:set>
 
-<div>
-	<div id="mensajeErrorNombreVacio"><p>${mensajeErrorNombreVacio}</p></div>
-	<div id="mensajeErrorNombreUnico"><p>${mensajeErrorNombreUnico}</p></div>
-	<div id="mensajeErrorStockMinimo"><p>${mensajeErrorStockMinimo}</p></div>
-	<div id="mensajeErrorStockMaximoMenorActual"><p>${mensajeErrorStockMaximoMenorActual}</p></div>
-</div>
+<p id="probando" style="color: RED"></p>
 
 <script>
 
-$(document).ready(function(){
-	document.getElementById("mensajeErrorNombreVacio").style.display = "none";
-	document.getElementById("mensajeErrorNombreUnico").style.display= "none";
-	document.getElementById("mensajeErrorStockMinimo").style.display= "none";
-	document.getElementById("mensajeErrorStockMaximoMenorActual").style.display= "none";
-});
+var mensajesError = {
+	mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",
+	mensajeErrorNombreUnico: "${mensajeErrorNombreUnico}",
+	mensajeErrorStockMinimo: "${mensajeErrorStockMinimo}",
+	mensajeErrorStockMaximoMenorActual: "${mensajeErrorStockMaximoMenorActual}",
+};
 
 $('#nuevo').on('click', function (e) {
 	e.preventDefault();
-	ocultarErrores();
 	var json = {
 			"nombre" : document.getElementById("nombre").value,
 			"stockMaximo" : document.getElementById("stockMaximo").value
@@ -75,22 +69,17 @@ $('#nuevo').on('click', function (e) {
 		contentType : "application/json",
 		processData : false,
 		success: function(errores){
+			var mensaje = "";
 			for(var i = 0; i < errores.length; i++) {
-				document.getElementById(errores[i].code).style.display = "initial";
+				mensaje += mensajesError[errores[i].code] + "<br>";
 			}
+			document.getElementById("probando").innerHTML = mensaje;
 		},
 		error: function(){
 			window.location = "depositos";
 		}
 	});
 });
-
-function ocultarErrores() {
-	document.getElementById("mensajeErrorNombreVacio").style.display = "none";
-	document.getElementById("mensajeErrorNombreUnico").style.display= "none";
-	document.getElementById("mensajeErrorStockMinimo").style.display= "none";
-	document.getElementById("mensajeErrorStockMaximoMenorActual").style.display= "none";
-}
 
 </script>
 
