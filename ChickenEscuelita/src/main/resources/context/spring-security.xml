@@ -77,12 +77,5 @@
 				authorities-by-username-query="SELECT u.nombreUsuario as username, concat(concat(LOWER(p.modulo),'_'),LOWER(p.permiso)) as authority FROM Usuario u join PerfilUsuario pu on u.id = pu.idUsuario join PerfilPermiso pp on pu.idPerfil = pp.idPerfil join Permiso p on p.id = pp.idPermiso WHERE nombreUsuario=?"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
-	
-	<bean id="customAuthenticationDetailsHandler"
-		class="ar.com.escuelita.chicken.presentacion.seguridad.CustomAuthenticationDetailsHandler">
-	</bean>
-	<bean id="customAuthenticationFailureHandler"
-		class="ar.com.escuelita.chicken.presentacion.seguridad.CustomAuthenticationFailureHandler">
-	</bean>
 
 </beans>
