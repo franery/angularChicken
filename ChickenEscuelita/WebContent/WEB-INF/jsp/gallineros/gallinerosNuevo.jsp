@@ -19,12 +19,12 @@
 	<table>
 		<tr>
 			<td><form:label path="nombre"><spring:message code="nombre"/>:</form:label></td>
-			<td><form:input path="nombre" value="${gallinero.getNombre()}" required="required"/></td>
+			<td><form:input id="nombre" path="nombre" value="${gallinero.getNombre()}" required="required"/></td>
 		</tr>
 		<tr>
 			<td><form:label path="usuarioId"><spring:message code="usuario"/>:</form:label></td>
 			<td>
-				<form:select path="usuarioId" required="required">
+				<form:select id="usuarioId" path="usuarioId" required="required">
 					<form:option value=""><spring:message code="seleccionar" /></form:option>
 						<c:forEach items="${listaUsuarios}" var="usuario">
 							<form:option value="${usuario.getId()}">
@@ -36,12 +36,48 @@
 		</tr>
 		<tr>
 			<td><form:label path="stockGallinas"><spring:message code="stock"/>:</form:label></td>
-			<td><form:input path="stockGallinas"  value="${gallinero.getStockGallinas()}" /></td>
+			<td><form:input id="stockGallinas" path="stockGallinas"  value="${gallinero.getStockGallinas()}" required="required" /></td>
 		</tr>
 		
 	</table>
-	<input type="submit" value=<spring:message code="guardar"/> />
+	<input id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
 </form:form>
+
+<p id="errores"></p>
+
+<script>
+
+var mensajesError = {
+};
+
+$('#botonNuevo').on('click', function (e) {
+	e.preventDefault();
+	var json = {
+			"nombre" : document.getElementById("nombre").value,
+			"usuarioId" : document.getElementById("usuarioId").value,
+			"stockGallinas" : document.getElementById("stockGallinas").value
+		};
+	$.ajax({
+		url : "gallinerosNuevoJson",
+		type : "POST",
+		data : JSON.stringify(json),
+		dataType : "json",
+		contentType : "application/json",
+		processData : false,
+		success: function(errores){
+			var mensaje = "";
+			for(var i = 0; i < errores.length; i++) {
+				mensaje += mensajesError[errores[i].code] + "<br>";
+			}
+			document.getElementById("errores").innerHTML = mensaje;
+		},
+		error: function(){
+			window.location = "gallineros";
+		}
+	});
+});
+
+</script>
 
 </body>
 </html>

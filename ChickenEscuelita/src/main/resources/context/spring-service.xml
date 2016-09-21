@@ -83,7 +83,6 @@
 	<bean id="permisoDAO"
 		class="ar.com.escuelita.chicken.persistencia.dao.impl.PermisoDAOImpl" />
 
-
 	<!-- Services -->
 	<bean id="usuarioServicio"
 		class="ar.com.escuelita.chicken.negocio.servicios.impl.UsuarioServicioImpl" />
@@ -103,7 +102,6 @@
 		class="ar.com.escuelita.chicken.negocio.servicios.impl.PerfilServicioImpl" />
 	<bean id="permisoServicio"
 		class="ar.com.escuelita.chicken.negocio.servicios.impl.PermisoServicioImpl" />
-		
 		
 	<!-- Validaciones -->
 	<bean name="usuarioValidacionServicio"
@@ -130,6 +128,12 @@
 		class="ar.com.escuelita.chicken.negocio.servicios.validacion.impl.DepositoValidacionServicioImpl" />
 	<bean name="depositoValidacion"
 		class="ar.com.escuelita.chicken.presentacion.validacion.DepositoValidacion">
+	</bean>
+	
+	<bean name="gallineroValidacionServicio"
+		class="ar.com.escuelita.chicken.negocio.servicios.validacion.impl.GallineroValidacionServicioImpl" />
+	<bean name="gallineroValidacion"
+		class="ar.com.escuelita.chicken.presentacion.validacion.GallineroValidacion">
 	</bean>
 
 	<!-- Mapeadores -->

@@ -15,16 +15,16 @@
 <h1 class="page-header"><spring:message code="gallinerosModificar"/></h1>
 
 <form:form id="formModificar" action="gallinerosProcesarModificar" method="post" commandName="gallinero">
-	<form:input path="id" type="hidden" value="${gallinero.getId()}"/>
+	<form:input id="id" path="id" type="hidden" value="${gallinero.getId()}"/>
 	<table>
 		<tr>
 			<td><form:label path="nombre"><spring:message code="nombre"/>:</form:label></td>
-			<td><form:input path="nombre" value="${gallinero.getNombre()}" /></td>
+			<td><form:input id="nombre" path="nombre" value="${gallinero.getNombre()}" /></td>
 		</tr>
 		<tr>
 			<td><form:label path="usuarioId"><spring:message code="usuario"/>:</form:label></td>
 			<td>
-				<form:select path="usuarioId" required="required">
+				<form:select id="usuarioId" path="usuarioId" required="required">
 					<form:option value=""><spring:message code="seleccionar" /></form:option>
 						<c:forEach items="${listaUsuarios}" var="usuario">
 							<form:option value="${usuario.getId()}">
@@ -36,10 +36,10 @@
 		</tr>
 		<tr>
 			<td><form:label path="stockGallinas"><spring:message code="stock"/>:</form:label></td>
-			<td><form:input path="stockGallinas"  value="${gallinero.getStockGallinas()}" required="required"/></td>
+			<td><form:input id="stockGallinas" path="stockGallinas"  value="${gallinero.getStockGallinas()}" required="required"/></td>
 		</tr>
 	</table>
-	<input id="botonGuardar" type="submit" value=<spring:message code="guardar"/> />
+	<input id="botonGuardar" type="button" value=<spring:message code="guardar"/> />
 </form:form>
 	
 	<c:set var="value">
@@ -54,7 +54,30 @@ $('#botonGuardar').on('click', function (e) {
     e.preventDefault();
     bootbox.confirm(mensaje, function (response) {        
         if(response) {
-            $('#formModificar').submit();
+        	var json = {
+        			"id" : document.getElementById("id").value,
+        			"nombre" : document.getElementById("nombre").value,
+        			"usuarioId" : document.getElementById("usuarioId").value,
+        			"stockGallinas" : document.getElementById("stockGallinas").value
+        		};
+        	$.ajax({
+        		url : "gallinerosModificarJson",
+        		type : "POST",
+        		data : JSON.stringify(json),
+        		dataType : "json",
+        		contentType : "application/json",
+        		processData : false,
+        		success: function(errores){
+        			var mensaje = "";
+        			for(var i = 0; i < errores.length; i++) {
+        				mensaje += mensajesError[errores[i].code] + "<br>";
+        			}
+        			document.getElementById("errores").innerHTML = mensaje;
+        		},
+        		error: function(){
+        			window.location = "gallineros";
+        		}
+        	});
         }
     });
 });

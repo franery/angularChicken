@@ -4,18 +4,36 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.excepciones.NegocioExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IGallineroServicio;
 import ar.com.escuelita.chicken.presentacion.dto.GallineroDTO;
+import ar.com.escuelita.chicken.presentacion.validacion.GallineroValidacion;
 
+@RestController
 public class GallinerosControladorRest {
 	
 	@Autowired
 	private IGallineroServicio gallineroServicio;
+	
+	@Autowired
+	private GallineroValidacion gallineroValidacion;
+		
+	@InitBinder
+    protected void initBinder(WebDataBinder binder) throws Exception {
+		if (binder.getTarget() instanceof GallineroDTO){
+			binder.setValidator(gallineroValidacion);
+		}
+    }
 	
 	@RequestMapping("/gallinerosJson")
 	public HashMap<String, List<DTO>> gallinerosJson() {
@@ -25,26 +43,30 @@ public class GallinerosControladorRest {
 	}
 	
 	@RequestMapping(path="/gallinerosNuevoJson")
-	public HashMap<String, List<DTO>> gallinerosNuevoJson(@RequestBody GallineroDTO gallinero) throws NegocioExcepcion {
+	public Object gallinerosNuevoJson(@RequestBody @Validated GallineroDTO gallinero,
+			BindingResult result) throws NegocioExcepcion {
+		if(result.hasErrors()) {
+			return result.getAllErrors();
+		}
 		gallineroServicio.crear(gallinero);
-		HashMap<String, List<DTO>> gallinerosJson = new HashMap<String, List<DTO>>();
-		gallinerosJson.put(Constantes.DATA, (List<DTO>)gallineroServicio.listar());
-		return gallinerosJson;
+		return null;
 	}
 	
 	@RequestMapping(path="/gallinerosBorrarJson")
-	public HashMap<String, List<DTO>> gallinerosBorrarJson(@RequestBody GallineroDTO gallinero) {
-		gallineroServicio.borrar(gallinero);
-		HashMap<String, List<DTO>> gallinerosJson = new HashMap<String, List<DTO>>();
-		gallinerosJson.put(Constantes.DATA, (List<DTO>)gallineroServicio.listar());
-		return gallinerosJson;
+	public void gallinerosBorrarJson(@RequestBody @Validated GallineroDTO gallinero,
+			BindingResult result) {
+		if(!result.hasErrors()) {
+			gallineroServicio.borrar(gallinero);
+		}
 	}
 	
 	@RequestMapping(path="/gallinerosModificarJson")
-	public HashMap<String, List<DTO>> gallinerosModificarJson(@RequestBody GallineroDTO gallinero) throws NegocioExcepcion {
+	public Object gallinerosModificarJson(@RequestBody @Validated GallineroDTO gallinero,
+			BindingResult result) throws NegocioExcepcion {
+		if(result.hasErrors()) {
+			return result.getAllErrors();
+		}
 		gallineroServicio.modificar(gallinero);
-		HashMap<String, List<DTO>> gallinerosJson = new HashMap<String, List<DTO>>();
-		gallinerosJson.put(Constantes.DATA, (List<DTO>)gallineroServicio.listar());
-		return gallinerosJson;
+		return null;
 	}
 }

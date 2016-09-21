@@ -9,87 +9,122 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title><spring:message code="gallinero" /></title>
+<title><spring:message code="gallineros" /></title>
 </head>
 <body>
 
-	<h1 class="page-header">
-		<spring:message code="gallinero" />
-	</h1>
 	
-	<form:form action="gallinerosNuevo" method="post"
-		commandName="gallinero">
-		<input type="hidden" name="flag" value="1" />
-		<input type="submit" value=<spring:message code="nuevo"/> />
-	</form:form>
+	<h1>
+		<spring:message code="gallineros" />
+	</h1>
 
-		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
+	<button id="nuevo"><spring:message code="nuevo"/></button>
+
+	<table id="tablita" class="display order-column" cellspacing="0"
+		width="100%">
 		<thead>
 			<tr>
 				<th><spring:message code="nombre" /></th>
-				<th><spring:message code="nombreUsuario" /></th>
+				<th><spring:message code="usuario" /></th>
 				<th><spring:message code="stockGallinas" /></th>
 				<th></th>
 				<th></th>
 			</tr>
 		</thead>
-		<c:if test="${!empty listaGallineros}">
-			<c:forEach items="${listaGallineros}" var="gallinero">
-				<tr>
-					<td><c:out value="${gallinero.getNombre()}"></c:out></td>
-
-					<c:set var="sinUsuario" scope="request">
-						<spring:message code="sinUsuario"/>
-					</c:set>
-					
-					<c:choose>
-						<c:when test="${gallinero.getUsuarioId() != null}">
-							<td><c:out value="${gallinero.getUsuarioNombre()}"></c:out></td>
-						</c:when>
-						<c:when test="${gallinero.getUsuarioId() == null}">
-							<td><c:out value="${sinUsuario}"></c:out></td>
-						</c:when>
-					</c:choose>
-							<td><c:out value="${gallinero.getStockGallinas()}"></c:out></td>
-					<td> <form:form id="form${gallinero.getId()}" action="gallinerosBorrar" method="post" commandName="gallinero">
-							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
-							<input id="boton${gallinero.getId()}" class="botonBorrar" type="button" value=<spring:message code="borrar"/> />
-						</form:form></td>
-					<td><form:form action="gallinerosModificar"
-							method="post" commandName="gallinero">
-							<form:input path="id" type="hidden" value="${gallinero.getId()}" />
-							<form:input path="usuarioId" type="hidden"
-								value="${gallinero.getUsuarioId()}" />
-							<form:input path="nombre" type="hidden"
-								value="${gallinero.getNombre()}" />
-							<form:input path="usuarioNombre" type="hidden"
-								value="${gallinero.getUsuarioNombre()}" />
-							<form:input path="stockGallinas" type="hidden"
-								value="${gallinero.getStockGallinas()}" />
-							<input type="submit" value=<spring:message code="modificar"/> />
-						</form:form></td>
-				</tr>
-			</c:forEach>
-		</c:if>
+		<tbody class="bod">
+		</tbody>
 	</table>
+	
+	<form:form id="formModificar" action="gallinerosModificar" method="post" commandName="gallinero">
+		<form:input id="id" path="id" type="hidden"/>
+		<form:input id="nombre" path="nombre" type="hidden"/>
+		<form:input id="usuarioId" path="usuarioId" type="hidden"/>
+		<form:input id="usuarioNombre" path="usuarioNombre" type="hidden"/>
+		<form:input id="stockGallinas" path="stockGallinas" type="hidden"/>
+		<form:input id="borrado" path="borrado" type="hidden"/>
+	</form:form>
 
 	<c:set var="value">
 		<spring:message code="mensajeBorrar" />
 	</c:set>
+	
+	<c:set var="borrar">
+		<spring:message code="borrar" />
+	</c:set>
+
+	<c:set var="modificar">
+		<spring:message code="modificar" />
+	</c:set>
+	
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
+	
 <script>
 
-<c:forEach items="${listaGallineros}" var="gallinero">
-$('#boton' + '${gallinero.id}').on('click', function (e) {
-	var mensaje = document.getElementById("mensajeBorrar").value;
-    e.preventDefault();
-    bootbox.confirm(mensaje, function (response) {        
-        if(response) {
-        	$('#form' + '${gallinero.id}').submit();
-        }
-    });
+$(document).ready(function(){
+
+	var table = $('#tablita').DataTable( {
+		ajax: "gallinerosJson",
+	    columns: [
+	        {data: "nombre" },
+	        {data: "usuarioNombre" },
+	        {data: "stockGallinas" },
+	        {defaultContent:'<button id="borrar">${borrar}</button>'},
+	        {defaultContent:'<button id="modificar">${modificar}</button>'}
+	        ],
+	    select:true,
+	    paging:true,
+	    pageLength:50,
+	    ordering:true
+	});
+	
+	
+	$('#nuevo').on('click', function (e) {
+		window.location = "gallinerosNuevo";
+	});
+	
+	
+	$('#tablita tbody').on('click', '#borrar', function (e) {
+		var data = table.row(this.closest("tr")).data();
+		var json = {
+			"id" : data["id"],
+			"nombre" : data["nombre"],
+			"usuarioId" : data["usuarioId"],
+			"usuarioNombre" : data["usuarioNombre"],
+			"stockGallinas" : data["stockGallinas"],
+			"borrado" : data["borrado"]
+		};
+		var mensaje = document.getElementById("mensajeBorrar").value;
+		e.preventDefault();
+		bootbox.confirm(mensaje, function (response) {
+			if (response) {
+				$.ajax({
+					url : "gallinerosBorrarJson",
+					type : "DELETE",
+					data : JSON.stringify(json),
+					dataType : "json",
+					contentType : "application/json",
+					processData : false,
+					complete : function () {
+						table.ajax.reload();
+					}
+				});
+			}
+		});
+	});
+	
+	
+	$('#tablita tbody').on('click', '#modificar', function (e) {
+		var data = table.row(this.closest("tr")).data();
+		e.preventDefault();
+		document.getElementById("id").value = data["id"];
+		document.getElementById("nombre").value = data["nombre"];
+		document.getElementById("usuarioNombre").value = data["usuarioNombre"];
+		document.getElementById("usuarioId").value = data["usuarioId"];
+		document.getElementById("stockGallinas").value = data["stockGallinas"];
+		document.getElementById("borrado").value = data["borrado"];
+		document.getElementById("formModificar").submit();
+	});
 });
-</c:forEach>
 
 </script>
 
