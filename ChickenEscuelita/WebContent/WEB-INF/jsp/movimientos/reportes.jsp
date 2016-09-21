@@ -13,11 +13,8 @@
 <body>
 <h1 class="page-header"><spring:message code="movimientos"/></h1>
 
-	<form:form action="movimientosNuevo">
-		<input type="submit" value=<spring:message code="nuevo"/> />
-	</form:form>
+	<button id="nuevo"><spring:message code="nuevo"/></button>
 
-<%-- 	<form:form action="movimientosFiltro" method="POST" commandName="filtro" onclick="filtrar()"> --%>
 		<form:form method="POST" commandName="filtro">
 		<table>
 			<tr>
@@ -56,6 +53,10 @@ $(document).ready(function(){
 	listar();
 });
 
+$('#nuevo').on('click', function (e) {
+	window.location = "movimientosNuevo";
+});
+
 function listar() {
 	$('#tablita').DataTable( {
 		ajax: "movimientosJson",
@@ -73,7 +74,11 @@ function filtrar() {
     var fechaHasta = $('#fechaHasta').val();
     var cantidadDesde = $('#cantidadDesde').val();
     var cantidadHasta= $('#cantidadHasta').val();
-    var json = { "fechaDesde" : fechaDesde, "fechaHasta" : fechaHasta, "cantidadDesde": cantidadDesde, "cantidadHasta": cantidadHasta};
+    var json = {"fechaDesde" : fechaDesde,
+    			"fechaHasta" : fechaHasta, 
+    			"cantidadDesde": cantidadDesde,
+    			"cantidadHasta": cantidadHasta
+    			};
 	$('#tablita').DataTable( {
 		ajax: {
 			url: "filtrando",

@@ -5,4 +5,6 @@ import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 public interface IMovimientoValidacionServicio {
 
 	void validacionStockDeposito(String depositoId, long cantidad) throws ValidacionExcepcion;
+	void validacionGallineroId(String gallineroId) throws ValidacionExcepcion;
+	void validacionDepositoId(String depositoId) throws ValidacionExcepcion;
 }
