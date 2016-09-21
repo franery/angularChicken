@@ -62,10 +62,7 @@ $(document).ready(function(){
 
 $('#nuevo').on('click', function (e) {
 	e.preventDefault();
-	document.getElementById("mensajeErrorNombreVacio").style.display = "none";
-	document.getElementById("mensajeErrorNombreUnico").style.display = "none";
-	document.getElementById("mensajeErrorStockMinimo").style.display = "none";
-	document.getElementById("mensajeErrorStockMaximoMenorActual").style.display = "none";
+	ocultarErrores();
 	var json = {
 			"nombre" : document.getElementById("nombre").value,
 			"stockMaximo" : document.getElementById("stockMaximo").value
@@ -87,6 +84,13 @@ $('#nuevo').on('click', function (e) {
 		}
 	});
 });
+
+function ocultarErrores() {
+	document.getElementById("mensajeErrorNombreVacio").style.display = "none";
+	document.getElementById("mensajeErrorNombreUnico").style.display= "none";
+	document.getElementById("mensajeErrorStockMinimo").style.display= "none";
+	document.getElementById("mensajeErrorStockMaximoMenorActual").style.display= "none";
+}
 
 </script>
 
