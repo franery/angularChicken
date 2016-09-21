@@ -8,7 +8,7 @@
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+            <pattern>%-30([%d])[%logger{20}]%msg%n</pattern>
         </encoder>
     </appender>
 
@@ -20,7 +20,7 @@
         <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%-4r %-5level %logger{35}: %msg%n</pattern>
+            <pattern>%-30([%d])[%logger{20}]%msg%n</pattern>
         </encoder>
     </appender>
 
@@ -32,6 +32,6 @@
     
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <FileNamePattern>logFile.%d{yyyy-MM-dd}.log</FileNamePattern>
-        </rollingPolicy>
+    </rollingPolicy>
 
 </configuration>

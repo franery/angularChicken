@@ -31,7 +31,7 @@ public class LoginControlador extends Controlador{
 	public ModelAndView login() {
     	
 		String name = "login";
-		chickenLog.error("This is {}", name);
+		chickenLog.error("This is {} {}", name, name);
     	
 		ModelAndView model = new ModelAndView(LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();

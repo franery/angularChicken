@@ -1,2 +1,23 @@
 48076 ERROR a.c.e.c.p.c.LoginControlador: This is login
 59927 ERROR a.c.e.c.p.c.LoginControlador: This is parametros
+17763 ERROR a.c.e.c.p.c.LoginControlador: This is login login
+18017 ERROR a.c.e.c.p.c.LoginControlador: This is login login
+18518 ERROR a.c.e.c.p.c.LoginControlador: This is login login
+18677 ERROR a.c.e.c.p.c.LoginControlador: This is login login
+[2016-09-21 11:39:50,746][http-bio-8080-exec-9]    []            [a.c.e.c.presentacion.controlador.LoginControlador] This is login login
+[2016-09-21 11:39:59,499][http-bio-8080-exec-7]    []            [a.c.e.c.presentacion.controlador.LoginControlador] This is parametros
+[2016-09-21 11:40:01,654][http-bio-8080-exec-2]    []            [a.c.e.c.presentacion.controlador.LoginControlador] This is login login
+[2016-09-21 11:52:23,202][http-bio-8080-exec-3]   [a.c.e.c.presentacion.controlador.LoginControlador] This is login login
+[2016-09-21 11:52:27,755][http-bio-8080-exec-10]  [a.c.e.c.presentacion.controlador.LoginControlador] This is parametros
+[2016-09-21 11:54:01,086][http-bio-8080-exec-9]    This is login login
+[2016-09-21 11:55:30,386][http-bio-8080-exec-9]    []            This is login login
+[2016-09-21 11:55:35,518][http-bio-8080-exec-10]   []            This is parametros
+[2016-09-21 11:57:12,308][http-bio-8080-exec-4]    [a.c.e.c.presentacion.controlador.LoginControlador]This is login login
+[2016-09-21 11:57:21,814][http-bio-8080-exec-5]    [a.c.e.c.presentacion.controlador.LoginControlador]This is parametros
+[2016-09-21 11:57:24,633][http-bio-8080-exec-8]    [a.c.e.c.presentacion.controlador.LoginControlador]This is parametros
+[2016-09-21 11:58:26,906]                          [a.c.e.c.presentacion.controlador.LoginControlador]This is parametros
+[2016-09-21 11:58:41,739]                          [a.c.e.c.presentacion.controlador.LoginControlador]This is login login
+[2016-09-21 11:58:50,461]                          [a.c.e.c.presentacion.controlador.LoginControlador]This is parametros
+[2016-09-21 11:59:55,389][ar.com.escuelita.chicken.presentacion.controlador.LoginControlador]This is parametros
+[2016-09-21 11:59:59,828][ar.com.escuelita.chicken.presentacion.controlador.LoginControlador]This is parametros
+[2016-09-21 12:01:21,452]     [a.c.e.c.p.c.LoginControlador]This is parametros
