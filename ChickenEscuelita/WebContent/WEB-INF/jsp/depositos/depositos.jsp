@@ -42,46 +42,12 @@
 		<form:input id="borrado" path="borrado" type="hidden"/>
 	</form:form>
 
-	<c:set var="value">
-		<spring:message code="mensajeBorrar" />
-	</c:set>
-	<input id="mensajeBorrar" type="hidden" value="${value}" />
-
-	<c:set var="value2">
-		<spring:message code="mensajeModificar" />
-	</c:set>
-	<input id="mensajeModificar" type="hidden" value="${value2}" />
-
 	<c:set var="borrar">
 		<spring:message code="borrar" />
 	</c:set>
 
 	<c:set var="modificar">
 		<spring:message code="modificar" />
-	</c:set>
-
-	<c:set var="guardar">
-		<spring:message code="guardar" />
-	</c:set>
-
-	<c:set var="depositoNuevo">
-		<spring:message code="depositoNuevo" />
-	</c:set>
-
-	<c:set var="depositoModificar">
-		<spring:message code="depositoModificar" />
-	</c:set>
-
-	<c:set var="nombre">
-		<spring:message code="nombre" />
-	</c:set>
-
-	<c:set var="stockHuevos">
-		<spring:message code="stock" />
-	</c:set>
-
-	<c:set var="stockMaximo">
-		<spring:message code="stockMaximo" />
 	</c:set>
 
 <script>
