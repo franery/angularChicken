@@ -43,6 +43,8 @@ public class LoginControlador extends Controlador{
 		String str = spliteado[spliteado.length - 1];
 		str = str.replace("Nuevo", "");
 		str = str.replace("Modificar", "");
+		str = str.replace("Procesar", "");
+		str = str.replace("Borrar", "");
 		return new ModelAndView("redirect:/"+str);
 	}
 	
