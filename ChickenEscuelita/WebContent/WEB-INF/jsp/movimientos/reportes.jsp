@@ -67,9 +67,16 @@
         </thead>
     </table>
 
+<div class="wait"></div>
+
 <script>
 $(document).ready(function(){
 	listar();
+});
+
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");}
 });
 
 $('#nuevo').on('click', function (e) {

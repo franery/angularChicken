@@ -43,6 +43,7 @@ public class LoginControlador extends Controlador{
 		model.addObject("pageToLoad", "login/403");
 		return model;
 	}
+	
 	@RequestMapping(path="/ingresar")
 	public ModelAndView loginVerificacion() {
 		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "loginVerificacion");

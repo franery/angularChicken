@@ -11,4 +11,8 @@ public class Excepcion extends Exception {
 	public Excepcion(String message) {
 		super(message);
 	}
+	
+	public Excepcion(Throwable cause) {
+		super(cause);
+	}
 }

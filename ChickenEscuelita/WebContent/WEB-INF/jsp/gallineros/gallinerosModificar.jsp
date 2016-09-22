@@ -71,8 +71,14 @@
 	<spring:message code="mensajeErrorUsuarioInvalido" />
 </c:set>
 	
+<div class="wait"></div>
 	
 <script>
+
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");}
+});
 
 var mensajesError = {
 		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",
