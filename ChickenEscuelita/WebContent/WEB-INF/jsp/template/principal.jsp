@@ -37,5 +37,7 @@ body {
 			$('#tablita').DataTable();
 		});
 	</script>
+	
+	<jsp:include page="pieDePagina.jsp"></jsp:include>
 </body>
 </html>
