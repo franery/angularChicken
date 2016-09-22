@@ -41,11 +41,6 @@
 			<form:input class="form-control" id="stockGallinas" path="stockGallinas"  value="${gallinero.getStockGallinas()}" required="required"/>
 		</div>
 	</div>
-	<div class="form-group">
-	    <div class="col-sm-offset-2 col-sm-10">
-			<input class="btn btn-default" id="botonGuardar" type="button" value=<spring:message code="guardar"/> />
-		</div>
-	</div>
 </form:form>
 	
 <c:set var="value">
@@ -73,8 +68,14 @@
 	
 <form:form id="formAtras" action="atras" method="post">
 	<input id="url" type="hidden" name="url" />
-	<input id="botonAtras" type="button" value=<spring:message code="atras"/> />
 </form:form>
+
+<div class="form-group">
+    <div >
+		<input id="botonAtras" class="btn btn-default" type="button" value=<spring:message code="atras"/> />
+		<input id="botonGuardar" class="btn btn-default" type="button" value=<spring:message code="guardar"/> />
+	</div>
+</div>
 
 <div class="wait"></div>
 	

@@ -67,50 +67,51 @@
 			</tr>
 		</table>
 	</div>
-	<input class="btn btn-default" id="botonGuardar" type="submit" value="Modificar"/>
 	</form:form>
 	
 	<form:form id="formAtras" action="atras" method="post">
 	<input id="url" type="hidden" name="url" />
 
-	<div class="form-group">
-	    <div class="col-sm-offset-2 col-sm-10">
-			<input id="botonAtras" type="button" value=<spring:message code="atras"/> />
-		</div>
-	</div>
 </form:form>
+
+<div class="form-group">
+    <div >
+		<input id="botonAtras" class="btn btn-default" type="button" value=<spring:message code="atras"/> />
+		<input id="botonGuardar" class="btn btn-default" type="button" value=<spring:message code="guardar"/> />
+	</div>
+</div>
 	
-	<script>
-	var tablaPermisos = new Array();
-	<c:forEach items="${tablaPermisosUsuario}" var="perm">
-	    var permiso = '${perm.id}';
-	    tablaPermisos.push(permiso);
+<script>
+var tablaPermisos = new Array();
+<c:forEach items="${tablaPermisosUsuario}" var="perm">
+    var permiso = '${perm.id}';
+    tablaPermisos.push(permiso);
+</c:forEach>
+for (var i = 0; i < tablaPermisos.length; i++) {
+	document.getElementsByName(tablaPermisos[i])[0].checked = true;
+}
+$('#botonGuardar').on('click', function (e) {
+	e.preventDefault();
+	<c:forEach items="${tablaPermisos}" var="permiso">
+		var checkbox = document.getElementsByName('${permiso.id}')[0];
+		var permisoNombre = checkbox.id;
+		var modulo = permisoNombre.split(" ")[0];
+		var operacion = permisoNombre.split(" ")[1];
+		if (checkbox.checked && operacion != 'Listar') {
+			document.getElementById(modulo + " Listar").checked = true;
+		}
 	</c:forEach>
-	for (var i = 0; i < tablaPermisos.length; i++) {
-		document.getElementsByName(tablaPermisos[i])[0].checked = true;
-	}
-	$('#botonGuardar').on('click', function (e) {
-		e.preventDefault();
-		<c:forEach items="${tablaPermisos}" var="permiso">
-			var checkbox = document.getElementsByName('${permiso.id}')[0];
-			var permisoNombre = checkbox.id;
-			var modulo = permisoNombre.split(" ")[0];
-			var operacion = permisoNombre.split(" ")[1];
-			if (checkbox.checked && operacion != 'Listar') {
-				document.getElementById(modulo + " Listar").checked = true;
-			}
-		</c:forEach>
-	    $('#formModificar').submit();
-	});
-	
-	$('#botonAtras').on('click', function(e) {
-		e.preventDefault();
-		var url = document.URL;
-		document.getElementById("url").value = url;
-		document.getElementById("formAtras").submit();
-	});
-	
-	</script>
+    $('#formModificar').submit();
+});
+
+$('#botonAtras').on('click', function(e) {
+	e.preventDefault();
+	var url = document.URL;
+	document.getElementById("url").value = url;
+	document.getElementById("formAtras").submit();
+});
+
+</script>
 	
 </body>
 </html>

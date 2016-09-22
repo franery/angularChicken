@@ -41,11 +41,6 @@
 			<form:input class="form-control" id="telefono" path="telefono" value="${proveedor.getTelefono()}" required="required"/>
 		</div>
 	</div>
-	<div class="form-group">
-	    <div class="col-sm-offset-2 col-sm-10">
-			<input class="btn btn-default" id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
-		</div>
-	</div>
 </form:form>
 
 <c:set var="mensajeErrorNombreVacio">
@@ -72,8 +67,14 @@
 
 <form:form id="formAtras" action="atras" method="post">
 	<input id="url" type="hidden" name="url" />
-	<input id="botonAtras" type="button" value=<spring:message code="atras"/> />
 </form:form>
+
+<div class="form-group">
+    <div >
+		<input id="botonAtras" class="btn btn-default" type="button" value=<spring:message code="atras"/> />
+		<input id="botonNuevo" class="btn btn-default" type="button" value=<spring:message code="guardar"/> />
+	</div>
+</div>
 
 <div class="wait"></div>
 
