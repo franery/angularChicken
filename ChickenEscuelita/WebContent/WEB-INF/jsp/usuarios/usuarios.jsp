@@ -55,7 +55,7 @@
 							<td>
 							<form:form id="form${user.getId()}" action="usuariosBorrar" method="post" commandName="usuarioNM">
 								<form:input path="id" type="hidden" value="${user.getId() }"/>
-								<input id="boton${user.getId()}" class="botonBorrar" type="button" value=<spring:message code="borrar"/> />
+								<input id="boton${user.getId()}" class="botonBorrar btn btn-danger" type="button" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
 							<form:form action="usuariosModificar" method="post" commandName="usuarioNM">
@@ -65,7 +65,7 @@
 								<form:input path="apellido" type="hidden" value="${user.getApellido()}"/>
 								<form:input path="contrasenia" type="hidden" value="${user.getContrasenia()}"/>
 <%-- 								<form:input path="listaPerfiles" type="hidden" value="${user.getListaPerfiles()}"/> --%>
-								<input type="submit" value=<spring:message code="modificar"/> />
+								<input class="btn btn-warning" type="submit" value=<spring:message code="modificar"/> />
 							</form:form>
 				</td>
 						 </tr>

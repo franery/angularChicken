@@ -1,296 +1,165 @@
-[2016-09-21 12:13:47,227]     [a.c.e.c.p.c.LoginControlador]This is login login
-[2016-09-21 12:13:58,060]     [a.c.e.c.p.c.LoginControlador]This is parametros
-[2016-09-21 12:14:24,245]     [a.c.e.c.p.c.LoginControlador]This is parametros
-[2016-09-21 14:52:55,901]     [a.c.e.c.p.c.LoginControlador]This is login login
-[2016-09-21 15:03:29,780]     [a.c.e.c.p.c.LoginControlador]This is login login
-[2016-09-21 15:03:36,748]     [o.s.w.s.t.f.InputTag]Neither BindingResult nor plain target object for bean name 'deposito' available as request attribute
-java.lang.IllegalStateException: Neither BindingResult nor plain target object for bean name 'deposito' available as request attribute
-	at org.springframework.web.servlet.support.BindStatus.<init>(BindStatus.java:144)
-	at org.springframework.web.servlet.tags.form.AbstractDataBoundFormElementTag.getBindStatus(AbstractDataBoundFormElementTag.java:168)
-	at org.springframework.web.servlet.tags.form.AbstractDataBoundFormElementTag.getPropertyPath(AbstractDataBoundFormElementTag.java:188)
-	at org.springframework.web.servlet.tags.form.AbstractDataBoundFormElementTag.getName(AbstractDataBoundFormElementTag.java:154)
-	at org.springframework.web.servlet.tags.form.AbstractDataBoundFormElementTag.writeDefaultAttributes(AbstractDataBoundFormElementTag.java:117)
-	at org.springframework.web.servlet.tags.form.AbstractHtmlElementTag.writeDefaultAttributes(AbstractHtmlElementTag.java:422)
-	at org.springframework.web.servlet.tags.form.InputTag.writeTagContent(InputTag.java:142)
-	at org.springframework.web.servlet.tags.form.AbstractFormTag.doStartTagInternal(AbstractFormTag.java:84)
-	at org.springframework.web.servlet.tags.RequestContextAwareTag.doStartTag(RequestContextAwareTag.java:80)
-	at org.apache.jsp.WEB_002dINF.jsp.depositos.depositos_jsp._jspx_meth_form_005finput_005f0(depositos_jsp.java:478)
-	at org.apache.jsp.WEB_002dINF.jsp.depositos.depositos_jsp._jspx_meth_form_005fform_005f0(depositos_jsp.java:422)
-	at org.apache.jsp.WEB_002dINF.jsp.depositos.depositos_jsp._jspService(depositos_jsp.java:129)
-	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
-	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:432)
-	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:390)
-	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:334)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
-	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:749)
-	at org.apache.catalina.core.ApplicationDispatcher.doInclude(ApplicationDispatcher.java:605)
-	at org.apache.catalina.core.ApplicationDispatcher.include(ApplicationDispatcher.java:544)
-	at org.apache.jasper.runtime.JspRuntimeLibrary.include(JspRuntimeLibrary.java:954)
-	at org.apache.jsp.WEB_002dINF.jsp.template.principal_jsp._jspService(principal_jsp.java:107)
-	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
-	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:432)
-	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:390)
-	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:334)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
-	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:749)
-	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:487)
-	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:412)
-	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:339)
-	at org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:168)
-	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
-	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1244)
-	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1027)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:971)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:316)
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126)
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:114)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:122)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:169)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:48)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:205)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:120)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:64)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:53)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:91)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330)
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:213)
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:176)
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
-	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
-	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1041)
-	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:603)
-	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:312)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
-	at java.lang.Thread.run(Thread.java:745)
-[2016-09-21 15:14:55,682]     [LogMaster]This is login login
-[2016-09-21 16:42:17,001]     [LogMaster]This is parametros
-[2016-09-21 16:42:23,144]     [LogMaster]This is parametros
-[2016-09-21 16:42:41,254]     [LogMaster]This is parametros
-[2016-09-21 16:45:07,514]     [LogMaster]This is parametros
-[2016-09-21 16:50:17,269]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositosNuevo ;
-[2016-09-21 16:50:17,283]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:50:23,243]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.LoginControlador ; Metodo: loginVerificacion ;
-[2016-09-21 16:50:23,244]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
-[2016-09-21 16:50:23,245]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: generarConsulta ;
-[2016-09-21 16:50:23,607]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.LoginControlador ; Metodo: obtenerPermisos ;
-[2016-09-21 16:50:26,400]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:50:26,401]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:50:26,401]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:50:26,786]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:50:26,786]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:50:28,944]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositosNuevo ;
-[2016-09-21 16:50:28,944]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:50:28,945]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:50:30,758]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:50:30,759]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:50:30,759]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:50:31,033]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:50:31,034]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:51:19,281]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:51:19,281]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:51:19,282]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:51:19,729]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:51:19,730]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:51:30,117]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:51:30,118]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:51:30,119]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:51:30,821]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:51:30,822]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:51:58,960]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:51:58,961]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:51:58,962]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:51:59,789]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:51:59,789]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:52:17,086]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:52:17,087]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:52:17,088]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:52:17,743]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:52:17,743]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:52:44,490]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:52:44,492]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:52:44,492]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:52:45,261]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:52:45,262]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:52:57,411]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:52:57,411]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:52:57,412]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:52:58,065]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:52:58,065]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:53:52,014]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:53:52,015]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:53:52,016]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:53:52,462]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:53:52,462]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:54:04,780]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:54:04,780]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:54:04,781]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:54:05,396]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:54:05,396]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:54:11,009]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:54:11,010]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:54:11,010]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:54:11,605]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:54:11,606]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 16:55:24,231]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 16:55:24,232]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:55:24,233]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 16:55:25,130]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 16:55:25,130]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 17:01:12,078]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.GallinerosControlador ; Metodo: gallineros ;
-[2016-09-21 17:01:12,078]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:01:12,530]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.GallinerosControladorRest ; Metodo: gallinerosJson ;
-[2016-09-21 17:01:12,531]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:05:20,895]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.GallinerosControlador ; Metodo: gallineros ;
-[2016-09-21 17:05:20,895]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:05:21,501]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.GallinerosControladorRest ; Metodo: gallinerosJson ;
-[2016-09-21 17:05:21,501]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:05:51,439]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.GallinerosControlador ; Metodo: gallineros ;
-[2016-09-21 17:05:51,439]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:05:52,350]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.GallinerosControladorRest ; Metodo: gallinerosJson ;
-[2016-09-21 17:05:52,350]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:06:23,507]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.MovimientoControlador ; Metodo: movimientos ;
-[2016-09-21 17:06:23,507]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: listar ;
-[2016-09-21 17:06:23,507]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: generarConsulta ;
-[2016-09-21 17:06:23,528]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.MovimientoControlador ; Metodo: initBinder ;
-[2016-09-21 17:06:23,529]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.MovimientoControlador ; Metodo: initBinder ;
-[2016-09-21 17:06:24,008]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.MovimientosControladorRest ; Metodo: movimientosJson ;
-[2016-09-21 17:06:24,008]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: listar ;
-[2016-09-21 17:06:24,008]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: generarConsulta ;
-[2016-09-21 17:06:26,158]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.ParametrosControlador ; Metodo: parametrosList ;
-[2016-09-21 17:06:26,158]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.ParametroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:06:26,468]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.ParametrosControladorRest ; Metodo: parametrosJson ;
-[2016-09-21 17:06:26,468]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.ParametroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:07:17,538]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 17:07:17,539]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 17:07:17,539]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 17:07:18,088]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 17:07:18,088]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 17:07:19,218]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.GallinerosControlador ; Metodo: gallineros ;
-[2016-09-21 17:07:19,218]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:07:19,623]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.GallinerosControladorRest ; Metodo: gallinerosJson ;
-[2016-09-21 17:07:19,623]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:07:21,662]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.ParametrosControlador ; Metodo: parametrosList ;
-[2016-09-21 17:07:21,663]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.ParametroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:07:22,112]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.ParametrosControladorRest ; Metodo: parametrosJson ;
-[2016-09-21 17:07:22,113]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.ParametroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:07:31,876]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
-[2016-09-21 17:07:31,877]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
-[2016-09-21 17:07:31,941]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:07:31,941]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:07:34,870]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:07:34,872]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
-[2016-09-21 17:07:34,873]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
-[2016-09-21 17:07:34,941]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:09:54,097]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
-[2016-09-21 17:09:54,098]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 17:09:54,098]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
-[2016-09-21 17:09:54,558]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
-[2016-09-21 17:09:54,559]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
-[2016-09-21 17:09:55,670]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.GallinerosControlador ; Metodo: gallineros ;
-[2016-09-21 17:09:55,670]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:09:56,027]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.GallinerosControladorRest ; Metodo: gallinerosJson ;
-[2016-09-21 17:09:56,028]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:09:57,755]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.ParametrosControlador ; Metodo: parametrosList ;
-[2016-09-21 17:09:57,756]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.ParametroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:09:58,059]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.ParametrosControladorRest ; Metodo: parametrosJson ;
-[2016-09-21 17:09:58,059]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.ParametroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:10:37,894]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.ParametrosControlador ; Metodo: parametrosList ;
-[2016-09-21 17:10:37,895]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.ParametroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:10:38,272]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.ParametrosControladorRest ; Metodo: parametrosJson ;
-[2016-09-21 17:10:38,272]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.ParametroDAOImpl ; Metodo: listar ;
-[2016-09-21 17:10:48,387]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
-[2016-09-21 17:10:48,387]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
-[2016-09-21 17:10:48,446]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:10:48,446]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:10:49,851]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:10:49,852]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
-[2016-09-21 17:10:49,852]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
-[2016-09-21 17:10:49,922]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:14:03,473]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
-[2016-09-21 17:14:03,474]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
-[2016-09-21 17:14:03,538]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:14:03,538]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:14:05,359]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:14:05,360]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
-[2016-09-21 17:14:05,360]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
-[2016-09-21 17:14:05,425]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:14:26,995]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:14:26,998]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.validacion.UsuarioValidacion ; Metodo: validate ;
-[2016-09-21 17:14:26,999]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
-[2016-09-21 17:14:27,056]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosProcesarNuevo ;
-[2016-09-21 17:14:27,056]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: obtenerListaPerfiles ;
-[2016-09-21 17:14:27,056]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
-[2016-09-21 17:14:27,122]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: guardar ;
-[2016-09-21 17:14:27,212]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
-[2016-09-21 17:14:27,212]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
-[2016-09-21 17:14:27,270]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:14:27,270]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:14:42,992]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:14:42,992]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
-[2016-09-21 17:14:42,992]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
-[2016-09-21 17:14:43,060]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:18:21,753]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
-[2016-09-21 17:18:21,753]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
-[2016-09-21 17:18:21,823]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:18:21,824]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:18:23,785]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:18:23,786]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
-[2016-09-21 17:18:23,786]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
-[2016-09-21 17:18:23,855]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:19:27,462]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:19:27,463]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
-[2016-09-21 17:19:27,463]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
-[2016-09-21 17:19:27,529]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:20:42,016]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:20:42,016]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
-[2016-09-21 17:20:42,016]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
-[2016-09-21 17:20:42,090]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:20:45,562]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
-[2016-09-21 17:20:45,562]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
-[2016-09-21 17:20:45,627]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
-[2016-09-21 17:20:45,627]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:32:53,495]     [o.hibernate.Version]HHH000412: Hibernate Core {5.1.0.Final}
+[2016-09-22 09:32:53,513]     [o.h.cfg.Environment]HHH000206: hibernate.properties not found
+[2016-09-22 09:32:53,516]     [o.h.cfg.Environment]HHH000021: Bytecode provider name : javassist
+[2016-09-22 09:32:53,693]     [o.h.a.common.Version]HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+[2016-09-22 09:32:54,557]     [o.h.dialect.Dialect]HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+[2016-09-22 09:32:55,682]     [o.h.v.i.util.Version]HV000001: Hibernate Validator 5.0.1.Final
+[2016-09-22 09:34:28,398]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.LoginControlador ; Metodo: login ;
+[2016-09-22 09:34:31,480]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.LoginControlador ; Metodo: loginVerificacion ;
+[2016-09-22 09:34:31,480]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:34:31,481]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: generarConsulta ;
+[2016-09-22 09:34:31,591]     [o.h.h.i.QueryTranslatorFactoryInitiator]HHH000397: Using ASTQueryTranslatorFactory
+[2016-09-22 09:34:31,999]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.LoginControlador ; Metodo: obtenerPermisos ;
+[2016-09-22 09:34:33,613]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: depositos ;
+[2016-09-22 09:34:33,615]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
+[2016-09-22 09:34:33,615]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.DepositosControlador ; Metodo: initBinder ;
+[2016-09-22 09:34:33,998]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.DepositosControladorRest ; Metodo: depositosJson ;
+[2016-09-22 09:34:33,999]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.DepositoDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:02,664]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.GallinerosControlador ; Metodo: gallineros ;
+[2016-09-22 09:35:02,664]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:03,158]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.GallinerosControladorRest ; Metodo: gallinerosJson ;
+[2016-09-22 09:35:03,158]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:05,447]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.GallinerosControlador ; Metodo: gallinerosNuevo ;
+[2016-09-22 09:35:05,447]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listarProductores ;
+[2016-09-22 09:35:09,640]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.GallinerosControlador ; Metodo: gallineros ;
+[2016-09-22 09:35:09,640]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:10,047]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.GallinerosControladorRest ; Metodo: gallinerosJson ;
+[2016-09-22 09:35:10,047]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.GallineroDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:14,626]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.GallinerosControlador ; Metodo: gallinerosModificar ;
+[2016-09-22 09:35:14,626]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listarProductores ;
+[2016-09-22 09:35:17,463]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.MovimientoControlador ; Metodo: movimientos ;
+[2016-09-22 09:35:17,464]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:17,464]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: generarConsulta ;
+[2016-09-22 09:35:17,484]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.MovimientoControlador ; Metodo: initBinder ;
+[2016-09-22 09:35:17,485]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.MovimientoControlador ; Metodo: initBinder ;
+[2016-09-22 09:35:17,787]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.MovimientosControladorRest ; Metodo: movimientosJson ;
+[2016-09-22 09:35:17,788]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:17,788]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: generarConsulta ;
+[2016-09-22 09:35:20,056]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:35:20,056]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:20,155]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:35:20,156]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:35:38,412]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:35:38,413]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:35:38,413]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:38,521]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:35:44,171]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:35:44,171]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:35:44,266]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:35:44,266]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:37:31,279]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:37:31,279]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:37:31,388]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:37:31,389]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:37:51,636]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:37:51,636]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:37:51,636]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:37:51,735]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:38:06,357]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:38:06,357]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:38:06,479]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:38:06,480]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:38:08,163]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:38:08,164]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:38:08,164]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:38:08,271]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:38:28,541]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:38:28,541]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:38:28,652]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:38:28,653]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:38:30,432]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:38:30,432]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:38:30,432]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:38:30,528]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:39:04,717]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:39:04,717]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:39:04,801]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:39:04,801]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:39:06,472]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:39:06,473]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:39:06,473]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:39:06,553]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:39:48,487]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:39:48,487]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:39:48,570]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:39:48,570]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:39:50,089]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:39:50,090]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:39:50,090]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:39:50,175]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:49:15,534]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:49:15,535]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:49:15,616]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:49:15,617]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:49:17,359]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:49:17,360]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:49:17,360]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:49:17,457]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:49:44,966]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:49:44,967]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:49:45,045]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:49:45,045]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:49:46,896]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:49:46,896]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:49:46,896]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:49:46,973]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:50:24,213]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:50:24,214]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:50:24,214]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:50:24,287]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:51:28,600]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:51:28,601]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:51:28,601]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:51:28,683]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:51:49,242]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:51:49,242]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:51:49,242]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:51:49,323]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:51:57,295]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:51:57,296]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:51:57,296]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:51:57,374]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:52:32,389]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:52:32,389]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:52:32,389]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:52:32,489]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:52:48,723]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:52:48,723]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:52:48,792]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:52:48,793]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:52:50,430]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:52:50,431]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosModificar ;
+[2016-09-22 09:52:50,431]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:52:50,506]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:56:47,618]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:56:47,618]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:56:47,686]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:56:47,687]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:56:49,576]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:56:49,577]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosModificar ;
+[2016-09-22 09:56:49,577]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:56:49,657]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:03,205]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:57:03,205]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:57:03,269]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:03,269]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:07,219]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:07,220]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:57:07,221]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:57:07,288]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:33,300]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.MovimientoControlador ; Metodo: movimientos ;
+[2016-09-22 09:57:33,300]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: listar ;
+[2016-09-22 09:57:33,300]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: generarConsulta ;
+[2016-09-22 09:57:33,308]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.MovimientoControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:33,309]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.MovimientoControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:33,666]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.rest.MovimientosControladorRest ; Metodo: movimientosJson ;
+[2016-09-22 09:57:33,666]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: listar ;
+[2016-09-22 09:57:33,666]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.MovimientoDAOImpl ; Metodo: generarConsulta ;
+[2016-09-22 09:57:57,808]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuarios ;
+[2016-09-22 09:57:57,809]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl ; Metodo: listar ;
+[2016-09-22 09:57:57,874]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:57,875]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:59,536]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
+[2016-09-22 09:57:59,537]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: usuariosNuevo ;
+[2016-09-22 09:57:59,537]     [LogMaster]Controlador: class ar.com.escuelita.chicken.persistencia.dao.impl.PerfilDAOImpl ; Metodo: listar ;
+[2016-09-22 09:57:59,611]     [LogMaster]Controlador: class ar.com.escuelita.chicken.presentacion.controlador.UsuariosControlador ; Metodo: initBinder ;
