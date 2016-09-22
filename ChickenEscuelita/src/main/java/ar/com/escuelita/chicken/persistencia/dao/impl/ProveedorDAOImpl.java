@@ -15,49 +15,49 @@ public class ProveedorDAOImpl extends DAO implements IProveedorDAO {
 
 	@Transactional
 	public ProveedorModel get(long id) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "get");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "get");
 		Session s = sessionFactory.openSession();
 		ProveedorModel e = s.get(ProveedorModel.class, id);
 		s.close();
+		Constantes.CHICKEN_LOG.info("Se obtuvo el Proveedor: {}", e.getNombre());
 		return e;
 	}
 
 	public List<ProveedorModel> listar() {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "listar");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "listar");
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
 		List<ProveedorModel> lista = session.createQuery("from ProveedorModel where borrado=false").list();
 		session.close();
+		Constantes.CHICKEN_LOG.info("Se listaron los Proveedores");
 		return lista;
 	}
 
 	@Transactional
 	public void guardar(ProveedorModel proveedorModel) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "guardar");
-		
-		System.out.println("ProveedorDAOImpl.guardar");
-		
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "guardar");
 		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.save(proveedorModel);
 		tx.commit();
 		s.close();
-		
+		Constantes.CHICKEN_LOG.info("Se guardo el Proveedor: {}", proveedorModel.getNombre());
 	}
 
 	@Transactional
 	public void modificar(ProveedorModel proveedorModel) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "modificar");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "modificar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		s.update(proveedorModel);
 		s.getTransaction().commit();
 		s.close();
+		Constantes.CHICKEN_LOG.info("Se modifico el Proveedor: {}", proveedorModel.getNombre());
 	}
 
 	@Transactional
 	public void borrar(long id) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "borrar");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedorDAOImpl.class, "borrar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		ProveedorModel model = s.get(ProveedorModel.class, id);
@@ -65,5 +65,6 @@ public class ProveedorDAOImpl extends DAO implements IProveedorDAO {
 		s.update(model);
 		s.getTransaction().commit();
 		s.close();
+		Constantes.CHICKEN_LOG.info("Se borro el Proveedor: {}", model.getNombre());
 	}
 }

@@ -17,70 +17,74 @@ public class MovimientoDAOImpl extends DAO implements IMovimientoDAO {
 	
 	@Transactional
 	public MovimientoModel get(long id) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "get");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "get");
 		Session s = sessionFactory.openSession();
 		MovimientoModel e = s.get(MovimientoModel.class, id);
 		s.close();
+		Constantes.CHICKEN_LOG.info("Se obtuvo el Movimiento:  gallinero: {}, deposito: {}, cantidad: {}",e.getGallinero(), e.getDeposito(), e.getCantidad());
 		return e;
 	}
 
 	public List<MovimientoModel> listar() {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "listar");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "listar");
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
 		List<MovimientoModel> lista = session.createQuery("from MovimientoModel where borrado=false").list();
 		session.close();
+		Constantes.CHICKEN_LOG.info("Se listaron los Movimientos");
 		return lista;
 	}
 
 	@Transactional
 	public void guardar(MovimientoModel movimientoModel) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "guardar");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "guardar");
 		Session s = sessionFactory.openSession();
 		Transaction tx = s.beginTransaction();
 		s.save(movimientoModel);
 		tx.commit();
 		s.close();
-		
+		Constantes.CHICKEN_LOG.info("Se guardo el Movimiento:  gallinero: {}, deposito: {}, cantidad: {}",movimientoModel.getGallinero(), movimientoModel.getDeposito(), movimientoModel.getCantidad());
 	}
 
 	@Transactional
 	public void modificar(MovimientoModel movimientoModel) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "modificar");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "modificar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		s.update(movimientoModel);
 		s.getTransaction().commit();
 		s.close();
+		Constantes.CHICKEN_LOG.info("Se modifico el Movimiento:  gallinero: {}, deposito: {}, cantidad: {}",movimientoModel.getGallinero(), movimientoModel.getDeposito(), movimientoModel.getCantidad());
 	}
 
 	@Transactional
 	public void borrar(long id) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "borrar");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "borrar");
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		MovimientoModel model = s.get(MovimientoModel.class, id);
 		model.setBorrado(true);
 		s.update(model);
-		//s.delete(s.get(MovimientoModel.class,id));
 		s.getTransaction().commit();
 		s.close();
+		Constantes.CHICKEN_LOG.info("Se borro el Movimiento:  gallinero: {}, deposito: {}, cantidad: {}",model.getGallinero(), model.getDeposito(), model.getCantidad());
 	}
 	
 	@Override
 	public List<MovimientoModel> listar(MovimientoFiltro movimientoFiltro) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "listar");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "listar");
 		String query = "select mov from MovimientoModel as mov" 
 				+ " join mov.gallinero as g"
 				+ " join g.usuario as u";
 		
 		QueryParametrosUtil qp = generarConsulta(query, movimientoFiltro);
 		List<MovimientoModel> list = (List<MovimientoModel>) buscarUsandoQueryConParametros(qp);
+		Constantes.CHICKEN_LOG.info("Se listaron los Movimientos con filtro:  productorId: {}, cantidadDesde: {}, cantidadHasta: {}, fechaDesde: {}, fechaHasta: {}",movimientoFiltro.getProductorId(), movimientoFiltro.getCantidadDesde(), movimientoFiltro.getCantidadHasta(), movimientoFiltro.getFechaDesde(), movimientoFiltro.getFechaHasta());
 		return list;
 	}
 	
 	private QueryParametrosUtil generarConsulta(String query, MovimientoFiltro filtro){
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "generarConsulta");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoDAOImpl.class, "generarConsulta");
 		QueryParametrosUtil qp = new QueryParametrosUtil();
 		
 		String str = " where mov.borrado=false ";
