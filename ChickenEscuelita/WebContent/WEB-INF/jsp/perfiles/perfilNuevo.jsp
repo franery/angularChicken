@@ -21,7 +21,8 @@
 	</h1>
 
 	<form:form id="formCrear" method="POST" action="perfilesProcesarNuevo" commandName="perfil">
-	<spring:message code="nombre" /> <form:input path="nombre" name="nombre" type="text" value="${perfil.getNombre()}"/>
+	<spring:message code="nombre" /> 
+	<form:input path="nombre" name="nombre" type="text" value="${perfil.getNombre()}"/>
 
 			<form:errors path="nombre" cssClass="error" /> 
 
@@ -60,7 +61,7 @@
 
 		</c:forEach>
 	</table>
-	<input id="botonGuardar" type="button" value="Crear"/>
+	<input class="btn btn-default" id="botonGuardar" type="button" value="Crear"/>
 	</form:form>
 	
 	<script>

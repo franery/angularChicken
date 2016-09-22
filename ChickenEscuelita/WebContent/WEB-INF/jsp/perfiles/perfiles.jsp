@@ -16,7 +16,7 @@
 
 		<!-- Nuevo Perfil -->
 		<form:form action="perfilesNuevo" method="post" commandName="perfil">
-				<input type="submit" value=<spring:message code="nuevo"/> />
+				<input class="btn btn-success" type="submit" value=<spring:message code="nuevo"/> />
 		</form:form>
 		
 		<!-- Tabla Perfiles -->
@@ -44,13 +44,13 @@
 							<form:form id="form${perfil.getId()}" action="perfilesBorrar" method="post" commandName="perfil">
 								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
 								<form:input path="nombre" type="hidden" value="${perfil.getNombre() }"/>
-								<input id="boton${perfil.getId()}" class="botonBorrar" type="button" value=<spring:message code="borrar"/> />
+								<input id="boton${perfil.getId()}" class="botonBorrar btn btn-danger" type="button" value=<spring:message code="borrar"/> />
 							</form:form></td>
 							<td>
 							<form:form action="perfilesModificar" method="post" commandName="perfil">
 								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
 								<form:input path="nombre" type="hidden" value="${perfil.getNombre()}"/>
-								<input type="submit" value=<spring:message code="modificar"/> />
+								<input class="btn btn-warning" type="submit" value=<spring:message code="modificar"/> />
 							</form:form>
 				</td>
 						 </tr>

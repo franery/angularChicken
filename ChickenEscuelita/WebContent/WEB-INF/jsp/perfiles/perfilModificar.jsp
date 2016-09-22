@@ -59,7 +59,7 @@
 				<td colspan="4"> <form:errors path="nombre" cssClass="error" /> </td> 
 			</tr>
 	</table>
-	<input id="botonGuardar" type="submit" value="Modificar"/>
+	<input class="btn btn-default" id="botonGuardar" type="submit" value="Modificar"/>
 	</form:form>
 	<script>
 	var tablaPermisos = new Array();
