@@ -3,27 +3,16 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <jsp:include page="../template/importacion.jsp"></jsp:include>
-
-<style type="text/css">
-body {
-	padding-top: 70px;
-}
-</style>
-
 <title><spring:message code="nombreApp" /></title>
-
 </head>
 <body>
-<!-- NavBar -->
+	<!-- NavBar -->
 <%-- 	<c:set var="Title" scope="request" value="${usuarioActual.getListaPerfiles().get(0).getNombre()}"/> --%>
-<c:set var="Nombre" value="${usuarioActual.getNombre() }"
-	scope="request" />
+<c:set var="Nombre" value="${usuarioActual.getNombre() }" scope="request" />
 <jsp:include page="../template/cabecera.jsp"></jsp:include>
 
 <div class="container">
@@ -32,12 +21,12 @@ body {
 	</div>
 </div>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#tablita').DataTable();
-		});
-	</script>
-	
-	<jsp:include page="pieDePagina.jsp"></jsp:include>
+<jsp:include page="pieDePagina.jsp"></jsp:include>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#tablita').DataTable();
+	});
+</script>
 </body>
 </html>
