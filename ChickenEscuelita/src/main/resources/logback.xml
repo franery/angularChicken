@@ -25,7 +25,7 @@
     </appender>
 
 	<!-- ESPECIFICAR AQUI EL NIVEL DE LOGUEO (TRACE-DEBUG-INFO-WARN-ERROR) QUE SE ESCRIBE AL ARCHIVO LOG -->
-    <root level="ERROR">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE"/>
     </root>
@@ -34,4 +34,25 @@
             <FileNamePattern>logFile.%d{yyyy-MM-dd}.log</FileNamePattern>
     </rollingPolicy>
 
+	
+	<!-- Spring Webservice XML -->
+   	<logger name="org.springframework.ws.client.MessageTracing">
+   		<level value="TRACE" />	
+    	<appender-ref ref="FILE" />
+  	</logger>
+   
+   	<!-- Spring -->
+   	<logger name="org.springframework" level="error">
+  		<appender-ref ref="FILE" />
+	</logger>
+	<!-- Spring JMS -->
+	<logger name="org.springframework.jms" level="debug">
+	  <appender-ref ref="FILE"/>
+	</logger>
+	
+	<!-- SHIVA -->
+	<logger name="ar.com.escuelita.chicken" level="info">
+  		<appender-ref ref="FILE" />
+	</logger>
+	
 </configuration>

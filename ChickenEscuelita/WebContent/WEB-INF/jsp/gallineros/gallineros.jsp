@@ -53,6 +53,8 @@
 	</c:set>
 	
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
+
+<div class="wait"></div>
 	
 <script>
 

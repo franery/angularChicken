@@ -14,28 +14,38 @@
 
 <h1 class="page-header"><spring:message code="proveedoresNuevo"/></h1>
 
-<form:form action="proveedoresProcesarNuevo" method="post" commandName="proveedor">
+<form:form class="form-horizontal maxwid" action="proveedoresProcesarNuevo" method="post" commandName="proveedor">
 	<form:input id="id" path="id" type="hidden" value="${proveedor.getId()}"/>
 	<form:input id="borrado" path="borrado" type="hidden" value="${proveedor.getBorrado()}"/>
-	<table>
-		<tr>
-			<td><form:label path="nombre"><spring:message code="nombre"/>:</form:label></td>
-			<td><form:input id="nombre" path="nombre" value="${proveedor.getNombre()}" required="required"/></td>
-		</tr>
-		<tr>
-			<td><form:label path="direccion"><spring:message code="direccion"/>:</form:label></td>
-			<td><form:input id="direccion" path="direccion" value="${proveedor.getDireccion()}" required="required"/></td>
-		</tr>
-		<tr>
-			<td><form:label path="mail"><spring:message code="mail"/>:</form:label></td>
-			<td><form:input id="mail" path="mail" value="${proveedor.getMail()}" required="required"/></td>
-		</tr>
-		<tr>
-			<td><form:label path="telefono"><spring:message code="telefono"/>:</form:label></td>
-			<td><form:input id="telefono" path="telefono" value="${proveedor.getTelefono()}" required="required"/></td>
-		</tr>
-	</table>
-	<input id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="nombre"><spring:message code="nombre"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="nombre" path="nombre" value="${proveedor.getNombre()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="direccion"><spring:message code="direccion"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="direccion" path="direccion" value="${proveedor.getDireccion()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="mail"><spring:message code="mail"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="mail" path="mail" value="${proveedor.getMail()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="telefono"><spring:message code="telefono"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="telefono" path="telefono" value="${proveedor.getTelefono()}" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+			<input class="btn btn-default" id="botonNuevo" type="button" value=<spring:message code="guardar"/> />
+		</div>
+	</div>
 </form:form>
 
 <c:set var="mensajeErrorNombreVacio">
@@ -60,7 +70,14 @@
 
 <p id="errores"></p>
 
+<div class="wait"></div>
+
 <script>
+
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");}
+});
 
 var mensajesError = {
 	mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",

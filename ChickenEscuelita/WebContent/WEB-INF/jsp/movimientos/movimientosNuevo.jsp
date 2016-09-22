@@ -13,51 +13,54 @@
 <body>
 <h1  class="page-header"><spring:message code="movimientosNuevo"/></h1>
 
-	<form:form id="formNuevo" method="POST" commandName="movimiento">
-		<table>
-			<tr>
-				<td><form:label path="gallineroId">
-						<spring:message code="gallinero"/>:</form:label></td>
-				<td><form:select id="gallineroId" path="gallineroId" required="required">
-						<form:option value="">
-							<spring:message code="seleccioneGallinero"/>
-						</form:option>
-						<c:forEach items="${listaGallineros}" var="gallineroVar">
-							<form:option value="${gallineroVar.getId()}">
-								<c:out value="${gallineroVar.getNombre()}"></c:out>
-							</form:option>
-						</c:forEach>
-					</form:select></td>
-			</tr>
-			<tr>
-				<td><form:label path="depositoId">
-						<spring:message code="deposito"/>:</form:label></td>
-				<td><form:select id="depositoId" path="depositoId" required="required">
-						<form:option value="">
-							<spring:message code="seleccioneDeposito"/>
-						</form:option>
-						<c:forEach items="${listaDepositos}" var="depositoVar">
-							<form:option value="${depositoVar.getId()}">
-								<c:out value="${depositoVar.getNombre()}"></c:out>
-							</form:option>
-						</c:forEach>
-					</form:select></td>
-			</tr>
-			<tr>
-				<td><form:label path="cantidad">
-						<spring:message code="cantidad"/>:</form:label></td>
-				<td><form:input id="cantidad" path="cantidad" required="required"/></td>
-			</tr>
-			<tr>
-				<td><form:label path="fecha">
-						<spring:message code="fecha"/>:</form:label></td>
-				<td><form:input id="fecha" path="fecha" type="date" required="required"/></td>
-			</tr>
-			 <tr>
-			 	<td> <input id="botonNuevo" type="button" value=<spring:message code="guardar"/> /> </td>
-			 </tr> 
-		</table>
+<form:form  class="form-horizontal maxwid" id="formNuevo" method="POST" commandName="movimiento">
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="gallineroId"><spring:message code="gallinero"/>:</form:label>
+		<div class="col-sm-10">		
+			<form:select class="form-control" style="width:auto;" id="gallineroId" path="gallineroId" required="required">
+				<form:option value=""><spring:message code="seleccioneGallinero"/></form:option>
+				<c:forEach items="${listaGallineros}" var="gallineroVar">
+					<form:option value="${gallineroVar.getId()}">
+						<c:out value="${gallineroVar.getNombre()}"></c:out>
+					</form:option>
+				</c:forEach>
+			</form:select>
+		</div>
+	</div>			
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="depositoId"><spring:message code="deposito"/>:</form:label>
+		<div class="col-sm-10">		
+			<form:select class="form-control" style="width:auto;" id="depositoId" path="depositoId" required="required">
+				<form:option value=""><spring:message code="seleccioneDeposito"/></form:option>
+				<c:forEach items="${listaDepositos}" var="depositoVar">
+					<form:option value="${depositoVar.getId()}">
+						<c:out value="${depositoVar.getNombre()}"></c:out>
+					</form:option>
+				</c:forEach>
+			</form:select>
+		</div>
+	</div>		
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="cantidad"><spring:message code="cantidad"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="cantidad" path="cantidad" required="required"/>
+		</div>
+	</div>		
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="fecha"><spring:message code="fecha"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" id="fecha" path="fecha" type="date" required="required"/>
+		</div>
+	</div>	 	
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">			 	
+		 	<input class="btn btn-default" id="botonNuevo" type="button" value=<spring:message code="guardar"/> /> 
+		</div>
+	</div>
+	
 	</form:form>
+
+
 
 <c:set var="mensajeErrorMovimientoDeposito">
 	<spring:message code="mensajeErrorMovimientoDeposito" />
@@ -73,7 +76,14 @@
 
 <p id="errores"></p>
 
+<div class="wait"></div>
+
 <script>
+
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");}
+});
 
 var mensajesError = {
 		mensajeErrorMovimientoDeposito: "${mensajeErrorMovimientoDeposito}",
