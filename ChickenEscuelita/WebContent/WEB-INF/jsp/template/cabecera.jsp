@@ -83,7 +83,7 @@ body {
 					<li><a href="${permiso}"><spring:message code="${permiso}"/></a></li>
 					</c:forEach>
 				</ul>
-				<ul class="nav navbar-right">
+				<ul class="nav navbar-nav navbar-right">
 					<li><a href="ayuda"><spring:message code="ayuda"/></a></li>
 				</ul>
 			</div>
