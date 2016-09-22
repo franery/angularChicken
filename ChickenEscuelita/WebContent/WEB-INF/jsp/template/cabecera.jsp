@@ -82,7 +82,9 @@ body {
 					<c:forEach items="${listaPermisos}" var="permiso">
 					<li><a href="${permiso}"><spring:message code="${permiso}"/></a></li>
 					</c:forEach>
-					<li><a href="ayuda"><spring:message code="ayuda"/></a>
+				</ul>
+				<ul class="nav navbar-right">
+					<li><a href="ayuda"><spring:message code="ayuda"/></a></li>
 				</ul>
 			</div>
 		</div>
