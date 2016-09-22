@@ -50,12 +50,19 @@
 
 <p id="errores"></p>
 	
+<div class="wait"></div>
+	
 <script>
 
 var mensajesError = {
 		mensajeErrorParametro: "${mensajeErrorParametro}",
 		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}"
 	};
+
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");}
+});
 
 $('#botonGuardar').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeModificar").value;

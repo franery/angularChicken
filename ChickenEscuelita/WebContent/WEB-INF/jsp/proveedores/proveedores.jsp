@@ -55,6 +55,9 @@
 	<c:set var="modificar">
 		<spring:message code="modificar" />
 	</c:set>
+	
+<div class="wait"></div>
+	
 <script>
 
 $(document).ready(function(){
@@ -75,6 +78,10 @@ $(document).ready(function(){
 	    ordering:true
 	});
 	
+	$(document).on({
+	    ajaxStart: function() {$("body").addClass("loading");},
+	    ajaxStop: function() {$("body").removeClass("loading");}
+	});
 	
 	$('#nuevo').on('click', function (e) {
 		window.location = "proveedoresNuevo";
