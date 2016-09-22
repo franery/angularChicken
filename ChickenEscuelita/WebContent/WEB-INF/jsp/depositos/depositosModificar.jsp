@@ -57,7 +57,7 @@
 	<spring:message code="mensajeErrorStockMaximoNumero" />
 </c:set>
 
-<p id="errores"></p>
+<div id="errores" class="alert alert-warning fade in" style="display:none;"></div>
 
 <form:form id="formAtras" action="atras" method="post">
 	<input id="url" type="hidden" name="url" />
@@ -76,8 +76,7 @@
 
 $(document).on({
     ajaxStart: function() {$("body").addClass("loading");},
-    ajaxStop: function() {$("body").removeClass("loading");}
-});
+ajaxStop: function() {$("body").removeClass("loading");},ready: function() {$("#errores").style.display("none");}});
 
 var mensajesError = {
 		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",
@@ -110,8 +109,8 @@ $('#botonGuardar').on('click', function (e) {
         			for(var i = 0; i < errores.length; i++) {
         				mensaje += mensajesError[errores[i].code] + "<br>";
         			}
-        			document.getElementById("errores").innerHTML = mensaje;
-        		},
+document.getElementById("errores").innerHTML = mensaje; 
+document.getElementById("errores").style.display = "block";        		},
         		error: function(){
         			window.location = "depositos";
         		}

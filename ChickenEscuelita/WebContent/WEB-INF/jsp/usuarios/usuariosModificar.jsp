@@ -56,7 +56,7 @@
 			<div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
 					<form:errors path="nombreUsuario" cssClass="error" />  
-					 <form:errors path="id" cssClass="error" />  
+					<form:errors path="id" cssClass="error" />  
 				</div>
 			</div>
 	</form:form>				
@@ -80,10 +80,8 @@
 <script>
 
 $('#botonGuardar').on('click', function (e) {
-	$('#botonGuardar').on('click', function (e) {
-		e.preventDefault();
-	    $('#formModificar').submit();
-	});
+	e.preventDefault();
+    $('#formModificar').submit();
 });
 
 

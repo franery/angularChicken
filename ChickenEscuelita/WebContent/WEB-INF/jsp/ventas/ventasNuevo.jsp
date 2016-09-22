@@ -14,7 +14,7 @@
 
 <h1 class="page-header"><spring:message code="venta"/></h1>
 
-<form:form class="form-horizontal maxwid" action="ventasProcesarNuevo" method="post" commandName="venta">
+<form:form class="form-horizontal maxwid" id="formNuevo" action="ventasProcesarNuevo" method="post" commandName="venta">
 	<form:input path="id" type="hidden" value="${venta.getId()}"/>
 	<form:input path="usuarioId" type="hidden" value="${usuarioActual.getId()}"/>
 	<div class="form-group">
@@ -48,7 +48,6 @@
 	</div>	
 	<div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-10">
-			<input class="btn btn-default" type="submit" value=<spring:message code="guardar"/> />
 			<form:errors path="cantidad" cssClass="error" />  
 		</div>
 	</div>	
@@ -56,10 +55,22 @@
 
 <form:form id="formAtras" action="atras" method="post">
 	<input id="url" type="hidden" name="url" />
-	<input id="botonAtras" type="button" value=<spring:message code="atras"/> />
 </form:form>
 
+
+<div class="form-group">
+    <div >
+		<input id="botonAtras" class="btn btn-default" type="button" value=<spring:message code="atras"/> />
+		<input id="botonGuardar" class="btn btn-default" type="button" value=<spring:message code="guardar"/> />
+	</div>
+</div>
+
 <script>
+
+$('#botonGuardar').on('click', function (e) {
+	e.preventDefault();
+    $('#formNuevo').submit();
+});
 
 $('#botonAtras').on('click', function(e) {
 	e.preventDefault();
