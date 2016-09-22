@@ -88,8 +88,6 @@ body {
 	</div>
 </div>
 <%-- 	 		 Current Locale : ${pageContext.response.locale } --%>
-<br>
-<br>
 
 <script>
 function myFunction() {
