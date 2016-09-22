@@ -25,7 +25,7 @@ submit.backVerde {
 
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="navbar-header">
 				<%-- ${Title} --%>
 				<a class="navbar-brand" href=""><spring:message code="nombreApp" /></a>
@@ -40,51 +40,40 @@ submit.backVerde {
 			<div class="collapse navbar-collapse" id="example-navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<!-- Eleccion Idioma -->
-						<div>
-							<c:set var="idioma" scope="session"
-								value="${pageContext.response.locale.displayName}" />
-							<form:form class="navbar-form navbar-right" id="butonLang1"
-								onsubmit="myFunction()" method="POST" action="cambioLenguaje">
-								<input type="hidden" name="urlRequest" id="urlRequest">
-								<input type="hidden" name="lenguajeElegido" id="lenguajeElegido"
-									value="en">
-								<c:choose>
-									<c:when test="${idioma.equals('English')}">
-										<input class="navbar-btn" type="image"
-											src="http://bazaar.eprints.org/224/1/static/images/flags/us.png"
-											alt="EN" disabled />
-									</c:when>
-									<c:otherwise>
-										<input class="navbar-btn" type="image"
-											src="http://bazaar.eprints.org/224/1/static/images/flags/us.png"
-											alt="EN" onclick="cambiarLenguaje1();" />
-									</c:otherwise>
-								</c:choose>
-							</form:form>
-						</div>
+					<!-- Eleccion Idioma -->
+					<c:set var="idioma" scope="session" value="${pageContext.response.locale.displayName}" />
+						<form:form id="butonLang1" onsubmit="myFunction()" method="POST" action="cambioLenguaje">
+							<input type="hidden" name="urlRequest" id="urlRequest">
+							<input type="hidden" name="lenguajeElegido" id="lenguajeElegido" value="en">
+							<c:choose>
+								<c:when test="${idioma.equals('English')}">
+									<input class="navbar-btn img-circle center-block" type="image" height="40" src="http://bazaar.eprints.org/224/1/static/images/flags/us.png" alt="EN" disabled />
+								</c:when>
+								<c:otherwise>
+									<input class="navbar-btn img-circle center-block" type="image" height="40" src="http://bazaar.eprints.org/224/1/static/images/flags/us.png" alt="EN" onclick="cambiarLenguaje1();" />
+								</c:otherwise>
+							</c:choose>
+						</form:form>
 					</li>
 					<li>
-						<div>
-							<form:form class="navbar-form navbar-right" id="butonLang2"
-								onsubmit="myFunction2()" method="POST" action="cambioLenguaje">
-								<input type="hidden" name="urlRequest" id="urlRequest2">
-								<input type="hidden" name="lenguajeElegido" id="lenguajeElegido"
-									value="es">
-								<c:choose>
-									<c:when test="${idioma.equals('Spanish')}">
-										<input class="navbar-btn" type="image"
-											src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
-											alt="ES" disabled />
-									</c:when>
-									<c:otherwise>
-										<input class="navbar-btn" type="image"
-											src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
-											alt="ES" onclick="cambiarLenguaje2();" />
-									</c:otherwise>
-								</c:choose>
-							</form:form>
-						</div>
+						<form:form id="butonLang2"
+							onsubmit="myFunction2()" method="POST" action="cambioLenguaje">
+							<input type="hidden" name="urlRequest" id="urlRequest2">
+							<input type="hidden" name="lenguajeElegido" id="lenguajeElegido"
+								value="es">
+							<c:choose>
+								<c:when test="${idioma.equals('Spanish')}">
+									<input class="navbar-btn img-circle center-block" type="image" height="40"
+										src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
+										alt="ES" disabled />
+								</c:when>
+								<c:otherwise>
+									<input class="navbar-btn img-circle center-block" type="image" height="40"
+										src="http://bazaar.eprints.org/224/1/static/images/flags/ar.png"
+										alt="ES" onclick="cambiarLenguaje2();" />
+								</c:otherwise>
+							</c:choose>
+						</form:form>
 					</li>
 				</ul>
 			</div>
