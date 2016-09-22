@@ -17,9 +17,10 @@
     </style>
 </head>
 <body>
-	<h1 class="page-header"><spring:message code="perfilModificar" /></h1>
 
-	<form:form class="form-horizontal maxwid" id="formModificar" method="POST" action="perfilesProcesarModificar" commandName="perfil">
+<h1 class="page-header"><spring:message code="perfilModificar" /></h1>
+
+<form:form class="form-horizontal maxwid" id="formModificar" method="POST" action="perfilesProcesarModificar" commandName="perfil">
 	<form:input path="id" type="hidden" value="${perfil.getId()}"/>
 	<div class="form-group">
 		<div class="form-inline">
@@ -27,7 +28,6 @@
 			<form:input class="form-control" path="nombre" name="nombre" type="text" value="${perfil.getNombre()}"/>
 		</div>
 	</div>
-	
 	<div class="form-group">
 		<table>
 		<thead>
@@ -72,7 +72,12 @@
 	
 	<form:form id="formAtras" action="atras" method="post">
 	<input id="url" type="hidden" name="url" />
-	<input id="botonAtras" type="button" value=<spring:message code="atras"/> />
+
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+			<input id="botonAtras" type="button" value=<spring:message code="atras"/> />
+		</div>
+	</div>
 </form:form>
 	
 	<script>

@@ -16,11 +16,10 @@
 </style>
 </head>
 <body>
-	<h1 class="page-header">
-		<spring:message code="perfilNuevo" />
-	</h1>
 
-	<form:form class="form-horizontal maxwid" id="formCrear" method="POST" action="perfilesProcesarNuevo" commandName="perfil">
+<h1 class="page-header"><spring:message code="perfilNuevo" /></h1>
+
+<form:form class="form-horizontal maxwid" id="formCrear" method="POST" action="perfilesProcesarNuevo" commandName="perfil">
 	<div class="form-group">
 		<div class="form-inline">
 			<form:label class="control-label" path="nombre"><spring:message code="nombre" />: </form:label>
@@ -28,7 +27,7 @@
 		</div>
 	</div>
 			<form:errors path="nombre" cssClass="error" /> 
-
+	<div class="form-group">
 	<table>
 		<thead>
 			<tr>
@@ -64,8 +63,13 @@
 
 		</c:forEach>
 	</table>
-	<input class="btn btn-default" id="botonGuardar" type="button" value="Crear"/>
-	</form:form>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+			<input class="btn btn-default" id="botonGuardar" type="button" value="Crear"/>
+		</div>
+	</div>
+</form:form>
 	
 	<form:form id="formAtras" action="atras" method="post">
 		<input id="url" type="hidden" name="url" />
