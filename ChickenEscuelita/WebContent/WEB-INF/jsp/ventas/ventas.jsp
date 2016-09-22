@@ -13,42 +13,61 @@
 </head>
 <body>
 <h1 class="page-header"><spring:message code="ventas"/></h1>
-<form:form action="ventasNuevo" method="post" commandName="venta">
-	<input type="submit" value=<spring:message code="nuevo"/> />
-</form:form>
 
-<form:form action="ventas" method="post" commandName="filtro">
-		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
-		<thead>
-			<tr>
-				<th><spring:message code="filtros"/></th>
-			</tr>
-		</thead>
-		<tr>
-			<td><form:label path="proveedorId"><spring:message code="proveedor"/>:</form:label></td>
-			<td>
-				<form:select path="proveedorId">
-					<form:option value="0"><spring:message code="proveedor"/></form:option>
-						<c:forEach items="${listaProveedores}" var="proveedor">
+<!-- FILTRO -->
+<h3><spring:message code="filtros"/></h3>
+
+<form:form class="form-horizontal" action="ventas" method="post" commandName="filtro">
+	<div align="center" class="form-group">
+		<form:label class="control-label col-sm-5" path="proveedorId"><spring:message code="proveedor"/>:</form:label>
+		<div class="col-sm-5">
+			<form:select class="form-control" style="width:auto;" path="proveedorId">
+				<form:option value="0"><spring:message code="proveedor"/></form:option>
+				<c:forEach items="${listaProveedores}" var="proveedor">
 					<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
 				</c:forEach>
-				</form:select>
-			</td>
-		</tr>
-		<tr>
-			<td><form:label path="fechaDesde"><spring:message code="fechaDesde"/>:</form:label></td>
-			<td><form:input type="date" path="fechaDesde" /></td>
-			<td><form:label path="fechaHasta"><spring:message code="fechaHasta"/>:</form:label></td>
-			<td><form:input type="date" path="fechaHasta" /></td>
-		</tr>
-		<tr>
-			<td><form:label path="cantidadDesde"><spring:message code="cantidadDesde"/>:</form:label></td>
-			<td><form:input type="text" path="cantidadDesde" /></td>
-			<td><form:label path="cantidadHasta"><spring:message code="cantidadHasta"/>:</form:label></td>
-			<td><form:input type="text" path="cantidadHasta" /></td>
-		</tr>
-	</table>
-	<input type="submit" value=<spring:message code="filtrar"/>>
+			</form:select>
+		</div>
+	</div>
+	<div class="form-inline">
+		<div class="form-group">
+			<form:label class="control-label col-sm-2" path="fechaDesde"><spring:message code="fechaDesde"/>:</form:label>
+			<div class="col-sm-10">
+				<form:input class="form-control" type="date" path="fechaDesde" />
+			</div>
+		</div>
+		<div class="form-group">
+			<form:label class="control-label col-sm-2" path="fechaHasta"><spring:message code="fechaHasta"/>:</form:label>
+			<div class="col-sm-10">
+				<form:input class="form-control" type="date" path="fechaHasta" />
+			</div>
+		</div>
+	</div>
+	<div class="form-inline">
+		<div class="form-group">
+			<form:label class="control-label col-sm-2" path="cantidadDesde"><spring:message code="cantidadDesde"/>:</form:label>
+			<div class="col-sm-10">
+				<form:input class="form-control" type="text" path="cantidadDesde" />
+			</div>
+		</div>
+		<div class="form-group">
+			<form:label class="control-label col-sm-2" path="cantidadHasta"><spring:message code="cantidadHasta"/>:</form:label>
+			<div class="col-sm-10">
+				<form:input class="form-control" type="text" path="cantidadHasta" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-1 col-sm-10">
+			<input class="btn btn-primary" type="submit" value=<spring:message code="filtrar"/>>
+		</div>
+	</div>
+</form:form>
+
+<!-- Ventas -->
+<h3><spring:message code="ventas"/></h3>
+<form:form action="ventasNuevo" method="post" commandName="venta">
+	<input class="btn btn-success" type="submit" value=<spring:message code="nuevo"/> />
 </form:form>
 
 		<table id="tablita" class="display order-column" cellspacing="0" width="100%">

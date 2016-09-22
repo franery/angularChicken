@@ -14,26 +14,44 @@
 
 <h1 class="page-header"><spring:message code="venta"/></h1>
 
-<form:form action="ventasProcesarNuevo" method="post" commandName="venta">
+<form:form class="form-horizontal maxwid" action="ventasProcesarNuevo" method="post" commandName="venta">
 	<form:input path="id" type="hidden" value="${venta.getId()}"/>
 	<form:input path="usuarioId" type="hidden" value="${usuarioActual.getId()}"/>
 	<div class="form-group">
-				<form:label path="proveedorId"><spring:message code="proveedor"/>:</form:label>
-					<form:select path="proveedorId" required="required">
-						<form:option value=""><spring:message code="seleccionar" /></form:option>
-							<c:forEach items="${listaProveedores}" var="proveedor">
-								<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
-							</c:forEach>
-					</form:select>
-				<form:label path="fecha"><spring:message code="fecha"/>:</form:label>
-				<form:input type="date" path="fecha" required="required"/>
-				<form:label path="cantidad"><spring:message code="cantidad"/>:</form:label>
-				<form:input path="cantidad" required="required"/>
-				<form:label path="precio"><spring:message code="precio"/>:</form:label>
-				<form:input path="precio" required="required"/>
-				<input type="submit" value=<spring:message code="guardar"/> />
-				<form:errors path="cantidad" cssClass="error" />  
+		<form:label class="control-label col-sm-2" path="proveedorId"><spring:message code="proveedor"/>:</form:label>
+		<div class="col-sm-10">
+			<form:select class="form-control" style="width:auto;" path="proveedorId" required="required">
+				<form:option value=""><spring:message code="seleccionar" /></form:option>
+					<c:forEach items="${listaProveedores}" var="proveedor">
+						<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
+					</c:forEach>
+			</form:select>
+		</div>
 	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="fecha"><spring:message code="fecha"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" type="date" path="fecha" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="cantidad"><spring:message code="cantidad"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" path="cantidad" required="required"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<form:label class="control-label col-sm-2" path="precio"><spring:message code="precio"/>:</form:label>
+		<div class="col-sm-10">
+			<form:input class="form-control" path="precio" required="required"/>
+		</div>
+	</div>	
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+			<input class="btn btn-default" type="submit" value=<spring:message code="guardar"/> />
+			<form:errors path="cantidad" cssClass="error" />  
+		</div>
+	</div>	
 </form:form>
 
 </body>
