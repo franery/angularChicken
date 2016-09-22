@@ -20,10 +20,13 @@
 		<spring:message code="perfilNuevo" />
 	</h1>
 
-	<form:form id="formCrear" method="POST" action="perfilesProcesarNuevo" commandName="perfil">
-	<spring:message code="nombre" /> 
-	<form:input path="nombre" name="nombre" type="text" value="${perfil.getNombre()}"/>
-
+	<form:form class="form-horizontal maxwid" id="formCrear" method="POST" action="perfilesProcesarNuevo" commandName="perfil">
+	<div class="form-group">
+		<div class="form-inline">
+			<form:label class="control-label" path="nombre"><spring:message code="nombre" />: </form:label>
+			<form:input class="form-control" path="nombre" name="nombre" type="text" value="${perfil.getNombre()}"/>
+		</div>
+	</div>
 			<form:errors path="nombre" cssClass="error" /> 
 
 	<table>
