@@ -28,19 +28,19 @@
 	</div>
 			<form:errors path="nombre" cssClass="error" /> 
 	<div class="form-group">
-	<table>
+	<table class="table-bordered">
 		<thead>
 			<tr>
 				<th></th>
 				<c:forEach items="${listaOperaciones}" var="operacion">
-					<th>${operacion.getNombre()}</th>
+					<th class="text-center">${operacion.getNombre()}</th>
 				</c:forEach>
 			</tr>
 		</thead>
 	
 		<c:forEach items="${listaModulos}" var="modulo">
 			<tr>
-				<td>${modulo.getNombre()}</td>
+				<td style="width:10%">${modulo.getNombre()} </td>
 				<c:forEach items="${listaOperaciones}" var="operacion">
 					<c:forEach items="${tablaPermisos}" var="permiso">
 						<c:if test="${permiso.getNombreModulo().equalsIgnoreCase(modulo.getNombre()) 
@@ -52,10 +52,10 @@
 						<c:when test="${((modulo.nombre == 'ventas' || modulo.nombre == 'movimientos') &&
 								(operacion.nombre != 'Crear' && operacion.nombre != 'Listar')) || 
 								(modulo.nombre == 'produccion' && operacion.nombre != 'Listar')}">
-							<td><input name="${idPermiso}" id="${modulo.nombre} ${operacion.nombre}" type="checkbox"  disabled/></td>		
+							<td style="width:10%"><input name="${idPermiso}" id="${modulo.nombre} ${operacion.nombre}" type="checkbox"  disabled/></td>		
 						</c:when>
 						<c:otherwise>
-							<td><input name="${idPermiso}" id="${modulo.nombre} ${operacion.nombre}" type="checkbox"/></td>					
+							<td style="width:10%"><input name="${idPermiso}" id="${modulo.nombre} ${operacion.nombre}" type="checkbox"/></td>					
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
