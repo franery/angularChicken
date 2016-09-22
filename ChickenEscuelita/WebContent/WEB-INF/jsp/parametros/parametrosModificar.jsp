@@ -67,7 +67,9 @@ var mensajesError = {
 
 $(document).on({
     ajaxStart: function() {$("body").addClass("loading");},
-ajaxStop: function() {$("body").removeClass("loading");},ready: function() {$("#errores").style.display("none");}});
+	ajaxStop: function() {$("body").removeClass("loading");},
+	ready: function() {$("#errores").style.display("none");}
+	});
 
 $('#botonGuardar').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeModificar").value;
@@ -91,7 +93,9 @@ $('#botonGuardar').on('click', function (e) {
         			for(var i = 0; i < errores.length; i++) {
         				mensaje += mensajesError[errores[i].code] + "<br>";
         			}
-document.getElementById("errores").innerHTML = mensaje; document.getElementById("errores").style.display = "block";        		},
+					document.getElementById("errores").innerHTML = mensaje;
+					document.getElementById("errores").style.display = "block";
+				},
         		error: function(){
         			window.location = "parametros";
         		}

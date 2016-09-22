@@ -69,7 +69,8 @@
 
 $(document).on({
     ajaxStart: function() {$("body").addClass("loading");},
-    ajaxStop: function() {$("body").removeClass("loading");},ready: function() {$("#errores").style.display("none");}
+    ajaxStop: function() {$("body").removeClass("loading");},
+    ready: function() {$("#errores").style.display("none");}
 });
 
 var mensajesError = {
