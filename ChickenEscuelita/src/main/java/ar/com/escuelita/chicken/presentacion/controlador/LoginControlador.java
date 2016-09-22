@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.constantes.Constantes;
@@ -33,6 +34,16 @@ public class LoginControlador extends Controlador{
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);
 		return model;
+	}
+	
+	@RequestMapping("atras")
+	public ModelAndView volver(@RequestParam("url") String  url) {
+		System.out.println("ATRAAAAS....");
+		String[] spliteado = url.split("/");
+		String str = spliteado[spliteado.length - 1];
+		str = str.replace("Nuevo", "");
+		str = str.replace("Modificar", "");
+		return new ModelAndView("redirect:/"+str);
 	}
 	
 	@RequestMapping("/403")

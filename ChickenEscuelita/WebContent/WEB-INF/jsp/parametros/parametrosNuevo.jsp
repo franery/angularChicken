@@ -43,6 +43,11 @@
 
 <p id="errores"></p>
 
+<form:form id="formAtras" action="atras" method="post">
+	<input id="url" type="hidden" name="url" />
+	<input id="botonAtras" type="button" value=<spring:message code="atras"/> />
+</form:form>
+
 <div class="wait"></div>
 
 <script>
@@ -83,6 +88,13 @@ var mensajesError = {
 		});
 	});
 
+	$('#botonAtras').on('click', function(e) {
+		e.preventDefault();
+		var url = document.URL;
+		document.getElementById("url").value = url;
+		document.getElementById("formAtras").submit();
+	});
+	
 </script>
 
 </body>
