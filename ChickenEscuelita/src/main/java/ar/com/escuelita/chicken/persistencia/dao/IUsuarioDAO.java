@@ -22,6 +22,4 @@ public interface IUsuarioDAO {
 
 	HashMap<UsuarioModel, Long> getProduccionTotal(UsuarioFiltro usuarioFiltro);
 
-	public List<UsuarioModel> listarProductores();
-
 }

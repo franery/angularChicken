@@ -73,7 +73,7 @@ public class MovimientoControlador extends Controlador {
 		model.addObject("listaDepositosDropDown", depositoServicio.listar());
 		// Tabla Productores | Total Produccion
 		model.addObject("hashTotales", usuarioServicio.getTotalesProduccion(usuarioFiltro));
-		model.addObject("listaProductoresDropDown", usuarioServicio.listarProductores());
+		model.addObject("listaProductoresDropDown", usuarioServicio.listar());
 		model.addObject("pageToLoad", Constantes.PRODUCCION_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
 		return model;

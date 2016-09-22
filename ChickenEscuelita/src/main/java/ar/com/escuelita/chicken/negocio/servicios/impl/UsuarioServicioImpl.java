@@ -103,9 +103,4 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	    return hashNuevo;
 	    
 	}
-
-	@Override
-	public Collection<DTO> listarProductores() {
-		return usuarioMapeador.map(usuarioDAO.listarProductores());
-	}
 }

@@ -37,7 +37,7 @@ public class GallinerosControlador extends Controlador {
 		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControlador.class, "gallinerosNuevo");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
-		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
+		model.addObject("listaUsuarios",usuarioServicio.listar());
 		model.addObject("gallinero", new GallineroDTO());
 		model.addObject("pageToLoad", Constantes.GALLINEROS_NUEVO_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
@@ -50,7 +50,7 @@ public class GallinerosControlador extends Controlador {
 		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControlador.class, "gallinerosModificar");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
-		model.addObject("listaUsuarios",usuarioServicio.listarProductores());
+		model.addObject("listaUsuarios",usuarioServicio.listar());
 		model.addObject("gallinero", gallinero);
 		model.addObject("pageToLoad", Constantes.GALLINEROS_MODIFICAR_VIEW);
 		model.addObject("listaPermisos", listaPermisos);
