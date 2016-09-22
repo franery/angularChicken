@@ -31,7 +31,7 @@ public class ProveedoresControladorRest extends Controlador {
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "initBinder");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "initBinder");
 		if (binder.getTarget() instanceof ProveedorDTO){
 			binder.setValidator(proveedorValidacion);
 		}
@@ -39,7 +39,7 @@ public class ProveedoresControladorRest extends Controlador {
 	
 	@RequestMapping("/proveedoresJson")
 	public HashMap<String, List<DTO>> proveedorsJson() {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "proveedoresJson");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "proveedoresJson");
 		HashMap<String, List<DTO>> proveedorsJson = new HashMap<String, List<DTO>>();
 		proveedorsJson.put(Constantes.DATA, (List<DTO>)proveedorServicio.listar());
 		return proveedorsJson;
@@ -48,7 +48,7 @@ public class ProveedoresControladorRest extends Controlador {
 	@RequestMapping(path="/proveedoresNuevoJson")
 	public Object proveedorsNuevoJson(@RequestBody @Validated ProveedorDTO proveedor,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "proveedoresNuevoJson");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "proveedoresNuevoJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
@@ -59,7 +59,7 @@ public class ProveedoresControladorRest extends Controlador {
 	@RequestMapping(path="/proveedoresBorrarJson")
 	public void proveedorsBorrarJson(@RequestBody @Validated ProveedorDTO proveedor,
 			BindingResult result) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "proveedoresBorrarJson");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "proveedoresBorrarJson");
 		if(!result.hasErrors()) {
 			proveedorServicio.borrar(proveedor);
 		}
@@ -68,7 +68,7 @@ public class ProveedoresControladorRest extends Controlador {
 	@RequestMapping(path="/proveedoresModificarJson")
 	public Object proveedorsModificarJson(@RequestBody @Validated ProveedorDTO proveedor,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "proveedoresModificarJson");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedoresControladorRest.class, "proveedoresModificarJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}

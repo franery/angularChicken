@@ -22,7 +22,7 @@ public class GallinerosControlador extends Controlador {
 	
 	@RequestMapping(path="/gallineros")
 	public ModelAndView gallineros() {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControlador.class, "gallineros");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", GallinerosControlador.class, "gallineros");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("gallinero",new GallineroDTO());
@@ -34,7 +34,7 @@ public class GallinerosControlador extends Controlador {
 
 	@RequestMapping(path="/gallinerosNuevo")
 	public ModelAndView gallinerosNuevo() {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControlador.class, "gallinerosNuevo");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", GallinerosControlador.class, "gallinerosNuevo");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listar());
@@ -47,7 +47,7 @@ public class GallinerosControlador extends Controlador {
 
 	@RequestMapping(path="/gallinerosModificar")
 	public ModelAndView gallinerosModificar(@ModelAttribute("gallinero") GallineroDTO gallinero) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallinerosControlador.class, "gallinerosModificar");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", GallinerosControlador.class, "gallinerosModificar");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("listaUsuarios",usuarioServicio.listar());

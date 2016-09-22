@@ -20,19 +20,19 @@ import ar.com.escuelita.chicken.base.utils.Utilidad;
 @ControllerAdvice
 public class ExcepcionControlador {
 
-	private ModelAndView errorModelAndView(Exception ex, HttpServletRequest request, HttpServletResponse response) {
+	private ModelAndView infoModelAndView(Exception ex, HttpServletRequest request, HttpServletResponse response) {
 		Excepcion e = new Excepcion(ex);
-		Constantes.CHICKEN_LOG.error("Controlador: {}; Error: {}",getClass(),e.getMessage());
+		Constantes.CHICKEN_LOG.info("Controlador: {}; Error: {}",getClass(),e.getMessage());
 		
 		ModelAndView mv = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		mv.addObject("pageToLoad", Constantes.EXCEPCION_VIEW);
-		request.setAttribute("errorSpecified", ex.getMessage());
-		request.setAttribute("error", Utilidad.stackTraceToString(ex));
-		request.setAttribute("errorFechaHora", Utilidad.formatDateAndTimeFull(new Date()));
+		request.setAttribute("infoSpecified", ex.getMessage());
+		request.setAttribute("info", Utilidad.stackTraceToString(ex));
+		request.setAttribute("infoFechaHora", Utilidad.formatDateAndTimeFull(new Date()));
 		
 		//Unicamente para ajax
 		if (Utilidad.isAjax(request)) {
-			response.setStatus(HttpStatus.CONFLICT.value()); //error 409
+			response.setStatus(HttpStatus.CONFLICT.value()); //info 409
 			return handleJsonExcepcion(ex, request, response);
 		}
 		
@@ -41,14 +41,14 @@ public class ExcepcionControlador {
 
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleException(Exception ex, HttpServletRequest request, HttpServletResponse response) {
-		return errorModelAndView(ex, request, response);
+		return infoModelAndView(ex, request, response);
 	}
 
 	private ModelAndView handleJsonExcepcion(Exception ex, HttpServletRequest request, HttpServletResponse response) {
 		Map<String,String> bigMap = new HashMap<String, String>();
-		bigMap.put("titulo", "Este es un titulo de error ajax");
+		bigMap.put("titulo", "Este es un titulo de info ajax");
 		if (ex != null) {
-			bigMap.put("errorSpecified", ex.getMessage());
+			bigMap.put("infoSpecified", ex.getMessage());
 		}
 		MappingJackson2JsonView jsonView = new MappingJackson2JsonView();
 		return new ModelAndView(jsonView, bigMap);
