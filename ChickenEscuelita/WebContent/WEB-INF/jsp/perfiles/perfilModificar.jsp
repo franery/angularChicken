@@ -19,9 +19,16 @@
 <body>
 	<h1 class="page-header"><spring:message code="perfilModificar" /></h1>
 
-	<form:form id="formModificar" method="POST" action="perfilesProcesarModificar" commandName="perfil">
+	<form:form class="form-horizontal maxwid" id="formModificar" method="POST" action="perfilesProcesarModificar" commandName="perfil">
 	<form:input path="id" type="hidden" value="${perfil.getId()}"/>
-	<spring:message code="nombre" /> <input name="nombre" type="text" value="${perfil.nombre}"/>
+	<div class="form-group">
+		<div class="form-inline">
+			<form:label class="control-label" path="nombre"><spring:message code="nombre" />: </form:label>
+			<form:input class="form-control" path="nombre" name="nombre" type="text" value="${perfil.getNombre()}"/>
+		</div>
+	</div>
+	
+	<div class="form-group">
 		<table>
 		<thead>
 			<tr>
@@ -58,7 +65,8 @@
 			<tr>
 				<td colspan="4"> <form:errors path="nombre" cssClass="error" /> </td> 
 			</tr>
-	</table>
+		</table>
+	</div>
 	<input class="btn btn-default" id="botonGuardar" type="submit" value="Modificar"/>
 	</form:form>
 	<script>
