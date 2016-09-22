@@ -21,7 +21,7 @@ public class ProveedorValidacion implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errores) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ProveedorValidacion.class, "validate");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedorValidacion.class, "validate");
 		ProveedorDTO proveedor = (ProveedorDTO) target;
 		try {
 			proveedorValidacionServicio.validacionNombreNoVacio(proveedor.getNombre());

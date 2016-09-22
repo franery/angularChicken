@@ -23,7 +23,7 @@ public class DepositoValidacion implements Validator{
 	}
 	
 	public void validate(Object target, Errors errores) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", DepositoValidacion.class, "validate");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", DepositoValidacion.class, "validate");
 		DepositoDTO deposito = (DepositoDTO) target;
 		try {
 			depositoValidacionServicio.validacionNombreNoVacio(deposito.getNombre());

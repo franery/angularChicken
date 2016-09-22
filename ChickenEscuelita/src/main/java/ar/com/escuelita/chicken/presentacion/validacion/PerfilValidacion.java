@@ -25,7 +25,7 @@ public class PerfilValidacion implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errores) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", PerfilValidacion.class, "validate");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", PerfilValidacion.class, "validate");
 		PerfilDTO perfil = (PerfilDTO) target;
 		try {
 			perfilValidacionServicio.validacionPerfilRoot(perfil.getId());

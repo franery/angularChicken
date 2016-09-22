@@ -22,7 +22,7 @@ public class GallineroValidacion implements Validator {
 	}
 	
 	public void validate(Object target, Errors errores) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", GallineroValidacion.class, "validate");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", GallineroValidacion.class, "validate");
 		GallineroDTO gallinero= (GallineroDTO) target;
 		try {
 			gallineroValidacionServicio.validacionNombreUnico(gallinero.getNombre(), gallinero.getId());

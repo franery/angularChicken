@@ -24,7 +24,7 @@ public class MovimientoValidacion implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errores) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", MovimientoValidacion.class, "validate");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoValidacion.class, "validate");
 		MovimientoDTO movimiento = (MovimientoDTO) target;
 		try {
 			movimientoValidacionServicio.validacionStockDeposito(movimiento.getDepositoId(),movimiento.getCantidad());

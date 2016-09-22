@@ -25,7 +25,7 @@ public class VentaValidacion implements Validator{
 
 	@Override
 	public void validate(Object target, Errors errores) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", VentaValidacion.class, "validate");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", VentaValidacion.class, "validate");
 		VentaDTO venta = (VentaDTO) target;
 		try {
 			ventaValidacionServicio.validacionCantidad(venta.getCantidad());

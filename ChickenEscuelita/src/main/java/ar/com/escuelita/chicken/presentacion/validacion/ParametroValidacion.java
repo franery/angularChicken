@@ -24,7 +24,7 @@ public class ParametroValidacion implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errores) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", ParametroValidacion.class, "validate");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ParametroValidacion.class, "validate");
 		ParametroDTO parametro = (ParametroDTO) target;
 		try {
 			parametroValidacionServicio.validacionDescripcionParametro(parametro.getDescripcion(), parametro.getId());

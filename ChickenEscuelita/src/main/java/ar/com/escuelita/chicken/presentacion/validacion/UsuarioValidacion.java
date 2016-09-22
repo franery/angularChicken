@@ -24,7 +24,7 @@ public class UsuarioValidacion implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errores) {
-		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", UsuarioValidacion.class, "validate");
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuarioValidacion.class, "validate");
 		UsuarioDTO usuario = (UsuarioDTO) target;
 		try {
 			usuarioValidacionServicio.validacionNombreUsuario(usuario.getNombreUsuario(), usuario.getId());
