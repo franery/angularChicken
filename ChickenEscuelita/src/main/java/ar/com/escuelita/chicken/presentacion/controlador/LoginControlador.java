@@ -46,6 +46,14 @@ public class LoginControlador extends Controlador{
 		return new ModelAndView("redirect:/"+str);
 	}
 	
+	@RequestMapping("ayuda")
+	public ModelAndView ayuda() {
+		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
+		model.addObject("pageToLoad", Constantes.AYUDA_VIEW);
+		model.addObject("listaPermisos", listaPermisos);
+		return model;
+	}
+	
 	@RequestMapping("/403")
 	public ModelAndView accesoDenegado() {
 		Constantes.CHICKEN_LOG.error("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "accesoDenegdo");

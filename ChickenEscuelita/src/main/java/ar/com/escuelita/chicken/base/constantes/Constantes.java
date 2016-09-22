@@ -32,6 +32,7 @@ public class Constantes {
 	public static final String VENTAS_VIEW = "ventas/ventas";
 	public static final String VENTAS_NUEVO_VIEW = "ventas/ventasNuevo";
 	public static final String EXCEPCION_VIEW = "login/excepcion";
+	public static final String AYUDA_VIEW = "template/ayuda";
 	public static final long USUARIO_ROOT_ID = 1;
 	public static final long PERFIL_ROOT_ID = 1;
 	public static final long STOCK_MINIMO = 0;
