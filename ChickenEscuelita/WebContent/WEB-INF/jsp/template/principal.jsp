@@ -23,10 +23,6 @@
 
 <jsp:include page="pieDePagina.jsp"></jsp:include>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#tablita').DataTable();
-	});
-</script>
+
 </body>
 </html>

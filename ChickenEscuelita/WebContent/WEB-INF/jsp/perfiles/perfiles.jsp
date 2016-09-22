@@ -77,6 +77,28 @@ th {
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
 <script>
 
+$(document).ready(function() {
+	$('#tablita').DataTable({
+		language: {
+			processing:     "<spring:message code='procesando'/>",
+            search:         "<spring:message code='buscar'/>",
+            lengthMenu:     "<spring:message code='tamanioMenu'/>",
+            info:           "<spring:message code='info'/>",
+            infoEmpty:      "<spring:message code='infoVacia'/>",
+            infoFiltered:   "<spring:message code='infoFiltrada'/>",
+            loadingRecords: "<spring:message code='cargandoRegistros'/>",
+            zeroRecords:    "<spring:message code='ceroRegistros'/>",
+            emptyTable:     "<spring:message code='noHayResultados'/>",
+            paginate: {
+                first:      "<spring:message code='primero'/>",
+                previous:   "<spring:message code='anterior'/>",
+                next:       "<spring:message code='siguiente'/>",
+                last:       "<spring:message code='ultimo'/>"
+            },
+		},
+	});
+});
+
 <c:forEach items="${listaPerfiles}" var="perfil">
 $('#boton' + '${perfil.id}').on('click', function (e) {
 	var mensaje = document.getElementById("mensajeBorrar").value;
