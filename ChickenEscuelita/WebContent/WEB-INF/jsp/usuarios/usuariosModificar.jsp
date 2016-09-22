@@ -79,14 +79,15 @@ $('#botonGuardar').on('click', function (e) {
 		e.preventDefault();
 	    $('#formModificar').submit();
 	});
-	
+});
 
-	$('#botonAtras').on('click', function(e) {
-		e.preventDefault();
-		var url = document.URL;
-		document.getElementById("url").value = url;
-		document.getElementById("formAtras").submit();
-	});
+
+$('#botonAtras').on('click', function(e) {
+	e.preventDefault();
+	var url = document.URL;
+	document.getElementById("url").value = url;
+	document.getElementById("formAtras").submit();
+});
 	
 </script>
 
