@@ -9,6 +9,13 @@
 
 <title><spring:message code="parametros" text="Parametros" /></title>
 
+<style>
+th {
+	text-align: center;
+}
+
+</style>
+
 </head>
 <body>
 <h1 class="page-header" align="center"><spring:message code="parametros"/></h1>

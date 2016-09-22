@@ -9,6 +9,14 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><spring:message code="movimientos"/></title>
+
+<style>
+th {
+	text-align: center;
+}
+
+</style>
+
 </head>
 <body>
 <h1 class="page-header"><spring:message code="movimientos"/></h1>
