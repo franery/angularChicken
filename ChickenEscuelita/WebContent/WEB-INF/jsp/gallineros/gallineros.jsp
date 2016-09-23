@@ -16,7 +16,6 @@
 	<h1 class="page-header">
 		<spring:message code="gallineros" />
 	</h1>
-	<button class="btn btn-success" id="nuevo"><spring:message code="nuevo"/></button>
 	<table id="tablita" class="display order-column" cellspacing="0"
 		width="100%">
 		<thead>
@@ -77,9 +76,10 @@ $(document).ready(function(){
                 previous:   "<spring:message code='anterior'/>",
                 next:       "<spring:message code='siguiente'/>",
                 last:       "<spring:message code='ultimo'/>"
-            },
+            }
 		},
 		ajax: "gallinerosJson",
+		dom: 'Bfrtip',
 	    columns: [
 	        {data: "nombre" },
 	        {data: "usuarioNombre" },
@@ -90,14 +90,16 @@ $(document).ready(function(){
 	    select:true,
 	    paging:true,
 	    pageLength:50,
-	    ordering:true
+	    ordering:true,
+	    buttons: [
+	              {
+	                  text: '<button class="btn btn-success pull-left"><spring:message code="nuevo"/></button>',
+	                  action: function ( e, dt, node, config ) {
+	                      window.location = "gallinerosNuevo";
+	                  }
+	              }
+	          ]
 	});
-	
-	
-	$('#nuevo').on('click', function (e) {
-		window.location = "gallinerosNuevo";
-	});
-	
 	
 	$('#tablita tbody').on('click', '#borrar', function (e) {
 		var data = table.row(this.closest("tr")).data();

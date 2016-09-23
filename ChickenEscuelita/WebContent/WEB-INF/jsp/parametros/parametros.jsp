@@ -13,8 +13,6 @@
 <body>
 <h1 class="page-header" align="center"><spring:message code="parametros"/></h1>
 
-	<button class="btn btn-success" id="nuevo"><spring:message code="nuevo"/></button>
-
 	<table id="tablita" class="display order-column" cellspacing="0"
 		width="100%">
 		<thead>
@@ -73,6 +71,7 @@ $(document).ready(function(){
                 last:       "<spring:message code='ultimo'/>"
             },
 		},
+		dom: 'Bfrtip',
 		ajax: "parametrosJson",
 	    columns: [
 	        {data: "descripcion" },
@@ -83,18 +82,21 @@ $(document).ready(function(){
 	    select:true,
 	    paging:true,
 	    pageLength:50,
-	    ordering:true
+	    ordering:true,
+	    buttons: [
+	              {
+	                  text: '<button class="btn btn-success pull-left" id="nuevo"><spring:message code="nuevo"/></button>',
+	                  action: function ( e, dt, node, config ) {
+	                      window.location = "parametrosNuevo";
+	                  }
+	              }
+	          ]
 	});
 	
 	$(document).on({
 	    ajaxStart: function() {$("body").addClass("loading");},
 	    ajaxStop: function() {$("body").removeClass("loading");}
 	});
-	
-	$('#nuevo').on('click', function (e) {
-		window.location = "parametrosNuevo";
-	});
-	
 	
 	$('#tablita tbody').on('click', '#borrar', function (e) {
 		var data = table.row(this.closest("tr")).data();

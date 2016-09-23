@@ -18,8 +18,6 @@
 		<spring:message code="depositos" />
 	</h1>
 
-	<button class="btn btn-success" id="nuevo"><spring:message code="nuevo"/></button>
-
 	<table id="tablita" class="display order-column" cellspacing="0"
 		width="100%">
 		<thead>
@@ -64,6 +62,7 @@ $(document).ready(function(){
 
 	var table = $('#tablita').DataTable( {
 		language: i18n(),
+		dom: 'Bfrtip',
 		ajax: "depositosJson",
 	    columns: [
 	        {data: "nombre" },
@@ -75,19 +74,22 @@ $(document).ready(function(){
 	    select:true,
 	    paging:true,
 	    pageLength:50,
-	    ordering:true
+	    ordering:true,
+	    buttons: [
+	              {
+	                  text: '<button class="btn btn-success pull-left" id="nuevo"><spring:message code="nuevo"/></button>',
+	                  action: function ( e, dt, node, config ) {
+	                      window.location = "depositosNuevo";
+	                  }
+	              }
+	          ]
 	});
 	
 	$(document).on({
 	    ajaxStart: function() {$("body").addClass("loading");},
 	    ajaxStop: function() {$("body").removeClass("loading");}
 	});
-	
-	$('#nuevo').on('click', function (e) {
-		window.location = "depositosNuevo";
-	});
-	
-	
+
 	$('#tablita tbody').on('click', '#borrar', function (e) {
 		var data = table.row(this.closest("tr")).data();
 		var json = {

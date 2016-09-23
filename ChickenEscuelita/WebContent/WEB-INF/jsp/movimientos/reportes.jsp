@@ -65,7 +65,6 @@
 <div class="panel-group">
 	<div class="panel panel-primary">
 		<div class="panel-body">
-		<button class="btn btn-success pull-left" id="nuevo"><spring:message code="productor.nuevoMovimiento"/></button>
 
 			<table id="tablita" class="display" cellspacing="0" width="100%">
 		        <thead>
@@ -93,10 +92,6 @@ $(document).on({
     ajaxStop: function() {$("body").removeClass("loading");}
 });
 
-$('#nuevo').on('click', function (e) {
-	window.location = "movimientosNuevo";
-});
-
 function listar() {
 	$('#tablita').DataTable( {
 		language: {
@@ -116,13 +111,22 @@ function listar() {
                 last:       "<spring:message code='ultimo'/>"
             },
 		},
+		dom: 'Bfrtip',
 		ajax: "movimientosJson",
 	    columns: [
 	              { data: "fecha" },
 	              { data: "cantidad" },
 	              { data: "gallineroNombre" },
 	              { data: "depositoNombre" }
-	              ]
+	              ],
+   	    buttons: [
+ 	              {
+ 	                  text: '<button class="btn btn-success pull-left" id="nuevo"><spring:message code="nuevo"/></button>',
+ 	                  action: function ( e, dt, node, config ) {
+ 	                      window.location = "movimientosNuevo";
+ 	                  }
+ 	              }
+				 ]
 	});
 }
 

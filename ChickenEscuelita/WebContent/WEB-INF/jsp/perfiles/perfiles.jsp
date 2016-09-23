@@ -14,9 +14,6 @@
 
 <h1 class="page-header"><spring:message code="perfiles"/></h1>
 
-	<!-- Nuevo Perfil -->
-	<button class="btn btn-success" id="nuevo"><spring:message code="nuevo"/></button>
-		
 	<!-- Tabla Perfiles -->
 	<table id="tablita" class="display order-column" cellspacing="0" width="100%">
 		<thead>
@@ -85,18 +82,23 @@ $(document).ready(function() {
 	    select:true,
 	    paging:true,
 	    pageLength:50,
-	    ordering:true
+	    ordering:true,
+	    dom: 'Bfrtip',
+	    buttons: [
+	              {
+	                  text: '<button class="btn btn-success pull-left" id="nuevo"><spring:message code="nuevo"/></button>',
+	                  action: function ( e, dt, node, config ) {
+	                      window.location = "perfilesNuevo";
+	                  }
+	              }
+	          ]
 	});
 	
 	$(document).on({
 	    ajaxStart: function() {$("body").addClass("loading");},
 	    ajaxStop: function() {$("body").removeClass("loading");}
 	});
-	
-	$('#nuevo').on('click', function (e) {
-		window.location = "perfilesNuevo";
-	});
-	
+
 	$('#tablita tbody').on('click', '#borrar', function (e) {
 		var data = table.row(this.closest("tr")).data();
 		var json = {

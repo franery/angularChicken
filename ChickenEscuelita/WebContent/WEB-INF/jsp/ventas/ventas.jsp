@@ -67,11 +67,8 @@
 
 <!-- Ventas -->
 <h3><spring:message code="ventas"/></h3>
-<form:form action="ventasNuevo" method="post" commandName="venta">
-	<input class="btn btn-success" type="submit" value=<spring:message code="nuevo"/> />
-</form:form>
 
-		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
+<table id="tablita" class="display order-column" cellspacing="0" width="100%">
 	<thead>
 		<tr>
 			<th><spring:message code="proveedor"/></th>
@@ -90,11 +87,11 @@
 			</tr>
 		</c:forEach>
 	</c:if>
-				<c:if test="${empty listaVentas}">
-					<tr>
-						<td colspan="5"><spring:message code="noHayDatos"/></td>
-					</tr>
-				</c:if>
+	<c:if test="${empty listaVentas}">
+		<tr>
+			<td colspan="5"><spring:message code="noHayDatos"/></td>
+		</tr>
+	</c:if>
 </table>
 
 <script type="text/javascript">
@@ -117,6 +114,15 @@
 	                last:       "<spring:message code='ultimo'/>"
 	            },
 			},
+			dom: 'Bfrtip',
+		    buttons: [
+		              {
+		                  text: '<button class="btn btn-success pull-left" id="nuevo"><spring:message code="nuevo"/></button>',
+		                  action: function ( e, dt, node, config ) {
+		                      window.location = "ventasNuevo";
+		                  }
+		              }
+		          ]
 		});
 	});
 </script>
