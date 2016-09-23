@@ -21,78 +21,53 @@ th {
 
 <h1 class="page-header"><spring:message code="usuarios"/></h1>
 
-<div>
-		<!-- Nuevo Usuario -->
-		<form:form action="usuariosNuevo" method="post" commandName="usuarioNM">
-				<input class="btn btn-success" type="submit" value=<spring:message code="nuevo"/> />
-		</form:form>
-		
-		<!-- Tabla Usuarios -->
-		<table id="tablita" class="display order-column responsive" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th><spring:message code="nombreUsuario"/></th>
-					<th><spring:message code="nombre"/></th>
-					<th><spring:message code="apellido"/></th>
-					<th><spring:message code="perfiles"/></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:if test="${!empty listaUsuarios}">
-					<c:forEach items="${listaUsuarios}" var="user">
-						<tr>
-							<td><c:out value="${user.getNombreUsuario() }"></c:out></td>
-							<td><c:out value="${user.getNombre()}"></c:out></td>
-							<td><c:out value="${user.getApellido()}"></c:out></td>
-							<c:if test="${!empty user.getListaPerfiles()}">
-							<td>
-								<c:forEach items="${user.getListaPerfiles()}" var="perfil">
-									<ul style="list-style: none;"><li>
-									<c:out value="${perfil.getNombre()}">"${perfil.getNombre()}"</c:out>
-									</li></ul>
-								</c:forEach>							
-							</td>
-							</c:if>
-							<c:if test="${empty user.getListaPerfiles()}">
-									<td><ul style="list-style: none;"><li><spring:message code="sinPerfil"/></td>
-																		</li></ul>
-							</c:if>
-							<td>
-							<form:form id="form${user.getId()}" action="usuariosBorrar" method="post" commandName="usuarioNM">
-								<form:input path="id" type="hidden" value="${user.getId() }"/>
-								<input id="boton${user.getId()}" class="botonBorrar btn btn-danger" type="button" value=<spring:message code="borrar"/> />
-							</form:form></td>
-							<td>
-							<form:form action="usuariosModificar" method="post" commandName="usuarioNM">
-								<form:input path="id" type="hidden" value="${user.getId() }"/>
-								<form:input path="nombreUsuario" type="hidden" value="${user.getNombreUsuario()}"/>
-								<form:input path="nombre" type="hidden" value="${user.getNombre()}"/>
-								<form:input path="apellido" type="hidden" value="${user.getApellido()}"/>
-								<form:input path="contrasenia" type="hidden" value="${user.getContrasenia()}"/>
-<%-- 								<form:input path="listaPerfiles" type="hidden" value="${user.getListaPerfiles()}"/> --%>
-								<input class="btn btn-warning" type="submit" value=<spring:message code="modificar"/> />
-							</form:form>
-				</td>
-						 </tr>
-					</c:forEach>
-				</c:if>
-				<c:if test="${empty listaUsuarios}">
-					<tr>
-						<td colspan="5"><spring:message code="noHayDatos"/></td>
-					</tr>
-				</c:if>
-			</tbody>
-		</table>
+<button class="btn btn-success" id="nuevo"><spring:message code="nuevo"/></button>
+
+	<table id="tablita" class="display order-column" cellspacing="0"
+		width="100%">
+		<thead>
+			<tr>
+				<th><spring:message code="nombreUsuario" /></th>
+				<th><spring:message code="nombre" /></th>
+				<th><spring:message code="apellido" /></th>
+				<th><spring:message code="perfiles"/></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	
+	<form:form id="formModificar" action="usuariosModificar" method="post" commandName="usuarioNM">
+		<form:input id="id" path="id" type="hidden"/>
+		<form:input id="nombreUsuario" path="nombreUsuario" type="hidden"/>
+		<form:input id="nombre" path="nombre" type="hidden"/>
+		<form:input id="apellido" path="apellido" type="hidden"/>
+		<form:input id="contrasenia" path="contrasenia" type="hidden"/>
+		<form:input id="borrado" path="borrado" type="hidden"/>
+	</form:form>
+	
 	<c:set var="value">
 		<spring:message code="mensajeBorrar" />
 	</c:set>
 	<input id="mensajeBorrar" type="hidden" value="${value}" />
-</div>
-<script type="text/javascript">
-$(document).ready(function() {
-	$('#tablita').DataTable({
+	
+	<c:set var="borrar">
+		<spring:message code="borrar" />
+	</c:set>
+
+	<c:set var="modificar">
+		<spring:message code="modificar" />
+	</c:set>
+
+<div class="wait"></div>
+
+<script>
+
+$(document).ready(function(){
+
+	var table = $('#tablita').DataTable( {
 		language: {
 			processing:     "<spring:message code='procesando'/>",
             search:         "<spring:message code='buscar'/>",
@@ -110,20 +85,72 @@ $(document).ready(function() {
                 last:       "<spring:message code='ultimo'/>"
             },
 		},
+		ajax: "usuariosJson",
+	    columns: [
+	        {data: "nombreUsuario" },
+	        {data: "nombre" },
+	        {data: "apellido" },
+	        {data: "listaPerfiles[, ].nombre" },
+	        {defaultContent:'<button class="btn btn-danger" id="borrar">${borrar}</button>'},
+	        {defaultContent:'<button class="btn btn-warning" id="modificar">${modificar}</button>'}
+	        ],
+	    select:true,
+	    paging:true,
+	    pageLength:50,
+	    ordering:true
+	});
+	
+	$(document).on({
+	    ajaxStart: function() {$("body").addClass("loading");},
+	    ajaxStop: function() {$("body").removeClass("loading");}
+	});
+	
+	$('#nuevo').on('click', function (e) {
+		window.location = "usuariosNuevo";
+	});
+	
+	
+	$('#tablita tbody').on('click', '#borrar', function (e) {
+		var data = table.row(this.closest("tr")).data();
+		var json = {
+			"id" : data["id"],
+			"nombreUsuario" : data["nombreUsuario"],
+			"nombre" : data["nombre"],
+			"apellido" : data["apellido"],
+			"borrado" : data["borrado"]
+		};
+		var mensaje = document.getElementById("mensajeBorrar").value;
+		e.preventDefault();
+		bootbox.confirm(mensaje, function (response) {
+			if (response) {
+				$.ajax({
+					url : "usuariosBorrarJson",
+					type : "DELETE",
+					data : JSON.stringify(json),
+					dataType : "json",
+					contentType : "application/json",
+					processData : false,
+					complete : function () {
+						table.ajax.reload();
+					}
+				});
+			}
+		});
+	});
+	
+	
+	$('#tablita tbody').on('click', '#modificar', function (e) {
+		var data = table.row(this.closest("tr")).data();
+		e.preventDefault();
+		document.getElementById("id").value = data["id"];
+		document.getElementById("nombreUsuario").value = data["nombreUsuario"];
+		document.getElementById("nombre").value = data["nombre"];
+		document.getElementById("apellido").value = data["apellido"];
+		document.getElementById("contrasenia").value = data["contrasenia"];
+		document.getElementById("borrado").value = data["borrado"];
+		document.getElementById("formModificar").submit();
 	});
 });
-
-<c:forEach items="${listaUsuarios}" var="user">
-$('#boton' + '${user.id}').on('click', function (e) {
-	var mensaje = document.getElementById("mensajeBorrar").value;
-    e.preventDefault();
-    bootbox.confirm(mensaje, function (response) {        
-        if(response) {
-        	$('#form' + '${user.id}').submit();
-        }
-    });
-});
-</c:forEach>
 
 </script>
 
