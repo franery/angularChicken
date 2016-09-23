@@ -21,67 +21,20 @@ th {
 
 <h1 class="page-header"><spring:message code="perfiles"/></h1>
 
-		<!-- Nuevo Perfil -->
-		<form:form action="perfilesNuevo" method="post" commandName="perfil">
-				<input class="btn btn-success" type="submit" value=<spring:message code="nuevo"/> />
-		</form:form>
+	<!-- Nuevo Perfil -->
+	<button class="btn btn-success" id="nuevo"><spring:message code="nuevo"/></button>
 		
-		<!-- Tabla Perfiles -->
-<%-- 		<table id="tablita" class="display order-column" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th><spring:message code="nombre"/></th>
-					<th><spring:message code="permisos"/></th>
-					<th></th>
+	<!-- Tabla Perfiles -->
+	<table id="tablita" class="display order-column" cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th><spring:message code="nombre"/></th>
+				<th><spring:message code="permisos"/></th>
 				<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:if test="${!empty listaPerfiles}">
-					<c:forEach items="${listaPerfiles}" var="perfil">
-						<tr>
-							<td><c:out value="${perfil.getNombre()}"></c:out></td>
-							<td>
-								<c:forEach items="${perfil.getListaPermisos() }" var="permiso">
-									<c:out value="${permiso.getModulo() }"></c:out>
-									<c:out value="${permiso.getOperacion() }"></c:out>								
-								</c:forEach>
-							</td>
-							<td>
-							<form:form id="form${perfil.getId()}" action="perfilesBorrar" method="post" commandName="perfil">
-								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
-								<form:input path="nombre" type="hidden" value="${perfil.getNombre() }"/>
-								<input id="boton${perfil.getId()}" class="botonBorrar btn btn-danger" type="button" value=<spring:message code="borrar"/> />
-							</form:form></td>
-							<td>
-							<form:form action="perfilesModificar" method="post" commandName="perfil">
-								<form:input path="id" type="hidden" value="${perfil.getId() }"/>
-								<form:input path="nombre" type="hidden" value="${perfil.getNombre()}"/>
-								<input class="btn btn-warning" type="submit" value=<spring:message code="modificar"/> />
-							</form:form>
-				</td>
-						 </tr>
-					</c:forEach>
-				</c:if>
-				<c:if test="${empty listaPerfiles}">
-					<tr>
-						<td colspan="5"><spring:message code="noHayDatos"/></td>
-					</tr>
-				</c:if>
-			</tbody>
-		</table> --%>
-
-
-<table id="tablita" class="display order-column" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th><spring:message code="nombre"/></th>
-					<th><spring:message code="permisos"/></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-</table>
+				<th></th>
+			</tr>
+		</thead>
+	</table>
 			
 
 	<form:form id="formModificar" action="perfilesModificar" method="post" commandName="perfil">
@@ -105,30 +58,34 @@ th {
 <div class="wait"></div>
 
 <script>
+$.fn.dataTable.render.asd = function ( ) {
+    return function (data, type, row) {
+	   	var modulo;
+	    var mensaje = "";
+	    var listaPermisos = row.listaPermisos;
+	    for (var i = 0; i < listaPermisos.length; i++) {
+	    	if(modulo != listaPermisos[i].nombreModulo){
+	    		mensaje = mensaje.substring(0,mensaje.length-2);
+	    		mensaje += "<br>" + listaPermisos[i].nombreModulo + ": ";
+	    		modulo = listaPermisos[i].nombreModulo;
+	    	}
+	    	mensaje += listaPermisos[i].nombreOperacion + " | ";               	
+	    }
+		mensaje = mensaje.substring(0,mensaje.length-2);
+		return mensaje;
+    };
+};
 
 $(document).ready(function() {
-	$('#tablita').DataTable({
-		language: {
-			processing:     "<spring:message code='procesando'/>",
-            search:         "<spring:message code='buscar'/>",
-            lengthMenu:     "<spring:message code='tamanioMenu'/>",
-            info:           "<spring:message code='info'/>",
-            infoEmpty:      "<spring:message code='infoVacia'/>",
-            infoFiltered:   "<spring:message code='infoFiltrada'/>",
-            loadingRecords: "<spring:message code='cargandoRegistros'/>",
-            zeroRecords:    "<spring:message code='ceroRegistros'/>",
-            emptyTable:     "<spring:message code='noHayResultados'/>",
-            paginate: {
-                first:      "<spring:message code='primero'/>",
-                previous:   "<spring:message code='anterior'/>",
-                next:       "<spring:message code='siguiente'/>",
-                last:       "<spring:message code='ultimo'/>"
-                },
-		},
+	var table = $('#tablita').DataTable({
+		language: i18n(),
 		ajax: "perfilesJson",
 	    columns: [
 	        {data: "nombre" },
-	        {data: "listaPermisos[].nombreModulo"},
+	        {
+	            data: null,
+	            render: $.fn.dataTable.render.asd()
+	        },
 	        {defaultContent:'<button class="btn btn-danger" id="borrar">${borrar}</button>'},
 	        {defaultContent:'<button class="btn btn-warning" id="modificar">${modificar}</button>'}
 	        ],
@@ -147,12 +104,11 @@ $(document).ready(function() {
 		window.location = "perfilesNuevo";
 	});
 	
-	
 	$('#tablita tbody').on('click', '#borrar', function (e) {
 		var data = table.row(this.closest("tr")).data();
 		var json = {
 			"id" : data["id"],
-			"nombre" : data["nombre"],
+			"nombre" : data["nombre"]
 		};
 		var mensaje = document.getElementById("mensajeBorrar").value;
 		e.preventDefault();
@@ -172,33 +128,15 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	$('#tablita tbody').on('click', '#modificar', function (e) {
+		var data = table.row(this.closest("tr")).data();
+		e.preventDefault();
+		document.getElementById("id").value = data["id"];
+		document.getElementById("nombre").value = data["nombre"];
+		document.getElementById("formModificar").submit();
+	});
 });
-	
-
-$('#tablita tbody').on('click', '#modificar', function (e) {
-	var data = table.row(this.closest("tr")).data();
-	e.preventDefault();
-	document.getElementById("id").value = data["id"];
-	document.getElementById("nombre").value = data["nombre"];
-	document.getElementById("stockHuevos").value = data["stockHuevos"];
-	document.getElementById("stockMaximo").value = data["stockMaximo"];
-	document.getElementById("borrado").value = data["borrado"];
-	document.getElementById("formModificar").submit();
-});
-
-
-<c:forEach items="${listaPerfiles}" var="perfil">
-$('#boton' + '${perfil.id}').on('click', function (e) {
-	var mensaje = document.getElementById("mensajeBorrar").value;
-    e.preventDefault();
-    bootbox.confirm(mensaje, function (response) {        
-        if(response) {
-        	$('#form' + '${perfil.id}').submit();
-        }
-    });
-});
-</c:forEach>
-
 </script>
 
 </body>

@@ -99,7 +99,7 @@ public class PerfilControlador extends Controlador {
 	}
 
 	@RequestMapping(path="/perfilesModificar")
-	public ModelAndView modificarPerfil(@ModelAttribute("perfil") @Validated PerfilDTO perfil, BindingResult result) {
+	public ModelAndView modificarPerfil(@ModelAttribute("perfil") PerfilDTO perfil) {
 		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", PerfilControlador.class, "modificarPerfil");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);

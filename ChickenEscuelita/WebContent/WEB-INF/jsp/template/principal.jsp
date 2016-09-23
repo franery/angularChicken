@@ -24,5 +24,28 @@
 <jsp:include page="pieDePagina.jsp"></jsp:include>
 
 
+
+<script type="text/javascript">
+function i18n() {
+	var objeto = {
+		processing:     "<spring:message code='procesando'/>",
+        search:         "<spring:message code='buscar'/>",
+        lengthMenu:     "<spring:message code='tamanioMenu'/>",
+        info:           "<spring:message code='info'/>",
+        infoEmpty:      "<spring:message code='infoVacia'/>",
+        infoFiltered:   "<spring:message code='infoFiltrada'/>",
+        loadingRecords: "<spring:message code='cargandoRegistros'/>",
+        zeroRecords:    "<spring:message code='ceroRegistros'/>",
+        emptyTable:     "<spring:message code='noHayResultados'/>",
+        paginate: {
+            first:      "<spring:message code='primero'/>",
+            previous:   "<spring:message code='anterior'/>",
+            next:       "<spring:message code='siguiente'/>",
+            last:       "<spring:message code='ultimo'/>"
+            },
+	};
+	return objeto;
+}
+</script>
 </body>
 </html>
