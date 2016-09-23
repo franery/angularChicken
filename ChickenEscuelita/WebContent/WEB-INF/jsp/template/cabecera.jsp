@@ -79,8 +79,15 @@ body {
 		<div class="collapse navbar-collapse" id="navbar2-navbar-collapse">
 			<div class="container">
 				<ul class="nav navbar-nav">
-					<c:forEach items="${listaPermisos}" var="permiso">
-					<li><a href="${permiso}"><spring:message code="${permiso}"/></a></li>
+					<c:forEach items="${listaPermisos}" var="perfilTriple">
+						<li class="dropdown">
+            				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="${perfilTriple.key}"/><b class="caret"></b></a>
+			            	<ul class="dropdown-menu">
+							<c:forEach items="${perfilTriple.value}" var="permiso">
+								<li><a href="${permiso}"><spring:message code="${permiso}"/></a></li>
+							</c:forEach>
+			            </ul>
+			          </li>
 					</c:forEach>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

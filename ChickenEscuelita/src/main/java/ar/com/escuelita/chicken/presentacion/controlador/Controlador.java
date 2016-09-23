@@ -1,5 +1,6 @@
 package ar.com.escuelita.chicken.presentacion.controlador;
 
+import java.util.HashMap;
 import java.util.List;
 
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
@@ -7,7 +8,7 @@ import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 public class Controlador {
 	
 	public static UsuarioDTO usuario;
-	public static List<String> listaPermisos;
+	public static HashMap<String,List<String>> listaPermisos;
 	
 	public static void setUsuario(UsuarioDTO user) {
 		usuario = user;
@@ -17,11 +18,11 @@ public class Controlador {
 		return usuario;
 	}
 
-	public static List<String> getListaPermisos() {
+	public static HashMap<String,List<String>> getListaPermisos() {
 		return listaPermisos;
 	}
 
-	public static void setListaPermisos(List<String> listaPermisos) {
+	public static void setListaPermisos(HashMap<String,List<String>> listaPermisos) {
 		Controlador.listaPermisos = listaPermisos;
 	}
 }

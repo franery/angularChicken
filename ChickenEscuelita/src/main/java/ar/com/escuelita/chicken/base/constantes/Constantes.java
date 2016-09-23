@@ -1,5 +1,9 @@
 package ar.com.escuelita.chicken.base.constantes;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,4 +43,24 @@ public class Constantes {
 	public static final String DATA = "data";
 	public static final String LOG_MASTER = "LogMaster";
 	public static final Logger CHICKEN_LOG = LoggerFactory.getLogger(LOG_MASTER);
+
+	public static final List<String> PERMISOS_ADMINISTRADOR = Collections.unmodifiableList(
+		    new ArrayList<String>() {{
+		        add("usuarios");
+		        add("parametros");
+		        add("perfiles");
+		    }});
+	public static final List<String> PERMISOS_CONTABLE = Collections.unmodifiableList(
+		    new ArrayList<String>() {{
+		        add("gallineros");
+		        add("depositos");
+		        add("proveedores");
+		        add("produccion");
+		        add("ventas");
+		    }});
+	public static final List<String> PERMISOS_PRODUCTOR = Collections.unmodifiableList(
+		    new ArrayList<String>() {{
+		        add("movimientos");
+		    }});
+
 }

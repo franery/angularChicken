@@ -2,7 +2,10 @@ package ar.com.escuelita.chicken.presentacion.controlador;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -84,59 +87,49 @@ public class LoginControlador extends Controlador{
 		return model;
 	}
 	
-	private List<String> obtenerPermisos() {
+	private HashMap<String, List<String>> obtenerPermisos() {
 		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "obtenerPermisos");
-		List<String> listaPermisos = new ArrayList<String>();
+		Set<String> listaPermisosSet = new LinkedHashSet<String>();
 		for(PerfilDTO perfil : usuario.getListaPerfiles()) {
 			for(PermisoDTO permiso : perfil.getListaPermisos()) {
-				if(permiso.getModulo().getNombre().equals(EnumModulo.USUARIOS.getNombre())) {
-					if(!listaPermisos.contains(EnumModulo.USUARIOS.getNombre())) {
-						listaPermisos.add(EnumModulo.USUARIOS.getNombre());
-					}
-				}
-				if(permiso.getModulo().getNombre().equals(EnumModulo.PARAMETROS.getNombre())) {
-					if(!listaPermisos.contains(EnumModulo.PARAMETROS.getNombre())) {
-						listaPermisos.add(EnumModulo.PARAMETROS.getNombre());
-					}
-				}
-				if(permiso.getModulo().getNombre().equals(EnumModulo.PROVEEDORES.getNombre())) {
-					if(!listaPermisos.contains(EnumModulo.PROVEEDORES.getNombre())) {
-						listaPermisos.add(EnumModulo.PROVEEDORES.getNombre());
-					}
-				}
-				if(permiso.getModulo().getNombre().equals(EnumModulo.DEPOSITOS.getNombre())) {
-					if(!listaPermisos.contains(EnumModulo.DEPOSITOS.getNombre())) {
-						listaPermisos.add(EnumModulo.DEPOSITOS.getNombre());
-					}
-				}
-				if(permiso.getModulo().getNombre().equals(EnumModulo.GALLINEROS.getNombre())) {
-					if(!listaPermisos.contains(EnumModulo.GALLINEROS.getNombre())) {
-						listaPermisos.add(EnumModulo.GALLINEROS.getNombre());
-					}
-				}
-				if(permiso.getModulo().getNombre().equals(EnumModulo.VENTAS.getNombre())) {
-					if(!listaPermisos.contains(EnumModulo.VENTAS.getNombre())) {
-						listaPermisos.add(EnumModulo.VENTAS.getNombre());
-					}
-				}
-				if(permiso.getModulo().getNombre().equals(EnumModulo.MOVIMIENTOS.getNombre())) {
-					if(!listaPermisos.contains(EnumModulo.MOVIMIENTOS.getNombre())) {
-						listaPermisos.add(EnumModulo.MOVIMIENTOS.getNombre());
-					}
-				}
-				if(permiso.getModulo().getNombre().equals(EnumModulo.PERFILES.getNombre())) {
-					if(!listaPermisos.contains(EnumModulo.PERFILES.getNombre())) {
-						listaPermisos.add(EnumModulo.PERFILES.getNombre());
-					}
-				}
-				if(permiso.getModulo().getNombre().equals(EnumModulo.PRODUCCION.getNombre())) {
-					if(!listaPermisos.contains(EnumModulo.PRODUCCION.getNombre())) {
-						listaPermisos.add(EnumModulo.PRODUCCION.getNombre());
-					}
-				}
+				listaPermisosSet.add(permiso.getNombreModulo().toLowerCase());
 			}
 		}
+		List<String> listaPermisos = new ArrayList<String>(listaPermisosSet);
 		Collections.sort(listaPermisos);
-		return listaPermisos;
+		
+		List<String> listaAdmin = new ArrayList<String>();
+		List<String> listaProductor = new ArrayList<String>();
+		List<String> listaContable = new ArrayList<String>();
+		
+		HashMap<String, List<String>> hashPermisos = new HashMap<String, List<String>>();
+		
+		for(String permiso : Constantes.PERMISOS_ADMINISTRADOR) {
+			if(listaPermisos.contains(permiso)){
+				listaAdmin.add(permiso);
+			}
+		}
+		for(String permiso : Constantes.PERMISOS_PRODUCTOR) {
+			if(listaPermisos.contains(permiso)){
+				listaProductor.add(permiso);
+			}
+		}
+		for(String permiso : Constantes.PERMISOS_CONTABLE) {
+			if(listaPermisos.contains(permiso)){
+				listaContable.add(permiso);
+			}
+		}
+		
+		if(!(listaAdmin.isEmpty())){
+			hashPermisos.put("administrador", listaAdmin);
+		}
+		if(!(listaContable.isEmpty())){
+			hashPermisos.put("contable", listaContable);
+		}
+		if(!(listaProductor.isEmpty())){
+			hashPermisos.put("productor", listaProductor);
+		}
+		
+		return hashPermisos;
 	}
 }
