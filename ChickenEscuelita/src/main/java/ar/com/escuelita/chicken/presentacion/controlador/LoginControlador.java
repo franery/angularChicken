@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.dto.DTO;
-import ar.com.escuelita.chicken.base.enumerador.EnumModulo;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.dto.PerfilDTO;
 import ar.com.escuelita.chicken.presentacion.dto.PermisoDTO;
