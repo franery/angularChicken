@@ -76,6 +76,10 @@ tbody td.fija, thead th.fija {
     float: left;
 }
 
+th {
+	text-align: center;
+}
+
 /* make sidebar nav vertical */ 
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {

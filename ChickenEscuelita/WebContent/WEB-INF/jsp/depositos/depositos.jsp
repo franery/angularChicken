@@ -11,12 +11,6 @@
 
 <title><spring:message code="depositos" /></title>
 
-<style>
-th {
-	text-align: center;
-}
-
-</style>
 </head>
 <body>
 

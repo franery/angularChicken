@@ -11,13 +11,6 @@
 
 <title><spring:message code="gallineros" /></title>
 
-<style>
-th {
-	text-align: center;
-}
-
-</style>
-
 </head>
 <body>
 	<h1 class="page-header">
