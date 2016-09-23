@@ -9,13 +9,6 @@
 
 <title><spring:message code="perfiles"/></title>
 
-<style>
-th {
-	text-align: center;
-}
-
-</style>
-
 </head>
 <body>
 

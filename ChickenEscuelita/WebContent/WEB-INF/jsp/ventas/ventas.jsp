@@ -11,13 +11,6 @@
 
 <title><spring:message code="ventas"/></title>
 
-<style>
-th {
-	text-align: center;
-}
-
-</style>
-
 </head>
 <body>
 <h1 class="page-header"><spring:message code="ventas"/></h1>
