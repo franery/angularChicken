@@ -15,58 +15,71 @@
 <h1 class="page-header"><spring:message code="movimientos"/></h1>
 
 <!-- FILTRO -->
-<h3><spring:message code="filtros"/></h3>
 
-<form:form class="form-horizontal" method="POST" commandName="filtro">
-	<div class="form-inline">
-		<div class="form-group">
-			 <form:label class="control-label col-sm-2" path="fechaDesde"><spring:message code="fechaDesde"/></form:label> 
-			 <div class="col-sm-10">
-			 	<form:input class="form-control" id="fechaDesde" path="fechaDesde" type="date" /> 
-			</div>
-		</div>
-		<div class="form-group">
-		 	<form:label class="control-label col-sm-2" path="fechaHasta"><spring:message code="fechaHasta"/></form:label> 
-			 <div class="col-sm-10">
-			 	<form:input class="form-control" id="fechaHasta" path="fechaHasta" type="date" /> 
-			 </div>			 
+<div class="panel-group">
+	<div class="panel panel-primary">
+	<div class="panel-heading"><h4><spring:message code="filtros"/></h4></div>
+    </div>
+	<div class="panel panel-primary">
+		<div class="panel-body">
+		    <form:form class="form-horizontal" method="POST" commandName="filtro">
+				<div class="form-inline">
+					<div class="form-group">
+						 <form:label class="control-label col-sm-2" path="fechaDesde"><spring:message code="fechaDesde"/></form:label> 
+						 <div class="col-sm-10">
+						 	<form:input class="form-control" id="fechaDesde" path="fechaDesde" type="date" /> 
+						</div>
+					</div>
+					<div class="form-group">
+					 	<form:label class="control-label col-sm-2" path="fechaHasta"><spring:message code="fechaHasta"/></form:label> 
+						 <div class="col-sm-10">
+						 	<form:input class="form-control" id="fechaHasta" path="fechaHasta" type="date" /> 
+						 </div>			 
+					</div>
+				</div>
+				<div class="form-inline">
+					<div class="form-group">
+						<form:label class="control-label col-sm-2" path="cantidadDesde"><spring:message code="cantidadDesde"/></form:label> 
+						<div class="col-sm-10">
+							<form:input class="form-control" id="cantidadDesde" path="cantidadDesde" type="text" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label class="control-label col-sm-2" path="cantidadHasta"><spring:message code="cantidadHasta"/></form:label> 
+						<div class="col-sm-10">
+							<form:input class="form-control" id="cantidadHasta" path="cantidadHasta" type="text" /> 
+						</div>
+					</div>
+				<div class="form-group">
+					<div class="col-sm-offset-1 col-sm-10">
+						<input type="button" class="btn btn-primary" onclick="filtrar()" value=<spring:message code="filtrar"/> />  
+					</div>
+				</div>
+				</div>
+			</form:form>
 		</div>
 	</div>
-	<div class="form-inline">
-		<div class="form-group">
-			<form:label class="control-label col-sm-2" path="cantidadDesde"><spring:message code="cantidadDesde"/></form:label> 
-			<div class="col-sm-10">
-				<form:input class="form-control" id="cantidadDesde" path="cantidadDesde" type="text" /> 
-			</div>
-		</div>
-		<div class="form-group">
-			<form:label class="control-label col-sm-2" path="cantidadHasta"><spring:message code="cantidadHasta"/></form:label> 
-			<div class="col-sm-10">
-				<form:input class="form-control" id="cantidadHasta" path="cantidadHasta" type="text" /> 
-			</div>
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-offset-1 col-sm-10">
-			<input type="button" class="btn btn-primary" onclick="filtrar()" value=<spring:message code="filtrar"/> />  
-		</div>
-	</div>
-</form:form>
-	
+</div>
 <!-- Movimientos -->
-<h3><spring:message code="movimientos"/></h3>
-<button class="btn btn-success" id="nuevo"><spring:message code="productor.nuevoMovimiento"/></button>
 
-	<table id="tablita" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th><spring:message code="fecha"/></th>
-				<th><spring:message code="cantidad"/></th>
-				<th><spring:message code="gallinero"/></th>
-				<th><spring:message code="deposito"/></th>
-            </tr>
-        </thead>
-    </table>
+<div class="panel-group">
+	<div class="panel panel-primary">
+		<div class="panel-body">
+		<button class="btn btn-success pull-left" id="nuevo"><spring:message code="productor.nuevoMovimiento"/></button>
+
+			<table id="tablita" class="display" cellspacing="0" width="100%">
+		        <thead>
+		            <tr>
+		                <th><spring:message code="fecha"/></th>
+						<th><spring:message code="cantidad"/></th>
+						<th><spring:message code="gallinero"/></th>
+						<th><spring:message code="deposito"/></th>
+		            </tr>
+		        </thead>
+		    </table>
+		</div>
+	</div>
+</div>
 
 <div class="wait"></div>
 
