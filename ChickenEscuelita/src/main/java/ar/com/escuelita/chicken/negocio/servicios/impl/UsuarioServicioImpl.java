@@ -3,6 +3,7 @@ package ar.com.escuelita.chicken.negocio.servicios.impl;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,18 +90,7 @@ public class UsuarioServicioImpl extends Servicio implements IUsuarioServicio {
 	}
 	
 	@Override
-	public HashMap<UsuarioDTO, Long> getTotalesProduccion(UsuarioFiltro usuarioFiltro){
-		
-		HashMap<UsuarioModel, Long> hash = usuarioDAO.getProduccionTotal(usuarioFiltro);
-		
-		HashMap<UsuarioDTO, Long> hashNuevo = new HashMap<UsuarioDTO, Long>();
-		
-	    Iterator it = hash.entrySet().iterator();
-	    while (it.hasNext()) {
-	        Map.Entry pair = (Map.Entry)it.next();
-	        hashNuevo.put((UsuarioDTO) usuarioMapeador.map((UsuarioModel)pair.getKey()), (Long)pair.getValue());
-	    }
-	    return hashNuevo;
-	    
+	public List<HashMap<String, String>> getTotalesProduccion(UsuarioFiltro usuarioFiltro){
+		return usuarioDAO.getProduccionTotal(usuarioFiltro);
 	}
 }

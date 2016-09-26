@@ -121,6 +121,10 @@ $(document).ready(function(){
 		});
 	});
 	
+	$(document).on({
+	    ajaxStart: function() {$("body").addClass("loading");},
+	    ajaxStop: function() {$("body").removeClass("loading");}
+	});
 	
 	$('#tablita tbody').on('click', '#modificar', function (e) {
 		var data = table.row(this.closest("tr")).data();

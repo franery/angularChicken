@@ -69,10 +69,10 @@ public class MovimientoControlador extends Controlador {
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		// Tabla Depositos | Stock Huevos
-		model.addObject("listaDepositos", depositoServicio.listar(depositoFiltro));
+		//model.addObject("listaDepositos", depositoServicio.listar(depositoFiltro));
 		model.addObject("listaDepositosDropDown", depositoServicio.listar());
 		// Tabla Productores | Total Produccion
-		model.addObject("hashTotales", usuarioServicio.getTotalesProduccion(usuarioFiltro));
+		//model.addObject("hashTotales", usuarioServicio.getTotalesProduccion(usuarioFiltro));
 		model.addObject("listaProductoresDropDown", usuarioServicio.listar());
 		model.addObject("pageToLoad", Constantes.PRODUCCION_VIEW);
 		model.addObject("listaPermisos", listaPermisos);

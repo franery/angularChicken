@@ -20,6 +20,6 @@ public interface IUsuarioDAO {
 	
 	public void borrar(long id);
 
-	HashMap<UsuarioModel, Long> getProduccionTotal(UsuarioFiltro usuarioFiltro);
+	List<HashMap<String, String>> getProduccionTotal(UsuarioFiltro usuarioFiltro);
 
 }

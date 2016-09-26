@@ -1,5 +1,6 @@
 package ar.com.escuelita.chicken.persistencia.dao.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -83,24 +84,26 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 	}
 
 	@Override
-	public HashMap<UsuarioModel, Long> getProduccionTotal(UsuarioFiltro usuarioFiltro) {
+	public List<HashMap<String, String>> getProduccionTotal(UsuarioFiltro usuarioFiltro) {
 		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "getProduccionTotal");
 		String query = "SELECT usuario, SUM(mov.cantidad) FROM MovimientoModel as mov"
 				+ " join mov.gallinero as g"
 				+ " join g.usuario as usuario";
-		QueryParametrosUtil qp = generarConsulta(query, usuarioFiltro);;
+		QueryParametrosUtil qp = generarConsulta(query, usuarioFiltro);
 		qp.setSql(qp.getSql() + " group by usuario.id");
 		List list = buscarUsandoQueryConParametros(qp);
 		Iterator iterator = list.iterator();
-		HashMap<UsuarioModel, Long> hash = new HashMap<UsuarioModel, Long>();
+		List<HashMap<String, String>> listaHash = new ArrayList<HashMap<String, String>>();
 		while ( iterator.hasNext() ) {
+			HashMap<String, String> hash = new HashMap<String, String>();
 			Object[] tuple = (Object[]) iterator.next();
-			UsuarioModel kitten = (UsuarioModel) tuple[0];
-			Long mother = (Long) tuple[1];
-			hash.put(kitten, mother);
+			UsuarioModel usuario = (UsuarioModel) tuple[0];
+			hash.put("nombre", usuario.getNombre());
+			hash.put("valor", String.valueOf(tuple[1]));
+			listaHash.add(hash);
 		}
 		Constantes.CHICKEN_LOG.info("Se obtuvo la produccion total");
-		return hash;
+		return listaHash;
 	}
 
 	@Override
@@ -116,29 +119,29 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 	private QueryParametrosUtil generarConsulta(String query, UsuarioFiltro filtro){
 		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuarioDAOImpl.class, "generarConsulta");
 		QueryParametrosUtil qp = new QueryParametrosUtil();
-
 		String str = " where usuario.borrado=false ";
+		if(filtro != null) {
+			
+			/*   Id   */
+			if (filtro.getId() != 0) {
+				str += obtenerOperadorBusqueda(str) + " usuario.id=" + filtro.getId();
+			}
 
-		/*   Id   */
-		if (filtro.getId() != 0) {
-			str += obtenerOperadorBusqueda(str) + " usuario.id=" + filtro.getId();
-		}
+			/*   NombreUsuario   */
+			if (filtro.getNombreUsuario() != null) {
+				str += obtenerOperadorBusqueda(str) + " usuario.nombreUsuario like '" + filtro.getNombreUsuario() + "'";
+			}
+			
+			/*   Nombre   */
+			if (filtro.getNombre() != null) {
+				str += obtenerOperadorBusqueda(str) + " usuario.nombre like '%" + filtro.getNombre() + "%'";
+			}
 
-		/*   NombreUsuario   */
-		if (filtro.getNombreUsuario() != null) {
-			str += obtenerOperadorBusqueda(str) + " usuario.nombreUsuario like '" + filtro.getNombreUsuario() + "'";
+			/*   Apellido   */
+			if (filtro.getApellido() != null) {
+				str += obtenerOperadorBusqueda(str) + " usuario.apellido like '%" + filtro.getApellido() + "%'";
+			}
 		}
-		
-		/*   Nombre   */
-		if (filtro.getNombre() != null) {
-			str += obtenerOperadorBusqueda(str) + " usuario.nombre like '%" + filtro.getNombre() + "%'";
-		}
-
-		/*   Apellido   */
-		if (filtro.getApellido() != null) {
-			str += obtenerOperadorBusqueda(str) + " usuario.apellido like '%" + filtro.getApellido() + "%'";
-		}
-
 		qp.setSql(query + str);
 		return qp;
 	}
