@@ -60,6 +60,7 @@
 		
 		<security:form-login login-page="/inicio"
 							always-use-default-target="true"
+							authentication-failure-url="/inicio?error"
 							default-target-url="/ingresar"
 							username-parameter="username" password-parameter="password" />
 		
