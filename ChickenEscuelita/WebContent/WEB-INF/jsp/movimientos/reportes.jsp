@@ -119,33 +119,6 @@ function filtrar() {
 		contentType: "application/json",
 		processData:false
 	});
-    
-    function procesarData(data) {
-		alert("HOLA");
-		alert(data);
-		table.clear().rows().add(data);
-    }
-//     $('#tablita').DataTable( {
-// 		language: i18n(),
-// 		ajax: {
-// 			url: "filtrando",
-// 			type: "POST",
-// 			data: function() {
-// 				return JSON.stringify(json);
-// 			},
-// 			dataType: "json",
-// 			contentType: "application/json",
-// 			processData:false
-// 		},
-// 		bDestroy: true,
-// 		serverside: true,
-// 		columns: [
-// 	              { data: "fecha" },
-// 	              { data: "cantidad" },
-// 	              { data: "gallineroNombre" },
-// 	              { data: "depositoNombre" }
-// 	              ]
-// 	});
 }
 </script>
 </body>

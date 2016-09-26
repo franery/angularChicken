@@ -27,7 +27,7 @@
 		    		<tr>
 		    			<td><form:label path="proveedorId"><spring:message code="proveedor"/>:</form:label></td>
 		    			<td>
-		    				<form:select class="form-control" style="width:auto;" path="proveedorId">
+		    				<form:select id="proveedorId" class="form-control" style="width:auto;" path="proveedorId">
 								<form:option value="0"><spring:message code="proveedor"/></form:option>
 									<c:forEach items="${listaProveedores}" var="proveedor">
 										<form:option value="${proveedor.getId()}">
@@ -50,59 +50,11 @@
 						<td><form:input class="form-control" id="cantidadHasta" path="cantidadHasta" type="text" /> </td>
 		    		</tr>
 		    		<tr>
-		    			<td colspan="4"><input class="btn btn-primary" type="submit" value=<spring:message code="filtrar"/>></td>
+		    			<td colspan="4"><input type="button" class="btn btn-primary	" onclick="filtrar()" value=<spring:message code="filtrar"/> /></td>
 		    		</tr>
 		    	</table>
 			</form:form>
 		</div>
-<!-- 		<div class="panel-body"> -->
-<%-- 			<form:form class="form-horizontal" action="ventas" method="post" commandName="filtro"> --%>
-<!-- 				<div class="form-group"> -->
-<%-- 					<form:label class="control-label col-sm-5" path="proveedorId"><spring:message code="proveedor"/>:</form:label> --%>
-<!-- 					<div class="col-sm-5"> -->
-<%-- 						<form:select class="form-control" style="width:auto;" path="proveedorId"> --%>
-<%-- 							<form:option value="0"><spring:message code="proveedor"/></form:option> --%>
-<%-- 							<c:forEach items="${listaProveedores}" var="proveedor"> --%>
-<%-- 								<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option> --%>
-<%-- 							</c:forEach> --%>
-<%-- 						</form:select> --%>
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="form-inline"> -->
-<!-- 					<div class="form-group"> -->
-<%-- 						<form:label class="control-label col-sm-2" path="fechaDesde"><spring:message code="fechaDesde"/>:</form:label> --%>
-<!-- 						<div class="col-sm-10"> -->
-<%-- 							<form:input class="form-control" type="date" path="fechaDesde" /> --%>
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="form-group"> -->
-<%-- 						<form:label class="control-label col-sm-2" path="fechaHasta"><spring:message code="fechaHasta"/>:</form:label> --%>
-<!-- 						<div class="col-sm-10"> -->
-<%-- 							<form:input class="form-control" type="date" path="fechaHasta" /> --%>
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="form-inline"> -->
-<!-- 					<div class="form-group"> -->
-<%-- 						<form:label class="control-label col-sm-2" path="cantidadDesde"><spring:message code="cantidadDesde"/>:</form:label> --%>
-<!-- 						<div class="col-sm-10"> -->
-<%-- 							<form:input class="form-control" type="text" path="cantidadDesde" /> --%>
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="form-group"> -->
-<%-- 						<form:label class="control-label col-sm-2" path="cantidadHasta"><spring:message code="cantidadHasta"/>:</form:label> --%>
-<!-- 						<div class="col-sm-10"> -->
-<%-- 							<form:input class="form-control" type="text" path="cantidadHasta" /> --%>
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="form-group"> -->
-<!-- 					    <div class="col-sm-offset-1 col-sm-10"> -->
-<!-- 							<input class="btn btn-primary" type="submit" value=<spring:message code="filtrar"/>> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<%-- 			</form:form> --%>
-<!-- 		</div> -->
 	</div>
 </div>	
 
@@ -137,9 +89,11 @@
 
 <script>
 
+var table;
+
 $(document).ready(function(){
 
-	var table = $('#tablita').DataTable( {
+	table = $('#tablita').DataTable( {
 		language: i18n(),
 		dom: 'Bfrtip',
 		ajax: "ventasJson",
@@ -168,6 +122,33 @@ $(document).ready(function(){
 	    ajaxStop: function() {$("body").removeClass("loading");}
 	});
 });
+
+function filtrar() {
+	var proveedorId = $('#proveedorId').val();
+	var fechaDesde = $('#fechaDesde').val();
+    var fechaHasta = $('#fechaHasta').val();
+    var cantidadDesde = $('#cantidadDesde').val();
+    var cantidadHasta= $('#cantidadHasta').val();
+    var json = {
+	    		"proveedorId" : proveedorId,	
+	    		"fechaDesde" : fechaDesde,
+	   			"fechaHasta" : fechaHasta, 
+	   			"cantidadDesde": cantidadDesde,
+	   			"cantidadHasta": cantidadHasta
+    			};
+    $.ajax ({
+		url: "filtrarVentas",
+		type: "POST",
+		data: JSON.stringify(json),
+		dataType: "json",
+		success: function(data) {
+			table.clear().rows.add(data).draw();
+		},
+		contentType: "application/json",
+		processData:false
+	});
+}
+    
 
 </script>
 
