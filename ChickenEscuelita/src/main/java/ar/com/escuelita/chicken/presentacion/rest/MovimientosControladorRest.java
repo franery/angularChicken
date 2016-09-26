@@ -22,7 +22,9 @@ import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.controlador.LoginControlador;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
+import ar.com.escuelita.chicken.presentacion.filtro.DepositoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
+import ar.com.escuelita.chicken.presentacion.filtro.UsuarioFiltro;
 import ar.com.escuelita.chicken.presentacion.validacion.MovimientoValidacion;
 
 @RestController
@@ -90,5 +92,18 @@ public class MovimientosControladorRest {
 		HashMap<String, List<HashMap<String, String>>> produccionTotalesJson = new HashMap<String, List<HashMap<String, String>>>();
 		produccionTotalesJson.put(Constantes.DATA, usuarioServicio.getTotalesProduccion(null));
 		return produccionTotalesJson;
+	}
+	
+	@RequestMapping("filtrarDepositosProduccion")
+	public @ResponseBody Collection<DTO> filtrarDepositosProduccion(@RequestBody DepositoFiltro filtro) {
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "filtrar");
+		return depositoServicio.listar(filtro);
+	}
+	
+	@RequestMapping("filtrarTotalesProduccion")
+	public @ResponseBody List<HashMap<String, String>> filtrarTotalesProduccion(@RequestBody UsuarioFiltro filtro) {
+		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "filtrar");
+		System.out.println("LLEGAMOS");
+		return usuarioServicio.getTotalesProduccion(filtro);
 	}
 }
