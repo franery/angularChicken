@@ -14,13 +14,12 @@
 
 <h1 class="page-header"><spring:message code="venta"/></h1>
 
-<form:form class="form-horizontal maxwid" id="formNuevo" action="ventasProcesarNuevo" method="post" commandName="venta">
-	<form:input path="id" type="hidden" value="${venta.getId()}"/>
-	<form:input path="usuarioId" type="hidden" value="${usuarioActual.getId()}"/>
+<form:form class="form-horizontal maxwid" id="formNuevo" method="post" commandName="venta">
+	<form:input id="usuarioId" path="usuarioId" type="hidden" value="${usuarioActual.getId()}"/>
 	<div class="form-group">
 		<form:label class="control-label col-sm-2" path="proveedorId"><spring:message code="proveedor"/>:</form:label>
 		<div class="col-sm-10">
-			<form:select class="form-control" style="width:auto;" path="proveedorId" required="required">
+			<form:select id="proveedorId" class="form-control" style="width:auto;" path="proveedorId" required="required">
 				<form:option value=""><spring:message code="seleccionar" /></form:option>
 					<c:forEach items="${listaProveedores}" var="proveedor">
 						<form:option value="${proveedor.getId()}"><c:out value="${proveedor.getNombre()}"></c:out></form:option>
@@ -31,27 +30,28 @@
 	<div class="form-group">
 		<form:label class="control-label col-sm-2" path="fecha"><spring:message code="fecha"/>:</form:label>
 		<div class="col-sm-10">
-			<form:input class="form-control" type="date" path="fecha" required="required"/>
+			<form:input id="fecha" class="form-control" type="date" path="fecha" required="required"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<form:label class="control-label col-sm-2" path="cantidad"><spring:message code="cantidad"/>:</form:label>
 		<div class="col-sm-10">
-			<form:input class="form-control" path="cantidad" required="required"/>
+			<form:input id="cantidad" class="form-control" path="cantidad" required="required"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<form:label class="control-label col-sm-2" path="precio"><spring:message code="precio"/>:</form:label>
 		<div class="col-sm-10">
-			<form:input class="form-control" path="precio" required="required"/>
+			<form:input id="precio" class="form-control" path="precio" required="required"/>
 		</div>
-	</div>	
-	<div class="form-group">
-	    <div class="col-sm-offset-2 col-sm-10">
-			<form:errors path="cantidad" cssClass="error" />  
-		</div>
-	</div>	
+	</div>
 </form:form>
+
+<c:set var="mensajeErrorVentaCantidad">
+	<spring:message code="mensajeErrorVentaCantidad" />
+</c:set>
+
+<div id="errores" class="alert alert-warning fade in" style="display:none;"></div>
 
 <form:form id="formAtras" action="atras" method="post">
 	<input id="url" type="hidden" name="url" />
@@ -61,15 +61,51 @@
 <div class="form-group">
     <div >
 		<input id="botonAtras" class="btn btn-default" type="button" value=<spring:message code="atras"/> />
-		<input id="botonGuardar" class="btn btn-default" type="button" value=<spring:message code="guardar"/> />
+		<input id="botonNuevo" class="btn btn-default" type="button" value=<spring:message code="guardar"/> />
 	</div>
 </div>
+<div class="wait"></div>
 
 <script>
 
-$('#botonGuardar').on('click', function (e) {
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");},
+    ready: function() {$("#errores").style.display("none");}
+});
+
+var mensajesError = {
+	mensajeErrorVentaCantidad: "${mensajeErrorVentaCantidad}"
+};
+
+$('#botonNuevo').on('click', function (e) {
 	e.preventDefault();
-    $('#formNuevo').submit();
+	var json = {
+			"usuarioId" : document.getElementById("usuarioId").value,
+			"proveedorId" : document.getElementById("proveedorId").value,
+			"fecha" : document.getElementById("fecha").value,
+			"cantidad" : document.getElementById("cantidad").value,
+			"precio" : document.getElementById("precio").value
+		};
+	$.ajax({
+		url : "ventasNuevoJson",
+		type : "POST",
+		data : JSON.stringify(json),
+		dataType : "json",
+		contentType : "application/json",
+		processData : false,
+		success: function(errores){
+			var mensaje = "";
+			for(var i = 0; i < errores.length; i++) {
+				mensaje += mensajesError[errores[i].code] + "<br>";
+			}
+			document.getElementById("errores").innerHTML = mensaje;
+			document.getElementById("errores").style.display = "block";
+		},
+		error: function(){
+			window.location = "ventas";
+		}
+	});
 });
 
 $('#botonAtras').on('click', function(e) {
