@@ -60,8 +60,8 @@
 		</div>
 	</div>
 </div>
-<!-- Movimientos -->
 
+<!-- Movimientos -->
 <div class="panel-group">
 	<div class="panel panel-primary">
 		<div class="panel-body">
