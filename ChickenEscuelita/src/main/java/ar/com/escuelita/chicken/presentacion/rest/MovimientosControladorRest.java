@@ -60,12 +60,10 @@ public class MovimientosControladorRest extends Controlador{
 		return null;
 	}
 	
-	@RequestMapping("filtrando")
-	public @ResponseBody HashMap<String, Collection<DTO>> filtrar(@RequestBody MovimientoFiltro filtro) {
+	@RequestMapping("filtrarMovimientos")
+	public @ResponseBody Collection<DTO> filtrarMovimientos(@RequestBody MovimientoFiltro filtro) {
 		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "filtrar");
 		filtro.setProductorId(Long.parseLong(usuario.getId()));
-		HashMap<String, Collection<DTO>> movimientosJson = new HashMap<String, Collection<DTO>>();
-		movimientosJson.put(Constantes.DATA, movimientoServicio.listar(filtro));
-		return movimientosJson;
+		return movimientoServicio.listar(filtro);
 	}
 }

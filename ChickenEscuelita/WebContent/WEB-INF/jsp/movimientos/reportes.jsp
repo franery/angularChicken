@@ -69,17 +69,10 @@
 <div class="wait"></div>
 
 <script>
+var table;
+
 $(document).ready(function(){
-	listar();
-});
-
-$(document).on({
-    ajaxStart: function() {$("body").addClass("loading");},
-    ajaxStop: function() {$("body").removeClass("loading");}
-});
-
-function listar() {
-	$('#tablita').DataTable( {
+	table = $('#tablita').DataTable( {
 		language: i18n(),
 		dom: 'Bfrtip',
 		ajax: "movimientosJson",
@@ -98,7 +91,12 @@ function listar() {
  	              }
 				 ]
 	});
-}
+});
+
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");}
+});
 
 function filtrar() {
 	var fechaDesde = $('#fechaDesde').val();
@@ -110,27 +108,44 @@ function filtrar() {
     			"cantidadDesde": cantidadDesde,
     			"cantidadHasta": cantidadHasta
     			};
-	$('#tablita').DataTable( {
-		language: i18n(),
-		ajax: {
-			url: "filtrando",
-			type: "POST",
-			data: function() {
-				return JSON.stringify(json);
-			},
-			dataType: "json",
-			contentType: "application/json",
-			processData:false
+    $.ajax ({
+		url: "filtrarMovimientos",
+		type: "POST",
+		data: JSON.stringify(json),
+		dataType: "json",
+		success: function(data) {
+			table.clear().rows.add(data).draw();
 		},
-		bDestroy: true,
-		serverside: true,
-		columns: [
-	              { data: "fecha" },
-	              { data: "cantidad" },
-	              { data: "gallineroNombre" },
-	              { data: "depositoNombre" }
-	              ]
+		contentType: "application/json",
+		processData:false
 	});
+    
+    function procesarData(data) {
+		alert("HOLA");
+		alert(data);
+		table.clear().rows().add(data);
+    }
+//     $('#tablita').DataTable( {
+// 		language: i18n(),
+// 		ajax: {
+// 			url: "filtrando",
+// 			type: "POST",
+// 			data: function() {
+// 				return JSON.stringify(json);
+// 			},
+// 			dataType: "json",
+// 			contentType: "application/json",
+// 			processData:false
+// 		},
+// 		bDestroy: true,
+// 		serverside: true,
+// 		columns: [
+// 	              { data: "fecha" },
+// 	              { data: "cantidad" },
+// 	              { data: "gallineroNombre" },
+// 	              { data: "depositoNombre" }
+// 	              ]
+// 	});
 }
 </script>
 </body>
