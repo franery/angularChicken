@@ -19,7 +19,6 @@ import ar.com.escuelita.chicken.base.dto.DTO;
 import ar.com.escuelita.chicken.base.excepciones.NegocioExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IVentaServicio;
 import ar.com.escuelita.chicken.presentacion.dto.VentaDTO;
-import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 import ar.com.escuelita.chicken.presentacion.filtro.VentaFiltro;
 import ar.com.escuelita.chicken.presentacion.validacion.VentaValidacion;
 

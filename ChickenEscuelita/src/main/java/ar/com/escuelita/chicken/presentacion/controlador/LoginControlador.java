@@ -43,7 +43,6 @@ public class LoginControlador extends Controlador{
 	
 	@RequestMapping("atras")
 	public ModelAndView volver(@RequestParam("url") String  url) {
-		System.out.println("ATRAAAAS....");
 		String[] spliteado = url.split("/");
 		String str = spliteado[spliteado.length - 1];
 		str = str.replace("Nuevo", "");
