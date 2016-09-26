@@ -18,7 +18,7 @@
 <div>
 	<h2 class="page-header"> <spring:message code="tablaDepositosStock"/></h2>
 	<h3><spring:message code="filtros"/></h3>
-	<form:form class="form-horizontal form-inline" action="produccion" method="post" commandName="depositoFiltro">
+	<form:form class="form-horizontal form-inline" method="post" commandName="depositoFiltro">
 	 	<div class="form-group">
 		<form:select class="form-control" style="width:auto;" path="depositoId">
 			<form:option value="0"><spring:message code="seleccionar"/></form:option>
@@ -32,31 +32,14 @@
 	</form:form>
 	
 	<br>
-<!-- <table id="" class="display" cellspacing="0" width="100%"> -->
+	
 <table id="tablita" class="display order-column" cellspacing="0" width="100%">
 	<thead>
 		<tr>
-			<th><spring:message code="deposito" text="Deposito"/></th>
+			<th><spring:message code="deposito"/></th>
 			<th><spring:message code="cantidadHuevos"/></th>
 		</tr>
 	</thead>
-	<tbody>
-		<c:if test="${!empty listaDepositos}">
-			<c:forEach items="${listaDepositos}" var="depositoVar">
-				<tr>
-					<td><c:out value="${depositoVar.getNombre() }"></c:out></td>
-					<td><c:out value="${depositoVar.getStockHuevos() }"></c:out></td>
-				 </tr>
-			</c:forEach>
-		</c:if>
-		<c:if test="${empty listaDepositos}">
-			<tr>
-				<td colspan="5"><spring:message code="noHayDatos"/></td>
-				<td></td>
-<!-- 						TODO no funca datatable -->
-			</tr>
-		</c:if>
-	</tbody>
 </table>
 </div>
 
@@ -85,82 +68,55 @@
 	</form:form>
 
 	<br>
+	
 	<table id="tablita2" class="display order-column" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th><spring:message code="nombre"/></th>
-				<th><spring:message code="apellido"/></th>
 				<th><spring:message code="ProduccionTotal"/></th>
 			</tr>
 		</thead>
-		<tbody>
-			<c:if test="${!empty hashTotales}">
-				<c:forEach items="${hashTotales}" var="hashProductor">
-					<tr>
-						<td><c:out value="${hashProductor.key.getNombre() }"></c:out></td>
-						<td><c:out value="${hashProductor.key.getApellido() }"></c:out></td>
-						<td><c:out value="${hashProductor.value }"></c:out></td>
-					 </tr>
-				</c:forEach>
-			</c:if>
-			<c:if test="${empty hashTotales}">
-				<tr>
-					<td colspan="5"><spring:message code="noHayDatos"/></td>
-				</tr>
-			</c:if>
-		</tbody>
 	</table>
-	
-	<br>
-	<br>
-	<br>
 </div>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$('#tablita').DataTable({
-			language: {
-				processing:     "<spring:message code='procesando'/>",
-	            search:         "<spring:message code='buscar'/>",
-	            lengthMenu:     "<spring:message code='tamanioMenu'/>",
-	            info:           "<spring:message code='info'/>",
-	            infoEmpty:      "<spring:message code='infoVacia'/>",
-	            infoFiltered:   "<spring:message code='infoFiltrada'/>",
-	            loadingRecords: "<spring:message code='cargandoRegistros'/>",
-	            zeroRecords:    "<spring:message code='ceroRegistros'/>",
-	            emptyTable:     "<spring:message code='noHayResultados'/>",
-	            paginate: {
-	                first:      "<spring:message code='primero'/>",
-	                previous:   "<spring:message code='anterior'/>",
-	                next:       "<spring:message code='siguiente'/>",
-	                last:       "<spring:message code='ultimo'/>"
-	            },
-			},
-		});
-		
-		$('#tablita2').DataTable({
-			language: {
-				processing:     "<spring:message code='procesando'/>",
-	            search:         "<spring:message code='buscar'/>",
-	            lengthMenu:     "<spring:message code='tamanioMenu'/>",
-	            info:           "<spring:message code='info'/>",
-	            infoEmpty:      "<spring:message code='infoVacia'/>",
-	            infoFiltered:   "<spring:message code='infoFiltrada'/>",
-	            loadingRecords: "<spring:message code='cargandoRegistros'/>",
-	            zeroRecords:    "<spring:message code='ceroRegistros'/>",
-	            emptyTable:     "<spring:message code='noHayResultados'/>",
-	            paginate: {
-	                first:      "<spring:message code='primero'/>",
-	                previous:   "<spring:message code='anterior'/>",
-	                next:       "<spring:message code='siguiente'/>",
-	                last:       "<spring:message code='ultimo'/>"
-	            },
-			},
-		});
+
+<div class="wait"></div>
+
+<script>
+
+$(document).ready(function() {
+	$('#tablita').DataTable( {
+		language: i18n(),
+		ajax: "produccionDepositosJson",
+	    columns: [
+	        {data: "nombre" },
+	        {data: "stockHuevos" }
+	        ],
+	    select:true,
+	    paging:true,
+	    pageLength:50,
+	    ordering:true,
 	});
 	
-	$(document).ready(function() {
-			$('#tablita2').DataTable();
-		});
-	</script>
+ 	$('#tablita2').DataTable( {
+		language: i18n(),
+		ajax: "produccionTotalesJson",
+	    columns: [
+	        {data: "nombre"},
+	        {data: "valor"}
+	        ],
+	    select:true,
+	    paging:true,
+	    pageLength:50,
+	    ordering:true
+	});
+	
+	$(document).on({
+	    ajaxStart: function() {$("body").addClass("loading");},
+	    ajaxStop: function() {$("body").removeClass("loading");}
+	});
+});
+
+</script>
+
 </body>
 </html>
