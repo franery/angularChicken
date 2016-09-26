@@ -77,54 +77,52 @@
 			<th><spring:message code="precio"/></th>
 		</tr>
 	</thead>
-	<c:if test="${!empty listaVentas}">
-		<c:forEach items="${listaVentas}" var="venta">
-			<tr>
-				<td><c:out value="${venta.getProveedorNombre()}"></c:out></td>
-				<td><c:out value="${venta.getFecha()}"></c:out></td>
-				<td><c:out value="${venta.getCantidad()}"></c:out></td>
-				<td><c:out value="${venta.getPrecio()}"></c:out></td>
-			</tr>
-		</c:forEach>
-	</c:if>
-	<c:if test="${empty listaVentas}">
-		<tr>
-			<td colspan="5"><spring:message code="noHayDatos"/></td>
-		</tr>
-	</c:if>
 </table>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#tablita').DataTable({
-			language: {
-				processing:     "<spring:message code='procesando'/>",
-	            search:         "<spring:message code='buscar'/>",
-	            lengthMenu:     "<spring:message code='tamanioMenu'/>",
-	            info:           "<spring:message code='info'/>",
-	            infoEmpty:      "<spring:message code='infoVacia'/>",
-	            infoFiltered:   "<spring:message code='infoFiltrada'/>",
-	            loadingRecords: "<spring:message code='cargandoRegistros'/>",
-	            zeroRecords:    "<spring:message code='ceroRegistros'/>",
-	            emptyTable:     "<spring:message code='noHayResultados'/>",
-	            paginate: {
-	                first:      "<spring:message code='primero'/>",
-	                previous:   "<spring:message code='anterior'/>",
-	                next:       "<spring:message code='siguiente'/>",
-	                last:       "<spring:message code='ultimo'/>"
-	            },
-			},
-			dom: 'Bfrtip',
-		    buttons: [
-		              {
-		                  text: '<button class="btn btn-success pull-left" id="nuevo"><spring:message code="nuevo"/></button>',
-		                  action: function ( e, dt, node, config ) {
-		                      window.location = "ventasNuevo";
-		                  }
-		              }
-		          ]
-		});
+<c:set var="borrar">
+	<spring:message code="borrar" />
+</c:set>
+
+<c:set var="modificar">
+	<spring:message code="modificar" />
+</c:set>
+
+<div class="wait"></div>
+
+<script>
+
+$(document).ready(function(){
+
+	var table = $('#tablita').DataTable( {
+		language: i18n(),
+		dom: 'Bfrtip',
+		ajax: "ventasJson",
+	    columns: [
+	        {data: "proveedorNombre" },
+	        {data: "fecha" },
+	        {data: "cantidad" },
+	        {data: "precio" }
+	        ],
+	    select:true,
+	    paging:true,
+	    pageLength:50,
+	    ordering:true,
+	    buttons: [
+	              {
+	                  text: '<button class="btn btn-success pull-left" id="nuevo"><spring:message code="nuevo"/></button>',
+	                  action: function ( e, dt, node, config ) {
+	                      window.location = "ventasNuevo";
+	                  }
+	              }
+	          ]
 	});
+	
+	$(document).on({
+	    ajaxStart: function() {$("body").addClass("loading");},
+	    ajaxStop: function() {$("body").removeClass("loading");}
+	});
+});
+
 </script>
 
 </body>
