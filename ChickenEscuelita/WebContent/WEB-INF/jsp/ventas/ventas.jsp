@@ -101,9 +101,7 @@ $(document).ready(function(){
 	        {data: "proveedorNombre" },
 	        {data: "fecha" },
 	        {data: "cantidad" },
-	        {data: "precio" },
-	        {defaultContent:'<button class="btn btn-danger" id="borrar">${borrar}</button>'},
-	        {defaultContent:'<button class="btn btn-warning" id="modificar">${modificar}</button>'}
+	        {data: "precio" }
 	        ],
 	    select:true,
 	    paging:true,
