@@ -26,7 +26,6 @@
 			<form:input class="form-control" path="nombre" name="nombre" type="text" value="${perfil.getNombre()}"/>
 		</div>
 	</div>
-			<form:errors path="nombre" cssClass="error" /> 
 	<div class="form-group">
 	<table class="table-bordered">
 		<thead>
@@ -77,7 +76,43 @@
 	</div>
 </div>
 
+<c:set var="mensajeErrorPerfil">
+	<spring:message code="mensajeErrorPerfil" />
+</c:set>
+
+<c:set var="mensajeErrorNombreVacio">
+	<spring:message code="mensajeErrorNombreVacio" />
+</c:set>
+
+<div id="errores" class="alert alert-warning fade in" style="display:none;"></div>
+
+<div class="wait"></div>
+
 <script>
+var listaPermisos = [];
+
+var mensajesError = {
+		mensajeErrorPerfil: "${mensajeErrorPerfil}",
+		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}"
+	};
+	
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");},
+    ready: function() {$("#errores").style.display("none");}
+});
+
+function obtenerListaPermisos(){
+	<c:forEach items="${tablaPermisos}" var="permiso">
+		var checkbox = document.getElementsByName('${permiso.id}')[0];
+		if (checkbox.checked) {
+			var permiso = {
+				id: '${permiso.id}',	
+			};
+			listaPermisos.push(permiso);
+		}
+	</c:forEach>
+}
 
 $('#botonGuardar').on('click', function (e) {
 	e.preventDefault();
@@ -90,7 +125,30 @@ $('#botonGuardar').on('click', function (e) {
 			document.getElementById(modulo + " Listar").checked = true;
 		}
 	</c:forEach>
-    $('#formCrear').submit();
+	obtenerListaPermisos();
+	var json = {
+			"nombre" : document.getElementById("nombre").value,
+			"listaPermisos" : listaPermisos,
+		};
+	$.ajax({
+		url : "perfilesNuevoJson",
+		type : "POST",
+		data : JSON.stringify(json),
+		dataType : "json",
+		contentType : "application/json",
+		processData : false,
+		success: function(errores){
+			var mensaje = "";
+			for(var i = 0; i < errores.length; i++) {
+				mensaje += mensajesError[errores[i].code] + "<br>";
+			}
+			document.getElementById("errores").innerHTML = mensaje;
+			document.getElementById("errores").style.display = "block";
+		},
+		error: function(){
+			window.location = "perfiles";
+		}
+	});
 });
 
 $('#botonAtras').on('click', function(e) {

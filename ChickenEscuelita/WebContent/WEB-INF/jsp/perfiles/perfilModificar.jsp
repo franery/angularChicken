@@ -21,7 +21,7 @@
 <h1 class="page-header"><spring:message code="perfilModificar" /></h1>
 
 <form:form class="form-horizontal maxwid" id="formModificar" method="POST" action="perfilesProcesarModificar" commandName="perfil">
-	<form:input path="id" type="hidden" value="${perfil.getId()}"/>
+	<form:input id="id" path="id" type="hidden" value="${perfil.getId()}"/>
 	<div class="form-group">
 		<div class="form-inline">
 			<form:label class="control-label" path="nombre"><spring:message code="nombre" />: </form:label>
@@ -80,8 +80,45 @@
 		<input id="botonGuardar" class="btn btn-default" type="button" value=<spring:message code="guardar"/> />
 	</div>
 </div>
+
+<c:set var="mensajeErrorPerfil">
+	<spring:message code="mensajeErrorPerfil" />
+</c:set>
+
+<c:set var="mensajeErrorNombreVacio">
+	<spring:message code="mensajeErrorNombreVacio" />
+</c:set>
+
+<div id="errores" class="alert alert-warning fade in" style="display:none;"></div>
+
+<div class="wait"></div>
 	
 <script>
+var listaPermisos = [];
+
+var mensajesError = {
+		mensajeErrorPerfil: "${mensajeErrorPerfil}",
+		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}"
+	};
+	
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");},
+    ready: function() {$("#errores").style.display("none");}
+});
+
+function obtenerListaPermisos(){
+	<c:forEach items="${tablaPermisos}" var="permiso">
+		var checkbox = document.getElementsByName('${permiso.id}')[0];
+		if (checkbox.checked) {
+			var permiso = {
+				id: '${permiso.id}',	
+			};
+			listaPermisos.push(permiso);
+		}
+	</c:forEach>
+}
+
 var tablaPermisos = new Array();
 <c:forEach items="${tablaPermisosUsuario}" var="perm">
     var permiso = '${perm.id}';
@@ -101,7 +138,31 @@ $('#botonGuardar').on('click', function (e) {
 			document.getElementById(modulo + " Listar").checked = true;
 		}
 	</c:forEach>
-    $('#formModificar').submit();
+	obtenerListaPermisos();
+	var json = {
+			"id" : document.getElementById("id").value,
+			"nombre" : document.getElementById("nombre").value,
+			"listaPermisos" : listaPermisos,
+		};
+	$.ajax({
+		url : "perfilesModificarJson",
+		type : "POST",
+		data : JSON.stringify(json),
+		dataType : "json",
+		contentType : "application/json",
+		processData : false,
+		success: function(errores){
+			var mensaje = "";
+			for(var i = 0; i < errores.length; i++) {
+				mensaje += mensajesError[errores[i].code] + "<br>";
+			}
+			document.getElementById("errores").innerHTML = mensaje;
+			document.getElementById("errores").style.display = "block";
+		},
+		error: function(){
+			window.location = "perfiles";
+		}
+	});
 });
 
 $('#botonAtras').on('click', function(e) {
