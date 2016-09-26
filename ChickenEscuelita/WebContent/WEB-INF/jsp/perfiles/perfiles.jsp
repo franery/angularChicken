@@ -15,17 +15,22 @@
 <h1 class="page-header"><spring:message code="perfiles"/></h1>
 
 	<!-- Tabla Perfiles -->
-	<table id="tablita" class="display order-column" cellspacing="0" width="100%">
-		<thead>
-			<tr>
-				<th><spring:message code="nombre"/></th>
-				<th><spring:message code="permisos"/></th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-	</table>
-			
+	<div class="panel-group">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				<table id="tablita" class="display order-column" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th><spring:message code="nombre"/></th>
+							<th><spring:message code="permisos"/></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>		
 
 	<form:form id="formModificar" action="perfilesModificar" method="post" commandName="perfil">
 		<form:input id="id" path="id" type="hidden"/>

@@ -18,50 +18,36 @@
 
 <div class="panel-group">
 	<div class="panel panel-primary">
-	<div class="panel-heading"><h4><spring:message code="filtros"/></h4></div>
+		<div class="panel-heading">
+			<h4><spring:message code="filtros"/></h4>
+		</div>
     </div>
 	<div class="panel panel-primary">
-		<div class="panel-body">
-		    <form:form class="form-horizontal" method="POST" commandName="filtro">
-				<div class="form-inline">
-					<div class="form-group">
-						 <form:label class="control-label col-sm-2" path="fechaDesde"><spring:message code="fechaDesde"/></form:label> 
-						 <div class="col-sm-10">
-						 	<form:input class="form-control" id="fechaDesde" path="fechaDesde" type="date" /> 
-						</div>
-					</div>
-					<div class="form-group">
-					 	<form:label class="control-label col-sm-2" path="fechaHasta"><spring:message code="fechaHasta"/></form:label> 
-						 <div class="col-sm-10">
-						 	<form:input class="form-control" id="fechaHasta" path="fechaHasta" type="date" /> 
-						 </div>			 
-					</div>
-				</div>
-				<div class="form-inline">
-					<div class="form-group">
-						<form:label class="control-label col-sm-2" path="cantidadDesde"><spring:message code="cantidadDesde"/></form:label> 
-						<div class="col-sm-10">
-							<form:input class="form-control" id="cantidadDesde" path="cantidadDesde" type="text" /> 
-						</div>
-					</div>
-					<div class="form-group">
-						<form:label class="control-label col-sm-2" path="cantidadHasta"><spring:message code="cantidadHasta"/></form:label> 
-						<div class="col-sm-10">
-							<form:input class="form-control" id="cantidadHasta" path="cantidadHasta" type="text" /> 
-						</div>
-					</div>
-				<div class="form-group">
-					<div class="col-sm-offset-1 col-sm-10">
-						<input type="button" class="btn btn-primary" onclick="filtrar()" value=<spring:message code="filtrar"/> />  
-					</div>
-				</div>
-				</div>
+		<div class="panel-body " style="overflow-x:auto;">
+		    <form:form method="POST" commandName="filtro">
+		    	<table class="table">
+		    		<tr>
+		    		 	<td> <form:label path="fechaDesde"><spring:message code="fechaDesde"/></form:label> </td> 
+						<td> <form:input class="form-control " id="fechaDesde" path="fechaDesde" type="date" /> </td> 
+		    		 	<td><form:label  path="fechaHasta"><spring:message code="fechaHasta"/></form:label> </td> 
+						<td> <form:input class="form-control " id="fechaHasta" path="fechaHasta" type="date" /> </td>
+		    		</tr>
+		    		<tr>
+		    		 	<td><form:label path="cantidadDesde"><spring:message code="cantidadDesde"/></form:label></td> 
+						<td><form:input class="form-control" id="cantidadDesde" path="cantidadDesde" type="text"/></td> 
+		    		 	<td><form:label path="cantidadHasta"><spring:message code="cantidadHasta"/></form:label></td> 
+						<td><form:input class="form-control" id="cantidadHasta" path="cantidadHasta" type="text" /> </td>
+		    		</tr>
+		    		<tr>
+		    			<td colspan="4"><input type="button" class="btn btn-primary	" onclick="filtrar()" value=<spring:message code="filtrar"/> /></td>
+		    		</tr>
+		    	</table>
 			</form:form>
 		</div>
 	</div>
 </div>
-<!-- Movimientos -->
 
+<!-- Movimientos -->
 <div class="panel-group">
 	<div class="panel panel-primary">
 		<div class="panel-body">
@@ -83,17 +69,10 @@
 <div class="wait"></div>
 
 <script>
+var table;
+
 $(document).ready(function(){
-	listar();
-});
-
-$(document).on({
-    ajaxStart: function() {$("body").addClass("loading");},
-    ajaxStop: function() {$("body").removeClass("loading");}
-});
-
-function listar() {
-	$('#tablita').DataTable( {
+	table = $('#tablita').DataTable( {
 		language: i18n(),
 		dom: 'Bfrtip',
 		ajax: "movimientosJson",
@@ -112,7 +91,12 @@ function listar() {
  	              }
 				 ]
 	});
-}
+});
+
+$(document).on({
+    ajaxStart: function() {$("body").addClass("loading");},
+    ajaxStop: function() {$("body").removeClass("loading");}
+});
 
 function filtrar() {
 	var fechaDesde = $('#fechaDesde').val();
@@ -124,43 +108,44 @@ function filtrar() {
     			"cantidadDesde": cantidadDesde,
     			"cantidadHasta": cantidadHasta
     			};
-	$('#tablita').DataTable( {
-		language: {
-			processing:     "<spring:message code='procesando'/>",
-            search:         "<spring:message code='buscar'/>",
-            lengthMenu:     "<spring:message code='tamanioMenu'/>",
-            info:           "<spring:message code='info'/>",
-            infoEmpty:      "<spring:message code='infoVacia'/>",
-            infoFiltered:   "<spring:message code='infoFiltrada'/>",
-            loadingRecords: "<spring:message code='cargandoRegistros'/>",
-            zeroRecords:    "<spring:message code='ceroRegistros'/>",
-            emptyTable:     "<spring:message code='noHayResultados'/>",
-            paginate: {
-                first:      "<spring:message code='primero'/>",
-                previous:   "<spring:message code='anterior'/>",
-                next:       "<spring:message code='siguiente'/>",
-                last:       "<spring:message code='ultimo'/>"
-            },
+    $.ajax ({
+		url: "filtrarMovimientos",
+		type: "POST",
+		data: JSON.stringify(json),
+		dataType: "json",
+		success: function(data) {
+			table.clear().rows.add(data).draw();
 		},
-		ajax: {
-			url: "filtrando",
-			type: "POST",
-			data: function() {
-				return JSON.stringify(json);
-			},
-			dataType: "json",
-			contentType: "application/json",
-			processData:false
-		},
-		bDestroy: true,
-		serverside: true,
-		columns: [
-	              { data: "fecha" },
-	              { data: "cantidad" },
-	              { data: "gallineroNombre" },
-	              { data: "depositoNombre" }
-	              ]
+		contentType: "application/json",
+		processData:false
 	});
+    
+    function procesarData(data) {
+		alert("HOLA");
+		alert(data);
+		table.clear().rows().add(data);
+    }
+//     $('#tablita').DataTable( {
+// 		language: i18n(),
+// 		ajax: {
+// 			url: "filtrando",
+// 			type: "POST",
+// 			data: function() {
+// 				return JSON.stringify(json);
+// 			},
+// 			dataType: "json",
+// 			contentType: "application/json",
+// 			processData:false
+// 		},
+// 		bDestroy: true,
+// 		serverside: true,
+// 		columns: [
+// 	              { data: "fecha" },
+// 	              { data: "cantidad" },
+// 	              { data: "gallineroNombre" },
+// 	              { data: "depositoNombre" }
+// 	              ]
+// 	});
 }
 </script>
 </body>

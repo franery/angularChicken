@@ -16,20 +16,27 @@
 	<h1 class="page-header">
 		<spring:message code="gallineros" />
 	</h1>
-	<table id="tablita" class="display order-column" cellspacing="0"
-		width="100%">
-		<thead>
-			<tr>
-				<th><spring:message code="nombre" /></th>
-				<th><spring:message code="usuario" /></th>
-				<th><spring:message code="stockGallinas" /></th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody class="bod">
-		</tbody>
-	</table>
+
+	<div class="panel-group">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				<table id="tablita" class="display order-column" cellspacing="0"
+					width="100%">
+					<thead>
+						<tr>
+							<th><spring:message code="nombre" /></th>
+							<th><spring:message code="usuario" /></th>
+							<th><spring:message code="stockGallinas" /></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody class="bod">
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 	
 	<form:form id="formModificar" action="gallinerosModificar" method="post" commandName="gallinero">
 		<form:input id="id" path="id" type="hidden"/>

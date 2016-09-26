@@ -12,7 +12,7 @@
 <link href="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/signin.css" >
 <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
-<title>Login</title>
+<title><spring:message code="ingresar"/></title>
 </head>
 
 <body>
@@ -36,24 +36,14 @@
 			<button class="btn btn-lg btn-raised black-background white btn-block"  type="submit"><spring:message code="ingresar" /></button>
 			
      	</form:form>
-
-	
+     	
+     	<div id="errores" class="alert alert-warning fade in" style="display:none;"></div>
+     	
+     	<c:if test="${not empty error }">
+     		<div id="errores" class="alert form-signin alert-warning fade in">
+     			<center> <spring:message code="${error}"/></center>
+     		</div>
+     	</c:if>
     </div> 
-
-<!-- 	<table align="center"> -->
-<%-- 		<form:form action ="${pageContext.request.contextPath}/login" method="POST"> --%>
-<!-- 		<tr> -->
-<%-- 			<td> <spring:message code="usuario"/>: </td> --%>
-<!-- 			<td> <input type ="text" id="username" name="username" /> </td> -->
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<%-- 			<td><spring:message code="contrasenia"/>: </td> --%>
-<!-- 			<td> <input type ="password" id="password" name="password" /> </td> -->
-<!-- 		</tr> -->
-<!-- 		<tr>	 -->
-<!-- 			<td align="center" colspan="2"><input type="submit" value=<spring:message code="ingresar" /> /></td> -->
-<!-- 		</tr> -->
-<%-- 		</form:form> --%>
-<!-- 	</table> -->
 </body>
 </html>

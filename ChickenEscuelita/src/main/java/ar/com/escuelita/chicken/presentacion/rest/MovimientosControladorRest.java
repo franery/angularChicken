@@ -22,7 +22,6 @@ import ar.com.escuelita.chicken.negocio.servicios.IMovimientoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.IUsuarioServicio;
 import ar.com.escuelita.chicken.presentacion.controlador.LoginControlador;
 import ar.com.escuelita.chicken.presentacion.dto.MovimientoDTO;
-import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
 import ar.com.escuelita.chicken.presentacion.filtro.MovimientoFiltro;
 import ar.com.escuelita.chicken.presentacion.validacion.MovimientoValidacion;
 
@@ -70,13 +69,11 @@ public class MovimientosControladorRest {
 		return null;
 	}
 	
-	@RequestMapping("filtrando")
-	public @ResponseBody HashMap<String, Collection<DTO>> filtrar(@RequestBody MovimientoFiltro filtro) {
+	@RequestMapping("filtrarMovimientos")
+	public @ResponseBody Collection<DTO> filtrarMovimientos(@RequestBody MovimientoFiltro filtro) {
 		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "filtrar");
 		filtro.setProductorId(Long.parseLong(LoginControlador.usuario.getId()));
-		HashMap<String, Collection<DTO>> movimientosJson = new HashMap<String, Collection<DTO>>();
-		movimientosJson.put(Constantes.DATA, movimientoServicio.listar(filtro));
-		return movimientosJson;
+		return movimientoServicio.listar(filtro);
 	}
 	
 	@RequestMapping(path="/produccionDepositosJson")

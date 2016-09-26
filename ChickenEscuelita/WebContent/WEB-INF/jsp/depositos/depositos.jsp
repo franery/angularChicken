@@ -18,21 +18,27 @@
 		<spring:message code="depositos" />
 	</h1>
 
-	<table id="tablita" class="display order-column" cellspacing="0"
-		width="100%">
-		<thead>
-			<tr>
-				<th><spring:message code="nombre" /></th>
-				<th><spring:message code="stock" /></th>
-				<th><spring:message code="stockMax" /></th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-	
+<div class="panel-group">
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<table id="tablita" class="display order-column" cellspacing="0"
+				width="100%">
+				<thead>
+					<tr>
+						<th><spring:message code="nombre" /></th>
+						<th><spring:message code="stock" /></th>
+						<th><spring:message code="stockMax" /></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
 	<form:form id="formModificar" action="depositosModificar" method="post" commandName="deposito">
 		<form:input id="id" path="id" type="hidden"/>
 		<form:input id="nombre" path="nombre" type="hidden"/>

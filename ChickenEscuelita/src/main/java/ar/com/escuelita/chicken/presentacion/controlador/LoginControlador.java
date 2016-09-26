@@ -30,11 +30,14 @@ public class LoginControlador extends Controlador{
 	private IUsuarioServicio usuarioServicio;
 
 	@RequestMapping("/inicio")
-	public ModelAndView login() {
+	public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
 		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "login");
 		ModelAndView model = new ModelAndView(Constantes.LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);
+		if (error != null) {
+			model.addObject("error","mensajeErrorLogin");
+		}
 		return model;
 	}
 	
