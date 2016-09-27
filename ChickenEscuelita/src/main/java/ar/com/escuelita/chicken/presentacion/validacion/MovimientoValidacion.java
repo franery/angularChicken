@@ -32,6 +32,21 @@ public class MovimientoValidacion implements Validator {
 			errores.rejectValue("cantidad", e.getMessage(),"Mesnaje default");
 		}
 		try {
+			movimientoValidacionServicio.validacionCantidadNoVacia(movimiento.getCantidad());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("cantidad", e.getMessage(),"Mesnaje default");
+		}
+		try {
+			movimientoValidacionServicio.validacionCantidadNoNegativa(movimiento.getCantidad());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("cantidad", e.getMessage(),"Mesnaje default");
+		}
+		try {
+			movimientoValidacionServicio.validacionFechaNoVacia(movimiento.getFecha());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("fecha", e.getMessage(),"Mesnaje default");
+		}
+		try {
 			movimientoValidacionServicio.validacionGallineroId(movimiento.getGallineroId());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("gallineroId", e.getMessage(),"Mesnaje default");

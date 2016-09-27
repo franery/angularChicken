@@ -102,6 +102,7 @@ $(document).ready(function(){
 			"nombreUsuario" : data["nombreUsuario"],
 			"nombre" : data["nombre"],
 			"apellido" : data["apellido"],
+			"contrasenia": data["contrasenia"],
 			"borrado" : data["borrado"]
 		};
 		var mensaje = document.getElementById("mensajeBorrar").value;

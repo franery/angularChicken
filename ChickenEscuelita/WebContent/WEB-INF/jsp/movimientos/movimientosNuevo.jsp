@@ -58,6 +58,18 @@
 	<spring:message code="mensajeErrorMovimientoDeposito" />
 </c:set>
 
+<c:set var="mensajeErrorCantidadVacia">
+	<spring:message code="mensajeErrorCantidadVacia" />
+</c:set>
+
+<c:set var="mensajeErrorCantidadNegativa">
+	<spring:message code="mensajeErrorCantidadNegativa" />
+</c:set>
+
+<c:set var="mensajeErrorFechaVacia">
+	<spring:message code="mensajeErrorFechaVacia" />
+</c:set>
+
 <c:set var="mensajeErrorGallineroId">
 	<spring:message code="mensajeErrorGallineroId" />
 </c:set>
@@ -91,6 +103,9 @@ $(document).on({
 
 var mensajesError = {
 		mensajeErrorMovimientoDeposito: "${mensajeErrorMovimientoDeposito}",
+		mensajeErrorCantidadVacia: "${mensajeErrorCantidadVacia}",
+		mensajeErrorCantidadNegativa: "${mensajeErrorCantidadNegativa}",
+		mensajeErrorFechaVacia: "${mensajeErrorFechaVacia}",
 		mensajeErrorGallineroId: "${mensajeErrorGallineroId}",
 		mensajeErrorDepositoId: "${mensajeErrorDepositoId}"
 	};

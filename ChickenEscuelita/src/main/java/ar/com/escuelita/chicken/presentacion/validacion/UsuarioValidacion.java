@@ -27,7 +27,12 @@ public class UsuarioValidacion implements Validator {
 		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuarioValidacion.class, "validate");
 		UsuarioDTO usuario = (UsuarioDTO) target;
 		try {
-			usuarioValidacionServicio.validacionNombreUsuario(usuario.getNombreUsuario(), usuario.getId());
+			usuarioValidacionServicio.validacionNombreUnico(usuario.getNombreUsuario(), usuario.getId());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("nombreUsuario", e.getMessage(),"Mesnaje default");
+		}
+		try {
+			usuarioValidacionServicio.validacionNombreNoVacio(usuario.getNombreUsuario());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("nombreUsuario", e.getMessage(),"Mesnaje default");
 		}
@@ -35,6 +40,11 @@ public class UsuarioValidacion implements Validator {
 			usuarioValidacionServicio.validacionUsuarioRoot(usuario.getId());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("id", e.getMessage(),"Mesnaje default");
+		}
+		try {
+			usuarioValidacionServicio.validacionContraseniaNoVacia(usuario.getContrasenia());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("contrasenia", e.getMessage(),"Mesnaje default");
 		}
 	}
 

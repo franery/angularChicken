@@ -70,6 +70,14 @@
 	<spring:message code="mensajeErrorUsuarioRoot" />
 </c:set>
 
+<c:set var="mensajeErrorNombreVacio">
+	<spring:message code="mensajeErrorNombreVacio" />
+</c:set>
+
+<c:set var="mensajeErrorContraseniaVacia">
+	<spring:message code="mensajeErrorContraseniaVacia" />
+</c:set>
+
 <div id="errores" class="alert alert-warning fade in" style="display:none;"></div>
 
 <form:form id="formAtras" action="atras" method="post">
@@ -91,7 +99,9 @@ var listaPerfiles = [];
 
 var mensajesError = {
 		mensajeErrorUsuario: "${mensajeErrorUsuario}",
-		mensajeErrorUsuarioRoot: "${mensajeErrorUsuarioRoot}"
+		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",
+		mensajeErrorUsuarioRoot: "${mensajeErrorUsuarioRoot}",
+		mensajeErrorContraseniaVacia: "${mensajeErrorContraseniaVacia}"
 	};
 
 $(document).on({

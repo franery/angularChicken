@@ -21,18 +21,30 @@ public class UsuarioValidacionServicioImpl implements IUsuarioValidacionServicio
 	}
 	
 	@Override
-	public void validacionNombreUsuario(String nombreUsuario, String usuarioId) throws ValidacionExcepcion {
+	public void validacionNombreUnico(String nombreUsuario, String usuarioId) throws ValidacionExcepcion {
 		List<DTO> listaUsuarios = (List<DTO>) usuarioServicio.listar();
 		for(DTO dto : listaUsuarios) {
 			if (((UsuarioDTO)dto).getNombreUsuario().equals(nombreUsuario) && !((UsuarioDTO)dto).getId().equals(usuarioId)) {
-				throw new ValidacionExcepcion("mensajeErrorUsuario");
+				throw new ValidacionExcepcion("mensajeErrorNombreUnico");
 			}
+		}
+	}
+	
+	public void validacionNombreNoVacio(String nombreUsuario) throws ValidacionExcepcion {
+		if(nombreUsuario == null || nombreUsuario.isEmpty()) {
+			throw new ValidacionExcepcion("mensajeErrorNombreVacio");
 		}
 	}
 	
 	public void validacionUsuarioRoot(String usuarioId) throws ValidacionExcepcion {
 		if(String.valueOf(Constantes.USUARIO_ROOT_ID).equals(usuarioId)) {
 			throw new ValidacionExcepcion("mensajeErrorUsuarioRoot");
+		}
+	}
+	
+	public void validacionContraseniaNoVacia(String contrasenia) throws ValidacionExcepcion {
+		if(contrasenia == null || contrasenia.isEmpty()) {
+			throw new ValidacionExcepcion("mensajeErrorContraseniaVacia");
 		}
 	}
 	

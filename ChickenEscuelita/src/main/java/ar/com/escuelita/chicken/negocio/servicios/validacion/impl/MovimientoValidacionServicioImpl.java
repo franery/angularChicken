@@ -1,6 +1,9 @@
 package ar.com.escuelita.chicken.negocio.servicios.validacion.impl;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.IDepositoServicio;
 import ar.com.escuelita.chicken.negocio.servicios.validacion.IMovimientoValidacionServicio;
@@ -20,6 +23,24 @@ public class MovimientoValidacionServicioImpl implements IMovimientoValidacionSe
 			if (stockMaximo - stockHuevos < cantidad) {
 				throw new ValidacionExcepcion("mensajeErrorMovimientoDeposito");
 			}
+		}
+	}
+	
+	public void validacionCantidadNoVacia(long cantidad) throws ValidacionExcepcion {
+		if(cantidad == 0) {
+			throw new ValidacionExcepcion("mensajeErrorCantidadVacia");
+		}
+	}
+	
+	public void validacionCantidadNoNegativa(long cantidad) throws ValidacionExcepcion {
+		if(cantidad < 0) {
+			throw new ValidacionExcepcion("mensajeErrorCantidadNegativa");
+		}
+	}
+	
+	public void validacionFechaNoVacia(Date fecha) throws ValidacionExcepcion {
+		if(fecha == null) {
+			throw new ValidacionExcepcion("mensajeErrorFechaVacia");
 		}
 	}
 	
