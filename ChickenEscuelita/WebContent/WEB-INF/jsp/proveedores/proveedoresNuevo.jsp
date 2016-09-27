@@ -51,16 +51,16 @@
 	<spring:message code="mensajeErrorNombreUnico" />
 </c:set>
 
-<c:set var="mensajeErrorMailVacio">
-	<spring:message code="mensajeErrorMailVacio" />
+<c:set var="mensajeErrorMailInvalido">
+	<spring:message code="mensajeErrorMailInvalido" />
 </c:set>
 
 <c:set var="mensajeErrorDireccionVacio">
 	<spring:message code="mensajeErrorDireccionVacio" />
 </c:set>
 
-<c:set var="mensajeErrorTelefonoVacio">
-	<spring:message code="mensajeErrorTelefonoVacio" />
+<c:set var="mensajeErrorTelefonoInvalido">
+	<spring:message code="mensajeErrorTelefonoInvalido" />
 </c:set>
 
 <div id="errores" class="alert alert-warning fade in" style="display:none;"></div>
@@ -90,8 +90,8 @@ var mensajesError = {
 	mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",
 	mensajeErrorNombreUnico: "${mensajeErrorNombreUnico}",
 	mensajeErrorDireccionVacio: "${mensajeErrorDireccionVacio}",
-	mensajeErrorMailVacio: "${mensajeErrorMailVacio}",
-	mensajeErrorTelefonoVacio: "${mensajeErrorTelefonoVacio}",
+	mensajeErrorMailInvalido: "${mensajeErrorMailInvalido}",
+	mensajeErrorTelefonoInvalido: "${mensajeErrorTelefonoInvalido}",
 };
 
 $('#botonNuevo').on('click', function (e) {

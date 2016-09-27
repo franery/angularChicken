@@ -37,17 +37,25 @@ public class ProveedorValidacionServicioImpl implements IProveedorValidacionServ
 	}
 
 	@Override
-	public void validacionMailNoVacio(String mail) throws ValidacionExcepcion {
+	public void validacionMail(String mail) throws ValidacionExcepcion {
 		if (mail == null || mail.isEmpty()) {
-			throw new ValidacionExcepcion("mensajeErrorMailVacio");
+			throw new ValidacionExcepcion("mensajeErrorMailInvalido");
+		}
+		if (!mail.matches(".*@.+\\.com(\\..+)?")) {
+			throw new ValidacionExcepcion("mensajeErrorMailInvalido");
 		}
 	}
 
 	@Override
-	public void validacionTelefonoNoVacio(String telefono)
+	public void validacionTelefono(String telefono)
 			throws ValidacionExcepcion {
-		if (telefono == null || telefono.isEmpty()) {
-			throw new ValidacionExcepcion("mensajeErrorTelefonoVacio");
+		if (telefono == null || telefono.isEmpty() || telefono.length() != 8) {
+			throw new ValidacionExcepcion("mensajeErrorTelefonoInvalido");
+		}
+		try {
+			Long.parseLong(telefono);
+		} catch (NumberFormatException e) {
+			throw new ValidacionExcepcion("mensajeErrorTelefonoInvalido");
 		}
 	}
 }

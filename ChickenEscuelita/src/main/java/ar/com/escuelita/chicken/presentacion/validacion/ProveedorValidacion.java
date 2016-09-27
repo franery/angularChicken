@@ -34,12 +34,12 @@ public class ProveedorValidacion implements Validator {
 			errores.rejectValue("nombre", e.getMessage(),"Mesnaje default");
 		}
 		try {
-			proveedorValidacionServicio.validacionMailNoVacio(proveedor.getMail());
+			proveedorValidacionServicio.validacionMail(proveedor.getMail());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("mail", e.getMessage(),"Mesnaje default");
 		}
 		try {
-			proveedorValidacionServicio.validacionTelefonoNoVacio(proveedor.getTelefono());
+			proveedorValidacionServicio.validacionTelefono(proveedor.getTelefono());
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("telefono", e.getMessage(),"Mesnaje default");
 		}

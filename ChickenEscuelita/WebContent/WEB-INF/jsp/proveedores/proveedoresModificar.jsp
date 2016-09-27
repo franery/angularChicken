@@ -56,6 +56,19 @@
 	<spring:message code="mensajeErrorNombreUnico" />
 </c:set>
 
+<c:set var="mensajeErrorMailInvalido">
+	<spring:message code="mensajeErrorMailInvalido" />
+</c:set>
+
+<c:set var="mensajeErrorDireccionVacio">
+	<spring:message code="mensajeErrorDireccionVacio" />
+</c:set>
+
+<c:set var="mensajeErrorTelefonoInvalido">
+	<spring:message code="mensajeErrorTelefonoInvalido" />
+</c:set>
+
+
 <div id="errores" class="alert alert-warning fade in" style="display:none;"></div>
 
 <form:form id="formAtras" action="atras" method="post">
@@ -80,11 +93,11 @@ $(document).on({
 	});
 
 var mensajesError = {
-	mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",
-	mensajeErrorNombreUnico: "${mensajeErrorNombreUnico}",
-	mensajeErrorDireccionVacio: "${mensajeErrorDireccionVacio}",
-	mensajeErrorMailVacio: "${mensajeErrorMailVacio}",
-	mensajeErrorTelefonoVacio: "${mensajeErrorTelefonoVacio}",
+		mensajeErrorNombreVacio: "${mensajeErrorNombreVacio}",
+		mensajeErrorNombreUnico: "${mensajeErrorNombreUnico}",
+		mensajeErrorDireccionVacio: "${mensajeErrorDireccionVacio}",
+		mensajeErrorMailInvalido: "${mensajeErrorMailInvalido}",
+		mensajeErrorTelefonoInvalido: "${mensajeErrorTelefonoInvalido}",
 };
 
 $('#botonGuardar').on('click', function (e) {
