@@ -51,6 +51,14 @@
 	<spring:message code="mensajeErrorVentaCantidad" />
 </c:set>
 
+<c:set var="mensajeErrorVentaProveedor">
+	<spring:message code="mensajeErrorVentaProveedor" />
+</c:set>
+
+<c:set var="mensajeErrorFechaVacia">
+	<spring:message code="mensajeErrorFechaVacia" />
+</c:set>
+
 <div id="errores" class="alert alert-warning fade in" style="display:none;"></div>
 
 <form:form id="formAtras" action="atras" method="post">
@@ -75,7 +83,9 @@ $(document).on({
 });
 
 var mensajesError = {
-	mensajeErrorVentaCantidad: "${mensajeErrorVentaCantidad}"
+	mensajeErrorVentaCantidad: "${mensajeErrorVentaCantidad}",
+	mensajeErrorVentaProveedor: "${mensajeErrorVentaProveedor}",
+	mensajeErrorFechaVacia: "${mensajeErrorFechaVacia}"
 };
 
 $('#botonNuevo').on('click', function (e) {

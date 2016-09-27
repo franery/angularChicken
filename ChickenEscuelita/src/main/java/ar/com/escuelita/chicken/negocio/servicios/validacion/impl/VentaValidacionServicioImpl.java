@@ -1,5 +1,7 @@
 package ar.com.escuelita.chicken.negocio.servicios.validacion.impl;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.com.escuelita.chicken.base.dto.DTO;
@@ -24,6 +26,18 @@ public class VentaValidacionServicioImpl implements IVentaValidacionServicio{
 		}
 		if(cantidadTotalDepositos < cantidad) {
 			throw new ValidacionExcepcion("mensajeErrorVentaCantidad");
+		}
+	}
+	
+	public void validacionProveedor(String proveedorId) throws ValidacionExcepcion {
+		if(proveedorId == null || proveedorId.isEmpty()) {
+			throw new ValidacionExcepcion("mensajeErrorVentaProveedor");
+		}
+	}
+	
+	public void validacionFechaNoVacia(Date fecha) throws ValidacionExcepcion {
+		if(fecha == null) {
+			throw new ValidacionExcepcion("mensajeErrorFechaVacia");
 		}
 	}
 }

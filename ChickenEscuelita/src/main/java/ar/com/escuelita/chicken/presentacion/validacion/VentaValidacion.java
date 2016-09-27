@@ -32,5 +32,15 @@ public class VentaValidacion implements Validator{
 		} catch (ValidacionExcepcion e) {
 			errores.rejectValue("cantidad", e.getMessage(),"Mesnaje default");
 		}
+		try {
+			ventaValidacionServicio.validacionProveedor(venta.getProveedorId());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("proveedorId", e.getMessage(),"Mesnaje default");
+		}
+		try {
+			ventaValidacionServicio.validacionFechaNoVacia(venta.getFecha());
+		} catch (ValidacionExcepcion e) {
+			errores.rejectValue("fecha", e.getMessage(),"Mesnaje default");
+		}
 	}
 }
