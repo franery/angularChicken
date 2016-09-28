@@ -55,6 +55,7 @@
 							<div class="alert alert-error">
 								<strong><spring:message code="mensajeErrorAplicacion"/>!</strong><br/>
 								<br><spring:message code="mensajeErrorTituloPagina"/><br>
+								<br><spring:message code="fecha"/>&nbsp;${errorFechaHora}<br>
 							</div><br>
 						
 							<table class="title">

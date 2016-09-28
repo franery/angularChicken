@@ -26,9 +26,9 @@ public class ExcepcionControlador {
 		
 		ModelAndView mv = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		mv.addObject("pageToLoad", Constantes.EXCEPCION_VIEW);
-		request.setAttribute("infoSpecified", ex.getMessage());
-		request.setAttribute("info", Utilidad.stackTraceToString(ex));
-		request.setAttribute("infoFechaHora", Utilidad.formatDateAndTimeFull(new Date()));
+		request.setAttribute("errorSpecified", ex.getMessage());
+		request.setAttribute("error", Utilidad.stackTraceToString(ex));
+		request.setAttribute("errorFechaHora", Utilidad.formatDateAndTimeFull(new Date()));
 		
 		//Unicamente para ajax
 		if (Utilidad.isAjax(request)) {

@@ -58,6 +58,8 @@
 		
 		<security:intercept-url pattern="/principal" access="isAuthenticated()" />
 		
+		<security:intercept-url pattern="/ingresar" access="isAuthenticated()" />
+		
 		<security:form-login login-page="/inicio"
 							always-use-default-target="true"
 							authentication-failure-url="/inicio?error"
