@@ -11,6 +11,7 @@ import org.slf4j.MDC;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import ar.com.escuelita.chicken.base.excepciones.Excepcion;
+import ar.com.escuelita.chicken.presentacion.controlador.LoginControlador;
 import ch.qos.logback.classic.Level;
 
 public class Traza {
@@ -122,7 +123,12 @@ public class Traza {
 	public static void aspectoDebug(Class<?> clase, String metodo, String detalle) {
 		log = LoggerFactory.getLogger(clase);
 		MDC.put(NIVEL, "ASPECTO");
-		String usuario = SecurityContextHolder.getContext().getAuthentication().getName();
+		String usuario;
+		if (LoginControlador.usuario != null){
+			usuario = LoginControlador.usuario.getNombre();
+		} else {
+			usuario = "juan";
+		}
 		log.debug("[{}][{}]: {}", new Object[]{usuario, metodo, detalle});
 		MDC.put(NIVEL, "");
 	}

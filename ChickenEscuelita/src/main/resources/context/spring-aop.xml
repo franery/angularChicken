@@ -12,8 +12,8 @@
 	
 	<aop:config>
      <aop:aspect ref="utilidadAspectoBean" id="utilidadAspecto">
-         <aop:pointcut id="pointcut1" expression="within(ar.com.escuelita.chicken.negocio.servicios.impl.*(..))
-         	|| execution(* ar.com.escuelita.chicken.persistencia.dao.impl.*(..))" />
+         <aop:pointcut id="pointcut1" expression="within(ar.com.escuelita.chicken.negocio.servicios.impl.UsuarioServicioImpl)
+         	|| execution(* ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl.*(..))" />
          <aop:around pointcut-ref="pointcut1" method="time"/>
          
          <aop:pointcut id="pointcut2" expression="execution(* org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler.onAuthenticationSuccess(..))"/>
