@@ -22,7 +22,6 @@ public class ExcepcionControlador {
 
 	private ModelAndView infoModelAndView(Exception ex, HttpServletRequest request, HttpServletResponse response) {
 		Excepcion e = new Excepcion(ex);
-		Constantes.CHICKEN_LOG.info("Controlador: {}; Error: {}",getClass(),e.getMessage());
 		
 		ModelAndView mv = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		mv.addObject("pageToLoad", Constantes.EXCEPCION_VIEW);

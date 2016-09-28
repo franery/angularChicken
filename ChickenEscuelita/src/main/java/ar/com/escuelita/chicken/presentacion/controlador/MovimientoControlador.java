@@ -42,7 +42,6 @@ public class MovimientoControlador extends Controlador {
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoControlador.class, "initBinder");
 		if (binder.getTarget() instanceof MovimientoDTO){
 			binder.setValidator(movimientoValidacion);
 		}
@@ -50,7 +49,6 @@ public class MovimientoControlador extends Controlador {
 	
 	@RequestMapping(path="/movimientos")
 	public ModelAndView movimientos() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoControlador.class, "movimientos");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		MovimientoFiltro m = new MovimientoFiltro();
 		m.setProductorId(Long.parseLong(usuario.getId()));
@@ -65,7 +63,6 @@ public class MovimientoControlador extends Controlador {
 	@RequestMapping(path="/produccion")
 	public ModelAndView produccion(@ModelAttribute("usuarioFiltro") UsuarioFiltro usuarioFiltro, @ModelAttribute("depositoFiltro") 
 	DepositoFiltro depositoFiltro) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoControlador.class, "produccion");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		// Tabla Depositos | Stock Huevos
@@ -92,7 +89,6 @@ public class MovimientoControlador extends Controlador {
 	
 	@RequestMapping("movimientosNuevo")
 	public ModelAndView nuevoMovimiento(@ModelAttribute("movimiento") MovimientoDTO movimientoDto) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientoControlador.class, "nuevoMovimiento");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("movimiento", movimientoDto);

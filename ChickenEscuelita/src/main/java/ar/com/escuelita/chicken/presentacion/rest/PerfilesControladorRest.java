@@ -31,7 +31,6 @@ public class PerfilesControladorRest {
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", PerfilesControladorRest.class, "initBinder");
 		if (binder.getTarget() instanceof PerfilDTO){
 		binder.setValidator(perfilValidacion);
 		}
@@ -39,7 +38,6 @@ public class PerfilesControladorRest {
 	
 	@RequestMapping("/perfilesJson")
 	public HashMap<String, List<DTO>> perfilesJson() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", PerfilesControladorRest.class, "perfilesJSON");
 		HashMap<String, List<DTO>> perfilesJson = new HashMap<String, List<DTO>>();
 		perfilesJson.put(Constantes.DATA, (List<DTO>)perfilServicio.listar());
 		return perfilesJson;
@@ -48,7 +46,6 @@ public class PerfilesControladorRest {
 	@RequestMapping(path="/perfilesNuevoJson")
 	public Object perfilesNuevoJson(@RequestBody @Validated PerfilDTO perfil,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", PerfilesControladorRest.class, "perfilesNuevoJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
@@ -59,7 +56,6 @@ public class PerfilesControladorRest {
 	@RequestMapping(path="/perfilesBorrarJson")
 	public void perfilesBorrarJson(@RequestBody @Validated PerfilDTO perfil,
 			BindingResult result) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", PerfilesControladorRest.class, "perfilesBorrarJson");
 		if(!result.hasErrors()) {
 			perfilServicio.borrar(perfil);
 		}
@@ -68,7 +64,6 @@ public class PerfilesControladorRest {
 	@RequestMapping(path="/perfilesModificarJson")
 	public Object perfilesModificarJson(@RequestBody @Validated PerfilDTO perfil,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", PerfilesControladorRest.class, "perfilesModificarJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}

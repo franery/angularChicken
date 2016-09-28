@@ -33,7 +33,6 @@ public class VentasControladorRest {
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", VentasControladorRest.class, "initBinder");
 		if (binder.getTarget() instanceof VentaDTO){
 		binder.setValidator(ventaValidacion);
 		}
@@ -41,7 +40,6 @@ public class VentasControladorRest {
 	
 	@RequestMapping("/ventasJson")
 	public HashMap<String, List<DTO>> ventasJson() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", VentasControladorRest.class, "ventasJson");
 		HashMap<String, List<DTO>> ventasJson = new HashMap<String, List<DTO>>();
 		ventasJson.put(Constantes.DATA, (List<DTO>)ventaServicio.listar());
 		return ventasJson;
@@ -50,7 +48,6 @@ public class VentasControladorRest {
 	@RequestMapping(path="/ventasNuevoJson")
 	public Object ventasNuevoJson(@RequestBody @Validated VentaDTO venta,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", VentasControladorRest.class, "ventasNuevoJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
@@ -60,7 +57,6 @@ public class VentasControladorRest {
 	
 	@RequestMapping("filtrarVentas")
 	public @ResponseBody Collection<DTO> filtrarVentas(@RequestBody VentaFiltro filtro) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", VentasControladorRest.class, "filtrar");
 		return ventaServicio.listar(filtro);
 	}
 }

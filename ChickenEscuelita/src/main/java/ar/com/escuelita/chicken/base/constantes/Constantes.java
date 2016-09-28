@@ -42,8 +42,6 @@ public class Constantes {
 	public static final long STOCK_MINIMO = 0;
 	public static final long NUMERO_MINIMO_TELEFONO = 8;
 	public static final String DATA = "data";
-	public static final String LOG_MASTER = "LogMaster";
-	public static final Logger CHICKEN_LOG = LoggerFactory.getLogger(LOG_MASTER);
 
 	public static final List<String> PERMISOS_ADMINISTRADOR = Collections.unmodifiableList(
 		    new ArrayList<String>() {{

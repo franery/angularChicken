@@ -44,7 +44,6 @@ public class MovimientosControladorRest {
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "initBinder");
 		if (binder.getTarget() instanceof MovimientoDTO){
 		binder.setValidator(movimientoValidacion);
 		}
@@ -52,7 +51,6 @@ public class MovimientosControladorRest {
 	
 	@RequestMapping(path="/movimientosJson")
 	public HashMap<String, Collection<DTO>> movimientosJson() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "movimientosJson");
 		MovimientoFiltro m = new MovimientoFiltro();
 		m.setProductorId(Long.parseLong(LoginControlador.usuario.getId()));
 		HashMap<String, Collection<DTO>> movimientosJson = new HashMap<String, Collection<DTO>>();
@@ -63,7 +61,6 @@ public class MovimientosControladorRest {
 	@RequestMapping(path="/movimientosNuevoJson")
 	public Object movimientosNuevoJson(@RequestBody @Validated MovimientoDTO movimiento,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "movimientosNuevoJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
@@ -73,14 +70,12 @@ public class MovimientosControladorRest {
 	
 	@RequestMapping("filtrarMovimientos")
 	public @ResponseBody Collection<DTO> filtrarMovimientos(@RequestBody MovimientoFiltro filtro) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "filtrar");
 		filtro.setProductorId(Long.parseLong(LoginControlador.usuario.getId()));
 		return movimientoServicio.listar(filtro);
 	}
 	
 	@RequestMapping(path="/produccionDepositosJson")
 	public HashMap<String, List<DTO>> produccionDepositosJson() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "produccionDepositosJson");
 		HashMap<String, List<DTO>> produccionDepositosJson = new HashMap<String, List<DTO>>();
 		produccionDepositosJson.put(Constantes.DATA, (List<DTO>)depositoServicio.listar());
 		return produccionDepositosJson;
@@ -88,7 +83,6 @@ public class MovimientosControladorRest {
 	
 	@RequestMapping(path="/produccionTotalesJson")
 	public HashMap<String, List<HashMap<String, String>>> produccionTotalesJson() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "produccionTotalesJson");
 		HashMap<String, List<HashMap<String, String>>> produccionTotalesJson = new HashMap<String, List<HashMap<String, String>>>();
 		produccionTotalesJson.put(Constantes.DATA, usuarioServicio.getTotalesProduccion(null));
 		return produccionTotalesJson;
@@ -96,13 +90,11 @@ public class MovimientosControladorRest {
 	
 	@RequestMapping("filtrarDepositosProduccion")
 	public @ResponseBody Collection<DTO> filtrarDepositosProduccion(@RequestBody DepositoFiltro filtro) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "filtrar");
 		return depositoServicio.listar(filtro);
 	}
 	
 	@RequestMapping("filtrarTotalesProduccion")
 	public @ResponseBody List<HashMap<String, String>> filtrarTotalesProduccion(@RequestBody UsuarioFiltro filtro) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", MovimientosControladorRest.class, "filtrar");
 		System.out.println("LLEGAMOS");
 		return usuarioServicio.getTotalesProduccion(filtro);
 	}

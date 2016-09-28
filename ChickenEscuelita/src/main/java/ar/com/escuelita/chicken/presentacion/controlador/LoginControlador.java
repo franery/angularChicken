@@ -31,7 +31,6 @@ public class LoginControlador extends Controlador{
 
 	@RequestMapping("/inicio")
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "login");
 		ModelAndView model = new ModelAndView(Constantes.LOGIN_VIEW);
 		UsuarioDTO usuarioDto = new UsuarioDTO();
 		model.addObject("usuario", usuarioDto);
@@ -62,7 +61,6 @@ public class LoginControlador extends Controlador{
 	
 	@RequestMapping("/403")
 	public ModelAndView accesoDenegado() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "accesoDenegdo");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("pageToLoad", "login/403");
@@ -71,7 +69,6 @@ public class LoginControlador extends Controlador{
 	
 	@RequestMapping(path="/ingresar")
 	public ModelAndView loginVerificacion() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "loginVerificacion");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UsuarioDTO usuarioDto = null;
 		UsuarioFiltro filtro = new UsuarioFiltro();
@@ -89,7 +86,6 @@ public class LoginControlador extends Controlador{
 	}
 	
 	private HashMap<String, List<String>> obtenerPermisos() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", LoginControlador.class, "obtenerPermisos");
 		Set<String> listaPermisosSet = new LinkedHashSet<String>();
 		for(PerfilDTO perfil : usuario.getListaPerfiles()) {
 			for(PermisoDTO permiso : perfil.getListaPermisos()) {

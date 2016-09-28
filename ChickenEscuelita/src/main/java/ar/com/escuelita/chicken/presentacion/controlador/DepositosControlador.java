@@ -24,15 +24,13 @@ public class DepositosControlador extends Controlador {
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", DepositosControlador.class, "initBinder");
 		if (binder.getTarget() instanceof DepositoDTO){
-		binder.setValidator(depositoValidacion);
+			binder.setValidator(depositoValidacion);
 		}
     }
 	
 	@RequestMapping(path="/depositos")
 	public ModelAndView depositos() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", DepositosControlador.class, "depositos");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito",new DepositoDTO());
@@ -43,7 +41,6 @@ public class DepositosControlador extends Controlador {
 	
 	@RequestMapping("depositosNuevo")
 	public ModelAndView depositosNuevo() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", DepositosControlador.class, "depositosNuevo");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito", new DepositoDTO());
@@ -54,7 +51,6 @@ public class DepositosControlador extends Controlador {
 	
 	@RequestMapping(path="/depositosModificar")
 	public ModelAndView depositosModificar(@ModelAttribute("deposito") DepositoDTO deposito) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", DepositosControlador.class, "depositosModificar");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("deposito", deposito);

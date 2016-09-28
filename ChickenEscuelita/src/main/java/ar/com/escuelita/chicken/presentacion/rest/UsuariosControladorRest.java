@@ -35,7 +35,6 @@ public class UsuariosControladorRest {
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControladorRest.class, "initBinder");
 		if (binder.getTarget() instanceof UsuarioDTO){
 		binder.setValidator(usuarioValidacion);
 		}
@@ -43,7 +42,6 @@ public class UsuariosControladorRest {
 	
 	@RequestMapping("/usuariosJson")
 	public HashMap<String, List<DTO>> usuariosJson() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControladorRest.class, "usuariosJson");
 		HashMap<String, List<DTO>> usuariosJson = new HashMap<String, List<DTO>>();
 		usuariosJson.put(Constantes.DATA, (List<DTO>)usuarioServicio.listar());
 		return usuariosJson;
@@ -52,7 +50,6 @@ public class UsuariosControladorRest {
 	@RequestMapping(path="/usuariosNuevoJson")
 	public Object usuariosNuevoJson(@RequestBody @Validated UsuarioDTO usuario,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControladorRest.class, "usuariosNuevoJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
@@ -63,7 +60,6 @@ public class UsuariosControladorRest {
 	@RequestMapping(path="/usuariosBorrarJson")
 	public void usuariosBorrarJson(@RequestBody @Validated UsuarioDTO usuario,
 			BindingResult result) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControladorRest.class, "usuariosBorrarJson");
 		if(!result.hasErrors()) {
 			usuarioServicio.borrar(usuario);
 		}
@@ -72,7 +68,6 @@ public class UsuariosControladorRest {
 	@RequestMapping(path="/usuariosModificarJson")
 	public Object usuariosModificarJson(@RequestBody @Validated UsuarioDTO usuario,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControladorRest.class, "usuariosModificarJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}

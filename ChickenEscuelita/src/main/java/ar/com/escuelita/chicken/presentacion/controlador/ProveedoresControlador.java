@@ -21,7 +21,6 @@ public class ProveedoresControlador extends Controlador {
 	
 	@RequestMapping(path="/proveedores")
 	public ModelAndView proveedores() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedoresControlador.class, "proveedores");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		List<DTO> listaProveedores = (List<DTO>)proveedorServicio.listar();
 		model.addObject("usuarioActual", usuario);
@@ -34,7 +33,6 @@ public class ProveedoresControlador extends Controlador {
 	
 	@RequestMapping(path="/proveedoresNuevo")
 	public ModelAndView proveedoresNuevo() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedoresControlador.class, "proveedoresNuevo");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("proveedor", new ProveedorDTO());
@@ -45,7 +43,6 @@ public class ProveedoresControlador extends Controlador {
 	
 	@RequestMapping(path="/proveedoresModificar")
 	public ModelAndView proveedoresModificar(@ModelAttribute("proveedor") ProveedorDTO proveedor) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ProveedoresControlador.class, "proveedoresModificar");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("proveedor", proveedor);

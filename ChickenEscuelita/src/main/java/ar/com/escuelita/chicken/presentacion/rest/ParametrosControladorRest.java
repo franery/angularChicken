@@ -30,7 +30,6 @@ public class ParametrosControladorRest {
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ParametrosControladorRest.class, "initBinder");
 		if (binder.getTarget() instanceof ParametroDTO){
 		binder.setValidator(parametroValidacion);
 		}
@@ -38,7 +37,6 @@ public class ParametrosControladorRest {
 	
 	@RequestMapping("/parametrosJson")
 	public HashMap<String, List<DTO>> parametrosJson() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ParametrosControladorRest.class, "parametrosJson");
 		HashMap<String, List<DTO>> parametrosJson = new HashMap<String, List<DTO>>();
 		parametrosJson.put(Constantes.DATA, (List<DTO>)parametroServicio.listar());
 		return parametrosJson;
@@ -47,7 +45,6 @@ public class ParametrosControladorRest {
 	@RequestMapping(path="/parametrosNuevoJson")
 	public Object parametrosNuevoJson(@RequestBody @Validated ParametroDTO parametro,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ParametrosControladorRest.class, "parametrosNuevoJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
@@ -58,7 +55,6 @@ public class ParametrosControladorRest {
 	@RequestMapping(path="/parametrosBorrarJson")
 	public void parametrosBorrarJson(@RequestBody @Validated ParametroDTO parametro,
 			BindingResult result) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ParametrosControladorRest.class, "parametrosBorrarJson");
 		if(!result.hasErrors()) {
 			parametroServicio.borrar(parametro);
 		}
@@ -67,7 +63,6 @@ public class ParametrosControladorRest {
 	@RequestMapping(path="/parametrosModificarJson")
 	public Object parametrosModificarJson(@RequestBody @Validated ParametroDTO parametro,
 			BindingResult result) throws NegocioExcepcion {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", ParametrosControladorRest.class, "parametrosModificarJson");
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}

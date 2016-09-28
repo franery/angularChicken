@@ -19,7 +19,6 @@ public class LenguajeControlador extends Controlador{
 
 	@RequestMapping(value = "/cambioLenguaje")
 	public ModelAndView changeLang(@RequestParam("urlRequest") String  urlRequest, HttpServletRequest request, HttpServletResponse response) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", LenguajeControlador.class, "changeLang");
 		LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
 		localeResolver.setLocale(request, response, StringUtils.parseLocaleString(request.getParameter("lenguajeElegido"))); 
 		String[] spliteado = urlRequest.split("/");

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.excepciones.ValidacionExcepcion;
 import ar.com.escuelita.chicken.negocio.servicios.validacion.IUsuarioValidacionServicio;
 import ar.com.escuelita.chicken.presentacion.dto.UsuarioDTO;
@@ -24,7 +23,6 @@ public class UsuarioValidacion implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errores) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuarioValidacion.class, "validate");
 		UsuarioDTO usuario = (UsuarioDTO) target;
 		try {
 			usuarioValidacionServicio.validacionNombreUnico(usuario.getNombreUsuario(), usuario.getId());
