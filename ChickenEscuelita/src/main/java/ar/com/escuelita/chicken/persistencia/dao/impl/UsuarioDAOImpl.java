@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.com.escuelita.chicken.base.constantes.Constantes;
 import ar.com.escuelita.chicken.base.excepciones.PersistenciaExcepcion;
+import ar.com.escuelita.chicken.base.utils.Traza;
 import ar.com.escuelita.chicken.persistencia.dao.DAO;
 import ar.com.escuelita.chicken.persistencia.dao.IUsuarioDAO;
 import ar.com.escuelita.chicken.persistencia.dao.util.QueryParametrosUtil;
@@ -36,6 +37,7 @@ public class UsuarioDAOImpl extends DAO implements IUsuarioDAO {
 		List<UsuarioModel> lista = session.createQuery("from UsuarioModel where borrado=false").list();
 		session.close();
 		Constantes.CHICKEN_LOG.info("Se listaron los Usuarios");
+		Traza.transaccionBBDD(this.getClass(), "from UsuarioModel where borrado=false");
 		return lista;
 	}
 

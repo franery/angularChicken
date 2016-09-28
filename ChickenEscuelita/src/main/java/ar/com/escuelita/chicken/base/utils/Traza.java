@@ -113,6 +113,33 @@ public class Traza {
 	
 	
 	/**************************************************************************************/
+	/**
+	 * Capacidad de log: Aspecto
+	 * @param clase
+	 * @param metodo
+	 * @param detalle
+	 */
+	public static void aspectoDebug(Class<?> clase, String metodo, String detalle) {
+		log = LoggerFactory.getLogger(clase);
+		MDC.put(NIVEL, "ASPECTO");
+		String usuario = SecurityContextHolder.getContext().getAuthentication().getName();
+		log.debug("[{}][{}]: {}", new Object[]{usuario, metodo, detalle});
+		MDC.put(NIVEL, "");
+	}
+	
+	/**
+	 * Capacidad de log: Aspecto
+	 * @param clase
+	 * @param metodo
+	 * @param detalle
+	 */
+	public static void aspectoInfo(Class<?> clase, String metodo, String detalle) {
+		log = LoggerFactory.getLogger(clase);
+		MDC.put(NIVEL, "ASPECTO");
+		String usuario = SecurityContextHolder.getContext().getAuthentication().getName();
+		log.info("[{}][{}]: {}", new Object[]{usuario, metodo, detalle});
+		MDC.put(NIVEL, "");
+	}
 	
 	/**
 	 * Capacidad de log: InfoMemoriaCPU
