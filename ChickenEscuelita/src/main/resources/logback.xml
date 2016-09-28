@@ -8,19 +8,19 @@
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%-30([%d])[%logger{20}] %-13([%X{level}]) %msg%n</pattern>
+            <pattern>[%d][%logger{20}]%msg%n</pattern>
         </encoder>
     </appender>
 
     <appender 
         name="FILE" 
         class="ch.qos.logback.core.FileAppender">
-        <file>C:/Users/r.petit.de.meurville/git/chicken/ChickenEscuelita/src/main/resources/logs/chicken.log</file>
+        <file>C:/logs/chicken.log</file>
         <append>true</append>
         <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%-30([%d])[%logger{20}] %-13([%X{level}]) %msg%n</pattern>
+            <pattern>[%d][%logger{20}]%msg%n</pattern>
         </encoder>
     </appender>
 
@@ -50,7 +50,11 @@
 	  <appender-ref ref="FILE"/>
 	</logger>
 	
-	<!-- SHIVA -->
+	<logger name="org.hibernate" level="warn">
+	  <appender-ref ref="FILE"/>
+	</logger>
+	
+	<!-- CHICKEN -->
 	<logger name="ar.com.escuelita.chicken" level="info">
   		<appender-ref ref="FILE" />
 	</logger>
