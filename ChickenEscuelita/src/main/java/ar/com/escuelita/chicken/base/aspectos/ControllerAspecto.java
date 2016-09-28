@@ -9,9 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import ar.com.escuelita.chicken.base.utils.Traza;
 
-
-
-
 public class ControllerAspecto {
 
 	public Object timeController(ProceedingJoinPoint joinPoint) throws Throwable {

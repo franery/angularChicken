@@ -11,19 +11,19 @@
 	<bean id="controllerAspectoBean" class="ar.com.escuelita.chicken.base.aspectos.ControllerAspecto" />
 	
 	<aop:config>
-     <aop:aspect ref="utilidadAspectoBean" id="utilidadAspecto">
-         <aop:pointcut id="pointcut1" expression="within(ar.com.escuelita.chicken.negocio.servicios.impl.UsuarioServicioImpl)
-         	|| execution(* ar.com.escuelita.chicken.persistencia.dao.impl.UsuarioDAOImpl.*(..))" />
-         <aop:around pointcut-ref="pointcut1" method="time"/>
-         
-         <aop:pointcut id="pointcut2" expression="execution(* org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler.onAuthenticationSuccess(..))"/>
-         <aop:around pointcut-ref="pointcut2" method="login"/>
-      </aop:aspect>
+	    <aop:aspect ref="utilidadAspectoBean" id="utilidadAspecto">
+	        <aop:pointcut id="pointcut1" expression="within(ar.com.escuelita.chicken.negocio.servicios.impl.*)
+	        	|| execution(* ar.com.escuelita.chicken.persistencia.dao.impl.*.*(..))" />
+	        <aop:around pointcut-ref="pointcut1" method="time"/>
+	        
+	        <aop:pointcut id="pointcut2" expression="execution(* org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler.onAuthenticationSuccess(..))"/>
+	        <aop:around pointcut-ref="pointcut2" method="login"/>
+	    </aop:aspect>
       
-      <aop:aspect ref="controllerAspectoBean" id="controllerAspecto">
-         <aop:pointcut id="pointcut3" expression="within(ar.com.escuelita.chicken.presentacion.controlador.*) &amp;&amp; execution(public * *(..))
-         	&amp;&amp; !execution(public * *.initBinder(..))" />
-         <aop:around pointcut-ref="pointcut3" method="timeController"/>
-      </aop:aspect>
+		<aop:aspect ref="controllerAspectoBean" id="controllerAspecto">
+			<aop:pointcut id="pointcut3" expression="within(ar.com.escuelita.chicken.presentacion.controlador.*) &amp;&amp; execution(public * *(..))
+				&amp;&amp; !execution(public * *.initBinder(..))" />
+			<aop:around pointcut-ref="pointcut3" method="timeController"/>
+		</aop:aspect> 
 	</aop:config>
 </beans>

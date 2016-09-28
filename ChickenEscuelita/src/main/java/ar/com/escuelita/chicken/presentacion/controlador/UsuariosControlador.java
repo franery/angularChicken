@@ -39,7 +39,7 @@ public class UsuariosControlador extends Controlador {
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "initBinder");
+		//Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "initBinder");
 		if (binder.getTarget() instanceof UsuarioDTO){
 		binder.setValidator(usuarioValidacion);
 		}
@@ -47,10 +47,8 @@ public class UsuariosControlador extends Controlador {
 	
 	@RequestMapping(path="/usuarios")
 	public ModelAndView usuarios() {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuarios");
+		//Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuarios");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
-		List<DTO> listaUsuarios = (List<DTO>)usuarioServicio.listar();
-		model.addObject("listaUsuarios",listaUsuarios);
 		UsuarioDTO usuarioNM = new UsuarioDTO();
 		model.addObject("usuarioNM", usuarioNM);		
 		model.addObject("usuarioActual", usuario);
@@ -62,7 +60,7 @@ public class UsuariosControlador extends Controlador {
 	@RequestMapping(path="/usuariosBorrar")
 	public ModelAndView borrarUsuario(@ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "borrarUsuario");
+		//Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "borrarUsuario");
 		if(result.hasErrors()) {
 			return usuarios();
 		}
@@ -72,7 +70,7 @@ public class UsuariosControlador extends Controlador {
 	
 	@RequestMapping("/usuariosNuevo")
 	public ModelAndView usuariosNuevo(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM){
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuariosNuevo");
+		//Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuariosNuevo");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		if (usuarioNM == null) {
@@ -88,7 +86,7 @@ public class UsuariosControlador extends Controlador {
 	
 	@RequestMapping(path="/usuariosModificar")
 	public ModelAndView usuariosModificar(@ModelAttribute("usuarioNM") UsuarioDTO usuarioNM) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuariosModificar");
+		//Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuariosModificar");
 		ModelAndView model = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		model.addObject("usuarioActual", usuario);
 		model.addObject("usuarioNM", usuarioNM);
@@ -102,7 +100,7 @@ public class UsuariosControlador extends Controlador {
 	@RequestMapping(path="/usuariosProcesarNuevo")
 	public ModelAndView usuariosProcesarNuevo(HttpServletRequest request, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuariosProcesarNuevo");
+		//Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuariosProcesarNuevo");
 		if (result.hasErrors()) {
 			return usuariosNuevo(usuarioNM);
 		}
@@ -117,7 +115,7 @@ public class UsuariosControlador extends Controlador {
 	@RequestMapping(path="/usuariosProcesarModificar")
 	public ModelAndView usuariosProcesarModificar(HttpServletRequest request, @ModelAttribute("usuarioNM") @Validated UsuarioDTO usuarioNM, 
 			BindingResult result) throws Exception {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuariosProcesarModificar");
+		//Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "usuariosProcesarModificar");
 		if(result.hasErrors()) {
 			return usuariosModificar(usuarioNM);
 		}
@@ -128,7 +126,7 @@ public class UsuariosControlador extends Controlador {
 	}
 	
 	private List<PerfilDTO> obtenerListaPerfiles(HttpServletRequest request) {
-		Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "obtenerListaPerfiles");
+		//Constantes.CHICKEN_LOG.info("Controlador: {} ; Metodo: {} ;", UsuariosControlador.class, "obtenerListaPerfiles");
 		List<PerfilDTO> listaNuevaPerfiles = new ArrayList<>();
 		Collection<DTO> listaPerfiles = perfilServicio.listar();
 		for (DTO dto : listaPerfiles) {

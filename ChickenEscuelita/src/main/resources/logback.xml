@@ -36,26 +36,26 @@
 
 	
 	<!-- Spring Webservice XML -->
-   	<logger name="org.springframework.ws.client.MessageTracing">
+   	<logger name="org.springframework.ws.client.MessageTracing" additivity="false">
    		<level value="TRACE" />	
     	<appender-ref ref="FILE" />
   	</logger>
    
    	<!-- Spring -->
-   	<logger name="org.springframework" level="error">
+   	<logger name="org.springframework" level="error" additivity="false">
   		<appender-ref ref="FILE" />
 	</logger>
 	<!-- Spring JMS -->
-	<logger name="org.springframework.jms" level="debug">
+	<logger name="org.springframework.jms" level="debug" additivity="false">
 	  <appender-ref ref="FILE"/>
 	</logger>
 	
-	<logger name="org.hibernate" level="warn">
+	<logger name="org.hibernate" level="warn" additivity="false">
 	  <appender-ref ref="FILE"/>
 	</logger>
 	
 	<!-- CHICKEN -->
-	<logger name="ar.com.escuelita.chicken" level="info">
+	<logger name="ar.com.escuelita.chicken" level="info" additivity="false">
   		<appender-ref ref="FILE" />
 	</logger>
 	
