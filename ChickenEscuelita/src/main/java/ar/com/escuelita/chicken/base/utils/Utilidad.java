@@ -6,6 +6,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ar.com.escuelita.chicken.base.constantes.Constantes;
+
 public class Utilidad {
 
 	public static final String DATE_TIME_FULL_FORMAT = "dd/MM/yyyy HH:mm:ss";
@@ -51,5 +53,16 @@ public class Utilidad {
         Date difference = new Date(diff);
         return difference;
     }
-
+    
+    public static String getUsuarioSesion(HttpServletRequest httpServletRequest) {
+		if ((!(httpServletRequest.getSession().getAttribute(Constantes.LOGIN_USERNAME) == null))
+				&& (httpServletRequest.getSession().getAttribute(Constantes.LOGIN_USERNAME) instanceof String)
+				&& (!((String)httpServletRequest.getSession().getAttribute(Constantes.LOGIN_USERNAME) == null))) 
+		{
+			
+			return (String) httpServletRequest.getSession().getAttribute(Constantes.LOGIN_USERNAME);
+		}
+		
+		return "";
+	}
 }

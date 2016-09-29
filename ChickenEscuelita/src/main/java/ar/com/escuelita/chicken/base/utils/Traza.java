@@ -105,7 +105,7 @@ public class Traza {
 	 * Me permite cambiar la ruta y el nombre del archivo
 	 * @param valor
 	 */
-	public synchronized static void cambiarNombreArchivoLog(String valor) {
+	public synchronized static void cambiarNombreUsuarioArchivoLog(String valor) {
 		MDC.put("logFileName", valor);
 	}
 	public synchronized static void resetearDefaultArchivoLog() {
@@ -125,9 +125,9 @@ public class Traza {
 		MDC.put(NIVEL, "ASPECTO");
 		String usuario;
 		if (LoginControlador.usuario != null){
-			usuario = LoginControlador.usuario.getNombre();
+			usuario = LoginControlador.usuario.getNombreUsuario();
 		} else {
-			usuario = "juan";
+			usuario = "";
 		}
 		log.debug("[{}][{}]: {}", new Object[]{usuario, metodo, detalle});
 		MDC.put(NIVEL, "");

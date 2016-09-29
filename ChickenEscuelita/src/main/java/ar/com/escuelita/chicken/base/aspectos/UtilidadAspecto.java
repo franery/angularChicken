@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.ldap.userdetails.LdapUserDetails;
 
 import ar.com.escuelita.chicken.base.utils.Traza;
@@ -32,7 +33,10 @@ public class UtilidadAspecto {
 					if (user instanceof LdapUserDetails) {
 						LdapUserDetails ldapUser = (LdapUserDetails) user;
 						usuario = ldapUser.getUsername().toUpperCase();
-					}	
+					}
+					else if(user instanceof User) {
+						usuario = ((User)user).getUsername();
+					}
 					String detalle = objeto.toString();
 					Traza.auditoriaLogin(getClass(), detalle, usuario);
 				}

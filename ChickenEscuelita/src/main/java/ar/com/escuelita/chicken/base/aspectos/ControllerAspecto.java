@@ -2,7 +2,6 @@ package ar.com.escuelita.chicken.base.aspectos;
 
 import java.text.DecimalFormat;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,11 +17,8 @@ public class ControllerAspecto {
 	
 		String usuario = "";
 		if (joinPoint != null && joinPoint.getArgs() != null) {
-			for (Object objeto: joinPoint.getArgs()) {
-				if (objeto instanceof HttpServletRequest) {
-					HttpServletRequest request = ((HttpServletRequest)objeto);
-					usuario = SecurityContextHolder.getContext().getAuthentication().getName();
-				}
+			if(SecurityContextHolder.getContext().getAuthentication() != null) {
+				usuario = SecurityContextHolder.getContext().getAuthentication().getName();
 			}
 		}
 	
