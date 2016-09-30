@@ -11,8 +11,6 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import ar.com.escuelita.chicken.base.constantes.Constantes;
-
 @Controller
 public class LenguajeControlador extends Controlador{
 

@@ -14,15 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import ar.com.escuelita.chicken.base.constantes.Constantes;
-import ar.com.escuelita.chicken.base.excepciones.Excepcion;
 import ar.com.escuelita.chicken.base.utils.Utilidad;
 
 @ControllerAdvice
 public class ExcepcionControlador {
 
 	private ModelAndView infoModelAndView(Exception ex, HttpServletRequest request, HttpServletResponse response) {
-		Excepcion e = new Excepcion(ex);
-		
 		ModelAndView mv = new ModelAndView(Constantes.PRINCIPAL_VIEW);
 		mv.addObject("pageToLoad", Constantes.EXCEPCION_VIEW);
 		request.setAttribute("errorSpecified", ex.getMessage());
