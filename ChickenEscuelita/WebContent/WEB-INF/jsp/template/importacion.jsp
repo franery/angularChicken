@@ -20,3 +20,7 @@
 <script src="${pageContext.request.contextPath}/js/material.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/floating-label.js"></script>
 <script src="${pageContext.request.contextPath}/js/chicken.js"></script>
+<script src="${pageContext.request.contextPath}/js/react.js"></script>
+<script src="${pageContext.request.contextPath}/js/react-dom.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/react-dom-server.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/react-with-addons.min.js"></script>
