@@ -9,7 +9,7 @@ import {Home,About,Contact} from './App.jsx';
 ReactDOM.render((
    <Router history = {browserHistory}>
       <Route path = "/" component = {App}>
-         <IndexRoute component = {MultiplexorApp} />
+         <IndexRoute component = {About} />
          <Route path = "home" component = {Home} />
          <Route path = "about" component = {About} />
          <Route path = "contact" component = {Contact} />
