@@ -10,9 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "es6-promise": "^4.0.5",
+    "fixed-data-table": "^0.6.3",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-jquery-datatables": "^0.7.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "react-super-components": "^0.3.5",
@@ -22,7 +24,7 @@
     "webpack-dev-server": "^1.16.1"
   },
   "devDependencies": {
-    "babel-core": "^6.16.0",
+    "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.16.0"
