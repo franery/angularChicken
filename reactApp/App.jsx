@@ -3,6 +3,7 @@ import fecth from 'isomorphic-fetch';
 import promise from 'es6-promise';
 import {Link} from 'react-router';
 import MultiplexorApp from './MultiplexorApp.jsx';
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 class App extends React.Component {
   render() {
@@ -22,25 +23,31 @@ class App extends React.Component {
 export default App;
 
 export class Home extends React.Component {
-  render() {
-    return (
-	<div>
-        <h1>Home Page Content</h1>
-        <table id="tablita">
-            <thead>
-                <tr>
-                    <th>nombre</th>
-                    <th>stock</th>
-                    <th>stockMax</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
-	)
-  }
-} 
+  constructor(props) {
+      super(props);
+		
+      this.state = {
+         data: 'Initial data...'
+      }
+
+      this.updateState = this.updateState.bind(this);
+
+   };
+
+   updateState(e) {
+      this.setState({data: e.target.value});
+   }
+
+   render() {
+      return (
+         <div>
+            <input type = "text" value = {this.state.data} 
+               onChange = {this.updateState} />
+            <h4>{this.state.data}</h4>
+         </div>
+      );
+   }
+}
 
 export class About extends React.Component {
     constructor() {
@@ -66,9 +73,48 @@ export class About extends React.Component {
 }
 
 export class Contact extends React.Component {
-  render()  {
-    return (
-      <h1>Contact Page Content</h1>
-    )
-  }
+  constructor(props) {
+      super(props);
+		
+      this.state = {
+         items: ['Item 1...', 'Item 2...', 'Item 3...', 'Item 4...']
+      }
+
+      this.handleAdd = this.handleAdd.bind(this);
+   };
+
+   handleAdd() {
+      var newItems = this.state.items.concat([prompt('Create New Item')]);
+      this.setState({items: newItems});
+   }
+
+   handleRemove(i) {
+      var newItems = this.state.items.slice();
+      newItems.splice(i, 1);
+      this.setState({items: newItems});
+   }
+
+   render() {
+      var items = this.state.items.map(function(item, i) {
+         return (
+            <div key = {item} onClick = {this.handleRemove.bind(this, i)}>
+               {item}
+            </div>
+         );
+			
+      }.bind(this));
+		
+      return (
+         <div>      
+            <button onClick = {this.handleAdd}>Add Item</button>
+				
+            <ReactCSSTransitionGroup transitionName = "example" 
+               transitionEnterTimeout = {500} transitionLeaveTimeout = {500}>
+               {items}
+            </ReactCSSTransitionGroup>
+         </div>
+      );
+   }
 }
+
+
