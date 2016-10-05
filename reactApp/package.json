@@ -13,6 +13,7 @@
     "fixed-data-table": "^0.6.3",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.3.2",
+    "react-addons-css-transition-group": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-jquery-datatables": "^0.7.1",
     "react-redux": "^4.4.5",

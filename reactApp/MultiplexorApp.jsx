@@ -14,7 +14,7 @@ class MultiplexorApp extends React.Component {
    setStateHandler() {
 	var len = this.state.data.length;
    for(var i = 0; i < len ; i++ ) {
-
+      
 	 var item = <button onClick = {this.setStateHandler}>MULTIPLEXOR</button>
       var myArray = this.state.data;
       myArray.push(item)
