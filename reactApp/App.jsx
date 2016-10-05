@@ -4,7 +4,9 @@ import promise from 'es6-promise';
 import {Link} from 'react-router';
 import MultiplexorApp from './MultiplexorApp.jsx';
 import {Table, Column, Cell} from 'fixed-data-table';
+import 'jquery';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group'); 
+'use strict';
 
 class App extends React.Component {
   render() {
@@ -160,14 +162,14 @@ export class Tabla extends React.Component {
                     <Column
                         align="left"
                         header={<Cell>Nombre</Cell>}
-                        cell={<Celda data={this.state.data} field="nombre"/>}
+                        cell={<Celda {...props}/>}
                         width={200}
                     />
 
                     <Column
                         align="center"
                         header={<Cell>Stock Huevos</Cell>}
-                        cell={<Celda data={this.state.data} field="stockHuevos"/>}
+                        cell={<Celda {...props}/>}
                         width={200}
                     />
                 </Table>
@@ -177,12 +179,17 @@ export class Tabla extends React.Component {
 }
 
 class Celda extends React.Component {
+  constructor(props) {
+      super(props);
+  }
+  
   render() {
-      const {rowIndex} = this.props;
-    return (
-      <Cell data={this.props.data} field={this.props.field}>
-        {this.props.data[rowIndex][this.props.field]}
+    var { rowIndex,field,data} = props;
+    return (    
+      <div><Cell {...props}>
+        {data[rowIndex][field]}
       </Cell>
+      </div>
     );
   }
 }
