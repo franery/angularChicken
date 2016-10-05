@@ -3,7 +3,7 @@ import fecth from 'isomorphic-fetch';
 import promise from 'es6-promise';
 import {Link} from 'react-router';
 import MultiplexorApp from './MultiplexorApp.jsx';
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group'); 
 
 class App extends React.Component {
   render() {
