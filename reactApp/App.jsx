@@ -3,6 +3,7 @@ import fecth from 'isomorphic-fetch';
 import promise from 'es6-promise';
 import {Link} from 'react-router';
 import MultiplexorApp from './MultiplexorApp.jsx';
+import {Table, Column, Cell} from 'fixed-data-table';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group'); 
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
             <li><Link to="home">Home</Link></li>
             <li><Link to="about">About</Link></li>
             <li><Link to="contact">Contact</Link></li>
+            <li><Link to="tabla">Tabla</Link></li>
             <li><Link to="multiplexor">Multiplexor</Link></li>
         </ul>
       {this.props.children}
@@ -126,6 +128,63 @@ export class Contact extends React.Component {
          </div>
       );
    }
+}
+
+export class Tabla extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: [] };
+        this.loadData = this.loadData.bind(this);
+    }
+
+    loadData() {
+        fetch("http://localhost:8080/ChickenReact/depositosJson") 
+            .then(result=>result.json())
+				      .then(items=>this.setState({data: items.data}))
+    }
+
+    componentDidMount() {
+        setInterval(this.loadData, 2000);
+    }
+
+    render() {
+        return(
+            <div>
+                <Table
+                    width={600}
+                    height={600}
+                    rowsCount={this.state.data.length}
+                    rowHeight={50}
+                    headerHeight={30}>
+
+                    <Column
+                        align="left"
+                        header={<Cell>Nombre</Cell>}
+                        cell={<Celda data={this.state.data} field="nombre"/>}
+                        width={200}
+                    />
+
+                    <Column
+                        align="center"
+                        header={<Cell>Stock Huevos</Cell>}
+                        cell={<Celda data={this.state.data} field="stockHuevos"/>}
+                        width={200}
+                    />
+                </Table>
+            </div>
+        );
+    }
+}
+
+class Celda extends React.Component {
+  render() {
+      const {rowIndex} = this.props;
+    return (
+      <Cell data={this.props.data} field={this.props.field}>
+        {this.props.data[rowIndex][this.props.field]}
+      </Cell>
+    );
+  }
 }
 
 function createCORSRequest(method, url) {

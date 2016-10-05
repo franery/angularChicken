@@ -4,7 +4,7 @@ import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import App from './App.jsx';
 import MultiplexorApp from './MultiplexorApp.jsx';
 
-import {Home,About,Contact} from './App.jsx';
+import {Home, About, Contact, Tabla} from './App.jsx';
 
 ReactDOM.render((
    <Router history = {browserHistory}>
@@ -13,6 +13,7 @@ ReactDOM.render((
          <Route path = "home" component = {Home} />
          <Route path = "about" component = {About} />
          <Route path = "contact" component = {Contact} />
+         <Route path = "tabla" component = {Tabla} />
          <Route path = "multiplexor" component = {MultiplexorApp} />
       </Route>
    </Router>
