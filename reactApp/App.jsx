@@ -3,7 +3,6 @@ import fecth from 'isomorphic-fetch';
 import promise from 'es6-promise';
 import {Link} from 'react-router';
 import MultiplexorApp from './MultiplexorApp.jsx';
-import $ from 'jquery';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 class App extends React.Component {
@@ -54,19 +53,30 @@ export class About extends React.Component {
     constructor() {
         super();
         this.state = { items: [] };
+
+        this.recargar = this.recargar.bind(this);
     }
     
-    componentDidMount() {
-        fetch('http://localhost:8080/ChickenReact/usuariosJson') 
-            .then(result=>result.json())
-				.then(items=>this.setState({items: items.data}))
+    recargar() {
+        var xhr = createCORSRequest('GET', 'http://localhost:8080/ChickenReact/usuariosJson');
+        xhr.send();
+        xhr.onload = function() {
+            var responseText = xhr.responseText;
+            responseText = JSON.parse(responseText);
+            this.setState({items: responseText.data});
+        }.bind(this);
     }
-    
+
+    componentWillMount() {
+        this.recargar();
+        setInterval(this.recargar,5000);
+    }
+   
     render() {
         return  (
         <div>
             <ul>
-                {this.state.items.map(item=><li key={item.id}>{item.id} {item.nombre} {item.apellido}</li>)}
+               {this.state.items.map(item=><li key={item.id}>{item.id} {item.nombre} {item.apellido}</li>)}
             </ul>  
         </div>
         )
@@ -117,5 +127,30 @@ export class Contact extends React.Component {
       );
    }
 }
+
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+
+  } else if (typeof XDomainRequest != "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}
+
 
 
