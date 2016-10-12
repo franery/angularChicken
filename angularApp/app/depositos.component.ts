@@ -6,6 +6,8 @@ import { Location } from '@angular/common';
   template: `
             <h1>Depositos</h1>
             <br>
+            <deposito-list></deposito-list>
+            <br>
             <button (click)="goBack()">back</button>
             `
 })
