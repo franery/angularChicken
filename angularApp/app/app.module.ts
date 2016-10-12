@@ -5,6 +5,7 @@ import { RouterModule }   from '@angular/router';
 import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { DepositosComponent }  from './depositos.component';
+import { HomeComponent }  from './home.component';
 import { UsuariosComponent }  from './usuarios.component';
 import { GallinerosComponent }  from './gallineros.component';
 
@@ -15,6 +16,7 @@ import { GallinerosComponent }  from './gallineros.component';
   ],
   declarations: [
     AppComponent,
+    HomeComponent,
     DepositosComponent,
     UsuariosComponent,
     GallinerosComponent
