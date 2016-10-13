@@ -13,7 +13,8 @@ import { GallinerosComponent }  from './gallineros.component';
       { path: 'usuarios', component: UsuariosComponent },
       { path: 'gallineros', component: GallinerosComponent },
       { path: 'home', component: HomeComponent },
-      { path: '', component: HomeComponent }
+      { path: '', component: HomeComponent },
+      { path: '**', component: HomeComponent }
     ])
   ],
   exports: [
