@@ -13,8 +13,8 @@ import {ColumnComponent} from './column.component';
                   <th *ngFor="let column of columns">{{column.header}}</th>
                 </tr>
               </thead>
-              <tbody *ngFor="let row of getData()">
-                <tr>
+              <tbody>
+                <tr *ngFor="let row of getData()">
                   <td *ngFor="let column of columns">{{row[column.value]}}</td>
                 </tr>
               </tbody>
