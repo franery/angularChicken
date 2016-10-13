@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Deposito }          from './deposito';
-import { DepositoService }       from './deposito.service';
+import { Deposito } from './deposito';
+import { DepositoService } from './deposito.service';
 
 @Component({
   moduleId: module.id,
@@ -19,14 +19,13 @@ import { DepositoService }       from './deposito.service';
 export class DepositoListComponent implements OnInit {
   errorMessage: string;
   depositos: Deposito[];
-  mode = 'Observable';
 
   constructor (private depositoService: DepositoService) {}
 
-  ngOnInit() { this.getHeroes(); }
+  ngOnInit() { this.getDepositos(); }
 
-  getHeroes() {
-    this.depositoService.getHeroes()
+  getDepositos() {
+    this.depositoService.getDepositos()
                      .subscribe(
                        depositos => this.depositos = depositos,
                        error =>  this.errorMessage = <any>error);

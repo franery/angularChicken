@@ -1,28 +1,18 @@
-import { Injectable }     from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 
-import { Deposito }           from './deposito';
-import { Observable }     from 'rxjs/Observable';
+import { Deposito } from './deposito';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DepositoService {
-  private heroesUrl = 'http://localhost:8081/ChickenReact/depositosJson';  // URL to web API
+  private depositosUrl = 'http://localhost:8080/ChickenEscuelita/depositosJson';  // URL to web API
 
   constructor (private http: Http) {}
 
-  getHeroes (): Observable<Deposito[]> {
-    return this.http.get(this.heroesUrl)
-                    .map(this.extractData)
-                    .catch(this.handleError);
-  }
-
-  addHero (name: string): Observable<Deposito> {
-    let body = JSON.stringify({ name });
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.heroesUrl, body, options)
+  getDepositos (): Observable<Deposito[]> {
+    return this.http.get(this.depositosUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
