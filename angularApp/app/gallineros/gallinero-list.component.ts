@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Gallinero } from './gallinero';
-import { GallineroService } from './gallinero.service';
+import { ListService } from '../list.service';
 
 @Component({
   moduleId: module.id,
@@ -17,18 +17,20 @@ import { GallineroService } from './gallinero.service';
       </datatable>
 
           <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>`,
-  providers: [ GallineroService ]
+  providers: [ ListService ]
 })
 export class GallineroListComponent implements OnInit {
+  
+  private gallinerosUrl = 'http://localhost:8080/ChickenEscuelita/gallinerosJson';  // URL to web API
   errorMessage: string;
   gallineros: Gallinero[];
 
-  constructor (private gallineroService: GallineroService) {}
+  constructor (private listService: ListService) {}
 
   ngOnInit() { this.getGallineros(); }
 
   getGallineros() {
-    this.gallineroService.getGallineros()
+    this.listService.getList(this.gallinerosUrl)
                      .subscribe(
                        gallineros => this.gallineros = gallineros,
                        error =>  this.errorMessage = <any>error);

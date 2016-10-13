@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Deposito } from './deposito';
-import { DepositoService } from './deposito.service';
+import { ListService } from '../list.service';
 
 @Component({
   moduleId: module.id,
@@ -16,18 +16,20 @@ import { DepositoService } from './deposito.service';
       </datatable>
 
           <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>`,
-  providers: [ DepositoService ]
+  providers: [ ListService ]
 })
 export class DepositoListComponent implements OnInit {
+  
+  private depositosUrl = 'http://localhost:8080/ChickenEscuelita/depositosJson';
   errorMessage: string;
   depositos: Deposito[];
 
-  constructor (private depositoService: DepositoService) {}
+  constructor (private listService: ListService) {}
 
   ngOnInit() { this.getDepositos(); }
 
   getDepositos() {
-    this.depositoService.getDepositos()
+    this.listService.getList(this.depositosUrl)
                      .subscribe(
                        depositos => this.depositos = depositos,
                        error =>  this.errorMessage = <any>error);

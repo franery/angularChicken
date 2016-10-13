@@ -2,17 +2,15 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 
-import { Deposito } from './deposito';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class DepositoService {
-  private depositosUrl = 'http://localhost:8080/ChickenEscuelita/depositosJson';  // URL to web API
-
+export class ListService {
+  
   constructor (private http: Http) {}
 
-  getDepositos (): Observable<Deposito[]> {
-    return this.http.get(this.depositosUrl)
+  getList (url: string): Observable<any[]> {
+    return this.http.get(url)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
