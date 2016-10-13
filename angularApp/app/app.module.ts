@@ -14,6 +14,7 @@ import { UsuariosComponent }  from './usuarios.component';
 import { GallinerosComponent }  from './gallineros.component';
 
 import { DepositoListComponent } from './depositos/deposito-list.component';
+import { GallineroListComponent } from './gallineros/gallinero-list.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { DepositoListComponent } from './depositos/deposito-list.component';
     DepositosComponent,
     UsuariosComponent,
     GallinerosComponent,
-    DepositoListComponent
+    DepositoListComponent,
+    GallineroListComponent
   ],
   bootstrap: [
     AppComponent
