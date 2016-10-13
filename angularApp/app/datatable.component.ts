@@ -20,7 +20,7 @@ import { Output, EventEmitter } from '@angular/core';
                   <td>
                     <div class="btn-group">
                       <button type="button" class="btn btn-default btn" (click)="edit(row)"><i class="glyphicon glyphicon-pencil"></i></button>  
-                      <button type="button" class="btn btn-default btn" (click)="delete(row.id)"><i class="glyphicon glyphicon-trash"></i></button> 
+                      <button type="button" class="btn btn-default btn" (click)="delete(row)"><i class="glyphicon glyphicon-trash"></i></button> 
                     </div>
                   </td>
                 </tr>
@@ -63,7 +63,7 @@ export class DatatableComponent {
   edit(row){
     this.modifyId.emit(row);
   }
-  delete(id){
-    this.deleteId.emit(id);
+  delete(row){
+    this.deleteId.emit(row);
   }
 }

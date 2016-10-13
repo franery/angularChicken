@@ -7,7 +7,7 @@ import { ListService } from '../list.service';
   selector: 'deposito-list',
   template: `
       <br>
-      <datatable [dataset]=depositos [enableFilter]=true>
+      <datatable [dataset]=depositos [enableFilter]=true (deleteId)="delete($event)" (modifyId)="modify($event)">
           <column [value]="'id'" [header]="'Id'"></column>
           <column [value]="'nombre'" [header]="'Nombre'"></column>
           <column [value]="'stockMaximo'" [header]="'Stock Maximo'"></column>
@@ -20,7 +20,8 @@ import { ListService } from '../list.service';
 })
 export class DepositoListComponent implements OnInit {
   
-  private depositosUrl = 'http://localhost:8080/ChickenEscuelita/depositosJson';
+  private depositosListarUrl = 'http://localhost:8080/ChickenEscuelita/depositosJson';
+  private depositosBorrarUrl = 'http://localhost:8080/ChickenEscuelita/depositosBorrarJson';
   errorMessage: string;
   depositos: Deposito[];
 
@@ -29,10 +30,18 @@ export class DepositoListComponent implements OnInit {
   ngOnInit() { this.getDepositos(); }
 
   getDepositos() {
-    this.listService.getList(this.depositosUrl)
+    this.listService.getList(this.depositosListarUrl)
                      .subscribe(
                        depositos => this.depositos = depositos,
                        error =>  this.errorMessage = <any>error);
+  }
+
+  delete(objeto) {
+    this.listService.delete(this.depositosBorrarUrl, objeto).subscribe();
+  }
+
+  modify(row){
+    console.log("modificar:"+row.id);
   }
 
 }
