@@ -11,6 +11,8 @@ import { DepositoService } from './deposito.service';
           <column [value]="'id'" [header]="'Id'"></column>
           <column [value]="'nombre'" [header]="'Nombre'"></column>
           <column [value]="'stockMaximo'" [header]="'Stock Maximo'"></column>
+          <column [value]="'stockHuevos'" [header]="'Stock Maximo'"></column>
+          <column [value]="'borrado'" [header]="'Borrado'"></column>
       </datatable>
 
           <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>`,

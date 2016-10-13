@@ -13,7 +13,7 @@ import { HomeComponent }  from './home.component';
 import { UsuariosComponent }  from './usuarios.component';
 import { GallinerosComponent }  from './gallineros.component';
 
-import { DepositoListComponent }        from './deposito-list.component';
+import { DepositoListComponent } from './depositos/deposito-list.component';
 
 @NgModule({
   imports: [
