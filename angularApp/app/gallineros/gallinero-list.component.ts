@@ -7,7 +7,7 @@ import { ListService } from '../list.service';
   selector: 'gallinero-list',
   template: `
       <br>
-      <datatable [dataset]=gallineros [enableFilter]=true>
+      <datatable [dataset]=gallineros [enableFilter]=true (deleteId)="delete($event)" (modifyId)="modify($event)">
           <column [value]="'id'" [header]="'Id'"></column>
           <column [value]="'nombre'" [header]="'Nombre'"></column>
           <column [value]="'usuarioId'" [header]="'Usuario Id'"></column>
@@ -35,5 +35,10 @@ export class GallineroListComponent implements OnInit {
                        gallineros => this.gallineros = gallineros,
                        error =>  this.errorMessage = <any>error);
   }
-
+  delete(id){
+    console.log("deletear "+id);
+  }
+  modify(row){
+    console.log("modifiquear "+row.id );
+  }
 }
