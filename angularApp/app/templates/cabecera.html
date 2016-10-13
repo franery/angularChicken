@@ -1,0 +1,39 @@
+<div class="navbar navbar-inverse navbar-fixed-top twoRow" role="navigation">	
+	<div class=container>
+		<div class="navbar-header">
+ 			<a class="navbar-brand" routerLink="/home">Chicken</a>
+     		<button type = "button" class = "navbar-toggle" data-toggle="collapse" data-target = "#example-navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+		</div>       
+		<div class="collapse navbar-collapse" id="example-navbar-collapse">
+			<div>
+				<ul class="nav navbar-nav navbar-right">
+    				<li><a >Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="navbar navbar-inverse navbar-static-top" id="navbar2" role="navigation">	
+	<div  class="container-fluid no-radius">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar2-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar2-navbar-collapse">
+			<div class="container">
+				<ul class="nav navbar-nav">
+                    <li>  <a routerLink="/depositos">depositos</a> </li>
+                    <li> <a routerLink="/usuarios">usuarios</a> </li>
+                    <li> <a routerLink="/gallineros">gallineros</a> </li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="ayuda">Ayuda</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

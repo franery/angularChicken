@@ -5,15 +5,6 @@ import './rxjs-operators';
 
 @Component({
   selector: 'my-app',
-  template: `
-            <h1>Angular App</h1>
-            <nav>
-              <a routerLink="/home">home</a>
-              <a routerLink="/depositos">depositos</a>
-              <a routerLink="/usuarios">usuarios</a>
-              <a routerLink="/gallineros">gallineros</a>
-            </nav>
-            <router-outlet></router-outlet>
-            `
+  templateUrl:'app/templates/cabecera.html'
 })
 export class AppComponent { }
