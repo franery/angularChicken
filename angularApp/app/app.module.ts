@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule }   from '@angular/router';
 import { HttpModule, JsonpModule }  from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { DatatableComponent } from './datatable.component';
 import { ColumnComponent } from './column.component';
@@ -19,6 +20,7 @@ import { DepositoListComponent }        from './deposito-list.component';
     BrowserModule,
     HttpModule,
     JsonpModule,
+    FormsModule,
     AppRoutingModule
   ],
   declarations: [

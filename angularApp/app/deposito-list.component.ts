@@ -7,7 +7,7 @@ import { DepositoService } from './deposito.service';
   selector: 'deposito-list',
   template: `
       <br>
-      <datatable [dataset]=depositos>
+      <datatable [dataset]=depositos [enableFilter]=true>
           <column [value]="'id'" [header]="'Id'"></column>
           <column [value]="'nombre'" [header]="'Nombre'"></column>
           <column [value]="'stockMaximo'" [header]="'Stock Maximo'"></column>
