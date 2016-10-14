@@ -4,8 +4,10 @@ export class Venta {
     public fecha: Date,
     public cantidad: number,
     public precio: number,
-    public usuario: string,
-    public proveedor:  string,
+    public usuarioId: string,
+    public usuarioNombre: string,
+    public proveedorId: string,
+    public proveedorNombre: string,
     public borrado: string    
     ){}
 }

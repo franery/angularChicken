@@ -12,8 +12,8 @@ import { ListService } from '../list.service';
               <column [value]="'fecha'" [header]="'Fecha'"></column>
               <column [value]="'cantidad'" [header]="'Cantidad'"></column>
               <column [value]="'precio'" [header]="'Precio'"></column>
-              <column [value]="'usuario'" [header]="'Usuario'"></column>
-              <column [value]="'proveedor'" [header]="'Proveedor'"></column>
+              <column [value]="'usuarioNombre'" [header]="'Usuario'"></column>
+              <column [value]="'proveedorNombre'" [header]="'Proveedor'"></column>
           </datatable>
 
           <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
