@@ -12,9 +12,12 @@ import { DepositosComponent }  from './depositos.component';
 import { HomeComponent }  from './home.component';
 import { UsuariosComponent }  from './usuarios.component';
 import { GallinerosComponent }  from './gallineros.component';
+import { PerfilesComponent }  from './perfiles.component';
 
 import { DepositoListComponent } from './depositos/deposito-list.component';
 import { GallineroListComponent } from './gallineros/gallinero-list.component';
+import { UsuarioListComponent } from './usuarios/usuario-list.component';
+import { PerfilListComponent } from './perfiles/perfil-list.component';
 
 @NgModule({
   imports: [
@@ -32,8 +35,11 @@ import { GallineroListComponent } from './gallineros/gallinero-list.component';
     DepositosComponent,
     UsuariosComponent,
     GallinerosComponent,
+    PerfilesComponent,
     DepositoListComponent,
-    GallineroListComponent
+    GallineroListComponent,
+    UsuarioListComponent,
+    PerfilListComponent
   ],
   bootstrap: [
     AppComponent

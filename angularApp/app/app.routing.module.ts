@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { DepositosComponent }  from './depositos.component';
 import { UsuariosComponent }  from './usuarios.component';
 import { GallinerosComponent }  from './gallineros.component';
+import { PerfilesComponent }  from './perfiles.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { GallinerosComponent }  from './gallineros.component';
       { path: 'depositos', component: DepositosComponent },
       { path: 'usuarios', component: UsuariosComponent },
       { path: 'gallineros', component: GallinerosComponent },
+      { path: 'perfiles', component: PerfilesComponent },
       { path: 'home', component: HomeComponent },
       { path: '', component: HomeComponent },
       { path: '**', component: HomeComponent }
