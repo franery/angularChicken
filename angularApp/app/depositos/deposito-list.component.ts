@@ -6,16 +6,17 @@ import { ListService } from '../list.service';
   moduleId: module.id,
   selector: 'deposito-list',
   template: `
-      <br>
-      <datatable [dataset]=depositos [enableFilter]=true (deleteId)="delete($event)" (modifyId)="modify($event)">
-          <column [value]="'id'" [header]="'Id'"></column>
-          <column [value]="'nombre'" [header]="'Nombre'"></column>
-          <column [value]="'stockMaximo'" [header]="'Stock Maximo'"></column>
-          <column [value]="'stockHuevos'" [header]="'Stock Maximo'"></column>
-          <column [value]="'borrado'" [header]="'Borrado'"></column>
-      </datatable>
+          <br>
+          <datatable [dataset]=depositos [enableFilter]=true (deleteId)="delete($event)" (modifyId)="modify($event)">
+              <column [value]="'id'" [header]="'Id'"></column>
+              <column [value]="'nombre'" [header]="'Nombre'"></column>
+              <column [value]="'stockMaximo'" [header]="'Stock Maximo'"></column>
+              <column [value]="'stockHuevos'" [header]="'Stock Maximo'"></column>
+              <column [value]="'borrado'" [header]="'Borrado'"></column>
+          </datatable>
 
-          <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>`,
+          <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+          `,
   providers: [ ListService ]
 })
 export class DepositoListComponent implements OnInit {
@@ -38,6 +39,7 @@ export class DepositoListComponent implements OnInit {
 
   delete(objeto) {
     this.listService.delete(this.depositosBorrarUrl, objeto).subscribe();
+    
   }
 
   modify(row){

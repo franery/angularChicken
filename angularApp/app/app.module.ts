@@ -13,7 +13,13 @@ import { HomeComponent }  from './home.component';
 import { UsuariosComponent }  from './usuarios.component';
 import { GallinerosComponent }  from './gallineros.component';
 import { PerfilesComponent }  from './perfiles.component';
+import { ParametrosComponent } from './parametros.component';
+import { VentasComponent } from './ventas.component';
+import { ProveedoresComponent } from './proveedores.component';
 
+import { VentasListComponent } from './ventas/ventas-list.component';
+import { ProveedoresListComponent } from './proveedores/proveedores-list.component';
+import { ParametrosListComponent } from './parametros/parametros-list.component';
 import { DepositoListComponent } from './depositos/deposito-list.component';
 import { GallineroListComponent } from './gallineros/gallinero-list.component';
 import { UsuarioListComponent } from './usuarios/usuario-list.component';
@@ -35,6 +41,12 @@ import { PerfilListComponent } from './perfiles/perfil-list.component';
     DepositosComponent,
     UsuariosComponent,
     GallinerosComponent,
+    ParametrosComponent,
+    ParametrosListComponent,
+    VentasComponent,
+    VentasListComponent,
+    ProveedoresComponent,
+    ProveedoresListComponent,
     PerfilesComponent,
     DepositoListComponent,
     GallineroListComponent,
