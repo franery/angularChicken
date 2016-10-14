@@ -39,7 +39,7 @@ export class DepositoListComponent implements OnInit {
 
   delete(objeto) {
     this.listService.delete(this.depositosBorrarUrl, objeto).subscribe();
-    
+    this.getDepositos();    
   }
 
   modify(row){

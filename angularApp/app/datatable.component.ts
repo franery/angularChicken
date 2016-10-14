@@ -16,7 +16,7 @@ import { Output, EventEmitter } from '@angular/core';
               </thead>
               <tbody>
                 <tr *ngFor="let row of getData()">
-                  <td *ngFor="let column of columns">{{row[column.value]}}</td>
+                  <td *ngFor="let column of columns" [innerHtml]="row[column.value]"></td>
                   <td>
                     <div class="btn-group">
                       <button type="button" class="btn btn-default btn" (click)="edit(row)"><i class="glyphicon glyphicon-pencil"></i></button>  

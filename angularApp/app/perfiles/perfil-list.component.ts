@@ -10,10 +10,9 @@ import { ListService } from '../list.service';
       <datatable [dataset]=perfiles [enableFilter]=true (deleteId)="delete($event)" (modifyId)="modify($event)">
           <column [value]="'id'" [header]="'Id'"></column>
           <column [value]="'nombre'" [header]="'Nombre'"></column>
-          <column [value]="'listaPermisos'" [header]="'Lista Permisos'"></column>
+          <column [value]="'listaPermisosString'" [header]="'Lista de Permisos'"></column>
       </datatable>
-
-          <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>`,
+      <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>`,
   providers: [ ListService ]
 })
 export class PerfilListComponent implements OnInit {
@@ -31,7 +30,26 @@ export class PerfilListComponent implements OnInit {
     this.listService.getList(this.perfilesListarUrl)
                      .subscribe(
                        perfiles => this.perfiles = perfiles,
-                       error =>  this.errorMessage = <any>error);
+                       error =>  this.errorMessage = <any>error,
+                       () => this.setPermisos());
+  }
+
+  setPermisos() {
+      for(var i = 0; i < this.perfiles.length; i++) {
+          var modulo;
+	        var mensaje = "";
+	        var listaPermisos = this.perfiles[i].listaPermisos;
+          for (var j = 0; j < listaPermisos.length; j++) {
+	    	      if(modulo != listaPermisos[j].nombreModulo){
+                  mensaje = mensaje.substring(0,mensaje.length-2);
+                  mensaje += "<br>" + listaPermisos[j].nombreModulo + ": ";
+                  modulo = listaPermisos[j].nombreModulo;
+              }
+	    	      mensaje += listaPermisos[j].nombreOperacion + " | ";               	
+	        }
+          mensaje = mensaje.substring(0,mensaje.length-2);
+          this.perfiles[i].listaPermisosString = mensaje;
+      }
   }
 
   delete(objeto) {
