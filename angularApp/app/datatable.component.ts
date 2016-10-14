@@ -38,7 +38,7 @@ export class DatatableComponent {
   columns: ColumnComponent[] = [];
   query = "";
   filteredList;
- 
+
   addColumn(column){
     this.columns.push(column);
   }
@@ -60,9 +60,11 @@ export class DatatableComponent {
         return result.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
     }.bind(this));
   }
+  
   edit(row){
     this.modifyId.emit(row);
   }
+
   delete(row){
     this.deleteId.emit(row);
   }

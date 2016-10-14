@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Deposito } from './deposito';
 import { ListService } from '../list.service';
 
+import { Observable } from 'rxjs/Observable';
+
 @Component({
   moduleId: module.id,
   selector: 'deposito-list',
@@ -38,12 +40,16 @@ export class DepositoListComponent implements OnInit {
   }
 
   delete(objeto) {
-    this.listService.delete(this.depositosBorrarUrl, objeto).subscribe();
-    this.getDepositos();    
+    let lista: Deposito[];
+    this.listService.delete(this.depositosBorrarUrl, objeto).subscribe(null,null,
+    ()=>this.listService.getList(this.depositosListarUrl)
+                     .subscribe(
+                       depositos => {lista = depositos;
+                       this.depositos = lista},
+                       error =>  this.errorMessage = <any>error));
   }
 
   modify(row){
     console.log("modificar:"+row.id);
   }
-
 }
