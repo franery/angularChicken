@@ -14,7 +14,6 @@ import { Observable } from 'rxjs/Observable';
               <column [value]="'nombre'" [header]="'Nombre'"></column>
               <column [value]="'stockMaximo'" [header]="'Stock Maximo'"></column>
               <column [value]="'stockHuevos'" [header]="'Stock Maximo'"></column>
-              <column [value]="'borrado'" [header]="'Borrado'"></column>
           </datatable>
 
           <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
@@ -30,7 +29,9 @@ export class DepositoListComponent implements OnInit {
 
   constructor (private listService: ListService) {}
 
-  ngOnInit() { this.getDepositos(); }
+  ngOnInit() {
+    this.getDepositos();
+  }
 
   getDepositos() {
     this.listService.getList(this.depositosListarUrl)
