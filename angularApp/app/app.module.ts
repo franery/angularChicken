@@ -8,14 +8,15 @@ import { DatatableComponent } from './datatable.component';
 import { ColumnComponent } from './column.component';
 import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app.routing.module';
-import { DepositosComponent }  from './depositos.component';
 import { HomeComponent }  from './home.component';
-import { UsuariosComponent }  from './usuarios.component';
-import { GallinerosComponent }  from './gallineros.component';
-import { PerfilesComponent }  from './perfiles.component';
-import { ParametrosComponent } from './parametros.component';
-import { VentasComponent } from './ventas.component';
-import { ProveedoresComponent } from './proveedores.component';
+import { DepositosComponent }  from './depositos/depositos.component';
+import { DepositosFormComponent }  from './depositos/depositosForm.component';
+import { UsuariosComponent }  from './usuarios/usuarios.component';
+import { GallinerosComponent }  from './gallineros/gallineros.component';
+import { PerfilesComponent }  from './perfiles/perfiles.component';
+import { ParametrosComponent } from './parametros/parametros.component';
+import { VentasComponent } from './ventas/ventas.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
 
 import { VentasListComponent } from './ventas/ventas-list.component';
 import { ProveedoresListComponent } from './proveedores/proveedores-list.component';
@@ -39,8 +40,12 @@ import { PerfilListComponent } from './perfiles/perfil-list.component';
     DatatableComponent,
     ColumnComponent,
     DepositosComponent,
+    DepositoListComponent,
+    DepositosFormComponent,
     UsuariosComponent,
+    UsuarioListComponent,
     GallinerosComponent,
+    GallineroListComponent,
     ParametrosComponent,
     ParametrosListComponent,
     VentasComponent,
@@ -48,9 +53,6 @@ import { PerfilListComponent } from './perfiles/perfil-list.component';
     ProveedoresComponent,
     ProveedoresListComponent,
     PerfilesComponent,
-    DepositoListComponent,
-    GallineroListComponent,
-    UsuarioListComponent,
     PerfilListComponent
   ],
   bootstrap: [
