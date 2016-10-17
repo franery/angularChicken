@@ -9,11 +9,13 @@ import { Observable } from 'rxjs/Observable';
   selector: 'deposito-list',
   template: `
           <br>
+          <button routerLink="/depositosForm" class="btn btn-success pull-left">Nuevo</button>
+          <br>
           <datatable [dataset]=depositos [enableFilter]=true (deleteId)="delete($event)" (modifyId)="modify($event)">
               <column [value]="'id'" [header]="'Id'"></column>
               <column [value]="'nombre'" [header]="'Nombre'"></column>
+              <column [value]="'stockHuevos'" [header]="'Stock Huevos'"></column>
               <column [value]="'stockMaximo'" [header]="'Stock Maximo'"></column>
-              <column [value]="'stockHuevos'" [header]="'Stock Maximo'"></column>
           </datatable>
 
           <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>

@@ -15,6 +15,13 @@ export class ListService {
                     .catch(this.handleError);
   }
 
+  add(url: string, objeto) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(url, JSON.stringify(objeto), options)
+                    .catch(this.handleError);
+  }
+
   delete(url: string, objeto): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
