@@ -7,8 +7,7 @@ import './rxjs-operators';
 console.log("Hey");
 @Component({
     selector: 'my-app',
-    templateUrl: './templates/cabecera.html',
-    styleUrls: ['./app.component.css']
+    templateUrl: './templates/cabecera.html'
 })
 
 export class AppComponent {
