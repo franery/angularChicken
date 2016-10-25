@@ -26,7 +26,8 @@ import { ListService } from '../list.service';
         DepositosComponent,
         DepositoListComponent,
         DepositosFormComponent
-    ]
+    ],
+    bootstrap: [ DepositosComponent ]
     
 })
 export class DepositoModule { }
