@@ -16,12 +16,8 @@ import { ProveedoresComponent }  from './proveedores/proveedores.component';
     RouterModule.forRoot([
       { path: 'depositos', component: DepositosComponent },
       { path: 'depositosForm', component: DepositosFormComponent },
-      { path: 'usuarios', component: UsuariosComponent },
-      { path: 'gallineros', component: GallinerosComponent },
-      { path: 'perfiles', component: PerfilesComponent },
       { path: 'parametros', component: ParametrosComponent },
-      { path: 'ventas', component: VentasComponent },
-      { path: 'proveedores', component: ProveedoresComponent },
+      { path: 'gallineros', component: GallinerosComponent },
       { path: 'home', component: HomeComponent },
       { path: '', component: HomeComponent },
       { path: '**', component: HomeComponent }
