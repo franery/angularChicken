@@ -1,3 +1,4 @@
+ESCUELITA ANGULAR CHICKEN
 # angular2-webpack
 Example project using Angular2 and Webpack
 
@@ -9,7 +10,8 @@ From this small seed project:
 
 Then
 
-2- For development "npm start". This will create a virtual "dist" folder that will be livereloaded at your localhost address.
+2- For development "npm start". This will create a virtual "dist" folder that will be livereloaded at localhost address:
+http://localhost:8081/
 
 Or
 
