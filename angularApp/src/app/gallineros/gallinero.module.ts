@@ -10,26 +10,18 @@ import { DatatableModule } from '../datatable/datatable.module';
 import { GallinerosComponent }  from './gallineros.component';
 import { GallineroListComponent } from './gallinero-list.component';
 
-import { ListService } from '../list.service';
-
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         JsonpModule,
         FormsModule,
-        AppRoutingModule,
         DatatableModule
     ],
     declarations: [
         GallinerosComponent,
         GallineroListComponent
     ],
-    exports: [
-        GallinerosComponent
-    ],
-    providers: [
-        ListService
-    ]
+    exports: [GallinerosComponent]
 })
 export class GallineroModule { }

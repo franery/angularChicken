@@ -10,26 +10,18 @@ import { DatatableModule } from '../datatable/datatable.module';
 import { ParametrosComponent }  from './parametros.component';
 import { ParametrosListComponent } from './parametros-list.component';
 
-import { ListService } from '../list.service';
-
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         JsonpModule,
         FormsModule,
-        AppRoutingModule,
         DatatableModule
     ],
     declarations: [
         ParametrosComponent,
         ParametrosListComponent
     ],
-    exports: [
-        ParametrosComponent
-    ],
-    providers: [
-        ListService
-    ]
+    exports: [ParametrosComponent]
 })
 export class ParametroModule { }

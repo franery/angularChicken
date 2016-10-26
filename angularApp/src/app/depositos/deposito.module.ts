@@ -11,15 +11,12 @@ import { DepositosComponent }  from './depositos.component';
 import { DepositosFormComponent }  from './depositosForm.component';
 import { DepositoListComponent } from './deposito-list.component';
 
-import { ListService } from '../list.service';
-
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         JsonpModule,
         FormsModule,
-        AppRoutingModule,
         DatatableModule
     ],
     declarations: [
@@ -27,7 +24,9 @@ import { ListService } from '../list.service';
         DepositoListComponent,
         DepositosFormComponent
     ],
-    bootstrap: [ DepositosComponent ]
-    
+    exports: [
+        DepositosComponent,
+        DepositosFormComponent
+        ]
 })
 export class DepositoModule { }
