@@ -9,7 +9,8 @@ import { Location } from '@angular/common';
             <deposito-list></deposito-list>
             <br>
             <button (click)="goBack()">back</button>
-            `
+            `,
+    providers: [Location]
 })
 export class DepositosComponent {
 

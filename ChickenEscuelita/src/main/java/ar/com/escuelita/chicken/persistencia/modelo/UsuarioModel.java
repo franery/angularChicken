@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Usuario")
+@Table(name="usuario")
 public class UsuarioModel extends Modelo {
 	
 	@Id

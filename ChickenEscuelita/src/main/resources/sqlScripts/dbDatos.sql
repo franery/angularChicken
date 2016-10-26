@@ -1,4 +1,6 @@
-insert into Perfil (nombre) values
+use db_chicken;
+
+insert into perfil (nombre) values
 	('root');
 
 insert into Permiso (permiso, modulo) values
@@ -75,3 +77,5 @@ insert into Deposito(nombre, stockHuevos, stockMaximo) values
 insert into Parametro(descripcion, valor) values
 	('Precio Unitario', '12'),
     ('Totales', '8');
+    
+commit;

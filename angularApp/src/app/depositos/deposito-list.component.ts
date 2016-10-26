@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Deposito } from './deposito';
 import { ListService } from '../list.service';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'deposito-list',
   template: `
           <br>
-          <button routerLink="/depositosForm" class="btn btn-success pull-left">Nuevo</button>
+          <button (click)="nuevo()" class="btn btn-success pull-left">Nuevo</button>
           <br>
           <datatable [dataset]=depositos [enableFilter]=true (deleteId)="delete($event)" (modifyId)="modify($event)">
               <column [value]="'id'" [header]="'Id'"></column>
@@ -29,10 +30,14 @@ export class DepositoListComponent implements OnInit {
   errorMessage: string;
   depositos: Deposito[];
 
-  constructor (private listService: ListService) {}
+  constructor (private listService: ListService, private router: Router) {}
 
   ngOnInit() {
     this.getDepositos();
+  }
+
+  nuevo() {
+    this.router.navigate(['/depositosForm']);
   }
 
   getDepositos() {

@@ -76,8 +76,8 @@
 	<security:authentication-manager alias="authenticationManager">
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="dataSource" role-prefix=""
-				users-by-username-query="SELECT nombreUsuario as username, contrasenia as password,true as enabled FROM Usuario WHERE borrado=false AND nombreUsuario=?"
-				authorities-by-username-query="SELECT u.nombreUsuario as username, concat(concat(LOWER(p.modulo),'_'),LOWER(p.permiso)) as authority FROM Usuario u join PerfilUsuario pu on u.id = pu.idUsuario join PerfilPermiso pp on pu.idPerfil = pp.idPerfil join Permiso p on p.id = pp.idPermiso WHERE nombreUsuario=?"/>
+				users-by-username-query="SELECT nombreUsuario as username, contrasenia as password,true as enabled FROM usuario WHERE borrado=false AND nombreUsuario=?"
+				authorities-by-username-query="SELECT u.nombreUsuario as username, concat(concat(LOWER(p.modulo),'_'),LOWER(p.permiso)) as authority FROM usuario u join perfilUsuario pu on u.id = pu.idUsuario join perfilPermiso pp on pu.idPerfil = pp.idPerfil join permiso p on p.id = pp.idPermiso WHERE nombreUsuario=?"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 
