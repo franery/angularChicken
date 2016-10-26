@@ -16,3 +16,7 @@ http://localhost:8081/
 Or
 
 3- For production "npm run build". This will create a physical "dist" folder version than can be sent to a webserver. The dist folder is 7.8MB but only 234KB is actually required to load the page in a web browser.
+
+
+Esta aplicación levanta datos de los servicios rest de chickenEscuelita, proyecto JAVA-Spring con base de datos My-SQL. 
+Siga las intrucciones en ese proyecto para instalar. (en este mismo repositorio)
