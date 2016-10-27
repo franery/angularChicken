@@ -24,7 +24,8 @@ import { GallineroListComponent } from './gallinero-list.component';
         GallineroListComponent
     ],
     exports: [ 
-        GallinerosComponent
+        GallinerosComponent,
+        GallineroRoutingModule
         ]
 })
 export class GallineroModule { }
