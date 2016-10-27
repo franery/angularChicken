@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule }   from '@angular/router';
 import { HttpModule, JsonpModule }  from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from '../app.routing.module';
+import { DepositoRoutingModule } from './deposito-routing.module';
 
 import { DatatableModule } from '../datatable/datatable.module';
 
@@ -17,7 +17,8 @@ import { DepositoListComponent } from './deposito-list.component';
         HttpModule,
         JsonpModule,
         FormsModule,
-        DatatableModule
+        DatatableModule,
+        DepositoRoutingModule
     ],
     declarations: [
         DepositosComponent,
