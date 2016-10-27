@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DepositosComponent }  from './depositos.component';
 import { DepositosFormComponent } from './depositosForm.component';
 
-///routes es opcional porque no estamos usando loadChildren
+//routes es opcional porque no estamos usando loadChildren
 export const routes: Routes = [
-      { path: 'depositos', component: DepositosComponent, pathMatch: 'full' },
+      { path: 'depositos', component: DepositosComponent },
       { path: 'depositosForm',  component: DepositosFormComponent }
     ]
 
