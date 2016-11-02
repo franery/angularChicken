@@ -9,7 +9,6 @@ export const routes: Routes = [
       { path: 'parametros', component: ParametrosComponent },
       { path: 'depositos', loadChildren: './depositos/deposito.module#DepositoModule' },
       { path: 'gallineros', loadChildren: './gallineros/gallinero.module#GallineroModule' },
-
       { path: '**', component: HomeComponent }
     ]
 

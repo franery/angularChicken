@@ -25,7 +25,6 @@ import { DepositoListComponent } from './deposito-list.component';
         DepositosComponent,
         DepositoListComponent,
         DepositosFormComponent
-    ],
-    exports: []
+    ]
 })
 export class DepositoModule { }
