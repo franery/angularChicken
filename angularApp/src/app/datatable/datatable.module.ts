@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { DatatableComponent } from './datatable.component';
@@ -7,7 +7,7 @@ import { ColumnComponent } from './column.component';
 
 @NgModule({
     imports: [
-        BrowserModule,
+        CommonModule,
         FormsModule        
     ],
     declarations: [

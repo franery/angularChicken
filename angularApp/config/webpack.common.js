@@ -7,9 +7,7 @@ module.exports = {
     entry: {
         'polyfills': './src/polyfills.ts',
         'vendor': './src/vendor.ts',
-        'app': './src/main.ts',
-        'depositos': './src/mainDepositos.ts',
-        'gallineros': './src/mainGallineros.ts'
+        'app': './src/main.ts'
     },
 
     resolve: {
@@ -20,7 +18,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+                loaders: ['awesome-typescript-loader', 'angular2-template-loader'  , 'angular2-router-loader']
+
             },
             {
                 test: /\.html$/,
@@ -45,7 +44,7 @@ module.exports = {
 
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'depositos', 'gallineros', 'vendor', 'polyfills']
+            name: ['app', 'vendor', 'polyfills']
         }),
 
         new HtmlWebpackPlugin({

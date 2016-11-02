@@ -7,6 +7,9 @@ import { ParametrosComponent }  from './parametros/parametros.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'parametros', component: ParametrosComponent },
+      { path: 'depositos', loadChildren: './depositos/deposito.module#DepositoModule' },
+      { path: 'gallineros', loadChildren: './gallineros/gallinero.module#GallineroModule' },
+
       { path: '**', component: HomeComponent }
     ]
 

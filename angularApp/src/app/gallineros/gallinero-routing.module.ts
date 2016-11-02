@@ -4,7 +4,7 @@ import { GallinerosComponent }  from './gallineros.component';
 
 ///routes es opcional porque no estamos usando loadChildren
 export const routes: Routes = [
-      { path: 'gallineros', component: GallinerosComponent, pathMatch: 'full' },
+      { path: '', component: GallinerosComponent, pathMatch: 'full' },
     ]
 
 @NgModule({

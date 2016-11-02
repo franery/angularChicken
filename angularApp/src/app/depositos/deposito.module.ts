@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+
 import { RouterModule }   from '@angular/router';
 import { HttpModule, JsonpModule }  from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,7 @@ import { DepositoListComponent } from './deposito-list.component';
 
 @NgModule({
     imports: [
-        BrowserModule,
+        CommonModule,
         HttpModule,
         JsonpModule,
         FormsModule,
@@ -25,10 +26,6 @@ import { DepositoListComponent } from './deposito-list.component';
         DepositoListComponent,
         DepositosFormComponent
     ],
-    exports: [
-        DepositosComponent,
-        DepositosFormComponent,
-        DepositoRoutingModule
-        ]
+    exports: []
 })
 export class DepositoModule { }
